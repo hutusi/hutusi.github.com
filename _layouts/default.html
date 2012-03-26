@@ -13,16 +13,27 @@
    <link rel="stylesheet" href="/assets/css/screen.css" type="text/css" media="screen, projection" />
 
    <!-- Typekit -->
-   <script type="text/javascript" src="http://use.typekit.com/jpd0pfm.js"></script>
-   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+   <!--script type="text/javascript" src="http://use.typekit.com/jpd0pfm.js"></script>
+   <script type="text/javascript">try{Typekit.load();}catch(e){}</script-->
+
+   <!-- Google Analytics -->
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30399492-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  <!-- Google Analytics end -->
+
 </head>
 <body>
-
-<!-- ClickTale Top part -->
-<script type="text/javascript">
-var WRInitTime=(new Date()).getTime();
-</script>
-<!-- ClickTale end of Top part -->
 
 <div class="site">
   <div class="title">
@@ -33,9 +44,9 @@ var WRInitTime=(new Date()).getTime();
   {{ content }}
   
   <div class="footer">
-   <p> Recently read: <script type="text/javascript" src="http://www.douban.com/service/badge/hutusi/?show=collection&amp;n=5&amp;columns=5&amp;picsize=medium&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book" ></script></p> 
-<p> Recently watched: <script type="text/javascript" src="http://www.douban.com/service/badge/hutusi/?show=collection&amp;n=5&amp;columns=5&amp;picsize=medium&amp;hidelogo=yes&amp;hideself=yes&amp;cat=movie" ></script></script> </p> 
-</div>
+   <p> 最近读过 <script type="text/javascript" src="http://www.douban.com/service/badge/hutusi/?show=collection&amp;n=5&amp;columns=5&amp;picsize=medium&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book" ></script> </p> 
+   <p> 最近看过 <script type="text/javascript" src="http://www.douban.com/service/badge/hutusi/?show=collection&amp;n=5&amp;columns=5&amp;picsize=medium&amp;hidelogo=yes&amp;hideself=yes&amp;cat=movie" ></script> </p> 
+  </div>
   <div class="footer">
     <div class="contact">
       <p>
@@ -59,28 +70,6 @@ var WRInitTime=(new Date()).getTime();
 </div>
 
 <a href="http://github.com/hutusi"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
-
-<!-- ClickTale Bottom part -->
-<div id="ClickTaleDiv" style="display: none;"></div>
-<script type="text/javascript">
-if(document.location.protocol!='https:')
-  document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRb.js'%20type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-if(typeof ClickTale=='function') ClickTale(206,0.3,"www03");
-</script>
-<!-- ClickTale end of Bottom part -->
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-6016902-1");
-pageTracker._trackPageview();
-</script>
-<!-- Google Analytics end -->
 
 </body>
 </html>
