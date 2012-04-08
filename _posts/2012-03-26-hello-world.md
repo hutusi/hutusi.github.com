@@ -21,8 +21,8 @@ title: Hello, world!
 
 千里之行，始于足下。学习，并快乐着！
 
-github.com太棒了，除了优秀的托管代码系统，还可以托管博客
+不由得要感叹github.com太棒了，作为优秀的托管代码系统，竟然还可以托管博客主页
 
-当然，还得感谢github的联合创始人[Tom Preston Werner](http://tom.preston-werner.com/) 创造了[jekyll](https://github.com/mojombo/jekyll) ，让我很方便的搭建了这个博客系统。我甚至几近无耻的将他的博客风格完全照搬过来～～
+当然，得感谢github的联合创始人[Tom Preston Werner](http://tom.preston-werner.com/) 创造了[jekyll](https://github.com/mojombo/jekyll) ，让我很方便的搭建了这个博客系统。我甚至几近无耻的将他的博客风格完全照搬过来～～
 
-Hello, world!
+anyway... Hello, world!
