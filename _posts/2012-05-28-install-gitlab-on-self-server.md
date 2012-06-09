@@ -16,11 +16,11 @@ title: 搭建GitLab服务器
 + 最后执行`sudo insserv gitlab` 的时候会报错说 `command not found`，网上查了下，有一篇说这是ubuntu的一个bug，需要执行`$sudo ln -s /usr/lib/insserv/insserv /sbin/insserv`
 + nginx配置中，如果没有域名希望直接用ip访问，那么需要将如下行注释掉: 
 
-	proxy_redirect     off;
-	# you need to change this to "https", if you set "ssl" directive to "on"
-	proxy_set_header   X-FORWARDED_PROTO http;
-	proxy_set_header   Host              gitlab.YOUR_SUBDOMAIN.com:80;
-	proxy_set_header   X-Real-IP         $remote_addr;
+	`proxy_redirect     off;`
+	`\# you need to change this to "https", if you set "ssl" directive to "on"`
+	`proxy_set_header   X-FORWARDED_PROTO http;`
+	`proxy_set_header   Host              gitlab.YOUR_SUBDOMAIN.com:80;`
+	`proxy_set_header   X-Real-IP         $remote_addr;`
 
 
 另外，由于公司不能直接连外网，需要通过proxy，而在linux下配置proxy也比较麻烦，每种工具配置方法都不一样，下面也列举一二：
@@ -28,15 +28,15 @@ title: 搭建GitLab服务器
 + apt-get: 在 /etc/apt/apt.conf 配置 `Acquire::http::Proxy "http://yourid:yourpassword@yourproxyaddress:proxyport";`
 + wget: 在 ~/.wgetrc 中配置:
 
-	http_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/
-	https_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/
-	ftp_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/
-	use_proxy = on
+	`http_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/`
+	`https_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/`
+	`ftp_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/`
+	`use_proxy = on`
 
 + gem: 在 ~/.gemrc 中配置:
 
-	http_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/
-	https_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/
+	`http_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/`
+	`https_proxy = http://yourid:yourpassword@yourproxyaddress:proxyport/`
 
 但奇怪的是设置了gem的proxy后，使用`gen install gem_source`是可以安装gem的，但使用bundle却不能，所以最后只要从家里的机器上将gem的cache拷贝到了公司服务器上，然后使用--local方式进行bundle安装: `sudo -u gitlab -H bundle install --without development test --deployment --local`
 
