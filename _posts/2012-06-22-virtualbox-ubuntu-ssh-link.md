@@ -36,6 +36,7 @@ title: 在Virtualbox安装的ubuntu server建立ssh连接及安装增强包
 -------------------------------------
 
 在ubuntu x-window界面上安装增强包很容易，在只有命令行的server上怎么安装呢？
+
 1. 首先，在virtualbox菜单栏选择 设备-> 安装增强功能
 
 2. 安装以下的包：
@@ -53,9 +54,8 @@ title: 在Virtualbox安装的ubuntu server建立ssh连接及安装增强包
 6. 共享windows中的文件
 	`sudo mount -t vboxsf sharedfiles /mnt/shared`
 
-参考：
+来自：
 
-	1. [http://muffinresearch.co.uk/archives/2010/02/08/howto-ssh-into-virtualbox-3-linux-guests/][]
+1. [Howto: SSH into VirtualBox 3 Linux Guests](http://muffinresearch.co.uk/archives/2010/02/08/howto-ssh-into-virtualbox-3-linux-guests/)
 
-	2. [http://luzl.iteye.com/blog/1010597][]
-
+2. [ubuntu server 在 virtualbox中安装增强包](http://luzl.iteye.com/blog/1010597)
