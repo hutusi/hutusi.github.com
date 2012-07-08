@@ -40,21 +40,23 @@ title: 在Virtualbox安装的ubuntu server建立ssh连接及安装增强包
 1. 首先，在virtualbox菜单栏选择 设备-> 安装增强功能
 
 2. 安装以下的包：
-	`sudo apt-get install build-essential linux-headers-$(uname -r) -y`
+   `sudo apt-get install build-essential linux-headers-$(uname -r) -y` 
 
 3. 挂载cd-rom: 
-	`sudo mount /dev/cdrom /mnt/`
+   `sudo mount /dev/cdrom /mnt/`
 
 4. 安装增强包
-	`sudo /mnt/VBoxLinuxAdditions-x86.run`
+   `sudo /mnt/VBoxLinuxAdditions-x86.run`
 
 5. 卸载cdrom
-	`sudo umount /mnt/`
+   `sudo umount /mnt/`
 
 6. 共享windows中的文件
-	`sudo mount -t vboxsf sharedfiles /mnt/shared`
+   `sudo mount -t vboxsf sharedfiles /mnt/shared`
 
-来自：
+
+参考
+----
 
 1. [Howto: SSH into VirtualBox 3 Linux Guests](http://muffinresearch.co.uk/archives/2010/02/08/howto-ssh-into-virtualbox-3-linux-guests/)
 
