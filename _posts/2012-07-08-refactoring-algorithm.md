@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: 对算法的重构
