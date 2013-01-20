@@ -1,6 +1,7 @@
-
 ---
 layout: post
+category: blog
+tags: [agile, scrume]
 title: Scrum Gathering 参会后记
 ---
 

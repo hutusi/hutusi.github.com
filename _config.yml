@@ -1,0 +1,11 @@
+#
+theme_path: /assets/themes/bootstrap
+asset_path: /assets
+
+feed:             /atom.xml
+
+follow:
+    github:       https://github.com/hutusi
+    twitter:      http://www.twitter.com/hutusi
+    facebook:     http://www.facebook.com/hutusi
+    flicker:      http://www.flicker.com/hutusi

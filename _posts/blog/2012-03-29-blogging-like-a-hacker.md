@@ -1,5 +1,7 @@
 ---
 layout: post
+category: blog
+tags: [jekyll]
 title: (翻译)像黑客一样写博客
 ---
 

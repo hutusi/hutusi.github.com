@@ -1,6 +1,7 @@
-
 ---
 layout: post
+category: blog
+tags: [ubuntu]
 title: 在Virtualbox安装的ubuntu server建立ssh连接及安装增强包
 ---
 

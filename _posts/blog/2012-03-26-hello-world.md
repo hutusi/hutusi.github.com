@@ -1,5 +1,7 @@
 ---
 layout: post
+category: blog
+tags: [jekyll]
 title: Hello, world!
 ---
 

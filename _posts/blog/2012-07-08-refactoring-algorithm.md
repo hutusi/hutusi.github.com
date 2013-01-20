@@ -1,5 +1,7 @@
 ---
 layout: post
+category: blog
+tags: [refactor]
 title: 对算法的重构
 ---
 

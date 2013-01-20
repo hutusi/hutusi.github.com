@@ -1,5 +1,7 @@
 ---
 layout: post
+category: blog
+tags: [C++]
 title: 《Effective C++》(3rd Edition) 笔记
 ---
 
@@ -136,7 +138,35 @@ Chapter 4: Designs and Declarations
 
 ###Item 24: Declare non-member functions when type conversions should apply to all parameters ###
 
-?
+	class Rational {
+	public:
+		Rational(int numerator = 0,     // ctor is deliberately not explicit;
+		         int denominator = 1);  // allows implicit int-to-Rational conversions
+
+		int numerator() const; // accessors for numerator and
+		int denominator() const; // denominator ?see Item 22
+	private:
+		...
+	};
+    
+重载operator* 为Rational的成员函数:
+
+	const Rational operator*(const Rational& rhs) const;
+
+	Rational oneEighth(1, 8);
+	Rational oneHalf(1, 2);
+	Rational result = oneHalf * oneEighth; // fine
+	result = result * oneEighth; // fine
+
+but:
+
+	result = oneHalf * 2; // fine
+	result = 2 * oneHalf; // error!
+
+因此好的做法应该是声明为non-member 函数:
+    
+	const Rational operator*(const Rational& lhs, const Rational& rhs)     // now a non-member function
+
 
 ###Item 25: Consider support for a non-throwing swap ###
 

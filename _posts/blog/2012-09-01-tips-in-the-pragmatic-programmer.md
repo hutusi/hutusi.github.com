@@ -1,5 +1,7 @@
 ---
 layout: post
+category: blog
+tags: [programmer]
 title: 《The Pragmatic Programmer》(《程序员修炼之道》) Tips
 ---
 

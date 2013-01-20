@@ -7,19 +7,19 @@ title: hutusi
   <h1>Blog Posts</h1>
   <ul class="posts">
     {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% if post.category == "blog" %}
+        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
     {% endfor %}
   </ul>
 
-  <h1>Something in the air...</h1>
+  <h1>Essays</h1>
   <ul class="posts">
-  	<li><span>追寻逝去的时光：</span><a href="http://blog.sina.com.cn/hutusi">新浪博客</a></li>
-  	<li></li>
+    {% for post in site.posts %}
+      {% if post.category == "essay" %}
+        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
   </ul>
 
 </div>
-
-<div class="footer">
-   <p> 最近读过 <script type="text/javascript" src="http://www.douban.com/service/badge/hutusi/?show=collection&amp;n=5&amp;columns=5&amp;picsize=medium&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book" ></script> </p> 
-   <p> 最近看过 <script type="text/javascript" src="http://www.douban.com/service/badge/hutusi/?show=collection&amp;n=5&amp;columns=5&amp;picsize=medium&amp;hidelogo=yes&amp;hideself=yes&amp;cat=movie" ></script> </p> 
-  </div>

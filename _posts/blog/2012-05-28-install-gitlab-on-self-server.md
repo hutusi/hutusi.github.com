@@ -1,5 +1,7 @@
 ---
 layout: post
+category: blog
+tags: [gitlab]
 title: 搭建GitLab服务器
 ---
 
