@@ -1,6 +1,6 @@
 ---
 layout: post
-category: blog
+category: tech
 tags: [refactor]
 title: 对算法的重构
 ---

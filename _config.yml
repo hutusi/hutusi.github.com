@@ -1,4 +1,5 @@
-#
+permalink: /blog/:year/:month/:day/:title
+
 theme_path: /assets/themes/bootstrap
 asset_path: /assets
 

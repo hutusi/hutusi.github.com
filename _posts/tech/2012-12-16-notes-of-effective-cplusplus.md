@@ -1,6 +1,6 @@
 ---
 layout: post
-category: blog
+category: tech
 tags: [C++]
 title: 《Effective C++》(3rd Edition) 笔记
 ---

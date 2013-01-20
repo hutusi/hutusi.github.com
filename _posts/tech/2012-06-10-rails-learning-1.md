@@ -1,6 +1,6 @@
 ---
 layout: post
-category: blog
+category: tech
 tags: [rails]
 title: Rails学习笔记(1)
 ---

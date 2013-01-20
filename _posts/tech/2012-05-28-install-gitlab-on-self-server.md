@@ -1,6 +1,6 @@
 ---
 layout: post
-category: blog
+category: tech
 tags: [gitlab]
 title: 搭建GitLab服务器
 ---

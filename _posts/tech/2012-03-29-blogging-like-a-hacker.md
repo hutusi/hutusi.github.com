@@ -1,6 +1,6 @@
 ---
 layout: post
-category: blog
+category: tech
 tags: [jekyll]
 title: (翻译)像黑客一样写博客
 ---

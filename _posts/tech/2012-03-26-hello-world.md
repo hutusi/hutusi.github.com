@@ -1,6 +1,6 @@
 ---
 layout: post
-category: blog
+category: tech
 tags: [jekyll]
 title: Hello, world!
 ---
