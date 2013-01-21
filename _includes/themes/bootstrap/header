@@ -1,0 +1,49 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">hutusi</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          {% if page.category == "home" %}
+          <li class="active"><a href="{{ HOME_PATH }}/index.html">Home</a></li>
+          <li><a href="{{ HOME_PATH }}/techs.html">Tech</a></li>
+          <li><a href="{{ HOME_PATH }}/essays.html">Essay</a></li>
+          <li><a href="{{ HOME_PATH }}/about.html">About</a></li>
+          {% elsif page.category == "tech" %}
+          <li><a href="{{ HOME_PATH }}/index.html">Home</a></li>
+          <li class="active"><a href="{{ HOME_PATH }}/techs.html">Tech</a></li>
+          <li><a href="{{ HOME_PATH }}/essays.html">Essay</a></li>
+          <li><a href="{{ HOME_PATH }}/about.html">About</a></li>
+          {% elsif page.category == "essay" %}
+          <li><a href="{{ HOME_PATH }}/index.html">Home</a></li>
+          <li><a href="{{ HOME_PATH }}/techs.html">Tech</a></li>
+          <li class="active"><a href="{{ HOME_PATH }}/essays.html">Essay</a></li>
+          <li><a href="{{ HOME_PATH }}/about.html">About</a></li>
+          {% elsif page.category == "about" %}
+          <li><a href="{{ HOME_PATH }}/index.html">Home</a></li>
+          <li><a href="{{ HOME_PATH }}/techs.html">Tech</a></li>
+          <li><a href="{{ HOME_PATH }}/essays.html">Essay</a></li>
+          <li class="active"><a href="{{ HOME_PATH }}/about.html">About</a></li>
+          {% else %}
+          <li class="active"><a href="{{ HOME_PATH }}/index.html">Home</a></li>
+          <li><a href="{{ HOME_PATH }}/techs.html">Tech</a></li>
+          <li><a href="{{ HOME_PATH }}/essays.html">Essay</a></li>
+          <li><a href="{{ HOME_PATH }}/about.html">About</a></li>
+          {% endif %}
+        </ul>
+
+        <div class="nav pull-right">
+          <a href="{{ site.follow.github }}" class="ico-github" target="_blank"><img src="/assets/images/github_32.png" alt="GitHub" /></a>
+          <a href="{{ site.follow.twitter }}" class="ico-twitter" target="_blank"><img src="/assets/images/twitter_32.png" alt="Twitter" /></a>
+          <a href="{{ site.follow.facebook }}" class="ico-facebook" target="_blank"><img src="/assets/images/facebook_32.png" alt="Facebook" /></a>
+          <a href="{{ site.feed }}" class="ico-rss" target="_blank"><img src="/assets/images/rss_32.png" alt="Rss" /></a>
+        </div>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

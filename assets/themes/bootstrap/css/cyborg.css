@@ -5833,13 +5833,3 @@ label {
 .affix {
   position: fixed;
 }
-
-/** follow ico **/
-.foot-cnt-det .ico-google   { background: url(/assets/images/google_32.png) no-repeat 0 0; }
-.foot-cnt-det .ico-rss      { background: url(/assets/images/rss_32.png) no-repeat 0 0; }
-.foot-cnt-det .ico-flickr   { background: url(/assets/images/flickr_32.png) no-repeat 0 0; }
-.foot-cnt-det .ico-twitter  { background: url(/assets/images/twitter_32.png) no-repeat 0 0; }
-.foot-cnt-det .ico-facebook { background: url(/assets/images/facebook_32.png) no-repeat 0 0; }
-.foot-cnt-det .ico-vimeo    { background: url(/assets/images/vimeo_32.png) no-repeat 0 0; }
-.foot-cnt-det .ico-github   { background: url(/assets/images/github_32.png) no-repeat 0 0; }
-.foot-cnt-det .ico-linkedin { background: url(/assets/images/linkedin_32.png) no-repeat 0 0; }

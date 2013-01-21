@@ -1,9 +1,11 @@
 permalink: /blog/:year/:month/:day/:title
 
-theme_path: /assets/themes/bootstrap
-asset_path: /assets
+theme_path: themes/bootstrap
+assets_path: /assets
 
-feed:             /atom.xml
+feed: /atom.xml
+
+include_theme_path: themes/bootstrap
 
 follow:
     github:       https://github.com/hutusi
