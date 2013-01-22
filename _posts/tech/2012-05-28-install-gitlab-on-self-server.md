@@ -5,11 +5,6 @@ tags: [gitlab]
 title: 搭建GitLab服务器
 ---
 
-{{ page.title }}
-================
-
-<p class="meta">28 May 2012 Shanghai </p>
-
 闲来无事，在公司搞了太服务器装了Ubuntu Server 12.04，然后试着搭建了GitLab服务；下面记录下搭建时遇到的一些问题和解决办法。
 
 基本过程按照 Gitlab 的官方安装文档逐步操作即可： [https://github.com/gitlabhq/gitlabhq/blob/stable/doc/installation.md](https://github.com/gitlabhq/gitlabhq/blob/stable/doc/installation.md)；只不过有些地方要注意下：

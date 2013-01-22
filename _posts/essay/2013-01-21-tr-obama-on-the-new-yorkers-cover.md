@@ -5,11 +5,7 @@ tags: [obama,new yorker]
 title: (翻译)《纽约客》封面上的奥巴马
 ---
 
-{{ page.title }}
-================
-
-
-在过去的四年中，《纽约客》以总统奥巴马，他的家庭，以及他的政敌为素材采用多种形式做了封面。下面我们来回顾下从2008年开始，封面艺术家们是如何描绘总统的。
+在过去的四年中，《纽约客》以总统奥巴马、他的家庭、他的政敌为素材制作过多期的封面。下面我们来回顾自从2008年开始封面艺术家们是如何描绘总统的。
 
 <a href="http://www.flickr.com/photos/hutusi/8401158773/" title="080211_080211&amp;18a_p465 by Where ignorance is bliss, it's folly to be wise, on Flickr"><img src="http://farm9.staticflickr.com/8092/8401158773_bda02d5f7e.jpg" width="366" height="500" alt="080211_080211&amp;18a_p465"></a>
 

@@ -5,12 +5,6 @@ tags: [C++]
 title: 《Effective C++》(3rd Edition) 笔记
 ---
 
-{{ page.title }}
-================
-
-<p class="meta">2 Dec 2012 Shanghai </p>
-
-
 Chapter 1: Accustoming Yourself to C++
 --------------------------------------
 

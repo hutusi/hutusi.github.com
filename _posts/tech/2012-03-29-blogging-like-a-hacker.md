@@ -5,11 +5,6 @@ tags: [jekyll]
 title: (翻译)像黑客一样写博客
 ---
 
-{{ page.title }}
-================
-
-<p class="meta">29 Mar 2012 Shanghai </p>
-
 [原文](http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html) by Tom Preston Werner
 
 回到2000年，那时我想当一名职业的写手，和一些怀有抱负的诗人和作家一样，我每天要花上好几个小时在[LiveJournal][1] 上写作。从那时起我分别在三个不同的域名上写一些技术文章，包括web标准、印刷设计、摄影、Flash、插图、信息架构、ColdFusion、包管理、PHP、CSS、广告、Ruby、Rails以及Erlang。

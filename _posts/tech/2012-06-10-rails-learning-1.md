@@ -5,11 +5,6 @@ tags: [rails]
 title: Rails学习笔记(1)
 ---
 
-{{ page.title }}
-================
-
-<p class="meta">10 Jun 2012 Shanghai </p>
-
 学习参考书为《Agile Web Development with Rails》(4th edition)，rails之父dhh跟其他人合写的。第一部分介绍了rails的基本知识，第二部分通过创建一个购物系统来学习rails，第三部分更深入的学习rails。
 
 rails是一个MVC架构的web development framework：

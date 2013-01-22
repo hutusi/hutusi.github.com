@@ -5,11 +5,6 @@ tags: [agile, scrume]
 title: Scrum Gathering 参会后记
 ---
 
-{{ page.title }}
-================
-
-<p class="meta">9 Jun 2012 Shanghai </p>
-
 参加了三天的Scrum Gathering，感觉有点疲倦；虽然中午有丰盛的自助，但习惯午睡的我还真不习惯吃了午饭就去听课。
 
 关于敏捷或scrum不想再多谈，只记录下认为有用的几样：

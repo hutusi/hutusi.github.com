@@ -5,12 +5,6 @@ tags: [jekyll]
 title: Hello, world!
 ---
 
-{{ page.title }}
-================
-
-<p class="meta">26 Mar 2012 Shanghai </p>
-
-
 刷新
 ----
 每一种语言的学习都是从"Hello, world!"开始，像初生的婴儿投入这神秘而美丽的世界。

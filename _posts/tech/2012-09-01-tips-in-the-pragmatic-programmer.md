@@ -2,13 +2,8 @@
 layout: post
 category: tech
 tags: [programmer]
-title: 《The Pragmatic Programmer》(《程序员修炼之道》) Tips
+title: 《程序员修炼之道》笔记
 ---
-
-{{ page.title }}
-================
-
-<p class="meta">1 Sep 2012 Shanghai </p>
 
 《The Pragmatic Programmer》中提出了一些建议，记录如下：
 
