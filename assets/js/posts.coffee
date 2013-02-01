@@ -30,10 +30,10 @@ class Page
     pageList.append("<li class=\"#{active}\"><a href=\"#\" class=\"next pagination\">&raquo;</a></li>")
     @currPageLi = $("div.pagination ul li.active:first")
 
-  active: (obj) ->
+  activate: (obj) ->
     obj.addClass("active") unless obj.hasClass("active")
 
-  disActive: (obj) ->
+  deactivate: (obj) ->
     obj.removeClass("active") if obj.hasClass("active")
 
   disable: (obj) ->
@@ -42,9 +42,9 @@ class Page
   enable: (obj) ->
     obj.removeClass("disabled") if obj.hasClass("disabled")
 
-  changeActive: (active, index) ->
-    @disActive(@currPageLi)
-    @active(active)
+  alterStatus: (active, index) ->
+    @deactivate(@currPageLi)
+    @activate(active)
     @currPageLi = active
     
     @enable($("a.prev").parent())
@@ -63,7 +63,7 @@ class Page
       activeLi = pageAnchor.parent()
     
     activeIndex = parseInt(activeLi.children("a:first").text(), 10) - 1 
-    @changeActive(activeLi, activeIndex)
+    @alterStatus(activeLi, activeIndex)
     @renderPosts(activeIndex)
 
 render = (category = "all", paginate = 10) ->
