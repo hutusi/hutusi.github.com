@@ -1,6 +1,7 @@
 
 <div class="page-header">
   <h1>{{ page.title }}</h1>
+  <p class="small">{{ page.date | date_to_string }}</p>
 </div>
 
 <div id="post">
@@ -8,6 +9,7 @@
 </div>
 
 <hr>
+
   <div class="pagination">
     <ul>
     {% if page.previous %}
@@ -23,6 +25,19 @@
     </ul>
   </div>
 <hr>
+
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_preferred_1"></a>
+<a class="addthis_button_preferred_2"></a>
+<a class="addthis_button_preferred_3"></a>
+<a class="addthis_button_preferred_4"></a>
+<a class="addthis_button_compact"></a>
+<a class="addthis_counter addthis_bubble_style"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4fa6932104ee5f3f"></script>
+<!-- AddThis Button END -->
 
 {% if page.comments %}
   {% include comments %}

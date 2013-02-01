@@ -4,14 +4,9 @@ title: hutusi
 category: tech
 ---
 
-<div id="blog">
-
+<div id="tech">
   <ul class="posts">
-    {% for post in site.posts %}
-      {% if post.category == "tech" %}
-      	<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endif %}
-    {% endfor %}
   </ul>
-
 </div>
+
+<script>render("tech", 10);</script>
