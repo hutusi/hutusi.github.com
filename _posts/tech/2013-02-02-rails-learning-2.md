@@ -152,11 +152,11 @@ unit test的sut(system under test)是Model
 
 	root to: 'store#index', as: 'store' 
 
-tips： 使用 `sanitize()` 函数来修饰文本，可以在文本中增加HTML风格元素。注意：使用会有安全隐患。
+## tips： 
+
+使用 `sanitize()` 函数来修饰文本，可以在文本中增加HTML风格元素。注意：使用会有安全隐患。
 
 使用 `image_tag()` 能帮助自动添加HTML的<img>标签。
-
-## tips
 
 `number_to_currency()` 将数字转为金额显示。
 
