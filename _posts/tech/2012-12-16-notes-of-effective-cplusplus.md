@@ -47,7 +47,7 @@ Chapter 2: Constructors, Destructors, and Assignment Operators
 
 千万不要在构造函数或析构函数中调用虚函数...
 
-###Item 10: Have assignment operators return a reference to *this ###
+###Item 10: Have assignment operators return a reference to \*this ###
 
 好处：链式赋值。
 

@@ -187,7 +187,7 @@ Blackboard模式与publish/subscribe模式的区别？...
 使用O(n)方法评估算法的复杂度:
 0. 直接取值（如数组取值）： O(1)
 1. 单循环：O(n)
-2. 嵌套循环： 如冒泡排序 O(m*n), O(n**2)
+2. 嵌套循环： 如冒泡排序 O(m * n), O(n ** 2)
 3. 二叉树： O(lg(n))
 4. 分而治之(divide and conquer), 如快速排序：O(n lg(n))
 

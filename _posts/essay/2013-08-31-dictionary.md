@@ -2,7 +2,7 @@
 layout: post
 category: essay
 tags: [translate]
-title: [翻译]In place of Thought
+title: (翻译)In place of Thought
 ---
 
 
