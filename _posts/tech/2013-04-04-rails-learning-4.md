@@ -84,7 +84,7 @@ mailer generator脚本在app/views/order_notifier中相应创建了两个邮件�
 
 需要验证用户输入的用户名和密码；一旦验证通过，在本次会话（直到logout）中生效；且只允许logged in的管理员才能使用管理员功能。我们需要创建session controller来支持logging in和logging out，并且需要admin controller来欢迎管理员登录：
 	depot> rails generate controller Sessions new create destroy		depot> rails generate controller Admin indexlogging in的参数流：
-## 限制访问
+<a href="http://www.flickr.com/photos/hutusi/10169874206/" title="Screen Shot 2013-09-28 at 4.13.25 PM.png by Where ignorance is bliss, it's folly to be wise, on Flickr"><img src="http://farm4.staticflickr.com/3823/10169874206_06ed815e6f.jpg" width="500" height="392" alt="Screen Shot 2013-09-28 at 4.13.25 PM.png"></a>## 限制访问
 为了阻止非登录管理员的用户访问管理等页面，我们使用rails的filter功能。
 在Controller中增加：	class ApplicationController < ActionController::Base	  before_filter :authorize	  # ...	  protected	  	  def authorize	    unless User.find_by_id(session[:user_id])	      redirect_to login_url, notice: "Please log in"	    end	  end	endbefore_filter会在每次对application的操作前调用 authorize 方法。
 对于一些不需要验证就可以操作的controller，如store、session，可以使用 `skip_before_filter` :
@@ -142,7 +142,7 @@ mailer generator脚本在app/views/order_notifier中相应创建了两个邮件�
 # Task K: Deployment and Production
 发布。从开发到发布的变化示意图：
 
-
+<a href="http://www.flickr.com/photos/hutusi/10169694404/" title="Screen Shot 2013-10-01 at 11.28.34 PM.png by Where ignorance is bliss, it's folly to be wise, on Flickr"><img src="http://farm8.staticflickr.com/7307/10169694404_e8c4a54992.jpg" width="500" height="231" alt="Screen Shot 2013-10-01 at 11.28.34 PM.png"></a>
 Apache httpd + Phusion Passenger + MySQL
 ## Passenger
 install:
@@ -172,10 +172,19 @@ migrate:
 	$ cd /home/rubys/work/depot/	$ rails console production	# Depot Retrospective
 ## rails concepts
 ### Model:
-### view:
-### controller:
+
+Model中管理的是永久性数据，如在Depot系统中创建了5个Model： Cart, LineItem, Order, Product, User. 
+
+所有Model都有id, created_at, updated_at属性，另外可以自定义string, int等类型的属性，以及一些foreign key属性，如product_id。 还可以创建无需存在数据库中的虚拟属性，如password.
+
+利用has_many, belongs_to等方法来关联模型与模型。### View:
+
+View是对外展现的组件。Rails scaffold提供了edit, index, new, show 方法。### Controller:
+从Model中获取或保存数据，对View进行操作或展示。
 
 ### configuration:
+
+数据库，routes，语言等配置。
 
 ### testing:
 

@@ -2,9 +2,10 @@
 layout: post
 category: essay
 tags: [translate]
-title: (翻译)In place of Thought
+title: (翻译)随想词典
 ---
 
+<a href="http://www.flickr.com/photos/hutusi/10170220755/" title="d'accord-580.jpg by hutusi, on Flickr"><img src="http://farm8.staticflickr.com/7429/10170220755_304e6a42b7.jpg" width="500" height="353" alt="d'accord-580.jpg"></a>
 
 1913年，福楼拜的一部名为《随想词典》的讽刺随笔集在他死后出版。福楼拜厌恶陈词滥调，这不仅表现在《包法利夫人》的质朴文风中，也同样体现在他对针对那种不加思考的陈词滥调的书信和笔记中。《随想词典》便是对这种自动式思考的抱怨。福楼拜告知我们：在我们的语言中存在太多标准公式，它们占据着思考的位置，我们却只声称词语本身，无非是因为我们自身的懒惰、偏见和假意。
 
@@ -50,7 +51,7 @@ title: (翻译)In place of Thought
 
 咖啡：无法忍受在星巴克；买在星巴克。
 
-社区（COMMUNITY）：
+社区（COMMUNITY）：...
 
 犯罪（CRIME）：涉及小额金钱的违法活动。
 
@@ -152,154 +153,157 @@ SEMINAL：
 
 
 
-## 原文：
+## 原文： In Place of Thought
+
+[http://www.newyorker.com/online/blogs/books/2013/08/in-place-of-thought-twitter-received-ideas.html]()
 
 
-In 1913, a compilation of Gustave Flaubert’s satirical definitions was posthumously published as “Le Dictionnaire des Idées Reçues” (“The Dictionary of Received Ideas”). Flaubert hated cliché, a hatred that expressed itself not only in the pristine prose of “Madame Bovary” but also in his letters and notes on the thoughtless platitudes of the day. “The Dictionary of Received Ideas” is a complaint against automatic thinking. What galls Flaubert most is the inevitability, given an action, of a certain standard reaction. We could learn from his impatience: there are too many standard formulations in our language. They stand in place of thought, but we proclaim them each time—due to laziness, prejudice, or hypocrisy—as though they were fresh insight.
+In 1913, a compilation of Gustave Flaubert’s satirical definitions was posthumously published as “Le Dictionnaire des Idées Reçues” (“The Dictionary of Received Ideas”). Flaubert hated cliché, a hatred that expressed itself not only in the pristine prose of “Madame Bovary” but also in his letters and notes on the thoughtless platitudes of the day. “The Dictionary of Received Ideas” is a complaint against automatic thinking. What galls Flaubert most is the inevitability, given an action, of a certain standard reaction. We could learn from his impatience: there are too many standard formulations in our language. They stand in place of thought, but we proclaim them each time—due to laziness, prejudice, or hypocrisy—as though they were fresh insight.   
+
 　　
-　　Flaubert’s “Dictionary” inspired me to try something similar, over the course of a few hours, on Twitter. I think, also, there was the influence of Ambrose Bierce and his cynical “Devil’s Dictionary,” Samuel Johnson’s mostly serious but occasionally coruscating “Dictionary of the English Language,” and Gelett Burgess’s now-forgotten send-up of platitudes, “Are You a Bromide?” What the entries in these books have in common, in addition to compression and wit, is an intolerance of stupidity. As I wrote my modern cognates, I was struck at how close some of them came to the uninterrogated platitudes in my own head. Stupidity stalks us all.
+　　Flaubert’s “Dictionary” inspired me to try something similar, over the course of a few hours, on Twitter. I think, also, there was the influence of Ambrose Bierce and his cynical “Devil’s Dictionary,” Samuel Johnson’s mostly serious but occasionally coruscating “Dictionary of the English Language,” and Gelett Burgess’s now-forgotten send-up of platitudes, “Are You a Bromide?” What the entries in these books have in common, in addition to compression and wit, is an intolerance of stupidity. As I wrote my modern cognates, I was struck at how close some of them came to the uninterrogated platitudes in my own head. Stupidity stalks us all.   
 　　
+<br/>　　
+　　AFRICA. A country. Poor but happy. Rising.  
 　　
-　　AFRICA. A country. Poor but happy. Rising.
+　　ALMOND. All eyes are almond-shaped.   
 　　
-　　ALMOND. All eyes are almond-shaped.
+　　AMERICAN. With the prefix “all,” a blonde.   
 　　
-　　AMERICAN. With the prefix “all,” a blonde.
+　　ARTICULATE. Say “you’re very articulate” to young blacks, and then ask where they are from.    
 　　
-　　ARTICULATE. Say “you’re very articulate” to young blacks, and then ask where they are from.
+　　ARTISAN. A carpenter, in Brooklyn.   
 　　
-　　ARTISAN. A carpenter, in Brooklyn.
+　　ATHEISM. Deranged cult of violent fanatics.   
 　　
-　　ATHEISM. Deranged cult of violent fanatics.
+　　AUSTRALIANS. Extremely fit. Immune to pain. If you meet one, say “Foster’s.” The whole country is nothing but beaches.   
 　　
-　　AUSTRALIANS. Extremely fit. Immune to pain. If you meet one, say “Foster’s.” The whole country is nothing but beaches.
+　　BLUE. The color of purity. Countless mysterious ads are devoted to pads and liners that absorb blue liquid.   
 　　
-　　BLUE. The color of purity. Countless mysterious ads are devoted to pads and liners that absorb blue liquid.
+　　BRAVE. Doomed.   
 　　
-　　BRAVE. Doomed.
+　　BREAST. No joking matter. One glimpse on television sufficient to destroy a childhood. (See CHILDREN.)   
 　　
-　　BREAST. No joking matter. One glimpse on television sufficient to destroy a childhood. (See CHILDREN.)
+　　BUDDHISM. The way of peace.   
 　　
-　　BUDDHISM. The way of peace.
+　　CARAMEL. Term used to describe black women’s skin. No other meaning known.   
 　　
-　　CARAMEL. Term used to describe black women’s skin. No other meaning known.
+　　CAESAR. “Veni, vidi, vici.” Get into a conversation about the pronunciation.  
 　　
-　　CAESAR. “Veni, vidi, vici.” Get into a conversation about the pronunciation.
+　　CHILDREN. The only justification for policy. Always say “our children.” The childless have no interest in improving society.  
 　　
-　　CHILDREN. The only justification for policy. Always say “our children.” The childless have no interest in improving society.
+　　CHINESE. Wonder what they’re thinking.  
 　　
-　　CHINESE. Wonder what they’re thinking.
+　　CHOCOLATE. Term used to describe black women’s skin. No other meaning known.  
 　　
-　　CHOCOLATE. Term used to describe black women’s skin. No other meaning known.
+　　CHRISTIANITY. Peace on earth.  
 　　
-　　CHRISTIANITY. Peace on earth.
+　　CLARIFICATION. Reversal.  
 　　
-　　CLARIFICATION. Reversal.
+　　COAL. Clean.  
 　　
-　　COAL. Clean.
+　　COFFEE. Declare that it is intolerable at Starbucks. Buy it at Starbucks.  
 　　
-　　COFFEE. Declare that it is intolerable at Starbucks. Buy it at Starbucks.
+　　COMMUNITY. Preceded by “black.” White people, lacking community, must make do with property.  
 　　
-　　COMMUNITY. Preceded by “black.” White people, lacking community, must make do with property.
+　　CRIME. Illegal activities involving smaller amounts of money.  
 　　
-　　CRIME. Illegal activities involving smaller amounts of money.
+　　CRISIS. Mention that it is composed of the Chinese characters for opportunity and danger.  
 　　
-　　CRISIS. Mention that it is composed of the Chinese characters for opportunity and danger.
+　　DIVERSITY. Obviously desirable, within limits. Mention your service in the Peace Corps.  
 　　
-　　DIVERSITY. Obviously desirable, within limits. Mention your service in the Peace Corps.
+　　EGGS. Always say “you can’t make omelets without breaking eggs” whenever the subject of war comes up.  
 　　
-　　EGGS. Always say “you can’t make omelets without breaking eggs” whenever the subject of war comes up.
+　　EMIGRÉ. Jewish immigrant.  
 　　
-　　EMIGRÉ. Jewish immigrant.
+　　EVOLUTION. Only a theory.  
 　　
-　　EVOLUTION. Only a theory.
+　　FASCISM. Always preceded by “creeping.”  
 　　
-　　FASCISM. Always preceded by “creeping.”
+　　FEMINISTS. Wonderful, in theory.  
 　　
-　　FEMINISTS. Wonderful, in theory.
+　　FISH. A vegetable.  
 　　
-　　FISH. A vegetable.
+　　GERMANS. When watching football, “never rule out the Germans.”  
 　　
-　　GERMANS. When watching football, “never rule out the Germans.”
+　　HARVARD. Source of studies quoted on BBC. Never say “I went to Harvard.” Say “I schooled in the Boston area.”  
 　　
-　　HARVARD. Source of studies quoted on BBC. Never say “I went to Harvard.” Say “I schooled in the Boston area.”
+　　HAUTE COUTURE. Always declare that it is made by gay men for boyish girls. Wait hours to see fashion exhibits at the Met.  
 　　
-　　HAUTE COUTURE. Always declare that it is made by gay men for boyish girls. Wait hours to see fashion exhibits at the Met.
+　　HEAT. Antonym of humidity.  
 　　
-　　HEAT. Antonym of humidity.
+　　HILARIOUS. Never simply say “funny.”  
 　　
-　　HILARIOUS. Never simply say “funny.”
+　　HIP HOP. Old-school hip hop, i.e., whatever was popular when you were nineteen, is great. Everything since then is intolerable.  
 　　
-　　HIP HOP. Old-school hip hop, i.e., whatever was popular when you were nineteen, is great. Everything since then is intolerable.
+　　HIPSTER. One who has an irrational hatred of hipsters.  
 　　
-　　HIPSTER. One who has an irrational hatred of hipsters.
+　　ILIAD. Declare a preference for the Odyssey.  
 　　
-　　ILIAD. Declare a preference for the Odyssey.
+　　INDIA. Work your tolerance of or aversion to spicy food into the conversation as quickly as possible. “A land of contrasts.”  
 　　
-　　INDIA. Work your tolerance of or aversion to spicy food into the conversation as quickly as possible. “A land of contrasts.”
+　　INTERNET. A waste of time. Have a long online argument with anyone who disagrees.  
 　　
-　　INTERNET. A waste of time. Have a long online argument with anyone who disagrees.
+　　ISLAM. Religion of peace.  
 　　
-　　ISLAM. Religion of peace.
+　　JAPAN. Mysterious. Always “the Japanese.” Mention Murakami.  
 　　
-　　JAPAN. Mysterious. Always “the Japanese.” Mention Murakami.
+　　JAZZ. America’s classical music. The last album was released in 1965.  
 　　
-　　JAZZ. America’s classical music. The last album was released in 1965.
+　　LITERALLY. Swear you’d rather die than use “literally” as an intensifier.  
 　　
-　　LITERALLY. Swear you’d rather die than use “literally” as an intensifier.
+　　MAGISTERIAL. Large book, written by a man.  
 　　
-　　MAGISTERIAL. Large book, written by a man.
+　　MEN. Always say “all the good ones are gay or taken” within earshot of the straight single ones.  
 　　
-　　MEN. Always say “all the good ones are gay or taken” within earshot of the straight single ones.
+　　MIGRANT. Mexican immigrant.  
 　　
-　　MIGRANT. Mexican immigrant.
+　　MOCHA. Term used to describe black women’s skin. No other meaning known.  
 　　
-　　MOCHA. Term used to describe black women’s skin. No other meaning known.
+　　NEWSPAPERS. Bemoan their gradual disappearance. Don’t actually buy any.  
 　　
-　　NEWSPAPERS. Bemoan their gradual disappearance. Don’t actually buy any.
+　　NIETZSCHE. Say “Nietzsche says God is dead,” but if someone says that first, say “God says Nietzsche is dead.”  
 　　
-　　NIETZSCHE. Say “Nietzsche says God is dead,” but if someone says that first, say “God says Nietzsche is dead.”
+　　ODYSSEY. Declare a preference for the Iliad.  
 　　
-　　ODYSSEY. Declare a preference for the Iliad.
+　　PARIS. Romantic, in spite of the rude waiters and Japanese tourists. Don’t simply like it; “adore” it.  
 　　
-　　PARIS. Romantic, in spite of the rude waiters and Japanese tourists. Don’t simply like it; “adore” it.
+　　POET. Always preceded by “published.” Function unknown.  
 　　
-　　POET. Always preceded by “published.” Function unknown.
+　　PRETTY. On Facebook, to indicate an unattractive woman.  
 　　
-　　PRETTY. On Facebook, to indicate an unattractive woman.
+　　PROUST. No one actually reads him. You reread him, preferably on summer vacation.  
 　　
-　　PROUST. No one actually reads him. You reread him, preferably on summer vacation.
+　　PUNS. Always say “no pun intended” to draw attention to the intended pun.  
 　　
-　　PUNS. Always say “no pun intended” to draw attention to the intended pun.
+　　RACISM. Obsolete term. Meaning unknown.  
 　　
-　　RACISM. Obsolete term. Meaning unknown.
+　　REGGAE. Sadly, just one album exists in the genre.  
 　　
-　　REGGAE. Sadly, just one album exists in the genre.
+　　RUSHDIE. Have a strong opinion on “The Satanic Verses.” Under no circumstances actually read “The Satanic Verses.”  
 　　
-　　RUSHDIE. Have a strong opinion on “The Satanic Verses.” Under no circumstances actually read “The Satanic Verses.”
+　　SCANDAL. If governmental, express surprise that people are surprised. If sexual, declare it a distraction, but seek out the details.  
 　　
-　　SCANDAL. If governmental, express surprise that people are surprised. If sexual, declare it a distraction, but seek out the details.
+　　SEMINAL. Be sure to use in a review of a woman’s work. Proclaim your innocence after.  
 　　
-　　SEMINAL. Be sure to use in a review of a woman’s work. Proclaim your innocence after.
+　　SMART. Any essay that confirms your prejudices.  
 　　
-　　SMART. Any essay that confirms your prejudices.
+　　STRIKE. Always “surgical.” (See EGGS.)  
 　　
-　　STRIKE. Always “surgical.” (See EGGS.)
+　　SUNSET. Beautiful. Like a painting. Post on Instagram and hashtag “no filter.”  
 　　
-　　SUNSET. Beautiful. Like a painting. Post on Instagram and hashtag “no filter.”
+　　TELEVISION. Much improved. Better than novels. If someone says “The Wire,” say “The Sopranos,” or vice versa.  
 　　
-　　TELEVISION. Much improved. Better than novels. If someone says “The Wire,” say “The Sopranos,” or vice versa.
+　　TOUR DE FORCE. A film longer than two and a half hours and not in English.  
 　　
-　　TOUR DE FORCE. A film longer than two and a half hours and not in English.
+　　VALUES. “We must do whatever it takes to preserve our values.” Said as a prelude to destroying them.  
 　　
-　　VALUES. “We must do whatever it takes to preserve our values.” Said as a prelude to destroying them.
+　　VIRGINITY. An obsession in Iran and in the olive-oil industry. It can be lost, like a wallet.  
 　　
-　　VIRGINITY. An obsession in Iran and in the olive-oil industry. It can be lost, like a wallet.
+　　YEATS. Author of two quotations.  
 　　
-　　YEATS. Author of two quotations.
+　　ŽIŽEK. Observe he’s made some good points, but.  
 　　
-　　ŽIŽEK. Observe he’s made some good points, but.
+　　Teju Cole is a photographer and writer. His novel “Open City” won the Internationaler Literaturpreis in June. He contributes frequently to Page-Turner.  
 　　
-　　Teju Cole is a photographer and writer. His novel “Open City” won the Internationaler Literaturpreis in June. He contributes frequently to Page-Turner.
-　　
-　　Illustration by Laurie Rosenwald.
+　　Illustration by Laurie Rosenwald.   
