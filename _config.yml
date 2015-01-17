@@ -1,17 +1,22 @@
-markdown: rdiscount
-pygments: true
 
-permalink: /blog/:year/:month/:day/:title
-
-theme_path: themes/bootstrap
+# Site settings
+title: hutusi.com
+header-img: home-bg.jpg
+email: huziyong@gmail.com
+description: "Write your site description here. It will be used as your sites meta description as well!"
+baseurl: ""
+url: "http://127.0.0.1:4000"
 assets_path: /assets
+images_path: /images
 
-feed: /atom.xml
+disqus_shortname: hutusi
+twitter_username: hutusi
+github_username:  hutusi
+facebook_username:  hutusi
 
-include_theme_path: themes/bootstrap
-
-follow:
-    github:       https://github.com/hutusi
-    twitter:      http://www.twitter.com/hutusi
-    facebook:     http://www.facebook.com/hutusi
-    flicker:      http://www.flicker.com/hutusi
+# Build settings
+markdown: kramdown
+highlighter: pygments
+permalink: /blog/:year/:month/:day/:title
+paginate: 6
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
