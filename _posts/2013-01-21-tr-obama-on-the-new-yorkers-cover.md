@@ -3,6 +3,8 @@ layout: post
 category: essay
 tags: [obama,new yorker]
 title: (翻译)《纽约客》封面上的奥巴马
+subtitle: 在过去的四年中，《纽约客》以总统奥巴马、他的家庭、他的政敌为素材制作过多期的封面。
+header-img: "post-bg-02.jpg"
 ---
 
 在过去的四年中，《纽约客》以总统奥巴马、他的家庭、他的政敌为素材制作过多期的封面。下面我们来回顾自从2008年开始封面艺术家们是如何描绘总统的。

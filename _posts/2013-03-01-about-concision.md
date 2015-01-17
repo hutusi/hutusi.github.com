@@ -2,7 +2,9 @@
 layout: post
 category: essay
 tags: [语言]
-title: 简洁(Concision)
+title: 简洁
+subtitle: I go, you stay; two autums.
+header-img: "post-bg-02.jpg"
 ---
 
 今天在《the New Yorker》上看到一篇名为[《In praise of Concision》](http://www.newyorker.com/online/blogs/books/2013/02/in-praise-of-concision.html) 的文章。作者早上在新闻上看到一个人介绍自己的装饰汽车的经验，他将成千上万个啤酒瓶盖用作车外的装饰，以及其他。作者女儿经过时看到这些便叹了句“free time”. 于是这句"free time"引起了作者的无限遐想，blah~blah了洋洋洒洒几千字的文章来说明简洁的优点。"What a paradox!"
@@ -11,7 +13,7 @@ title: 简洁(Concision)
 
 >  I go,  <br>
 >  you stay;  <br>
->  two autumns. 
+>  two autumns.
 
 译成中文：
 
