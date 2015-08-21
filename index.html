@@ -1,38 +1,35 @@
 ---
-layout: page
-title: "疯人疯语，难得糊涂"
-description: "读书 认知 思考"
-header-img: "home-bg.jpg"
+layout: default
+home: true
 ---
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-  <a href="{{ post.url | prepend: site.baseurl }}">
-    <h2 class="post-title">            {{ post.title }}
-    </h2>
-    {% if post.subtitle %}
-    <h3 class="post-subtitle">
-      {{ post.subtitle }}
-    </h3>
-    {% endif %}
-  </a>
-  <p class="post-meta">Posted on {{ post.date | date: "%B %-d, %Y" }}</p>
-</div>
-<hr>
-{% endfor %}
+<div class="home">
+    <ul class="post-list">
+        {% if site.pagination %}
+        {% assign source = paginator.posts %}
+        {% else %}
+        {% assign source = site.posts %}
+        {% endif %}
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-  {% if paginator.previous_page %}
-  <li class="previous">
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-  </li>
-  {% endif %}
-  {% if paginator.next_page %}
-  <li class="next">
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-  </li>
-  {% endif %}
-</ul>
-{% endif %}
+        {% for post in source %}
+        <li>
+            <a href="{{ post.url | prepend: site.baseurl }}" class="post-list-link">
+                <div class="post-list-info">
+                    <h2 class="post-list-title">{{ post.title }}</h2>
+                    <span class="post-list-meta">{{ post.date | date: "%B %-d, %Y" }}</span>
+                </div>
+            </a>
+
+            <img src="{{ post.thumb }}" class="post-list-thumb" />
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
+    <!-- <p class="rss-subscribe">
+        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
+            Subscribe via RSS
+            <i class="icon ion-social-rss"></i>
+        </a>
+    </p> -->
+</div>

@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 {% include head.html %}
 
 <body>
 
-    {% include nav.html %}
+    {% include loader.html %}
 
-    {{ content }}
+    <main id="sb-site">
 
-    {% include footer.html %}
+        <div class="container">
+            <div class="wrapper">
+                {{ content }}
+            </div>
 
-    {% include analytics.html %}
+            {% include pagination.html %}
+
+            {% include next.html %}
+
+        </div>
+
+    </main>
+
+    {% include sidebar.html %}
+
+    {% include js.html %}
 
 </body>
 

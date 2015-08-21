@@ -1,56 +1,67 @@
 ---
 layout: default
 ---
+<div class="post">
+    {% if page.reading_time %}
+    <p class="post-reading-time">&#126;
+        {% capture words %}
+          {{ content | number_of_words | minus: 180 }}
+        {% endcapture %}
+        {% unless words contains "-" %}
+          {{ words | plus: 180 | divided_by: 180 | append: " min" }}
+        {% endunless %}
+    </p>
+    {% endif %}
 
-<!-- Post Header -->
-<header class="intro-header" style="background-image: url('{{ site.images_path }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>{{ page.title }}</h1>
-                    {% if page.subtitle %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    {% endif %}
-                    <span class="meta">{{ page.date | date: "%B %-d, %Y" }}</span>
-                </div>
-            </div>
+    <header class="post-header">
+        {% if page.thumb %}
+        <img src="{{ page.thumb }}" alt="{{ page.title }}" class="post-thumb" />
+        {% endif %}
+
+        <h1 class="post-title">{{ page.title }}</h1>
+    </header>
+
+    <article class="post-content">
+        {{ content }}
+    </article>
+
+    <footer class="post-meta">
+        {% if page.date %}
+        <div class="meta">
+            <h3 class="meta-title">Date</h3>
+            <span class="meta-content">{{ page.date | date: "%B %-d, %Y" }}</span>
         </div>
-    </div>
-</header>
-
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-				{{ content }}
-
-                <hr>
-
-                <ul class="pager">
-                    {% if page.previous.url %}
-                    <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
-                    </li>
-                    {% endif %}
-                    {% if page.next.url %}
-                    <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
-                    </li>
-                    {% endif %}
-                </ul>
-
-                <hr>
-
-                {% if page.comments != false %}
-                  {% include comments.html %}
-                {% endif %}
-
-            </div>
+        {% endif %}
+        {% if page.author %}
+        <div class="meta">
+            <h3 class="meta-title">Author</h3>
+            <span class="meta-content">{{ page.author }}</span>
         </div>
-    </div>
-</article>
+        {% endif %}
+        {% if page.show_categories %}
+        <div class="meta">
+            <h3 class="meta-title">Categories</h3>
+            <span class="meta-content">
+                {% for category in page.categories %}
+                    {{ category | capitalize }}&nbsp;
+                {% endfor %}
+            </span>
+        </div>
+        {% endif %}
+        {% if page.show_tags %}
+        <div class="meta">
+            <h3 class="meta-title">Tags</h3>
+            <span class="meta-content">
+                {% for tag in page.tags %}
+                    {{ tag | capitalize }}&nbsp;
+                {% endfor %}
+            </span>
+        </div>
+        {% endif %}
+    </footer>
 
-<hr>
+    {% include share.html %}
+
+    {% include disqus.html %}
+
+</div>
