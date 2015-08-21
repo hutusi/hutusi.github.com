@@ -1,13 +1,14 @@
 # Site settings
-title: Travelogue
+title: hutusi.com
 
 baseurl: '' # the subpath of your site, e.g. /blog
-url: 'http://yourdomain.com' # the base hostname & protocol for your site
+url: 'http://hutusi.com' # the base hostname & protocol for your site
+image_baseurl: 'http://7xl9fd.com1.z0.glb.clouddn.com'
 
 # Build settings
 markdown:            kramdown
 relative_permalinks: false
-permalink:           :title/
+permalink:           /blog/:year/:month/:day/:title
 
 pagination:          true
 paginate:            8

@@ -4,15 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Travelogue is a minimal, single-column Jekyll theme that provides an immersive read experience for your readers.
+生在1984, 活在1984. 
 
-![Post](https://dl.dropboxusercontent.com/u/18322837/GitHub/Travelogue/Post.png)
-
-## Getting Started
-The theme provides a complete Jekyll setup. Download it and start the Jekyll server.
-
-    git clone https://github.com/SalGnt/Travelogue.git
-    cd Travelogue
-    jekyll serve
-
-Visit the [Jekyll website](http://jekyllrb.com/) for more information.
+![1984 book cover]({{site.image_baseurl}}/about-1984-book.jpg)

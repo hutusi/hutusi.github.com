@@ -10,7 +10,7 @@
 
         var steps = [];
         var images = [
-            {% for image in page.backgrounds %}'{{ image }}',{% endfor %}
+            {% for image in page.backgrounds %}'{{site.image_baseurl}}/{{ image }}',{% endfor %}
         ];
 
         if (images.length > 0) {

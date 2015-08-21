@@ -1,9 +1,9 @@
 # RRSSB
 facebook: true
 twitter: true
-googleplus: true
-linkedin: false
-reddit: true
+googleplus: false
+linkedin: true
+reddit: false
 hackernews: true
 pinterest: false
 tumblr: false
@@ -11,4 +11,4 @@ pocket: true
 email: false
 
 # Disqus
-disqus_shortname: 'example'
+disqus_shortname: 'hutusi'
