@@ -4,7 +4,9 @@ category: essay
 tags: [literary]
 title: (翻译)2012文学冲突事件盘点
 subtitle: 文学依然热衷打斗，或许这是健康体质的表现
-header-img: "post-bg-01.jpg"
+backgrounds:
+    - 500px-118992989-awakening-iv.jpg
+thumb: instagram-1186df71ffe37ae521a2d5a1007218ec.jpg
 ---
 
 2012临近尾声之时，为了提高Page-Tuner每日书闻的点击率，我们总结了今年世界文学范围内的冲突事件。这些冲突中有些是闹剧，有些则反映了对文学现状的担忧。Page-Tuner也甚至卷入了一些事件。证据表明，文学依然热衷打斗，或许这是健康体质的表现。

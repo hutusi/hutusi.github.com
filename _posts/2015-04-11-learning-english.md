@@ -4,7 +4,9 @@ category: essay
 tags: [博客]
 title: 谈一谈英语学习
 subtitle: No pains, no gains.
-header-img: "post-bg-06.jpg"
+backgrounds:
+    - 500px-119028985-feel-the-peace-iv-by-day-by-night.jpg
+thumb: instagram-cbfa700ab28914aa8c927fcfa4e90c88.jpg
 ---
 
 有同事向我请教英语学习的方法，我很诧异。因为我英语水平其实还很差，只不过在公司内部的英语培训上跟外教分享了自己“苦学”的历程，让外教很惊讶，他也向这位同事提到了我。
