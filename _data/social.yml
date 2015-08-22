@@ -1,10 +1,10 @@
 # RRSSB
 facebook: true
 twitter: true
-googleplus: false
-linkedin: true
+googleplus: true
+linkedin: false
 reddit: false
-hackernews: true
+hackernews: false
 pinterest: false
 tumblr: false
 pocket: true
