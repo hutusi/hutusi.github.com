@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: [博客]
+tags: 英语 学习
 title: 谈一谈英语学习
 subtitle: No pains, no gains.
 backgrounds:

@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: [obama,new yorker]
+tags: 文摘 翻译
 title: (翻译)《纽约客》封面上的奥巴马
 subtitle: 在过去的四年中，《纽约客》以总统奥巴马、他的家庭、他的政敌为素材制作过多期的封面。
 backgrounds:

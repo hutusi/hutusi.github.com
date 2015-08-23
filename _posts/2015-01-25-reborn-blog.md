@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: [博客]
+tags: 写作 回顾
 title: 重新启用的博客
 subtitle: 写作是一种需要
 backgrounds:

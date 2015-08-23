@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: [博客]
+tags: 生活 育儿
 title: 陪产记
 subtitle: “May God bless and keep you always, May your wishes all come true” —— Bob Dylan, Forever Young
 backgrounds:
