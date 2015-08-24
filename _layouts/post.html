@@ -5,10 +5,10 @@ layout: default
     {% if page.reading_time %}
     <p class="post-reading-time">&#126;
         {% capture words %}
-          {{ content | number_of_words | minus: 180 }}
+          {{ content | strip_html | strip_newlines | size }}
         {% endcapture %}
         {% unless words contains "-" %}
-          {{ words | plus: 180 | divided_by: 180 | append: " min" }}
+          {{ words | divided_by: 350 | append: " min" }}
         {% endunless %}
     </p>
     {% endif %}
