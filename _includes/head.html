@@ -6,10 +6,11 @@
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | replace: ' ', '%20' }}{% else %}{{ site.description }}{% endif %}">
 
-    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Merriweather:300,300italic,400,400italic,700italic,700">
-    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Code+Pro:300,400,700">
-    <link rel="stylesheet" href="http://libs.useso.com/js/font-awesome/4.2.0/css/font-awesome.min.css">
+    <!-- CDN refer: https://servers.ustclug.org/2014/06/blog-googlefonts-speedup/ -->
+    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Merriweather:300,300italic,400,400italic,700italic,700">
+    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro:300,400,700">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="{{ "/assets/css/vendors/slidebars.min.css" | prepend: site.baseurl }}">
     <link rel="stylesheet" href="{{ "/assets/css/vendors/rrssb.css" | prepend: site.baseurl }}">
