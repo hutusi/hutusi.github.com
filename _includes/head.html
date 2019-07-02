@@ -1,31 +1,69 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <link rel="shortcut icon" href="{{ site.url }}{{ site.baseurl }}{{ site.favicon }}" type="image/png" />
+    <link rel="canonical" href="{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | replace: ' ', '%20' }}{% else %}{{ site.description }}{% endif %}">
+    {% if page.content and page.current == 'post' or page.current == 'about' %}
+        {% assign excerpt = page.content | strip_html | truncatewords: 50, "" %}
+     {% endif %} <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta property="og:description" content="{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <meta property="og:url" content="{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}" />
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}" />
+    <meta property="article:publisher" content="https://www.facebook.com/{{ site.facebook }}" />{% if excerpt %}
+    <meta property="article:author" content="https://www.facebook.com/{{ site.facebook }}" />
+    <meta property="article:published_time" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% elsif post.date %}{{ post.date | date_to_xmlschema }}{% endif %}" />
+    <meta property="article:modified_time" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% elsif post.date %}{{ post.date | date_to_xmlschema }}{% endif %}" />{% endif %}{% if page.tags.size > 0 %}
+    <meta property="article:tag" content="{{ page.tags | first | capitalizeall }}" />{% endif %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta name="twitter:description" content="{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <meta name="twitter:url" content="{{ site.url }}{{ site.baseurl }}" />
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="{{ site.title }}" />{% if page.tags.size > 0 %}
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="{{ page.tags | first | capitalizeall }}" />{% endif %}
+    <meta name="twitter:site" content="@{{ site.twitter }}" />
+    <meta name="twitter:creator" content="@{{ site.twitter }}" />{% if excerpt %}
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />{% else %}
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />{% endif %}
 
-    <!-- CDN refer: https://servers.ustclug.org/2014/06/blog-googlefonts-speedup/ -->
-    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Merriweather:300,300italic,400,400italic,700italic,700">
-    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro:300,400,700">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.title }}",
+        "logo": "{{ site.url }}{{ site.baseurl }}{{ site.logo }}"
+    },
+    "url": "{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}",
+    "image": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}"
+    },
+    "description": "{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+}
+    </script>
 
-    <link rel="stylesheet" href="{{ "/assets/css/vendors/slidebars.min.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/vendors/rrssb.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
 
-    <link rel="icon" type="image/x-icon" href="{{ "/assets/images/favicon.ico" | prepend: site.baseurl }}">
-
-    <link rel="apple-touch-icon-precomposed" href="{{ "/assets/images/apple-touch-icon.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ "/assets/images/apple-touch-icon-57x57.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ "/assets/images/apple-touch-icon-72x72.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ "/assets/images/apple-touch-icon-114x114.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ "/assets/images/apple-touch-icon-120x120.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "/assets/images/apple-touch-icon-144x144.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ "/assets/images/apple-touch-icon-152x152.png" | prepend: site.baseurl }}" />
-
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
-</head>
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" href="{{ site.baseurl }}feed.xml" />

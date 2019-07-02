@@ -1,12 +1,14 @@
 ---
 layout: post
-category: essay
-tags: 书评
+current: post
+cover: 'assets/images/welcome.jpg'
+navigation: true
 title: 不能承受的生命之轻
-subtitle: 昆德拉说，上帝一发笑，人类就思考。
-backgrounds:
-    - 500px-118992989-awakening-iv.jpg
-thumb: instagram-1186df71ffe37ae521a2d5a1007218ec.jpg
+date: 2008-06-09
+tags: 随笔 书评
+class: post-template
+subclass: 'post tag-essay'
+author: hutusi
 ---
 
 昆德拉说，上帝一发笑，人类就思考。看官且莫笑，我不是无意把这两句弄反，只是想证明一下康德的先验论。诸君大概是因为已形成“人类一思考，上帝就发笑”的先知才对我提到的那句才发笑的吧。若有人说我是因为看到这句话产生经验后才发笑的，那么马克思该为他的唯物论被证实而暗地发笑了。如此说来，哲学是个费人脑筋的问题。我们的生活如果要被哲学证明来证明去，那么一辈子应该过的很累。

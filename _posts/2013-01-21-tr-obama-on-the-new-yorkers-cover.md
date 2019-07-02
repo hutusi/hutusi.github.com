@@ -1,12 +1,14 @@
 ---
 layout: post
-category: essay
-tags: 文摘 翻译
+current: post
+cover: 'assets/images/martin.jpg'
+navigation: true
 title: (翻译)《纽约客》封面上的奥巴马
-subtitle: 在过去的四年中，《纽约客》以总统奥巴马、他的家庭、他的政敌为素材制作过多期的封面。
-backgrounds:
-    - 500px-119011003-guys-stop-moving.jpg
-thumb: instagram-11311318_939403979439860_1049648568_n.jpg
+date: 2013-01-21
+tags: 翻译
+class: post-template
+subclass: 'post tag-essay'
+author: hutusi
 ---
 
 在过去的四年中，《纽约客》以总统奥巴马、他的家庭、他的政敌为素材制作过多期的封面。下面我们来回顾自从2008年开始封面艺术家们是如何描绘总统的。

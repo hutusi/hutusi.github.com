@@ -1,12 +1,14 @@
 ---
 layout: post
-category: essay
-tags: 英语 学习
+current: post
+cover: 'assets/images/piano.jpg'
+navigation: true
 title: 谈一谈英语学习
-subtitle: No pains, no gains.
-backgrounds:
-    - 500px-119028985-feel-the-peace-iv-by-day-by-night.jpg
-thumb: instagram-11351820_1680697895491434_1302120760_n.jpg
+date: 2015-04-11
+tags: 总结 英语 学习
+class: post-template
+subclass: 'post tag-essay'
+author: hutusi
 ---
 
 有同事向我请教英语学习的方法，我很诧异。因为我英语水平其实还很差，只不过在公司内部的英语培训上跟外教分享了自己“苦学”的历程，让外教很惊讶，他也向这位同事提到了我。

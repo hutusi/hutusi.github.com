@@ -1,12 +1,14 @@
 ---
 layout: post
-category: essay
-tags: 写作 回顾
+current: post
+cover: 'assets/images/writing.jpg'
+navigation: true
 title: 重新启用的博客
-subtitle: 写作是一种需要
-backgrounds:
-    - 500px-119025095-divine-light.jpg
-thumb: instagram-11142098_101307090201942_1845972809_n.jpg
+date: 2015-01-25
+tags: 回顾
+class: post-template
+subclass: 'post tag-essay'
+author: hutusi
 ---
 
 从2006年开始在MSN Space上写日志开始，也算有9年的博龄了。博客可以说是日记的延伸，是公开的日记。新浪博客正红得时候几乎网民都成了博客，写博客就像是一种生活必需品。今天吃了什么菜、买了什么衣服，都可以写成一篇博客。而徐静蕾女士的明星身份更是不及她新浪博主的身份更吸引人。

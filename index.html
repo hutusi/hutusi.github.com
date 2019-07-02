@@ -1,35 +1,39 @@
 ---
 layout: default
-home: true
+current: home
+class: 'home-template'
+navigation: True
 ---
 
-<div class="home">
-    <ul class="post-list">
-        {% if site.pagination %}
-        {% assign source = paginator.posts %}
-        {% else %}
-        {% assign source = site.posts %}
-        {% endif %}
+<!-- < default -->
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
 
-        {% for post in source %}
-        <li>
-            <a href="{{ post.url | prepend: site.baseurl }}" class="post-list-link">
-                <div class="post-list-info">
-                    <h2 class="post-list-title">{{ post.title }}</h2>
-                    <span class="post-list-meta">{{ post.date | date: "%B %-d, %Y" }}</span>
-                </div>
-            </a>
+<!-- The big featured header, it uses blog cover image as a BG if available -->
+<header class="site-header outer {% if page.cover or site.cover %}" style="background-image:  url({{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% elsif site.cover %}{{ site.cover }}{% endif %}) {% else %}no-cover{% endif %}">
+    <div class="inner">
+        <div class="site-header-content">
+            <h1 class="site-title">
+                {% if site.logo %}
+                    <img class="site-logo" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}"/>
+                {% else %}
+                    {{ site.title }}
+                {% endif %}
+            </h1>
+            <h2 class="site-description">{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}</h2>
+        </div>
+        {% include site-nav.html %}
+    </div>
+</header>
 
-            <img src="{{site.image_baseurl}}/{{ post.thumb }}" class="post-list-thumb" />
-        </li>
-        {% endfor %}
-    </ul>
+<!-- The main content area -->
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
 
-    <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
-    <!-- <p class="rss-subscribe">
-        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
-            Subscribe via RSS
-            <i class="icon ion-social-rss"></i>
-        </a>
-    </p> -->
-</div>
+        <div class="post-feed">
+            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
+            {%  include post-card.html %}
+        </div>
+
+    </div>
+</main>
