@@ -1,31 +1,18 @@
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | replace: ' ', '%20' }}{% else %}{{ site.description }}{% endif %}">
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name='description' content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <link rel='canonical' href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel='alternate' type='application/rss+xml' title='{{ site.title }}' href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
 
-    <!-- CDN refer: https://servers.ustclug.org/2014/06/blog-googlefonts-speedup/ -->
-    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Merriweather:300,300italic,400,400italic,700italic,700">
-    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro:300,400,700">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <style>
+    {% capture inlineCSS %}
+      {% include app.scss %}
+    {% endcapture %}
 
-    <link rel="stylesheet" href="{{ "/assets/css/vendors/slidebars.min.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/vendors/rrssb.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
-
-    <link rel="icon" type="image/x-icon" href="{{ "/assets/images/favicon.ico" | prepend: site.baseurl }}">
-
-    <link rel="apple-touch-icon-precomposed" href="{{ "/assets/images/apple-touch-icon.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ "/assets/images/apple-touch-icon-57x57.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ "/assets/images/apple-touch-icon-72x72.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ "/assets/images/apple-touch-icon-114x114.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ "/assets/images/apple-touch-icon-120x120.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "/assets/images/apple-touch-icon-144x144.png" | prepend: site.baseurl }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ "/assets/images/apple-touch-icon-152x152.png" | prepend: site.baseurl }}" />
-
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+    {{ inlineCSS | scssify }}
+  </style>
 </head>

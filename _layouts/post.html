@@ -1,67 +1,37 @@
 ---
 layout: default
 ---
-<div class="post">
-    {% if page.reading_time %}
-    <p class="post-reading-time">&#126;
-        {% capture words %}
-          {{ content | strip_html | strip_newlines | size }}
-        {% endcapture %}
-        {% unless words contains "-" %}
-          {{ words | divided_by: 350 | append: " min" }}
-        {% endunless %}
-    </p>
-    {% endif %}
 
-    <header class="post-header">
-        {% if page.thumb %}
-        <img src="{{site.image_baseurl}}/{{ page.thumb }}" alt="{{ page.title }}" class="post-thumb" />
-        {% endif %}
+{% include base_path %}
 
-        <h1 class="post-title">{{ page.title }}</h1>
-    </header>
+{% if page.image %}
+  <meta itemprop='og:image' content='{{ base_path }}{{ page.image }}'>
+{% endif %}
 
-    <article class="post-content">
-        {{ content }}
-    </article>
+<div class='o-wrapper'>
 
-    <footer class="post-meta">
-        {% if page.date %}
-        <div class="meta">
-            <h3 class="meta-title">Date</h3>
-            <span class="meta-content">{{ page.date | date: "%B %-d, %Y" }}</span>
+  <div class='o-grid'>
+    <div class='o-grid__col'>
+      <article class='c-post' itemscope itemtype='http://schema.org/BlogPosting'>
+
+        <h1 class='c-post__title u-text-center'>{{ page.title }}</h1>
+
+        <time class='c-post__date' datetime='{{ page.date | date_to_xmlschema }}' itemprop='datePublished'>{{ page.date | date: '%d %b %Y' }}</time>
+
+        <div class='c-content' itemprop='articleBody'>
+          {% include page-image.html %}
+
+          {{ content }}
         </div>
-        {% endif %}
-        {% if page.author %}
-        <div class="meta">
-            <h3 class="meta-title">Author</h3>
-            <span class="meta-content">{{ page.author }}</span>
-        </div>
-        {% endif %}
-        {% if page.show_categories %}
-        <div class="meta">
-            <h3 class="meta-title">Categories</h3>
-            <span class="meta-content">
-                {% for category in page.categories %}
-                    {{ category | capitalize }}&nbsp;
-                {% endfor %}
-            </span>
-        </div>
-        {% endif %}
-        {% if page.show_tags %}
-        <div class="meta">
-            <h3 class="meta-title">Tags</h3>
-            <span class="meta-content">
-                {% for tag in page.tags %}
-                    {{ tag | capitalize }}&nbsp;
-                {% endfor %}
-            </span>
-        </div>
-        {% endif %}
-    </footer>
 
-    {% include share.html %}
+        <div class='c-tags'>
+          {% for tag in page.tags %}
+            <a href='{{ site.baseurl }}/tag/{{ tag }}'>{{ tag }}</a>
+          {% endfor %}
+        </div>
 
-    {% include disqus.html %}
+      </article>
 
+    </div>
+  </div>
 </div>

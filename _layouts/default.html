@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 
 {% include head.html %}
 
 <body>
 
-    {% include loader.html %}
+  {% include analytics.html %}
 
-    <main id="sb-site">
+  <div class='js-off-canvas-container c-off-canvas-container'>
+    {% include header.html %}
 
-        <div class="container">
-            <div class="wrapper">
-                {{ content }}
-            </div>
+    {{ content }}
 
-            {% include pagination.html %}
+    {% include footer.html %}
+  </div>
 
-            {% include next.html %}
-
-        </div>
-
-    </main>
-
-    {% include sidebar.html %}
-
-    {% include js.html %}
-
+  <script src="{{ '/js/jquery-3.1.1.min.js' | prepend: site.baseurl }}"> </script>
+  <script src="{{ '/js/evil-icons.min.js' | prepend: site.baseurl }}">   </script>
+  <script src="{{ '/js/jquery.fitvids.js' | prepend: site.baseurl }}">   </script>
+  <script src="{{ '/js/app.js' | prepend: site.baseurl }}">              </script>
 </body>
 
 </html>

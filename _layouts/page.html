@@ -1,14 +1,21 @@
 ---
 layout: default
 ---
-<div class="post">
 
-    <header class="post-header">
-        <h1 class="post-title">{{ page.title }}</h1>
-    </header>
+<div class='o-wrapper'>
 
-    <article class="post-content">
-        {{ content }}
-    </article>
+  <div class='o-grid'>
+    <div class='o-grid__col'>
+      <article class='c-post'>
+        <h1 class='c-post__title u-text-center'>{{ page.title }}</h1>
+
+        <div class='c-content'>
+          {% include page-image.html %}
+
+          {{ content }}
+        </div>
+      </article>
+    </div>
+  </div>
 
 </div>

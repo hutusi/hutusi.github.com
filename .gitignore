@@ -4,3 +4,4 @@ _site/
 *.swp
 .project
 .sass-cache/
+.jekyll-metadata
