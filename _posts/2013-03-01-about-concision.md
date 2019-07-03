@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 语言 文摘
+tags: 随笔 文摘
 title: 简洁
 subtitle: I go, you stay; two autums.
 backgrounds:

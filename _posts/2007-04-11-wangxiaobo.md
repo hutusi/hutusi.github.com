@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 书评
+tags: 随笔
 title: 一只特立独行的猪
 subtitle: 
 backgrounds:
