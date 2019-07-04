@@ -10,7 +10,7 @@ title:       hutusi.com
 email:       'huziyong@gmail.com'
 description: 'The world is my oyster.'
 baseurl:     '' # The subpath of your site, e.g. /blog
-url:         'http://hutusi.com/' # The base hostname & protocol for your site
+url:         'http://hutusi.com' # The base hostname & protocol for your site
 twitter:     'https://twitter.com/hutusi'
 github:      'https://github.com/hutusi'
 instagram:   'https://instagram.com/hutusi'
@@ -28,6 +28,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll/tagging
+  - jekyll-sitemap
 
 include:
   - _pages
