@@ -26,6 +26,7 @@ $grid-gutter: $base-spacing-unit;
   float: left;
   padding-right: $grid-gutter;
   padding-left: $grid-gutter;
+  width: 100%;
 
   &--1-4-s {
     width: percentage(1 / 4);
