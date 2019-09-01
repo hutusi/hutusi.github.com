@@ -6,8 +6,6 @@ permalink: /about/
 
 ## 关于我
 
-我叫胡智勇，现为华为软件工程师。
-
 在朋友圈看到一段话：“每个人都会经历三个阶段：认识到父母是普通人；认识到自己是普通人；认识到儿女是普通人。”我现在正在第三个阶段中。
 
 虽然早就经过了第二个阶段，但在华为十多年后，连身上唯一存在的文艺属性也消失殆尽。同事问我为什么不写诗了，我不但不写，连诗都几乎不读了。即使想写点东西，也常常提笔忘词，更写不出“任抛星汉归园圃，留取乾坤盛酒囊”这样的句子了。
@@ -19,4 +17,4 @@ permalink: /about/
 > For me, great algorithms are the poetry of computation. Just like verse, they can be terse, allusive, dense, and even mysterious. But once unlocked, they cast a brilliant new light on some aspect of computing.     
 > — Francis Sullivan
 
-我的网名是 `hutusi`，在几乎所有能够注册的社交网站注册了该用户名。如果有软件、web、文学、摇滚乐等话题有兴趣探讨的，可以加我的微信或是邮件交流： hutusi#outlook.com .
+我的网名是 `hutusi`，如果有共同兴趣探讨进一步的，可以加我的微信或是邮件交流： hutusi#outlook.com .
