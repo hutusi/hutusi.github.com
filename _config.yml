@@ -49,3 +49,6 @@ defaults:
       path: '_pages'
     values:
       permalink: /:basename:output_ext
+
+feed:
+  excerpt_only: true

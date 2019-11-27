@@ -5,3 +5,4 @@ _site/
 .project
 .sass-cache/
 .jekyll-metadata
+.jekyll-cache/
