@@ -19,6 +19,10 @@ navigable: true
 
 人生意何存，我思故我在。
 
+### [Tom](https://ie9.org/)
+
+北美创业者的日常。
+
 ### 如何添加友链
 
 欢迎添加友链，请到GitHub的[issue](https://github.com/hutusi/hutusi.github.com/issues/4)上留言登记。
