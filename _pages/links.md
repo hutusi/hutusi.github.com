@@ -4,6 +4,7 @@ title: "友链"
 description: "友情链接"
 header-img: "about-bg.jpg"
 navigable: true
+permalink: /links/
 ---
 
 
