@@ -7,6 +7,8 @@ subtitle:
 backgrounds:
     - 500px-94488705-lofoten-palette.jpg
 thumb: instagram-11325089_1479650595684009_1078413344_n.jpg
+redirect_from:
+  - /blog/2007/03/04/dream
 ---
 
 早上的时候做了个奇怪的梦，或者说是几个连续的梦，大致记录如下：

@@ -7,6 +7,8 @@ subtitle: “May God bless and keep you always, May your wishes all come true”
 backgrounds:
     - 500px-119079019-s-l-u-r-p.jpg
 thumb: instagram-bba8d404900cf732e4477159f304c12c.jpg
+redirect_from:
+  - /blog/2015/06/21/paternity
 ---
 
 妻子的预产期是5月24日，但临近预产期肚子却毫无要生产的迹象，宝宝在肚子里每天依然活动的很频繁，而且妻子也没有了肚子痛的感觉，散步的时候甚至健步如飞。终于在5月25日产检时，在妻子的在三请求下，医生答应剖腹产，时间5月27日。

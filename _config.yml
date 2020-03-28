@@ -18,7 +18,7 @@ facebook:    'https://facebook.com/hutusi'
 
 markdown:  kramdown
 # permalink: pretty
-permalink: /blog/:year/:month/:day/:title
+permalink: /:title
 paginate:  20
 
 sass:
@@ -29,6 +29,7 @@ plugins:
   - jekyll-paginate
   - jekyll/tagging
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 include:
   - _pages

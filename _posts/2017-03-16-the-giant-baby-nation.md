@@ -3,6 +3,8 @@ layout: post
 category: essay
 tags: 书评
 title: 《巨婴国》读后
+redirect_from:
+  - /blog/2017/03/16/giant-baby
 ---
 
 这是一篇读书笔记。

@@ -3,6 +3,8 @@ layout: post
 category: essay
 tags: 书评 传记
 title: 若为自由故
+redirect_from:
+  - /blog/2017/03/08/free
 ---
 
 这是一篇读书笔记。

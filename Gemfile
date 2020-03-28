@@ -7,3 +7,5 @@ gem 'jekyll-paginate'
 gem 'jekyll-tagging'
 gem 'jekyll-feed'
 gem 'jekyll-sitemap'
+
+gem 'jekyll-redirect-from'

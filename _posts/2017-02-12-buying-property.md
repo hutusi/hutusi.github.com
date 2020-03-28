@@ -3,6 +3,8 @@ layout: post
 category: essay
 tags: 随笔 生活 总结
 title: 买房记
+redirect_from:
+  - /blog/2017/02/12/property
 ---
 
 > 当你想要回家，却找不到回家的路   
