@@ -28,6 +28,8 @@ permalink: /links/
 
 从事 IT 行业十多年的老司机。
 
+*********************************************
+
 ### 如何添加友链
 
 欢迎添加友链，请到GitHub的[issue](https://github.com/hutusi/hutusi.github.com/issues/4){:target="_blank"}上留言登记。
