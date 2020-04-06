@@ -21,13 +21,15 @@ markdown:  kramdown
 permalink: /:title
 paginate:  20
 
+theme: tale
+
 sass:
   style: compressed
 
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll/tagging
+  # - jekyll/tagging
   - jekyll-sitemap
   - jekyll-redirect-from
 
