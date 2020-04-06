@@ -16,6 +16,14 @@ github:      'https://github.com/hutusi'
 instagram:   'https://instagram.com/hutusi'
 facebook:    'https://facebook.com/hutusi'
 
+copyright:    'hutusi.com'
+# time:         2012-2020
+# Author
+author:
+  name:       hutusi
+  url:        https://hutusi.com
+  email:      huziyong@gmail.com
+  
 markdown:  kramdown
 # permalink: pretty
 permalink: /:title
@@ -55,3 +63,16 @@ defaults:
 
 feed:
   excerpt_only: true
+
+# Google Analytics
+google_analytics: UA-30399492-1
+
+# comments
+comments_engine: gitalk
+gitalk:
+  client_id: '3ecf7aac87e37cbe772c'
+  client_secret: '887d16569177e1f6336cce32e9c58974c2932807'
+  repo: 'hutusi.github.com'
+  owner: 'hutusi'
+  admin: 
+    - 'hutusi'

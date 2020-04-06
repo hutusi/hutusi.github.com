@@ -4,8 +4,8 @@ gem 'bundler'
 gem 'jekyll'
 
 # theme
-# gem 'tale', git: 'https://github.com/hutusi/tale.git', branch: 'dev'
-gem 'tale', path: "~/workspace/git/tale"
+gem 'tale', git: 'https://github.com/hutusi/tale.git', branch: 'dev'
+# gem 'tale', path: "~/workspace/git/tale"
 
 # plugins
 gem 'jekyll-paginate'

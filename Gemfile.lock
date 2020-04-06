@@ -1,5 +1,7 @@
-PATH
-  remote: ../tale
+GIT
+  remote: https://github.com/hutusi/tale.git
+  revision: 05cbd197e1ec9b0f5d943d2eaf7407c57fb66ecc
+  branch: dev
   specs:
     tale (0.2.0)
       jekyll (~> 4.0)
