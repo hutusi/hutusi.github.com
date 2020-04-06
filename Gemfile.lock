@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hutusi/tale.git
-  revision: 05cbd197e1ec9b0f5d943d2eaf7407c57fb66ecc
+  revision: 2ac9e8c297710b8261a93fe6762f8637f151f3da
   branch: dev
   specs:
     tale (0.2.0)
@@ -51,6 +51,8 @@ GEM
       jekyll (>= 3.3, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
+    jekyll-tagging (1.1.0)
+      nuggets
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     kramdown (2.1.0)
@@ -61,6 +63,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.3.6)
+    nuggets (1.6.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.4)
@@ -85,6 +88,7 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-redirect-from
   jekyll-sitemap
+  jekyll-tagging
   tale!
 
 BUNDLED WITH

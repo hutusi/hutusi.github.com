@@ -9,7 +9,7 @@ gem 'tale', git: 'https://github.com/hutusi/tale.git', branch: 'dev'
 
 # plugins
 gem 'jekyll-paginate'
-# gem 'jekyll-tagging'
+gem 'jekyll-tagging'
 gem 'jekyll-feed'
 gem 'jekyll-sitemap'
 gem 'jekyll-redirect-from'
