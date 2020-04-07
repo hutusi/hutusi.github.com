@@ -29,7 +29,7 @@ markdown:  kramdown
 permalink: /:title
 paginate:  10
 
-theme: tale
+theme: taletype
 
 sass:
   style: compressed

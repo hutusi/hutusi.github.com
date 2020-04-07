@@ -1,14 +1,3 @@
-GIT
-  remote: https://github.com/hutusi/tale.git
-  revision: 2ac9e8c297710b8261a93fe6762f8637f151f3da
-  branch: dev
-  specs:
-    tale (0.2.0)
-      jekyll (~> 4.0)
-      jekyll-feed (~> 0.10)
-      jekyll-paginate (~> 1.1)
-      jekyll-seo-tag (~> 2.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,6 +63,11 @@ GEM
     safe_yaml (1.0.5)
     sassc (2.2.1)
       ffi (~> 1.9)
+    taletype (0.1.0)
+      jekyll (~> 4.0)
+      jekyll-feed (~> 0.10)
+      jekyll-paginate (~> 1.1)
+      jekyll-seo-tag (~> 2.5)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     unicode-display_width (1.7.0)
@@ -89,7 +83,7 @@ DEPENDENCIES
   jekyll-redirect-from
   jekyll-sitemap
   jekyll-tagging
-  tale!
+  taletype
 
 BUNDLED WITH
    1.17.3
