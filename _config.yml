@@ -30,12 +30,14 @@ markdown:  kramdown
 permalink: /:title
 paginate:  10
 
-theme: taletype
+# theme: taletype
+remote_theme: hutusi/tale
 
 sass:
   style: compressed
 
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-paginate
   - jekyll/tagging
