@@ -16,10 +16,21 @@ github:      'https://github.com/hutusi'
 instagram:   'https://instagram.com/hutusi'
 facebook:    'https://facebook.com/hutusi'
 
+copyright:    '胡涂说 hutusi.com'
+# time:         2012-2020
+icp_info:     ''
+# Author
+author:
+  name:       hutusi
+  url:        https://hutusi.com
+  email:      huziyong@gmail.com
+  
 markdown:  kramdown
 # permalink: pretty
 permalink: /:title
-paginate:  20
+paginate:  10
+
+theme: taletype
 
 sass:
   style: compressed
@@ -39,11 +50,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
 
-# Tags
-tag_page_dir:         tag
-tag_page_layout:      tag_page
-tag_permalink_style:  pretty
-
 # Pages path
 defaults:
   - scope:
@@ -53,3 +59,24 @@ defaults:
 
 feed:
   excerpt_only: true
+
+# Google Analytics
+google_analytics: UA-30399492-1
+
+# Tagging
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  pretty
+
+tag_page_data:
+  sitemap: false
+
+# comments
+comments_engine: gitalk
+gitalk:
+  client_id: '3ecf7aac87e37cbe772c'
+  client_secret: '887d16569177e1f6336cce32e9c58974c2932807'
+  repo: 'hutusi.github.com'
+  owner: 'hutusi'
+  admin: 
+    - 'hutusi'
