@@ -63,7 +63,7 @@ GEM
     safe_yaml (1.0.5)
     sassc (2.2.1)
       ffi (~> 1.9)
-    taletype (0.1.0)
+    taletype (0.1.1)
       jekyll (~> 4.0)
       jekyll-feed (~> 0.10)
       jekyll-paginate (~> 1.1)
@@ -83,7 +83,7 @@ DEPENDENCIES
   jekyll-redirect-from
   jekyll-sitemap
   jekyll-tagging
-  taletype
+  taletype (~> 0.1.1)
 
 BUNDLED WITH
    1.17.3

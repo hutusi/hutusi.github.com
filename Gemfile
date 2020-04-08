@@ -4,8 +4,8 @@ gem 'bundler'
 gem 'jekyll'
 
 # theme
-gem 'taletype'
-# gem 'tale', path: "~/workspace/git/tale"
+gem 'taletype', '~> 0.1.1'
+# gem 'taletype', path: '~/workspace/git/tale'
 
 # plugins
 gem 'jekyll-paginate'
