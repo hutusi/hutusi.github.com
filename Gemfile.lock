@@ -69,11 +69,6 @@ GEM
     safe_yaml (1.0.5)
     sassc (2.2.1)
       ffi (~> 1.9)
-    taletype (0.1.1)
-      jekyll (~> 4.0)
-      jekyll-feed (~> 0.10)
-      jekyll-paginate (~> 1.1)
-      jekyll-seo-tag (~> 2.5)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     unicode-display_width (1.7.0)
@@ -88,9 +83,9 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-redirect-from
   jekyll-remote-theme
+  jekyll-seo-tag
   jekyll-sitemap
   jekyll-tagging
-  taletype (~> 0.1.1)
 
 BUNDLED WITH
    1.17.3

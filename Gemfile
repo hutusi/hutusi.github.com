@@ -5,12 +5,13 @@ gem 'jekyll'
 
 # theme
 gem 'jekyll-remote-theme'
-gem 'taletype', '~> 0.1.1'
+# gem 'taletype', '~> 0.1.1'
 # gem 'taletype', path: '~/workspace/git/tale'
 
 # plugins
 gem 'jekyll-paginate'
 gem 'jekyll-tagging'
+gem 'jekyll-seo-tag'
 gem 'jekyll-feed'
 gem 'jekyll-sitemap'
 gem 'jekyll-redirect-from'
