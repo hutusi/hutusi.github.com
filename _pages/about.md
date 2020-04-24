@@ -6,15 +6,14 @@ permalink: /about/
 
 ## 关于我
 
-在朋友圈看到一段话：“每个人都会经历三个阶段：认识到父母是普通人；认识到自己是普通人；认识到儿女是普通人。”我现在正在第三个阶段中。
+一枚普通的软件工程师。业余兴趣不多，算的上的大概是看书（最近几年也看得少了）。年轻时有段时间曾热衷写格律诗，自认为最得意的一句是“任抛星汉归园圃，留取乾坤盛酒囊”。但现在早已不写诗了，在写代码。有一次我对四岁的大卫说“长大可没意思，你现在可以玩玩具，可以看动画片，但是到了三十五岁就没有玩具玩，也没有动画片看了。”大卫说：“三十五岁可以写代码啊。”大卫可比我看的透彻！
 
-虽然早就经过了第二个阶段，但在华为十多年后，连身上唯一存在的文艺属性也消失殆尽。同事问我为什么不写诗了，我不但不写，连诗都几乎不读了。即使想写点东西，也常常提笔忘词，更写不出“任抛星汉归园圃，留取乾坤盛酒囊”这样的句子了。
+可以找到我地方: [GitHub](https://github.com/hutusi){:target="_blank"}, [豆瓣](https://www.douban.com/people/hutusi/){:target="_blank"}。也可以加我微信(`hutusi`)交流。
 
-年过而立，工作也有十五年了。做过嵌入式开发，做过工具应用，带过项目，也搞过软件工程。而现在发现仍是软件领域的一名新手，各子领域泛泛尔。
+## 胡涂说
 
-即使如此，仍喜欢软件编程。代码就是记录在电脑中的文字，算法就是代码中的诗：
+注册公众号时需要起一个中文名，看到很多公众号名称都叫“某某说”，于是我就注册了个叫“胡涂说”的公众号(公众号id: hututalk)。后来干脆将这个名称作为个人博客的名称。
 
-> For me, great algorithms are the poetry of computation. Just like verse, they can be terse, allusive, dense, and even mysterious. But once unlocked, they cast a brilliant new light on some aspect of computing.     
-> — Francis Sullivan
+借用郑板桥的“难得糊涂”，用“胡涂说”来表达我的想法。写我所想，写我想说。
 
-我的网名是 `hutusi`，如果有共同兴趣探讨进一步的，可以加我的微信或是邮件交流： hutusi#outlook.com .
+欢迎在 feeds.pub 上[订阅“胡涂说”](https://feeds.pub/feed/https%3A%2F%2Fhutusi.com%2Ffeed.xml){:target="_blank"}.
