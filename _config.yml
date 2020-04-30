@@ -30,6 +30,11 @@ markdown:  kramdown
 permalink: /:title
 paginate:  10
 
+# Navigators
+nav_page_names: ['about.md', 'archive.html', 'links.md', 'toolbox.md']
+# can be ['feeds.pub', 'xml', 'na']
+nav_feed: 'feeds.pub'
+
 # theme: taletype
 remote_theme: hutusi/tale
 

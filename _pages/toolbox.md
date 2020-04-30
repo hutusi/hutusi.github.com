@@ -5,6 +5,7 @@ description: "工具箱"
 header-img: "about-bg.jpg"
 navigable: true
 permalink: /toolbox/
+commentable: true
 ---
 
 ## 资讯

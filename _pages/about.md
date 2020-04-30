@@ -2,6 +2,7 @@
 layout: page
 title: 关于
 permalink: /about/
+commentable: true
 ---
 
 ## 关于我
