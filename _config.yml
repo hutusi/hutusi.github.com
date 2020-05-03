@@ -70,6 +70,9 @@ feed:
 # Google Analytics
 google_analytics: UA-30399492-1
 
+# Baidu Statistic
+baidu_statistic: 6e5f92006f4eed18f39b7cb30f420d8a
+
 # Tagging
 tag_page_dir:         tag
 tag_page_layout:      tag_page
