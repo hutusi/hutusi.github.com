@@ -8,7 +8,7 @@ date: "2020-04-11 11:00:00 +0800"
 last_modified_at: "2020-04-12 08:39:00 +0800"
 ---
 
-![David with his books](https://rmt.dogedoge.com/fetch/hutusi/storage/blog/david-with-his-books-2020.jpg?w=1280)
+![David with his books]({{site.images_baseurl}}/david-with-his-books-2020.jpg?w=1280)
 
 上周末将大卫的书整理了一下，发现都堆成一座小山了，若按单册算，估计比我到目前的藏书还多。这里总结下大卫这一两年来读过（或陪他阅读）的书，希望能对有同样需求的爸妈有参考帮助。另外，如果你有经验或阅读资源分享，欢迎留言交流。[^1]
 

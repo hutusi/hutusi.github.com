@@ -24,7 +24,10 @@ author:
   name:       hutusi
   url:        https://hutusi.com
   email:      huziyong@gmail.com
-  
+
+# images CDN
+images_baseurl: 'https://rmt.dogedoge.com/fetch/hutusi/storage/blog'
+
 markdown:  kramdown
 # permalink: pretty
 permalink: /:title
