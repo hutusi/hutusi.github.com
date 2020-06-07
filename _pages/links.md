@@ -33,6 +33,10 @@ commentable: true
 
 [多吉搜索](https://www.dogedoge.com/){:target="_blank"}作者。
 
+### [卡拉搜索博客](https://kalasearch.cn/blog/){:target="_blank"}
+
+Elastic Search 教程相关。
+
 *********************************************
 
 ### 如何添加友链
