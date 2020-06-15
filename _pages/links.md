@@ -37,6 +37,10 @@ commentable: true
 
 Elastic Search 教程相关。
 
+### [孤斗](http://d-d.design/){:target="_blank"}
+
+做自己，不随波逐流，不妥协。
+
 *********************************************
 
 ### 如何添加友链
