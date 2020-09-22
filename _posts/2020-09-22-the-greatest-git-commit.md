@@ -19,7 +19,7 @@ Linux 作为最大也是最成功的开源项目，吸引了全球程序员的�
 
 ## 设计
 
-Git 已经称为全球软件开发者的标配，关于 Git 的介绍和用法不需多说，我今天想要谈谈 Git 的内部实现。不过在看本文之前，我先给大家提一个问题：如果是你来设计 git（或者重新设计 git），你打算怎么设计？第一个版本发布准备实现哪些功能？看完本文，再对照自己的想法做个比较。欢迎留言讨论。
+Git 已经成为全球软件开发者的标配，关于 Git 的介绍和用法不需多说，我今天想要谈谈 Git 的内部实现。不过在看本文之前，我先给大家提一个问题：如果是你来设计 git（或者重新设计 git），你打算怎么设计？第一个版本发布准备实现哪些功能？看完本文，再对照自己的想法做个比较。欢迎留言讨论。
 
 学习 Git 的内部实现，最好的办法是看 Linus 最初的代码提交，checkout 出 git 项目的第一次提交节点（方法参见博客：[《阅读开源代码小技巧》](/git-paging)），可以看到代码库中只有几个文件：一个 README，一个构建脚本Makefile，剩下几个 C 源文件。这次 commit 的备注写的也非常特别： Initial revision of "git", the information manager from hell.
 
@@ -50,7 +50,7 @@ TREE: 目录树对象。在 Linus 的设计里 TREE 对象就是一个时间切�
 
 ![Git simple objects model]({{site.images_baseurl}}/git-object-model-tree.png?w=1280)
 
-[^1]
+> 图片摘自：*Pro Git, 10.2 Git Internals - Git Objects* [^1]
  
 CHANGESET: 即 Commit 对象。一个 CHANGESET 对象中记录了该次提交的 TREE 对象信息（SHA1），以及提交者(committer)、提交备注(commit message)等信息。跟其他SCM（软件配置管理）工具所不同的是，Git 的 CHANGESET 对象不记录文件重命名和属性修改操作，也不会记录文件修改的 Delta 信息等，CHANGESET 中会记录父节点 CHANGESET 对象的 SHA1 值，通过比较本节点和父节点的 TREE 信息来获取差异。Linus 在设计 CHANGESET 父节点时允许一个节点最多有 16 个父节点，虽然超过两个父节点的合并是很奇怪的事情，但实际上，Git 是支持超过两个分支的多头合并的。
 
@@ -62,7 +62,7 @@ Linus 解释了“当前目录缓存”的设计，该缓存就是一个二进�
 
 ![Git Working tree, staging area, and Git directory.]({{site.images_baseurl}}/git-working-tree-staging-area-git-repo.png?w=1280)
 
-[^2]
+> 图片摘自：*Things About Git and Github You Need to Know as Developer* [^2]
 
 ## 实现
 
@@ -72,7 +72,7 @@ Linus 在 Git 的第一次代码提交里便完成了 Git 的最基础功能，�
 
 1. init-db: 初始化一个 git 本地仓库，这也就是我们现在每次初始化建立 git 库式敲击的 `git init` 命令。只不过一开始 Linus 建立的 仓库及 cache 文件夹名称叫 `.dircache`, 而不是我们现在所熟知的 `.git` 文件夹。
 2. update-cache: 输入文件路径，将该文件（或多个文件）加入缓冲区中。具体实现是：校验路径合法性，然后将文件计算 SHA1值，将文件内容加上 blob 头信息进行 zlib 压缩后写入到对象数据库(.dircache/objects)中；最后将文件路径、文件属性及 blob sha1 值更新到 .dircache/index 缓存文件中。
-3. write-tree: 将缓存的目录树信息生成 TREE 对象，并写入对象数据库中。TREE 对象的数据结构为： 'tree ' + 长度 + \0 + 文件树列表。文件树列表中按照 文件属性 + 文件名 + \0 + SHA1 值结构存储。写入对象成功后，饭回该 TREE 对象的 SHA1 值。
+3. write-tree: 将缓存的目录树信息生成 TREE 对象，并写入对象数据库中。TREE 对象的数据结构为： 'tree ' + 长度 + \0 + 文件树列表。文件树列表中按照 文件属性 + 文件名 + \0 + SHA1 值结构存储。写入对象成功后，返回该 TREE 对象的 SHA1 值。
 4. commit-tree: 将 TREE 对象信息生成 commit 节点对象并提交到版本历史中。具体实现是输入要提交的 TREE 对象 SHA1 值，并选择输入父 commit 节点（最多 16个），commit 对象信息中包含 TREE、父节点、committer 及作者的 name、email及日期信息，最后写入新的 commit 节点对象文件，并返回 commit 节点的 SHA1 值。
 5. cat-file: 由于所有的对象文件都经过 zlib 压缩，因此想要查看文件内容的话需要使用这个工具来解压生成临时文件，以便查看对象文件的内容。
 6. show-diff: 快速比较当前缓存与当前工作区的差异，因为文件的属性信息（包括修改时间、长度等）也保存在缓存的数据结构中，因此可以快速比较文件是否有修改，并展示差异部分。
@@ -100,6 +100,6 @@ Linus 在提交了第一个 git commit 后，并向社区发布了 git 工具。
 
 ************
 
-[^1]: *Pro Git*, 10.2 Git Internals - Git Objects: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
-[^2]: Things About Git and Github You Need to Know as Developer: https://medium.com/swlh/things-about-git-and-github-you-need-to-know-as-developer-907baa0bed79
-[^3]: 本文最早写作完成于2020年9月8日，并于9月9日发表于公司内网 Hi3ms 社区和心声社区，反响不错。华为云社区运营人员曾邀请我将此文转发至华为云社区，但考虑到本文写作仓促，有些技术细节还有待优化，因此我想修改后再发外网。我的这篇文章和《通往开源之路》等几篇文章起初也是为了给 CodeConf 大会做广告宣传用，而后由于忙于筹办大会，也没来得及转外网。昨天发现某厂的技术公众号推送文章《Git 的创世提交》，该文的立意、分析及某些风格跟本文有些类似。为避免误解，我将本文刊出。除了修改错别字和格式调整，及删除文末的 CodeConf 大会广告外，保持和内网内容一致。
+[^1]: *Pro Git, 10.2 Git Internals - Git Objects*: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
+[^2]: *Things About Git and Github You Need to Know as Developer*: https://medium.com/swlh/things-about-git-and-github-you-need-to-know-as-developer-907baa0bed79
+[^3]: 本文最早写作完成于2020年9月8日，并于9月9日发表于公司内网 Hi3ms 社区和心声社区，为了给 CodeConf 大会做广告宣传用(转发到外网时去除了文末广告)。
