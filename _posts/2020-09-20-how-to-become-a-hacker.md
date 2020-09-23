@@ -39,7 +39,7 @@ date: "2020-09-20 20:00:00 +0800"
 
 *************
 
-[^1]: 《大教堂与集市》英文原文链接: http://www.catb.org/~esr/writings/cathedral-bazaar/
+[^1]: *How to become a hacker*: http://www.catb.org/~esr/faqs/hacker-howto.html
 
 [^2]: “黑客伦理”(hacker ethic)维基百科解释： https://en.wikipedia.org/wiki/Hacker_ethic
 
