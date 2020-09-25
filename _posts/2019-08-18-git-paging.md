@@ -30,6 +30,8 @@ first
 
 将它存为 `git-first` 可执行文件，放到 git 安装的 bin 目录（Linux、Mac 或 Windows 皆可）。在 git 仓中执行 `git first` 即可 checkout 出第一次 commit 节点的代码。
 
+> Windows 的 Git 一般安装在 `C:\Program Files\Git` 下，bin 目录非根目录下的 bin, 而是在 usr/bin 下，直接将 git-first 等文件拷贝至该目录即可。（注意：该目录原来有 git-flow 等文件。）
+
 签出当前 commit 记录的下一个节点代码要稍微复杂些，不过也就是多了些命令的组合, stackoverflow 搜一下就能找到。通过 `git rev-parse HEAD` 可获取当前工作区代码的 commit sha 值，然后用 `grep -A` 找出倒序 log 后当前 commit sha 值的后一条记录，得到 sha 值后进行 Checkout 操作。`git-next` 的脚本如下：
 
 ``` bash
