@@ -15,6 +15,8 @@ commentable: true
 
 注册公众号时需要起一个中文名，看到很多公众号名称都叫“某某说”，于是我就注册了个叫“胡涂说”的公众号(公众号id: hututalk)。后来干脆将这个名称作为个人博客的名称。
 
+![]({{site.images_baseurl}}/qrcode_for_hututalk_8cm.jpg?w=1280)
+
 借用郑板桥的“难得糊涂”，用“胡涂说”来表达我的想法。写我所想，写我想说。
 
 欢迎在 feeds.pub 上[订阅“胡涂说”](https://feeds.pub/feed/https%3A%2F%2Fhutusi.com%2Ffeed.xml){:target="_blank"}.
