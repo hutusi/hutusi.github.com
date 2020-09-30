@@ -8,7 +8,7 @@
 # Site settings
 title:       胡涂说
 email:       'huziyong@gmail.com'
-description: '任抛星汉归园圃，留取乾坤盛酒囊。'
+description: 'hutusi.com'
 baseurl:     '' # The subpath of your site, e.g. /blog
 url:         'https://hutusi.com' # The base hostname & protocol for your site
 twitter:     'https://twitter.com/hutusi'
@@ -34,9 +34,9 @@ permalink: /:title
 paginate:  10
 
 # Navigators
-nav_page_names: ['about.md', 'archive.html', 'links.md', 'toolbox.md']
+nav_page_names: ['about.md', 'archive.html', 'links.md', 'toolbox.md', 'subscription.md']
 # can be ['feeds.pub', 'xml', 'na']
-nav_feed: 'feeds.pub'
+nav_feed: 'na'
 
 # theme: taletype
 remote_theme: hutusi/tale
