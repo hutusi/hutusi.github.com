@@ -15,7 +15,7 @@ commentable: false
 * [inoreader](https://www.inoreader.com/search/subscriptions/hutusi.com)
 * [feedly](https://feedly.com/i/discover/sources/search/feed/hutusi.com)
 
-或者添加本站 RSS 订阅地址 https://hutusi.com/feed.xml 到你的 RSS 阅读器中。
+或者添加本站 RSS 订阅地址 https://hutusi.com/feed.xml 到阅读器中。
 
 
 

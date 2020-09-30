@@ -68,7 +68,7 @@ defaults:
       permalink: /:basename:output_ext
 
 feed:
-  excerpt_only: true
+  excerpt_only: false
 
 # Google Analytics
 google_analytics: UA-30399492-1
