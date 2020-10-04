@@ -5,6 +5,8 @@ tags: 开源软件 Git 源码分析
 title: 改变世界的一次代码提交
 subtitle: Git 第一次提交的源代码分析及带来的启示
 date: 2020-09-22 00:00:00 +0800
+redirect_from:
+  - /the-greatest-git-commit
 ---
 
 TL;DR 本文较长，如果对 Git 内部实现不感兴趣可以快速跳过中间两个章节。

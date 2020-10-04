@@ -30,7 +30,7 @@ images_baseurl: 'https://rmt.dogedoge.com/fetch/hutusi/storage/blog'
 
 markdown:  kramdown
 # permalink: pretty
-permalink: /:title
+permalink: /articles/:title
 paginate:  10
 
 # Navigators

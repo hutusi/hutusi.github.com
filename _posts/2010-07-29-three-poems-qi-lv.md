@@ -5,6 +5,8 @@ tags: 诗歌 七律
 title: 七律三首
 subtitle: 2008年前写的几首诗
 date: 2010-07-29 00:00:00 +0800
+redirect_from:
+  - /three-poems-qi-lv
 ---
 
 整理以前写的几首七律。 [^1]

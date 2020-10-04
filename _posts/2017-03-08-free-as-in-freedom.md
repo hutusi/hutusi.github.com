@@ -5,6 +5,7 @@ tags: 书评 传记
 title: 若为自由故
 redirect_from:
   - /blog/2017/03/08/free
+  - /free-as-in-freedom
 ---
 
 这是一篇读书笔记。

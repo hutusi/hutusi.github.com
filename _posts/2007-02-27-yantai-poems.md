@@ -9,6 +9,7 @@ backgrounds:
 thumb: instagram-11355032_550488605104961_1339802502_n.jpg
 redirect_from:
   - /blog/2007/02/27/yantai
+  - /yantai-poems
 ---
 
 > 海上飞来落港城，旅尘未洗酒先迎。   

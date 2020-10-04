@@ -5,6 +5,7 @@ tags: 书评 传记
 title: 最著名的黑客
 redirect_from:
   - /blog/2017/04/24/hacker
+  - /just-for-fun
 ---
 
 这是一篇读书笔记。

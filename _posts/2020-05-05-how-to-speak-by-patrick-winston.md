@@ -5,6 +5,8 @@ tags: 演讲技巧 youtube
 title: 如何做好演讲
 subtitle: "Patrick Winston: How To Speak 课程笔记"
 date: "2020-05-05 22:00:00 +0800"
+redirect_from:
+  - /how-to-speak-by-patrick-winston
 ---
 
 Patrick Winston[^1] 是 AI 领域的先驱，生前曾一直担任 MIT CSAIL（计算机科学与人工智能实验室）主任。他的课程以易于理解及信息丰富而闻名，因而，他也在 MIT 开设了一个 *如何演讲 "How To Speak"* 的课程。[^2]
