@@ -44,7 +44,7 @@ next() {
 next
 ```
 
-同样的，签出最后一条记录(`git-last`)和上一条记录(`git-prev`)也可以通过命令组合来实现。我还增加可选参数，可以一次上翻/下翻 n条 commit. 四个脚本的源码放在了[GitHub Gist](https://gist.github.com/hutusi/e4f32e2bcd8d53ec86de8254ab0d5127)上。  
+同样的，签出最后一条记录(`git-last`)和上一条记录(`git-prev`)也可以通过命令组合来实现。我还增加可选参数，可以一次上翻/下翻 n条 commit. 四个脚本的源码放在了[GitHub](https://github.com/hutusi/git-paging)上。
 
 在查看 git 仓库源码时便可以通过 `git next`, `git prev` 来轻松逐个 commit 进行 checkout 了。也可以通过 `git next 5` 来签出当前 commit 依次往后第5条 commit 的代码。 通过`git first`, `git last` 来签出第一条 commit 及最后一条节点的代码。
 
@@ -52,4 +52,8 @@ next
 
 在调试脚本时发现一个问题, shell 中的函数如果写上`function`在 Ubuntu 等 Linux 上反倒执行会报错。比如`first() {...}` 写成 `function first() {...}`. 执行时会报 `syntax error: "(" unexpected.` 的错误。上网查了一下，了解到在某些 Linux 发行版上 `sh` 指向 `dash`，不识别 `function` 标志符。 解决办法是要么将脚本的执行器改成 `bash` ，或直接将 `function` 去掉，这也是能兼容多种 shell 的最好方式。
 
-最后再附一遍脚本地址，如果你觉得有用，请加 star: [https://gist.github.com/hutusi/e4f32e2bcd8d53ec86de8254ab0d5127](https://gist.github.com/hutusi/e4f32e2bcd8d53ec86de8254ab0d5127)
+最后再附一遍脚本地址，如果你觉得有用，请加 star: [hutusi/git-paging](https://github.com/hutusi/git-paging)，提 issue 或 pr 帮助改进。 [^1]
+
+************
+
+[^1]: 之前脚本源码放在 gist (https://gist.github.com/hutusi/e4f32e2bcd8d53ec86de8254ab0d5127)上，但 gist 管理批量源码不太方便，且有时访问不了，因此移到 repos 中管理，也方便提 issue 或 pr.
