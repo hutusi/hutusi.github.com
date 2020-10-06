@@ -5,6 +5,8 @@ tags: 产品 微信小程序
 title: 只买书：一个失败的微信小程序产品
 subtitle: 一次失败的产品开发尝试
 date: 2020-10-06 22:00:00 +0800
+redirect_from:
+  - /failure-of-zhimaishu
 ---
 
 ## 背景
