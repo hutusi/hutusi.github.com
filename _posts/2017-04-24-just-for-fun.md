@@ -3,6 +3,7 @@ layout: post
 category: essay
 tags: 书评 传记
 title: 最著名的黑客
+subtitle: "《只是为了好玩》——林纳斯·托瓦兹（Linus Torvalds）传记"
 redirect_from:
   - /blog/2017/04/24/hacker
   - /just-for-fun

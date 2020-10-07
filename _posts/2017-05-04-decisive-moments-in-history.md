@@ -3,6 +3,7 @@ layout: post
 category: essay
 tags: 书评 传记
 title: 人类伟大的时刻
+subtitle: "《人类群星闪耀时》读书笔记"
 redirect_from:
   - /blog/2017/05/04/geniuses
   - /decisive-moments-in-history

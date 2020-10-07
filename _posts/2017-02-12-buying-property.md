@@ -3,6 +3,7 @@ layout: post
 category: essay
 tags: 随笔 生活 总结
 title: 买房记
+subtitle: "上海十年打拼买房史"
 redirect_from:
   - /blog/2017/02/12/property
   - /buying-property
