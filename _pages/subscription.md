@@ -3,7 +3,7 @@ layout: page
 title: "订阅"
 description: "订阅博客"
 navigable: true
-permalink: /subscribe/
+permalink: /subscription/
 commentable: false
 ---
 

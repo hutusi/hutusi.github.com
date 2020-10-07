@@ -42,6 +42,6 @@ commentable: true
 
 如果你觉得不错，欢迎订阅我的博客。或联系我，交个朋友。
 
-下面是“胡涂说”微信公众号的二维码，公众号发表文章与博客并不一致，订阅博客请见**[订阅页面](/subscribe)**。
+下面是“胡涂说”微信公众号的二维码，公众号发表文章与博客并不一致，订阅博客请见**[订阅页面](/subscription)**。
 
 ![]({{site.images_baseurl}}/qrcode_for_hututalk_8cm.jpg?w=1280)
