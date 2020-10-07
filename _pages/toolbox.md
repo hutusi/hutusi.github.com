@@ -13,8 +13,9 @@ commentable: true
 * [Pocket](https://getpocket.com/){:target="_blank"}
 * [Hack News](https://news.ycombinator.com/news){:target="_blank"}
 * [Youtube](https://www.youtube.com/){:target="_blank"}
+* [Inoreader - RSS reader](https://www.inoreader.com/){:target="_blank"}
+* [Feeds Pub: 社交化 RSS 阅读](https://feeds.pub/){:target="_blank"}
 * [BlogHub 独立个人博客推荐](https://bloghub.fun/){:target="_blank"}
-* [Feeds Pub: RSS 阅读器](https://feeds.pub/){:target="_blank"}
 
 ## 社区
 
@@ -28,3 +29,14 @@ commentable: true
 * [Markdown 微信公众号排版](https://mdnice.com/){:target="_blank"}
 * [幕布](https://mubu.com/){:target="_blank"} 思维导图
 * [多吉搜索](https://www.dogedoge.com/){:target="_blank"} 
+
+## 资源
+
+* [unsplash - Beautiful free Images & Pictures](https://unsplash.com/){:target="_blank"}
+* [zlibrary - The world's largest ebook library](https://b-ok.global/){:target="_blank"}
+* [overapi.com - Collecting all cheatssheet](https://overapi.com/)
+
+## 有趣
+
+* [xkcd](https://xkcd.com/){:target="_blank"}
+* [rms](https://rms.sexy/){:target="_blank"}
