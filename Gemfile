@@ -5,7 +5,7 @@ gem 'jekyll'
 
 # theme
 gem 'jekyll-remote-theme'
-# gem 'taletype', '~> 0.1.1'
+# gem 'taletype'
 # gem 'taletype', path: '~/workspace/git/tale'
 
 # plugins
