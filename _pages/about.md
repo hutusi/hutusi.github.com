@@ -39,6 +39,7 @@ commentable: true
 
 * [买房记](/articles/buying-property) 2017年
 * [陪产记](/articles/paternity) 2015年
+* [我是丽莎呀](/articles/i-am-lisa) 2008年
 
 如果你觉得不错，欢迎订阅我的博客。或联系我，交个朋友。
 
