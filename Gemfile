@@ -10,7 +10,7 @@ gem 'jekyll-remote-theme'
 
 # plugins
 gem 'jekyll-paginate'
-gem 'jekyll-tagging'
+gem 'jekyll-archives'
 gem 'jekyll-seo-tag'
 gem 'jekyll-feed'
 gem 'jekyll-sitemap'

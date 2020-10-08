@@ -48,7 +48,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-paginate
-  - jekyll/tagging
+  - jekyll-archives
   - jekyll-sitemap
   - jekyll-redirect-from
 
@@ -79,13 +79,23 @@ baidu_statistic: 6e5f92006f4eed18f39b7cb30f420d8a
 # Google AdSense
 google_adsense: ca-pub-7800526822107892
 
-# Tagging
-tag_page_dir:         tag
-tag_page_layout:      tag_page
-tag_permalink_style:  pretty
+# # Tagging
+# tag_page_dir:         tag
+# tag_page_layout:      tag_page
+# tag_permalink_style:  pretty
 
 tag_page_data:
   sitemap: false
+
+# Archives
+jekyll-archives:
+  enabled: all
+  layout: archive
+  layouts:
+    tag: tag-archive
+  permalinks:
+    tag: '/tag/:name/'
+    category: '/category/:name/'
 
 # comments
 comments_engine: gitalk
