@@ -15,7 +15,7 @@ commentable: true
 
 ### [寒夏汢](https://hanxiatu.com/){:target="_blank"}
 
-社会我超哥，人狠话不多。
+（网站暂时无法连接）
 
 ### [食灯鬼](https://shidenggui.com/){:target="_blank"}
 
@@ -37,12 +37,14 @@ commentable: true
 
 Elastic Search 教程相关。
 
-### [孤斗](http://d-d.design/){:target="_blank"}
+### [孤斗](http://d-d.design/){:target="_blank"} 
 
 做自己，不随波逐流，不妥协。
+
+### [薛定喵君的博客](http://xuedingmiao.com){:target="_blank"}
 
 *********************************************
 
 ### 如何添加友链
 
-欢迎添加友链，请到GitHub的[issue](https://github.com/hutusi/hutusi.github.com/issues/4){:target="_blank"}上留言登记。
+欢迎添加友链，请留言或到 [GitHub issue](https://github.com/hutusi/hutusi.github.com/issues/4){:target="_blank"}上留言登记。

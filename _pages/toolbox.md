@@ -13,15 +13,18 @@ commentable: true
 * [Pocket](https://getpocket.com/){:target="_blank"}
 * [Hack News](https://news.ycombinator.com/news){:target="_blank"}
 * [Youtube](https://www.youtube.com/){:target="_blank"}
+* [Twitter](https://twitter.com/){:target="_blank"}
 * [Inoreader - RSS reader](https://www.inoreader.com/){:target="_blank"}
 * [Feeds Pub: 社交化 RSS 阅读](https://feeds.pub/){:target="_blank"}
 * [BlogHub 独立个人博客推荐](https://bloghub.fun/){:target="_blank"}
+* [Product Hunt](https://www.producthunt.com/){:target="_blank"} 推荐使用chrome插件
 
 ## 社区
 
-* [Ruby China](https://ruby-china.org/){:target="_blank"}
 * [V2EX](https://v2ex.com/){:target="_blank"}
+* [豆瓣](https://www.douban.com/){:target="_blank"}
 * [reddit](https://www.reddit.com/){:target="_blank"}
+* [Ruby China](https://ruby-china.org/){:target="_blank"}
 
 ## 工具
 
@@ -32,9 +35,9 @@ commentable: true
 
 ## 资源
 
-* [unsplash - Beautiful free Images & Pictures](https://unsplash.com/){:target="_blank"}
-* [zlibrary - The world's largest ebook library](https://b-ok.global/){:target="_blank"}
-* [overapi.com - Collecting all cheatssheet](https://overapi.com/)
+* [unsplash](https://unsplash.com/){:target="_blank"} Beautiful free Images & Pictures
+* [zlibrary](https://b-ok.global/){:target="_blank"} The world's largest ebook library
+* [overapi.com](https://overapi.com/){:target="_blank"} Collecting all cheatssheet
 
 ## 有趣
 
