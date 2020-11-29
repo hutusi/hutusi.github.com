@@ -24,10 +24,17 @@ img {
 * [inoreader](https://www.inoreader.com/search/subscriptions/hutusi.com)
 * [feedly](https://feedly.com/i/discover/sources/search/feed/hutusi.com)
 
-或者添加本站 RSS 订阅地址 https://hutusi.com/feed.xml 到阅读器中。
+或者添加本站 RSS 订阅地址 [https://hutusi.com/feed.xml](https://hutusi.com/feed.xml) 到阅读器中。
 
 
-## 2. 邮件订阅
+## 2. 微信公众号订阅
+
+微信扫码订阅公众号“胡涂说”：
+
+![wechat]({{site.images_baseurl}}/qrcode_for_hututalk_8cm.jpg?w=1280)
+
+
+## 3. 邮件订阅
 
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
@@ -57,10 +64,3 @@ img {
 </div>
 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <!--End mc_embed_signup-->
-
-
-## 3. 微信公众号订阅
-
-微信扫码订阅公众号“胡涂说”：（公众号文章与博客文章有些不一致。）
-
-![wechat]({{site.images_baseurl}}/qrcode_for_hututalk_8cm.jpg?w=1280)
