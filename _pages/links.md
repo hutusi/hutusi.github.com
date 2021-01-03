@@ -43,6 +43,8 @@ Elastic Search 教程相关。
 
 ### [薛定喵君的博客](http://xuedingmiao.com){:target="_blank"}
 
+### [凯哥 stack](https://kaige86.com/){:target="_blank"}
+
 *********************************************
 
 ### 如何添加友链
