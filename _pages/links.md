@@ -45,6 +45,10 @@ Elastic Search 教程相关。
 
 ### [凯哥 stack](https://kaige86.com/){:target="_blank"}
 
+### [一大加贝](https://blog.yidajiabei.xyz/){:target="_blank"}
+
+一位现读大三的前端开发者，
+
 *********************************************
 
 ### 如何添加友链
