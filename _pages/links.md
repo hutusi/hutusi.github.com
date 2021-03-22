@@ -47,7 +47,11 @@ Elastic Search 教程相关。
 
 ### [一大加贝](https://blog.yidajiabei.xyz/){:target="_blank"}
 
-一位现读大三的前端开发者，
+一位现读大三的前端开发者。
+
+### [清澄秋爽](https://dashen.tech/){:target="_blank"}
+
+酷爱诗词的 Golang 程序员。
 
 *********************************************
 
