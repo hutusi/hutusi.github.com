@@ -27,6 +27,7 @@ author:
 
 # images CDN
 images_baseurl: 'https://rmt.dogedoge.com/fetch/hutusi/storage/blog'
+images_newurl: 'https://rmt.ladydaily.com/fetch/hutusi/storage/blog'
 
 markdown:  kramdown
 # permalink: pretty
