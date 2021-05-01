@@ -5,6 +5,7 @@ tags: 游记 莫干山 王维
 title: 空山不见人
 subtitle: "莫干山游记"
 date: "2020-06-14 19:00:00 +0800"
+gh_issue: 55
 redirect_from:
   - /mo-gan-shan-trip
 ---

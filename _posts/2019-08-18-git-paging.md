@@ -4,6 +4,7 @@ category: tech
 tags: Git 效率 开源
 title: 阅读开源代码小技巧
 subtitle: Git历史记录快速翻页式签出
+gh_issue: 41
 redirect_from:
   - /blog/2019/08/18/git-paging
   - /git-paging

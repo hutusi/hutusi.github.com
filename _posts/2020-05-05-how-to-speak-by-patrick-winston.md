@@ -5,6 +5,7 @@ tags: 演讲技巧 youtube
 title: 如何做好演讲
 subtitle: "Patrick Winston: How To Speak 课程笔记"
 date: "2020-05-05 22:00:00 +0800"
+gh_issue: 53
 redirect_from:
   - /how-to-speak-by-patrick-winston
 ---

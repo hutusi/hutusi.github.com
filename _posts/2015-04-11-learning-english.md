@@ -7,6 +7,7 @@ subtitle: No pains, no gains.
 backgrounds:
     - 500px-119028985-feel-the-peace-iv-by-day-by-night.jpg
 thumb: instagram-11351820_1680697895491434_1302120760_n.jpg
+gh_issue: 13
 redirect_from:
   - /blog/2015/04/11/learning-english
   - /learning-english

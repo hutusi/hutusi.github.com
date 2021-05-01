@@ -4,6 +4,7 @@ category: essay
 tags: 书评 传记
 title: 若为自由故
 subtitle: "《若为自由故》——理查德·斯托曼（Richard Stallman）传记"
+gh_issue: 32
 redirect_from:
   - /blog/2017/03/08/free
   - /free-as-in-freedom

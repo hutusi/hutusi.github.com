@@ -39,14 +39,14 @@ nav_page_names: ['about.md', 'archive.html', 'links.md', 'toolbox.md', 'subscrip
 # can be ['feeds.pub', 'xml', 'na']
 nav_feed: 'na'
 
-# theme: taletype
-remote_theme: hutusi/tale
+theme: taletype
+# remote_theme: hutusi/tale
 
 sass:
   style: compressed
 
 plugins:
-  - jekyll-remote-theme
+  # - jekyll-remote-theme
   - jekyll-feed
   - jekyll-paginate
   - jekyll-archives

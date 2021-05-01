@@ -5,6 +5,7 @@ tags: 开源软件 大教堂与集市
 title: 通往开源之路
 subtitle: "《大教堂与集市》读书笔记"
 date: "2020-09-13 19:00:00 +0800"
+gh_issue: 57
 redirect_from:
   - /the-road-to-open-source
 ---

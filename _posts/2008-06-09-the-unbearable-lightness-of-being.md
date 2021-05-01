@@ -7,6 +7,7 @@ subtitle: 昆德拉说，上帝一发笑，人类就思考。
 backgrounds:
     - 500px-118992989-awakening-iv.jpg
 thumb: instagram-1186df71ffe37ae521a2d5a1007218ec.jpg
+gh_issue: 26
 redirect_from:
   - /blog/2008/06/09/lightness
   - /the-unbearable-lightness-of-being

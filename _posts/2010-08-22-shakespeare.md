@@ -7,6 +7,7 @@ subtitle: “惟兰蕙之幽姿兮，蘧一朝而摧焚”
 backgrounds:
     - 500px-118943047-frigid.jpg
 thumb: instagram-11311509_1101578303185689_82839333_n.jpg
+gh_issue: 38
 redirect_from:
   - /blog/2010/08/22/shakespeare
   - /shakespeare

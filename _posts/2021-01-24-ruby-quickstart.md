@@ -4,6 +4,7 @@ category: tech
 tags: Ruby 编程语言
 title: Ruby 编程语言入门
 date: "2021-01-24 23:59:00 +0800"
+gh_issue: 95
 ---
 
 > Ruby is designed to make programmers happy.

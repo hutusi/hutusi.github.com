@@ -7,6 +7,7 @@ subtitle: “May God bless and keep you always, May your wishes all come true”
 backgrounds:
     - 500px-119079019-s-l-u-r-p.jpg
 thumb: instagram-bba8d404900cf732e4477159f304c12c.jpg
+gh_issue: 43
 redirect_from:
   - /blog/2015/06/21/paternity
   - /paternity

@@ -5,8 +5,8 @@ gem 'jekyll'
 gem 'webrick'
 
 # theme
-gem 'jekyll-remote-theme'
-# gem 'taletype'
+# gem 'jekyll-remote-theme'
+gem 'taletype'
 # gem 'taletype', path: '~/workspace/git/tale'
 
 # plugins

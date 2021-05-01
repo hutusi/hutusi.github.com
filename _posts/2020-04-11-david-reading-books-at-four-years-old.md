@@ -6,6 +6,7 @@ title: 大卫四岁读的书
 subtitle: 大卫四岁时的藏书已经超过了我三十多年的藏书数了
 date: "2020-04-11 11:00:00 +0800"
 last_modified_at: "2020-04-12 08:39:00 +0800"
+gh_issue: 49
 redirect_from:
   - /david-reading-books-at-four-years-old
 ---

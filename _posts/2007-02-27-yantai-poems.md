@@ -7,6 +7,7 @@ subtitle:
 backgrounds:
     - 500px-40228170-colors-of-arctic.jpg
 thumb: instagram-11355032_550488605104961_1339802502_n.jpg
+gh_issue: 47
 redirect_from:
   - /blog/2007/02/27/yantai
   - /yantai-poems
