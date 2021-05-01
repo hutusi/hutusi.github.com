@@ -1,0 +1,1654 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://hutusi.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hutusi.com/" rel="alternate" type="text/html" /><updated>2021-05-01T07:47:08+00:00</updated><id>https://hutusi.com/feed.xml</id><title type="html">胡涂说</title><subtitle>hutusi.com</subtitle><author><name>hutusi</name><email>huziyong@gmail.com</email></author><entry><title type="html">周刊第九期：卡片盒笔记法</title><link href="https://hutusi.com/articles/weekly-9" rel="alternate" type="text/html" title="周刊第九期：卡片盒笔记法" /><published>2021-04-24T14:00:00+00:00</published><updated>2021-04-24T14:00:00+00:00</updated><id>https://hutusi.com/articles/weekly-9</id><content type="html" xml:base="https://hutusi.com/articles/weekly-9">&lt;p&gt;本文为周刊第九期，前期的周刊参见：&lt;a href=&quot;/tags/周刊&quot;&gt;周刊系列&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;距离上一次周刊又过去五个月，这段时间虽然也有写点东西，但输出很少。写周刊的星期里输出的压力很大，而停写的日子里愧疚感又很强。唉，没有强大的毅力和内心，真不要立什么flag.&lt;/p&gt;
+
+&lt;p&gt;当迫于输出周刊的压力下，囫囵吞枣的阅读一些外文新闻，十篇之中可能最后只有一两篇能够入选周刊，而为了周刊的输出文字，得在一两周内阅读大量的文章。从好的方面说，大量的阅读是好事；但从不好的方面说，这些阅读都是蜻蜓点水，而且文章之间没有关联，无法沉淀成知识。套用《如何阅读一本书》的说法，这种阅读只是“检视阅读”，而要想把知识沉淀下来，还得“分析阅读”和“主题阅读”。&lt;/p&gt;
+
+&lt;p&gt;因此，我尝试用一种新的方式来写博客和周刊，这个方法即卡片盒笔记法。&lt;/p&gt;
+
+&lt;p&gt;卡片盒笔记法，英文是 Zettelkasten Method，Zettelkasten 来自于德文，Zettel 为卡片，Kasten 是盒子的意思。卡片盒笔记法也叫卢曼笔记法，以它的发明者尼克拉斯·卢曼(Niklas Luhemann)&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;命名。卢曼是一名德国社会学家，在上世纪六十年代，他毕业后从事公务员，工作之余，他开始研究哲学、组织管理学还有社会学。他将有价值的内容记录下来，开始时也按照内容分类用笔记本记录，但后来他发现这种方法不好，便发明了卡片盒笔记法。这套方法帮助他从事社会学研究，在30年的时间里，他出版了58本社会学专著，这还不包括其他大量的论文、译著。大学请他做教授，并叙述自己的简历，卢曼总结说：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;我的项目：社会科学；研究时间：30年；成本：0&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;卡片盒笔记法的具体做法是将笔记记录在一张卡片上，卡片分成三个部分，第一个部分是卡片的索引编号，每张卡片给唯一的编号；第二个部分是笔记的内容；第三个部分是引用其他卡片的编号，这张卡片内容如果跟其他卡片知识点相关，则在这个部分记录引用到其他卡片的编号。这样通过编号和索引引用则可以将卡片知识点关联起来。这些卡片都被保存在专门的盒子里。&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://rmt.ladydaily.com/fetch/hutusi/storage/blog/Luhemann-Zettelkasten.png?w=1280&quot; alt=&quot;Luhemann-Zettelkasten&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;卢曼的卡片盒&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;盒子和卡片是辅助工具，最重要的是卡片内容。卢曼卡片内容一般较短，并且一张卡片上只记录一个知识点；而且特别要注意的是，不是简单的复制信息，而是要用自己的话写。也就是说把自己的理解记录在卡片内容上。&lt;/p&gt;
+
+&lt;p&gt;有一个网站&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;专门来研究卡片盒笔记法，网站上也推荐了一些软件工具。软件工具可以非常方便的给卡片编索引并建立卡片之间的关联，这比卢曼维护着一大柜子的卡片盒要容易多了。去年有一款特别火的卡片盒笔记法软件 Roam Research, 它提供了双向链接的功能，能很方便的将笔记卡片建立起连接图来。&lt;/p&gt;
+
+&lt;p&gt;不过，我用的笔记软件是 Notion&lt;sup id=&quot;fnref:4&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;, 它虽然不是卡片盒式笔记软件，但也提供了双向链接的功能。Page 和 Block 的功能让记笔记非常方便，软件的 UI 很简洁；而且由于是 web 应用，可以很方便的随时记笔记。如果说对 Notion 有什么不满的话，那可能就是：1. Notion 对 Markdown 支持不全；2. 暂时还没有 API 导出功能，我希望能够导出成 Markdown 文本并归档在 GitHub 上。&lt;/p&gt;
+
+&lt;p&gt;到现在使用 Notion 一个多月，越用越顺手，因此我也想利用 Notion 来输出博客和周刊，而本文的内容也是主要来自于这些天记录的笔记。&lt;/p&gt;
+
+&lt;p&gt;除了 Notion, 还有个推荐的软件是 flomo, 一款灵感收集软件，不过目前我用的还不多。感兴趣的同学可以点击&lt;a href=&quot;https://flomoapp.com/register2/?MzI2MzI&quot; target=&quot;_blank&quot;&gt;此链接注册&lt;/a&gt;，可获得28天Pro会员。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;阿连德被暗杀很快掩盖了俄国人对波西米亚的入侵，孟加拉的血腥屠杀又让人忘记了阿连德，西奈沙漠战争的喧嚣又盖过了孟加拉的呻吟，柬埔寨的生灵涂炭又让人忘记了西奈，就这样继续，就这样反复，继续反复，反复继续，直到一切都被所有人完全遗忘。&lt;/p&gt;
+
+  &lt;p&gt;米兰·昆德拉《笑忘录》 王东亮 译&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;尼克拉斯·卢曼（维基百科）: https://zh.wikipedia.org/wiki/尼克拉斯·卢曼 &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;em&gt;卡片盒（Zettelkasten）笔记法&lt;/em&gt;:  https://www.notion.so/Zettelkasten-25627d7ce99344c487f4e42d861f9e0a &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;卢曼卡片盒笔记法: https://zettelkasten.de/introduction/zh/ &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Notion: https://www.notion.so/ &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="weekly" /><category term="周刊" /><summary type="html">本文为周刊第九期，前期的周刊参见：周刊系列。</summary></entry><entry><title type="html">悉达多</title><link href="https://hutusi.com/articles/siddhartha" rel="alternate" type="text/html" title="悉达多" /><published>2021-03-13T09:00:00+00:00</published><updated>2021-03-13T09:00:00+00:00</updated><id>https://hutusi.com/articles/siddhartha</id><content type="html" xml:base="https://hutusi.com/articles/siddhartha">&lt;p&gt;最近读了本小说，赫尔曼·黑塞的《悉达多》&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;。书名看上去像是在写释迦牟尼的故事，实则不然。作者并未写明他是佛祖，而是借用了释迦牟尼的故事，但将佛祖俗世的名字“乔达摩·悉达多”分成了书中的两个人物：乔达摩和悉达多。但我更认可豆瓣中一位网友的评论解读&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在小说中，作者将大彻大悟者佛陀“乔达摩悉达多”演化为四个人物：探索实践的“悉达多”，轻信教条的“乔文达”；言教的导师——佛陀“乔达摩”，身教的导师——船夫倾听者渡人彼岸者“维耶德瓦”。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;富有俊美的婆罗门之子悉达多衣食无忧，但他并不快乐。他想要寻求人生的意义、永恒的幸福、无边的智慧和终极的真理。他无法从冥想中获得，因此便与好朋友乔文达一起成为林中苦修的沙门，踏上了寻找自我的道路。在沙门中，悉达多通过受苦，忍受疼痛、饥饿、焦渴和疲惫，学习了克己之法。但他又开始怀疑，认为只是寻得了安慰、麻醉，只是学了些迷惑自己的把戏，根本没有找到那条道中之道。&lt;/p&gt;
+
+&lt;p&gt;然后，他们又去投奔舍卫城中的佛陀乔达摩，佛陀世尊有一套完备的佛法理论，讲习四圣谛、八正道。乔文达顶礼膜拜，虔心皈依。而悉达多认为佛法虽然精妙且无瑕疵、并且形成了一条完整的因果链条，但自己听了佛法后只是表面的、虚假的得到暂时的安宁。悉达多认为完美精妙的佛法中有一个小漏洞，而这个漏洞就是法义本身：因为佛陀是通过探索、求道、禅修、彻悟修成的正果，而非法义，没有人能靠聆听法义而得解脱。因此，悉达多决定辞别佛陀，他要摆脱法义，通过实践求索而实现自己的目标。&lt;/p&gt;
+
+&lt;p&gt;悉达多一路修行并思考，告别了昨天的“我”，不再是婆罗门，不再是沙门，不再是苦行僧。他决定不再回父亲那里，再也不回去。但他要回到城里，体验生活。他向商人学习赚钱，又向名妓学习爱欲。悉达多只要认定的目标一定会做到，“目标会指引他，因为他禁止任何干扰目标的事情进入他的灵魂。”但世俗的生活将他囚禁，情欲、贪欲和惰性俘虏了他。悉达多变得庸俗而铜臭！&lt;/p&gt;
+
+&lt;p&gt;而内心的召唤在唤醒他，悉达多再次同过去告别，离开了温柔乡和安乐窝，他曾绝望的想要以死来断绝这一切，被儿时的伙伴乔文达所救。悉达多重新开始反省和思考，新的悉达多重生了。他找到了当年渡他过河的船夫瓦稣迪瓦（其他译本译作维耶德瓦），与他一起生活、劳动，在此期间，他又遇到了自己曾不告而别的爱人迦摩罗，但她不幸被毒蛇咬死，留下了儿子小悉达多。小悉达多并不领父亲的情，叛逆离他而去。&lt;/p&gt;
+
+&lt;p&gt;故事的最后，船夫隐去林中，儿时的伙伴乔文达再次与悉达多相遇。乔文达在悉达多的脸上看到千万种形象，千万张脸，千万种动物，汇成一条长长的奔腾的面孔之河。而幻像散去，悉达多的微笑平静、轻柔，一如佛陀的微笑。&lt;/p&gt;
+
+&lt;p&gt;这就是《悉达多》的故事。《悉达多》讲述的是一个人寻找真实自我的故事，悉达多是一个人，也是每一个人，这是一本哲学小说，读者可以将主人公投射到自己。我们每个人都在人生的路上探索、寻找、思考，到底什么才是自己想要的生活？真实的自己在哪里？&lt;/p&gt;
+
+&lt;p&gt;悉达多不盲目相信教条，相对于思想，他更看重“物”。做船夫的日子里，每天在船上，便学习河水，向河水讨教。这很像心学中的“格物致知”。王阳明格竹，悉达多格水。因此当年他便一句道破佛祖传法的漏洞：佛陀靠的是实践修行彻悟成佛，而非聆听法义成佛。悉达多用了一辈子去探索真理，体验了俗世和修行后，汇聚了世间的众生相，而后方大彻大悟。如《金刚经》云：“凡所有相，皆是虚妄。若见诸相非相，则见如来。”能做到“见诸相非相”的，一定是经历过世间诸相、体验过世间百态，方能达到这种境界。否则那只能是“少年不识愁滋味，为赋新词强说愁”。&lt;/p&gt;
+
+&lt;p&gt;老去的悉达多，与船夫一起可以说已经达到了洞彻世事的境界；可是，当他桀骜不驯的儿子离开后，又感叹自己不能拥有世人所拥有的儿女亲情的幸福。“即便是恶人、窃贼、强盗，也有爱他们、他们爱的孩子，为何独我没有？”但是，他难道不知道，当年为了追求心中的理想和真理，自己毅然决然的告别了俗世生活。&lt;/p&gt;
+
+&lt;p&gt;人哪，最痛苦的是做选择题。&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;《悉达多》(Siddhartha), 又被译为《流浪者之歌》，德国小说家赫尔曼·黑塞于1922年所著。 &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;em&gt;对赫尔曼.黑塞的《悉达多》的解读&lt;/em&gt;: https://book.douban.com/review/6390024/ &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="essay" /><category term="书评" /><category term="小说" /><summary type="html">最近读了本小说，赫尔曼·黑塞的《悉达多》1。书名看上去像是在写释迦牟尼的故事，实则不然。作者并未写明他是佛祖，而是借用了释迦牟尼的故事，但将佛祖俗世的名字“乔达摩·悉达多”分成了书中的两个人物：乔达摩和悉达多。但我更认可豆瓣中一位网友的评论解读2： 《悉达多》(Siddhartha), 又被译为《流浪者之歌》，德国小说家赫尔曼·黑塞于1922年所著。 &amp;#8617; 对赫尔曼.黑塞的《悉达多》的解读: https://book.douban.com/review/6390024/ &amp;#8617;</summary></entry><entry><title type="html">爸爸是最聪明的</title><link href="https://hutusi.com/articles/daddy-is-smartest" rel="alternate" type="text/html" title="爸爸是最聪明的" /><published>2021-02-08T15:36:00+00:00</published><updated>2021-02-08T15:36:00+00:00</updated><id>https://hutusi.com/articles/daddy-is-smartest</id><content type="html" xml:base="https://hutusi.com/articles/daddy-is-smartest">&lt;p&gt;晚上我从网上的视频学了个小魔术变给大卫看，大卫非常开心，并且惊奇的跟妈妈说：“爸爸太聪明了，他会变魔术!”&lt;/p&gt;
+
+&lt;p&gt;妈妈不屑一顾，说：“魔术都是假的。”&lt;/p&gt;
+
+&lt;p&gt;大卫立刻不高兴了，说：“Life is pointless.”&lt;/p&gt;
+
+&lt;p&gt;我心里一惊，心想一个五岁的小孩怎么讲出来这种话来的，为了确信他说的意思，一边去手机词典上查“pointless”。妈妈说：“你爸都不知道你说的英语是什么意思，你还说他聪明。”&lt;/p&gt;
+
+&lt;p&gt;大卫立刻纠正道：“他只是英语不好，并不是不聪明。他会魔术，还会拼金字塔，他是世界上最聪明的人！”&lt;/p&gt;
+
+&lt;p&gt;妈妈说：“他还没我聪明呢，我考了研，我是 master，他不是。”&lt;/p&gt;
+
+&lt;p&gt;大卫反驳说：“他是 wizard! 爸爸最聪明，我第二名，你第三名！”&lt;/p&gt;
+
+&lt;p&gt;妈妈也故意气他：“wizard 不是学历。如果你这么说，那你也不聪明。”&lt;/p&gt;
+
+&lt;p&gt;大卫非常生气的大声说：“你才不聪明！你是最笨的！你比抢东西的猴子还要笨！”&lt;/p&gt;
+
+&lt;p&gt;说完，他抱着被子呜呜的哭了起来。&lt;/p&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="life" /><category term="大卫" /><summary type="html">晚上我从网上的视频学了个小魔术变给大卫看，大卫非常开心，并且惊奇的跟妈妈说：“爸爸太聪明了，他会变魔术!”</summary></entry><entry><title type="html">Ruby 编程语言入门</title><link href="https://hutusi.com/articles/ruby-quickstart" rel="alternate" type="text/html" title="Ruby 编程语言入门" /><published>2021-01-24T15:59:00+00:00</published><updated>2021-01-24T15:59:00+00:00</updated><id>https://hutusi.com/articles/ruby-quickstart</id><content type="html" xml:base="https://hutusi.com/articles/ruby-quickstart">&lt;blockquote&gt;
+  &lt;p&gt;Ruby is designed to make programmers happy.
+– Matz (松本行弘)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;松本行弘于1993年开始编写 Ruby 编程语言，并于 1995年发布。2006年 DHH 发布 Ruby on Rails 框架，Ruby 开始流行，并于 2006年被 TIOBE 选为年度编程语言。最近这些年因为云计算和移动互联网的兴起，Ruby 与同类语言相比显得不那么火。不过我倒是一直听喜爱 Ruby, 最近的项目又要用到 Ruby, 便整理下 Ruby 的一些知识教程。以下关于 Ruby 的语法介绍和示例主要来自《The Ruby Programming Languange》这本书&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;。（这本书是松本行弘本人所写，学习 Ruby 语言必看。）&lt;/p&gt;
+
+&lt;h2 id=&quot;语法&quot;&gt;语法&lt;/h2&gt;
+
+&lt;p&gt;Ruby 是一款解释型、强类型、动态类型的面向对象编程语言。Ruby 语法优雅，目标是做到尽可能贴近英文语法。&lt;/p&gt;
+
+&lt;h3 id=&quot;1-hello-world&quot;&gt;1. Hello world&lt;/h3&gt;
+
+&lt;p&gt;到 Ruby 的官网&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;上下载 Ruby 程序，推荐使用 Unix-like 操作系统，如 MacOS、Linux，而一般不建议用 Windows。推荐使用 rbenv 或 RVM 来安装，详细可参见网站指导。安装好 Ruby 后可执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby&lt;/code&gt; 来执行 ruby 语言脚本，也可以输入 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;irb&lt;/code&gt; 打开 Ruby 交互式命令行工具(interactive ruby)开始使用。在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;irb&lt;/code&gt; 上输入：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hello, world!'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt; 是 Ruby 的标准输出函数 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt; 的简写。这里便可以看到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;irb&lt;/code&gt; 返回 ‘hello, world!’ 输出。&lt;/p&gt;
+
+&lt;p&gt;如果要打印5次 ‘hello, world!’, 那只需要写：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hello, world!'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;是不是很有意思。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-类型&quot;&gt;2. 类型&lt;/h3&gt;
+
+&lt;p&gt;Ruby 中所有值都是对象（包括 nil 值），可以通过调用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class&lt;/code&gt; 方法来获知其类。Ruby 不像其他语言一样区分基本类型(primitive types) 和对象类型(object types)，对于 Ruby 而言，所有类型都继承自 Object 类(根类为 BasicObject).&lt;/p&gt;
+
+&lt;p&gt;试着在 irb 上输入：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;class&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;superclass&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;数字numeric&quot;&gt;数字(Numeric)&lt;/h4&gt;
+
+&lt;p&gt;Ruby 中包含五种 built-in 数字类型类: Numeric, Integer, Float, Fixnum 和 Bignum, 另外标准库中还提供了三种数字类型：Complex, BigDecimal, Rational. 除 Numeric 类外其他数字类型类都继承自 Numeric, 关系如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                                +-----------+
+                                |           |
+                                |  Numeric  |
+                                |           |
+         +-----------+----------++----------+--+--------------+
+         |           |           |             |              |
+         |           |           |             |              |
+    +----+----+  +---+---+  +----+----+  +-----+------+  +----+-----+
+    |         |  |       |  |         |  |            |  |          |
+    | Integer |  | Float |  | Complex |  | BigDecimal |  | Rational |
+    |         |  |       |  |         |  |            |  |          |
+    +--+------+  +-------+  +---------+  +------------+  +----------+
+       |      |
+       |      |
++------+-+  +-+------+
+|        |  |        |
+| Fixnum |  | Bignum |
+|        |  |        |
++--------+  +--------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;31 位以内的整数为 Fixnum, 超过位数为 Bignum, Bignum 没有位数限制。&lt;/p&gt;
+
+&lt;p&gt;对于大数 Ruby 提供了分段表示或科学计数法方便阅读，如：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;1_000_000_000&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# 十亿, 1 billion&lt;/span&gt;
+&lt;span class=&quot;mf&quot;&gt;1_000_000_000.01&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 十亿又零点一&lt;/span&gt;
+&lt;span class=&quot;mf&quot;&gt;6.02e23&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# 6.02 * 10^23&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;运算符&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ruby 支持基本的数学运算符(+, -, *, /)，及取余(%), 求指数(**)，等。&lt;/p&gt;
+
+&lt;p&gt;所有数字对象均为不可变值，因此 Ruby 中也没有自增和自减操作符(++, –)。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# 结果为 2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;5.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 结果为 2.5&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# x*x*x*x&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# 1/x&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;3.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 求 x 的立方根&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# 由于 1/3 为零，该表达式即为 x**0 = 1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;浮点数精度问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mf&quot;&gt;0.4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;与 C 等语言的浮点数运算结果一样，上述表达式运算的结果为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;, 不过 Ruby 提供了一种解决方案，即标准库中提供的 BigDecimal 类，使用该类可以按实际值运算，但效率比浮点数慢。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bigdecimal'&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;BigDecimal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'0.4'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BigDecimal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'0.3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BigDecimal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'0.1'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;文本string&quot;&gt;文本(String)&lt;/h4&gt;
+
+&lt;p&gt;Ruby 有多种文本的表达方式：&lt;/p&gt;
+
+&lt;h5 id=&quot;1-简单文本以单引号包含-除--和--字符外都不会转义&quot;&gt;1. 简单文本以单引号(‘‘)包含, 除 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\&lt;/code&gt; 字符外都不会转义。&lt;/h5&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'this\'s a simple string.'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;2-普通文本以双引号包含可转义字符且可以包含变量或表达式内嵌--expr-&quot;&gt;2. 普通文本以双引号(““)包含，可转义字符，且可以包含变量或表达式(内嵌 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#{ expr }&lt;/code&gt;)。&lt;/h5&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;360 degrees = &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;PI&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; radians&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;也可以用类似 C 语言的 sprintf 格式化输出表示：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pi is about %.4f&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;PI&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;%s: %f&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pi&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;PI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;3-自定义分隔符表示&quot;&gt;3. 自定义分隔符表示&lt;/h5&gt;
+
+&lt;p&gt;以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%q&lt;/code&gt; 或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%Q&lt;/code&gt; 开头，紧接着以及一个符号开始，如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|/\!;:&lt;/code&gt; 等，而如果分隔符是以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{[(&amp;lt;&lt;/code&gt; 开始的，那么字符串认定则到以匹配到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;}])&amp;gt;&lt;/code&gt; 为止。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%q&lt;/code&gt; 对应单引号 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'&lt;/code&gt; 文本， &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%Q&lt;/code&gt; 对应双引号 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;&lt;/code&gt; 文本，其中 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%Q&lt;/code&gt; 可省略 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Q&lt;/code&gt;, 简写为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt;. 例：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;sx&quot;&gt;%q|don't worry about escaping ' character|&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;%Q-end with newline &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;-&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;%&amp;lt;&amp;lt;book&amp;gt;ruby&amp;lt;book/&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;4-here-文档&quot;&gt;4. HERE 文档&lt;/h5&gt;
+
+&lt;p&gt;对于大段文本，Ruby 提供了一种表示方法：以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt; 或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; 开头，紧接一个任意标志字符串（如下面例子中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HERE&lt;/code&gt;），那么从此行后到第一个遇到该字符串匹配行之前的文本都是表示文本内容。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HERE&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+  this a string literal.
+  It has two lines and abruptly ends...
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HERE&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在 Ruby 中，文本（字符串）值默认是可变值，这与其他语言是不同的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;数组array&quot;&gt;数组(Array)&lt;/h4&gt;
+
+&lt;h5 id=&quot;1-定义&quot;&gt;1. 定义&lt;/h5&gt;
+
+&lt;p&gt;有两种定义数组的方式：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;或&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;对于字符串数组，有还可以这样定义：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%w[this is a test]&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# words = ['this', 'is', 'a', 'test']&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;2-数组类型是动态的一个数组中可包含任意类型的数据&quot;&gt;2. 数组类型是动态的，一个数组中可包含任意类型的数据&lt;/h5&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'zero'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# ['zero', 2, 3]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;向数组中追加数据使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt; 方法，或者更简单的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# 1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# [1, 2, 3]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# [1, 2, 3, [4, 5]] 嵌套数组&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;3-数组下标&quot;&gt;3. 数组下标&lt;/h5&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;# 1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;# 4, 负数下标从最后一个倒数&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 获取子数组&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# [2, 3] 第一个下标数字表示起始下标，第二个表示子数组长度&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# [] &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# [1, 2, 3, 4]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;范围range&quot;&gt;范围(Range)&lt;/h4&gt;
+
+&lt;p&gt;Range 表示一个区间，以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;..&lt;/code&gt; 或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;...&lt;/code&gt; 来表示，区别是后者不包含结束值。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# 从 1 到 10 的所有整数，包括 10&lt;/span&gt;
+&lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;10.0&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 从 1.0 到 10.0 间的所有浮点数，但不包括 10.0&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'c'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_a&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# ['a', 'b', 'c']&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;哈希hash&quot;&gt;哈希(Hash)&lt;/h4&gt;
+
+&lt;p&gt;Hash 是以&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt;表示的键值对数据结构，有两种定义方式：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'one'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'two'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;或&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;而如果键值以 symbol 来表示的话，可以简写成：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;one: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;two: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# {:one =&amp;gt; 1, :two =&amp;gt; 2}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;符号symbol&quot;&gt;符号(Symbol)&lt;/h4&gt;
+
+&lt;p&gt;符号(Symbol)可以理解为一种特殊的字符串对象，作为名称标签使用，用来表示方法等对象的名称，一般 hash 的键值会用符号来表示，比字符串更高效。符号和字符串可以互相转换：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'ruby'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_sym&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 转换为符号 :ruby&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;:ruby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_s&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# 转换为字符串 'ruby'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;true-false-nil&quot;&gt;true, false, nil&lt;/h4&gt;
+
+&lt;p&gt;true 和 false 为两个布尔型的值，与其他语言理解有差别的是，除了 false 和 nil 外，其他值都为 true:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# false&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# false&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;nil 表示空值。对于值判空操作可调用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil?&lt;/code&gt; 方法：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nil?&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# false&lt;/span&gt;
+&lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nil?&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-表达式&quot;&gt;3. 表达式&lt;/h3&gt;
+
+&lt;h4 id=&quot;赋值&quot;&gt;赋值&lt;/h4&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# 并行赋值，可以实现值交换&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;defined-操作符&quot;&gt;defined? 操作符&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;defined?&lt;/code&gt; 操作符可以判断变量、函数、符号等是否定义：如果右值定义，则返回一个字符串；否则为 nil.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;defined?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defined?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# &quot;local-variable&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defined?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# nil&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defined?&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# &quot;nil&quot; 注意这里返回的是 &quot;nil&quot; 字符串&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-条件及循环&quot;&gt;4. 条件及循环&lt;/h3&gt;
+
+&lt;h4 id=&quot;if-和-unless&quot;&gt;if 和 unless&lt;/h4&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;one&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;elsif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;two&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;many&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;或者更简洁的写法：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;one&quot;&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;elsif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;two&quot;&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;many&quot;&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注意，上述下面的写法中 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;then&lt;/code&gt; 不可省略。&lt;/p&gt;
+
+&lt;p&gt;另外，如果表达式只有一句，if 一般放在语句后面，更符合英语语法习惯：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;one&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unless&lt;/code&gt; 含义与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; 相反，相当于 if not.&lt;/p&gt;
+
+&lt;h4 id=&quot;case&quot;&gt;case&lt;/h4&gt;
+
+&lt;p&gt;case 语句即 C 语言中的 switch/case:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;one&quot;&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;two&quot;&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;many&quot;&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; 语句类似， &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;when&lt;/code&gt; 条件后的逻辑语句如果另起一行，可省略 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;then&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;while-和-until&quot;&gt;while 和 until&lt;/h4&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; 语句类似，如果循环处理语言只有一行，可将 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt; 条件放在语句结尾：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;或：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;until&lt;/code&gt; 相当于 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while not&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;forin&quot;&gt;for/in&lt;/h4&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collection&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;迭代器&quot;&gt;迭代器&lt;/h4&gt;
+
+&lt;p&gt;虽然 Ruby 提供了 while/until/for 循环控制语句，但实际上在编程中使用不多。在 Ruby 编程中对循环处理逻辑使用更普遍的是迭代器(Iterator)的写法。如开头示例中的打印五次 ‘hello, world’。而一些 Enumerable 对象中提供的迭代器调用比使用 for 语句更简洁：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# 打印 data 中每一个元素&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 返回 [1, 4, 9]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;除 Enumerable 类的迭代器外，Numeric 类也提供了几种迭代器方法：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;upto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# 456&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# 012&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;PI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 从0开始，每迭代步长0.1，直到大于等于 PI 值。&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;写一个迭代器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt; 关键字来调用迭代器处理的 block (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt;中的语句):&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# 调用 block, 并将值传入 block&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;break-next-redo&quot;&gt;break, next, redo&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;break: 从循环或迭代器中跳出。&lt;/li&gt;
+  &lt;li&gt;next: 从循环或迭代器中调到下一个循环处理。&lt;/li&gt;
+  &lt;li&gt;redo: 重新从循环或迭代器开头执行。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-异常处理&quot;&gt;4. 异常处理&lt;/h3&gt;
+
+&lt;p&gt;Ruby 中也有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;throw&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;catch&lt;/code&gt; 关键字，但这两个配对主要是用在多层循环语句中直接跳出，类似于 C 语言中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;goto&lt;/code&gt;. Ruby 的异常处理使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raise/rescue/ensure&lt;/code&gt;, 相当于 Java 中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;try/catch/finally&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;RuntimeError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;message&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;begin&lt;/code&gt; 在方法开始处，则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;begin&lt;/code&gt; 可省略。&lt;/p&gt;
+
+&lt;h3 id=&quot;5-方法method&quot;&gt;5. 方法(Method)&lt;/h3&gt;
+
+&lt;p&gt;一般语言中会区分函数(function)和方法(method)，用于区分直接调用的函数和对象的方法。而 Ruby 是完全的面向对象，因此，所有的函数都是方法，如果没有定义在类或模块内部，那么会被作为 Object 的私有方法定义并调用。&lt;/p&gt;
+
+&lt;h4 id=&quot;定义&quot;&gt;定义&lt;/h4&gt;
+
+&lt;p&gt;以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;def&lt;/code&gt; 关键字定义：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;argument must be &amp;gt; 0&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;elsif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;方法中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;return&lt;/code&gt; 关键字可省略，除非提前条件退出的逻辑需加上 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;return&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;调用方法时，可省略小括号&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;()&lt;/code&gt;，如：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;方法别名&quot;&gt;方法别名&lt;/h4&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aka&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;also_known_as&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# aka 作为方法 also_known_as 的别名&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;参数&quot;&gt;参数&lt;/h4&gt;
+
+&lt;p&gt;方法支持默认参数：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;支持可变参数，参数作为数组使用：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# first=1, rest=[]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# first=1, rest=[2, 3]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果将数组作为参数传入方法，需要在数组变量前加 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# first=1, rest=[3, 2, 1]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# first=3, rest=[2, 1]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# first=[3, 2, 1], rest=[]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果哈希值作为最后一个参数，可以省略调用的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt;(这在 Rails 中应用非常广泛)：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;但如果调用时加上&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt;, 需要同时带上 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;()&lt;/code&gt;, 否则会出错，因为 Ruby 会将 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt; 当成 block 块：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 语法错误&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;block 块作为参数：&lt;/p&gt;
+
+&lt;p&gt;TODO…&lt;/p&gt;
+
+&lt;h4 id=&quot;名称约定&quot;&gt;名称约定&lt;/h4&gt;
+
+&lt;p&gt;方法名后缀有些约定，方法名后跟 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt; 一般表示返回 true/false, 跟 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;!&lt;/code&gt; 表示该方法具有破坏性。这种后缀是一种约定而非强制。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=&lt;/code&gt; 后缀的方法将在赋值语句中调用，对应其他语言中的 setter 方法。&lt;/p&gt;
+
+&lt;h4 id=&quot;proc-lambda&quot;&gt;Proc, lambda&lt;/h4&gt;
+
+&lt;p&gt;proc 和 lambda 都是闭包(closure)； TODO…&lt;/p&gt;
+
+&lt;h3 id=&quot;6-类&quot;&gt;6. 类&lt;/h3&gt;
+
+&lt;h4 id=&quot;定义-1&quot;&gt;定义&lt;/h4&gt;
+
+&lt;p&gt;类名需以大写字母开头：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;实例化对象：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;成员变量及成员方法&quot;&gt;成员变量及成员方法&lt;/h4&gt;
+
+&lt;p&gt;成员变量名以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&lt;/code&gt; 开头，类变量名以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@&lt;/code&gt; 开头。&lt;/p&gt;
+
+&lt;p&gt;类的构造函数名称为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;initialize&lt;/code&gt;。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# @x 的 getter 方法&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# @x 的 setter 方法&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上面的实现在 ruby 中有更简洁的语法可以自动生成 getter 和 setter 方法功能：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;attr_accessor&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:y&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果是只读成员变量仅提供 getter 方法的话可以使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_reader&lt;/code&gt; 关键字：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;attr_reader&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;运算符方法&quot;&gt;运算符方法&lt;/h4&gt;
+
+&lt;p&gt;对类实现运算符方法，如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+-*/&lt;/code&gt;, 需要注意的是由于一元&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt;运算符(求负)与减法预算负是同一个字符，因此，Ruby 使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-@&lt;/code&gt; 来表示一元&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt;运算符方法：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Class&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Point&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-@&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scalar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scalar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scalar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;类方法&quot;&gt;类方法&lt;/h4&gt;
+
+&lt;p&gt;类方法定义与成员方法定义不同在方法名前加类名或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self&lt;/code&gt; 关键字：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;points&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;points&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果有多个类方法定义，可将它们放一起，如下方式定义：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# self 也可以用类名 Point 替代&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;points&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;points&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;public-protected-private&quot;&gt;public, protected, private&lt;/h4&gt;
+
+&lt;p&gt;方法默认为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt;, protected, private 的方法需要显示声明：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# 以下是 public 方法&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 以下是 protected 方法&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 以下是 private 方法&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;继承&quot;&gt;继承&lt;/h4&gt;
+
+&lt;p&gt;类的继承用符号 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;，继承特性与其他面向对象语言类似，方法可被子类重写，重写方法如果需要调用父类方法，可使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;super&lt;/code&gt; 关键字来调用。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point3D&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Point&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;7-模块module&quot;&gt;7. 模块(Module)&lt;/h3&gt;
+
+&lt;p&gt;Ruby 的模块(Module) 类似于其他语言的命名空间，但又提供了 Mixin 功能供其他类导入方法，可以理解成实现了方法的接口。&lt;/p&gt;
+
+&lt;p&gt;模块不能被实例化，不能被继承。&lt;/p&gt;
+
+&lt;h4 id=&quot;用作命名空间namespace&quot;&gt;用作命名空间(namespace)&lt;/h4&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Base64&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Encoder&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decoder&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# 模块公共方法，可以被内部的类调用&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Base64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;helper&lt;/span&gt; 
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;用作-mixin&quot;&gt;用作 Mixin&lt;/h4&gt;
+
+&lt;p&gt;前面提到的 Enumerable 对象的类其实就是 Mixin 了 Enumerable Module. 使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include&lt;/code&gt; 关键字 mixin 模块，便可将该模块的所有方法导入进类中。一个模块也可以 mixin 其他模块。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Comparable&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;8-其他语法&quot;&gt;8. 其他语法&lt;/h3&gt;
+
+&lt;h2 id=&quot;元编程&quot;&gt;元编程&lt;/h2&gt;
+
+&lt;p&gt;Ruby 提供了丰富的反射接口，这使得 Ruby 元编程非常容易，Ruby on Rails 框架正是利用了这一特性，构建了一套 Rails 的 DSL.&lt;/p&gt;
+
+&lt;h3 id=&quot;类型&quot;&gt;类型&lt;/h3&gt;
+
+&lt;p&gt;Ruby 提供了多种获取、比较类型的方法：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;class&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# Array, 获取对象的类 &lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;superclass&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Object, 获取类的父类 &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;instance_of?&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Array&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# true,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;is_a?&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Array&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;# true, 与 instance_of? 的区别是 is_a? 父类或祖先类也为 true&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;kind_a?&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Array&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# true, kind_a? 与 is_a? 是一个意思&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# true&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;respond_to?&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:include?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# true, 判断是否有该方法&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;eval-方法执行字符串&quot;&gt;eval 方法执行字符串&lt;/h3&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;x + 1&quot;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# 2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;方法&quot;&gt;方法&lt;/h3&gt;
+
+&lt;p&gt;通过 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;send&lt;/code&gt; 调用，将方法名作为 symbol 或字符串传给对象调用：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:upcase&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# 等同于 &quot;hello&quot;.upcase&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;define_method&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; 是元编程较为常用的两个方法，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;define_method&lt;/code&gt; 可以动态定义函数，而 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; 则是在对象调用时没有查到方法时调用的方法。&lt;/p&gt;
+
+&lt;h2 id=&quot;项目应用&quot;&gt;项目应用&lt;/h2&gt;
+
+&lt;h3 id=&quot;gem-bundler&quot;&gt;Gem, Bundler&lt;/h3&gt;
+
+&lt;p&gt;Ruby 的包称为ruby gem, 包管理工具也是 gem. 而对于包依赖管理则是 bundler 来进行管理，在项目目录生成一个 Gemfile 文件，执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; 来自动安装依赖包。Gemfile 文件是这个样子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-gemfile&quot;&gt;source 'https://rubygems.org'
+
+gem 'rails', '4.1.0.rc2'
+gem 'rack-cache'
+gem 'nokogiri', '~&amp;gt; 1.6.1'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;testing&quot;&gt;testing&lt;/h3&gt;
+
+&lt;p&gt;Ruby 的默认单元测试框架是 Test::Unit, 也可以换成如 rspec 之类。&lt;/p&gt;
+
+&lt;h3 id=&quot;rubocop&quot;&gt;rubocop&lt;/h3&gt;
+
+&lt;p&gt;由于 Ruby 提供了丰富的语法，导致项目开发时可能会出现风格迥异的情况，因此，一些大型项目会定义 Ruby 的编程风格(code style)，比较知名的有 airbnb 的 Ruby Style Guide.&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;而工具检查方面，robocop 静态检查工具可以很好的检查 Code Style 的符合情况，另外，rubocop 也可以检查代码中的其他一些问题。&lt;/p&gt;
+
+&lt;h2 id=&quot;设计哲学&quot;&gt;设计哲学&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-让程序员享受编程的乐趣&quot;&gt;1. 让程序员享受编程的乐趣&lt;/h3&gt;
+
+&lt;p&gt;Matz 认为编程语言首先应该是给程序员服务的。因此在 Ruby 首先考虑的是提升程序员的效率，让程序员满意，而非一味从服务器运行效率等机器角度考虑设计。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;人们特别是电脑工程师们，常常从机器着想。他们认为：“这样做，机器就能运行的更快；这样做，机器运行效率更高；这样做，机器就会怎样怎样怎样。”实际上，我们需要从人的角度考虑问题，人们怎样编写程序或者怎样使用机器上应用程序。我们是主人，他们是仆人。&lt;sup id=&quot;fnref:4&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ruby 继承了 Perl 的设计原则（TMTOWTDI: There’s More Than One Way To Do It），提供了处理同样事务的多种方法。这与 Python 的只提供一种解决方法的设计思想(Zen of python: There should be one– and preferably only one –obvious way to do it)恰恰相反。对于程序员而言，Ruby 更自由、更灵活，但也会导致多人项目的代码风格迥异，可读性不如 python 代码。&lt;/p&gt;
+
+&lt;p&gt;就我个人而言，Ruby 编程确实很有意思，一方面是 Ruby 可以用很少量的代码实现更多的功能，另一方面是能想到的功能基本上没有什么语法限制，都可以实现。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-最小惊讶原则pola-principle-of-least-astonishment&quot;&gt;2. 最小惊讶原则(POLA: principle of least astonishment)&lt;/h3&gt;
+
+&lt;p&gt;Matz 认为编程语言应该尽可能符合程序员的预期，也就是所谓的“最小惊讶原则”。有一个典型的例子，如果在 python 的终端交互界面上输入 exit, python 会提示让你加括号，可是既然编程语言都判断出用户想退出了，为什么还需要让用户再次输入精确的命令呢？相反的，在 irb 上输入 exit, quit 都可以实现用户的预期 —— 退出交互终端。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;irb
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:001:0&amp;gt; &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;irb
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:001:0&amp;gt; quit
+
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit
+&lt;/span&gt;Use &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; or Ctrl-D &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;i.e. EOF&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; to &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;不过 Ruby 里也有让人“惊讶”的地方，最为诟病的一点是关于布尔判断，在 Ruby 里面，除了 false 和 nil 被判断为 false 外，其他都为 true, 包括 0, [], 这与很多语言的布尔判断约定是不一样的。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-一切皆对象&quot;&gt;3. 一切皆对象&lt;/h3&gt;
+
+&lt;p&gt;Ruby 是存粹的面向对象语言，上述语法也说明了这一点。&lt;/p&gt;
+
+&lt;p&gt;当然 Ruby 也比较有争议性，喜欢的人很喜欢，不喜欢的人理由也有千千条。但对于喜欢 Ruby 的人来说，Ruby 的缺点都不算缺点，正如 Ruby on Rails 的创始人 dhh 最近在 Twitter 上说：
+“Ruby was fast enough in 2003 to build a business like Basecamp with no impediments.” 尽管2003年的 Ruby 是被吐槽出奇慢的 1.8 版本。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;em&gt;The Ruby Programming Languange&lt;/em&gt;: https://book.douban.com/subject/2337297/ &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Ruby official: https://www.ruby-lang.org/ &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Airbnb’s Ruby Style Guide: https://github.com/airbnb/ruby &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;The Philosophy of Ruby - A Conversation with Yukihiro Matsumoto, Part I: https://www.artima.com/intv/ruby.html &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="tech" /><category term="Ruby" /><category term="编程语言" /><summary type="html">Ruby is designed to make programmers happy. – Matz (松本行弘)</summary></entry><entry><title type="html">影响人类命运的是什么？</title><link href="https://hutusi.com/articles/guns-germs-and-steel" rel="alternate" type="text/html" title="影响人类命运的是什么？" /><published>2020-11-29T03:20:00+00:00</published><updated>2020-11-29T03:20:00+00:00</updated><id>https://hutusi.com/articles/guns-germs-and-steel</id><content type="html" xml:base="https://hutusi.com/articles/guns-germs-and-steel">&lt;p&gt;美国社会学家贾雷德·戴蒙德的《枪炮、病菌与钢铁》&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;，源于他在新几内亚岛屿上研究鸟类问题时，他的一位当地朋友问他的一个问题：“为什么白人制造了那么多的货物并将它们运到新几内亚来，而新几内亚黑人却几乎没有属于自己的货物呢？”这个问题又可以展开来这样问：“为什么财富和权力的分配会是现在这个样子，而不是某种别的方式呢？为什么不是印第安人、非洲人和澳大利亚土著杀害、征服或消灭欧洲人或亚洲人呢？”&lt;/p&gt;
+
+&lt;p&gt;这些问题初看起来很好笑，因为稍微有点历史常识的人都知道，在欧洲航海时代来临后，白人靠着钢铁武装的坚船利舰，用枪炮征服了美洲、非洲等世界各地，白人带去的天花等病毒杀死了绝大部分印第安人；欧洲人靠着枪炮、病菌与钢铁征服了其余世界，这也是本书名称的来源。可是作者显然不满足这个浅而易见的答案，而是要继续追问，为什么是欧洲人给印第安人带去了枪炮、病菌与钢铁，而不是反过来。&lt;/p&gt;
+
+&lt;p&gt;作为一名医学院教授，他不是从传统的历史书找答案，而是利用他的科学知识和对地理环境的研究，从生物演化的角度来分析历史。从700万年前的类人猿开始，人类的大多数时间都是靠捕猎和采摘野物为生，直到一万一千年前有些地区的民族开始农业生产，地区和民族的发展开始差异化并增大。也就是说，农业生产直接造成了地域和民族间的不平等。因为农业可以生产出更多的食物，而更多的食物才促使密集人口的形成，并来带了定居的生活方式，产生了社会和等级。这种等级社会并非只有剥削，而是产生了专职的人才，从而形成文字、技术，乃至工业。农业社会对狩猎社会的优势是碾压式的，对于现行发展出粮食生产的农业民族的周边部落来说，要不接受农业生产，要么就被征服同化。&lt;/p&gt;
+
+&lt;p&gt;就世界范围来看，最先出现农业生产的是西南亚的新月沃地即两河流域（公元前8500年）和中国的黄河长江流域（公元前7500年），而后则是欧洲、东南亚、南亚等地，美洲的印第安人则到公元前3000年左右才学会粮食生产，另外有些地域则到了近代才开始进入农业社会。作者认为，这并不是源自这些民族的天生差异，而是源自他们所处的环境的差异。首先是可以驯化的野生物种品种的差异，大多数的野生动植物是不适合驯化的，而在欧亚大陆的民族则很幸运的能在大量的物种间去试验；非洲次之，美洲又次之，澳大利亚条件最差，他们的第一代智人在来到大陆后甚至灭绝了一些大型动物，以至于后来没有大型的哺乳动物可供驯化。再则是农业生产的影响传播和迁移速度，欧亚大陆又占据了优势，欧亚大陆在地图上是横着的，也就是说大部分的地域纬度相近，这样就利于农作物生产的传播；美洲大陆在地图上是纵向的，纬度相差很大，气候条件因而相差也很大，这就阻碍了农业生产的传播。欧亚大陆的这些优势加上地域辽阔，也造成了更多的人口，更多的人口相应也促成了更多的发明创造，这种优势积累下来对其他大陆太大了。&lt;/p&gt;
+
+&lt;p&gt;不过，作者又提了个问题：为什么欧亚大陆在近代占据政治和经济支配地位的是欧洲，而不是新月沃地的西亚国家或中国呢？直到1450年前，欧洲都是这三个地区中最落后的一个。我记得的一个历史年份是1453年，奥斯曼帝国攻占拜占庭，历时1500余年的罗马帝国灭亡，这也象征着欧洲中世纪的结束。同时，当年英法百年战争结束；1492年，哥伦布发现美洲；而这段时间，意大利开始文艺复兴运动，马丁路德在德意志发起宗教改革。新大陆的发现及殖民、文艺复兴、宗教改革开启了欧洲资本主义的萌芽，金融和资本、加上一系列的科学和技术突破，又在欧洲大陆引发了改变人类命运的工业革命。&lt;/p&gt;
+
+&lt;p&gt;如果说农业革命是因为上述的环境优势造成在新月沃地和中国优先发展起来，那么工业革命的诞生则是源于欧洲的分裂社会及文化。作者举了个例子：中国明朝永乐三年（1405年）郑和便带领宝船队下西洋，船队有几百只船只和两万多名船员，横渡印度洋直到非洲东海岸；相比而言，几十年后的哥伦布探险美洲的船队不过只有三只小船。郑和的船队下西洋七次，然后便停止了，因为朝中的政治斗争，反对太监的人占了上风，便叫停了下西洋。等明宪宗想再下西洋时，大臣刘大夏因担心太监当权得势，干脆将郑和下西洋的档案资料都烧毁了。而与此对比的是，哥伦布出生在意大利，到法国谋生，后又去葡萄牙，请求国王和王公贵族支持他的航海探险计划，再被拒绝后又去找西班牙国王，最后在西班牙王室的支持下开启了航海计划。&lt;/p&gt;
+
+&lt;p&gt;作者说，正是因为欧洲是分裂的，哥伦布才得以成功。而一旦西班牙在对美洲殖民并获得财富后，其他欧洲国家立刻效仿，并加入美洲殖民的行列。这对于电灯、大炮、火器等发明也是如此，开始时被人们所忽视或嘲笑，但一旦有地区采用并起到效果，会很快传播到欧洲其他地区。中国从秦朝统一以来，大部分时间是统一的，而且书同文车同轨，建立了牢固的文化统一。欧洲在历史上则大多数时间是分裂的，多则上千个国家，现在仍是几十个国家几十种语言的状态。作者认为这可能与欧洲和中国的地理环境有关：欧洲海岸线犬牙交错，有5大半岛；中国海岸线则平直的多，只有附近的朝鲜半岛比较大；欧洲两大岛屿不列颠和爱尔兰岛面积都很大，中国的台湾岛和海南岛则只有爱尔兰岛的一半；这些都让它们难以成为重要的独立政体。欧洲被一些高山分割，中国在青藏高原以东则没有难以跨越的山脉，且长江和黄河又将中国的中心地带从东到西连接了起来，加上南北大运河，连成了水运一体。因此中国在秦朝统一后，即使出现过分裂局面，但最终会重归于统一。而欧洲的查理曼、拿破仑、希特勒都试图统一欧洲，最终无能为力。四通八达的地理环境给中国带来了农作物的融合，也为统一创造了良好的条件。但随着时间的推移，这种优势又成了不利条件，专制君主的一个决定就能让改革创新半途而废。&lt;/p&gt;
+
+&lt;p&gt;这样的历史表明：环境改变了，过去是第一不能保证将来也是第一。而现代社会中，航天、航海运输让货物在全世界流通极为顺畅；互联网让知识的传播更是没有地理的限制；地理环境是否还会延续它的影响规则呢？作者说：所谓的新规则不过是旧规则的改头换面而已。美国贝尔实验室发明的晶体管跃进到了8000英里外的日本开创了电子工业，而不是在更近的扎伊尔或巴拉圭建新工业。一跃而成新兴力量的国家，仍然是几千年前优先成为粮食生产农业中心的那些国家：新月沃地旁的欧洲、中国及受中国影响的日本、韩国等地，或是由这些国家殖民统治重新建立的国家如美国、澳大利亚等。而非洲、土著、美洲印第安人等仍然处于从属地位。一万多年前的历史进程仍左右着这个世界的秩序。&lt;/p&gt;
+
+&lt;p&gt;本书的副标题是“人类社会的命运”，作者希望通过一种科学的方法来研究历史，而不是传统意义上的人文学科。物理学史中有个叫拉普拉斯妖的典故&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;，是十九世纪初物理学家拉普拉斯提出的一个猜想，他说如果有一位智者（后人称为妖 demon），只要他知道宇宙中每一个原子的位置和动量，那么根据牛顿力学公式，就能演算出宇宙的过去和未来。后来量子力学的发现、测不准原理让这种猜想失算。未来不可知。但如果我们认识到是什么原因造就了现代社会这个样子，也许我们就能了解到如何造就更好未来的办法，也许人类社会的命运就会在科学的历史研究中改变。&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;《枪炮、病菌与钢铁》豆瓣链接: https://book.douban.com/subject/26743265/ &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;拉普拉斯妖(维基百科): https://zh.wikipedia.org/wiki/拉普拉斯妖 &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="essay" /><category term="书评" /><category term="历史" /><category term="人类社会" /><summary type="html">美国社会学家贾雷德·戴蒙德的《枪炮、病菌与钢铁》1，源于他在新几内亚岛屿上研究鸟类问题时，他的一位当地朋友问他的一个问题：“为什么白人制造了那么多的货物并将它们运到新几内亚来，而新几内亚黑人却几乎没有属于自己的货物呢？”这个问题又可以展开来这样问：“为什么财富和权力的分配会是现在这个样子，而不是某种别的方式呢？为什么不是印第安人、非洲人和澳大利亚土著杀害、征服或消灭欧洲人或亚洲人呢？” 《枪炮、病菌与钢铁》豆瓣链接: https://book.douban.com/subject/26743265/ &amp;#8617;</summary></entry><entry><title type="html">周刊第八期：如何应对公开错误</title><link href="https://hutusi.com/articles/weekly-8" rel="alternate" type="text/html" title="周刊第八期：如何应对公开错误" /><published>2020-11-22T11:50:00+00:00</published><updated>2020-11-22T11:50:00+00:00</updated><id>https://hutusi.com/articles/weekly-8</id><content type="html" xml:base="https://hutusi.com/articles/weekly-8">&lt;p&gt;本文为周刊第八期，前期的周刊参见：&lt;a href=&quot;/tags/周刊&quot;&gt;周刊系列&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;本期话题如何应对公开错误&quot;&gt;本期话题：如何应对公开错误&lt;/h2&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://meta.wikimedia.org/wiki/So_you%27ve_made_a_mistake_and_it%27s_public...&quot; target=&quot;_blank&quot;&gt;So you’ve made a mistake and it’s public…&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;wikimedia 上的这则文章讲述了在公共场合犯了错误后如何应对和弥补，文中给出了五个步骤的指导：&lt;/p&gt;
+
+&lt;h3 id=&quot;步骤0&quot;&gt;步骤0&lt;/h3&gt;
+
+&lt;p&gt;首先要认识到错误已经发生了，装作没有做错是没有用的，而且只会让事情变得更糟。&lt;/p&gt;
+
+&lt;h3 id=&quot;步骤1&quot;&gt;步骤1&lt;/h3&gt;
+
+&lt;p&gt;想一想自己犯的错：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;是什么造成了这个错误？&lt;/li&gt;
+  &lt;li&gt;是因为基于错误的信息吗？&lt;/li&gt;
+  &lt;li&gt;还是因为信息不足？&lt;/li&gt;
+  &lt;li&gt;或是因为依赖直觉？&lt;/li&gt;
+  &lt;li&gt;是因为迫于期限或他人的压力？&lt;/li&gt;
+  &lt;li&gt;是因为遵从了不完善的流程？&lt;/li&gt;
+  &lt;li&gt;是否因为基于自己的期望而非实际情况作出的行动？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;你可以悄悄写下上述问题的答案，然后想想看哪些项可以避免发生错误。&lt;/p&gt;
+
+&lt;h3 id=&quot;步骤2&quot;&gt;步骤2&lt;/h3&gt;
+
+&lt;p&gt;想一想再次犯该错误或此类错误的可能性：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可能性有多大？&lt;/li&gt;
+  &lt;li&gt;从该错误中吸取教训后，可以采取哪些措施来减少再次发生的几率？&lt;/li&gt;
+  &lt;li&gt;在这些措施中，你愿意采取哪些措施？&lt;/li&gt;
+  &lt;li&gt;哪些是现在可以立即实施的？&lt;/li&gt;
+  &lt;li&gt;哪些是准备长期实施的？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;步骤3&quot;&gt;步骤3&lt;/h3&gt;
+
+&lt;p&gt;在做好步骤1和步骤2的充分准备后，用简洁清晰的语言写一封公开信或：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;承认犯了错误。&lt;/li&gt;
+  &lt;li&gt;错误是什么，尽可能准确的描述。&lt;/li&gt;
+  &lt;li&gt;对你的失误造成的损失表示歉意。&lt;/li&gt;
+  &lt;li&gt;你已经从中吸取了教训。&lt;/li&gt;
+  &lt;li&gt;你已经采取了那些措施来减轻或弥补错误造成的影响。&lt;/li&gt;
+  &lt;li&gt;你将采取什么措施来防止类似的错误发生。&lt;/li&gt;
+  &lt;li&gt;邀请大家评论并给予建议。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;步骤4&quot;&gt;步骤4&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;实际去执行承诺的补救和防范措施。&lt;/li&gt;
+  &lt;li&gt;对不能立即采取的行动措施建立跟踪，必须在下次的年度会议上讨论。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这则指导实际上体现了两件事：1. 对错误进行回顾和反思；2. 如何在公共场合应对错误可能引发的（信任）危机。关于第一点 ，美军有个实践叫 AAR (After-action review), 有很多公司采用；而对于第二点，引用文章的一句话即是：“阳光是最好的消毒剂。”真诚透明与共情是处理公共危机的最好办法，也是与他人共处的最好方式。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Sunlight is the best disinfectant, as Judge Brandeis observed.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;文摘&quot;&gt;文摘&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-gitlab-世界上最透明的公司&quot;&gt;1. GitLab: 世界上最透明的公司&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://theorg.com/insights/gitlab-the-worlds-most-transparent-company&quot; target=&quot;_blank&quot;&gt;GitLab: The World’s Most Transparent Company&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2017年（我记得好像是春节期间），GitLab 遭受了一起网络攻击，维护团队迅速修复了这个问题。但在运维过程中，一名工程师不小心删除了现网产品数据库，六个小时的生产数据被删。这次事件也上了 Hacker News 的头条，而 GitLab 干脆决定通过 Youtube 实况转播整个恢复过程，这种透明公开的做法得到了网友的肯定。&lt;/p&gt;
+
+&lt;p&gt;现在，GitLab 已经成为全球最大的全远程(all-remote)工作公司，1300名员工分布在65个国家，服务三千万注册用户。还有传言该公司将在2021年上市。GitLab 的源码、文档、工作过程都开源在 gitlab.com/gitlab-org 官方组织下，说他们是最透明的公司确实不为过。我最惊讶的一点是他们是有社区办，也有商业版，后来他们将商业版的代码也开放了。（GitHub 的 CEO 曾说过要开放所有的代码，但实际没有 GitLab 做的彻底，当然它们的商业规模相差很大。）&lt;/p&gt;
+
+&lt;p&gt;并不是每位新进 GitLab 的员工都能理解这种透明的文化，刚开始他们会很不习惯被“暴露”在公开社区的工作方式。但很快员工就会习惯，因为透明和开放让协作变得更简单。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“It’s deeply uncomfortable, if you’re new to it, as it can be unsettling to feel so exposed,” said Rebecca Dodd, the Managing Editor at GitLab. “But we’ve gotten used to it. Collaboration is easier this way. To have all your work out in the open, you conduct yourself in the way that you would expect when you’re doing that in public, so I think the culture is generally really nice and kind and collaborative. When you see that, you see there’s no reason to hide things behind closed doors.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;2-管理黑客新闻的孤独工作&quot;&gt;2. 管理”黑客新闻”的孤独工作&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.newyorker.com/news/letter-from-silicon-valley/the-lonely-work-of-moderating-hacker-news&quot; target=&quot;_blank&quot;&gt;The Lonely Work of Moderating Hacker News&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;“黑客新闻” Hacker News(以下简称 HN)是硅谷著名的风险投资公司 Y-Combinator 旗下的一个新闻聚合网站，在 IT 行业特别流行。特别是硅谷的科技从业者，对他们来说看 HN 就像纽约人读《纽约时报》或《纽约邮报》一样为生活必需。&lt;/p&gt;
+
+&lt;p&gt;HN 于2007年面世，保罗·格雷厄姆(Paul Graham)用 Arc(格雷厄姆设计的一种 Lisp 方言)写成。起初，格雷厄姆给他起名为 Startup News, 但后来考虑到创业的话题过于狭窄，就放宽到黑客(hacker, 此黑客非计算机网络犯罪的骇客，参见格雷厄姆的书《黑客与画家》)领域，提供“有趣”的信息聚合服务。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Within a few months, though, Graham found that startup-centric conversation had its limits. He renamed the site Hacker News, and expanded its focus to include “anything that good hackers would find interesting . . . anything that gratifies one’s intellectual curiosity.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;HN 从最初每天一千用户访问到现在的每月约五百万用户访问（本文发表于2019年8月），受到越来越多的技术人员的欢迎。HN 的首页更是成为了技术趋势的榜单，很多技术人员将自己的博客或项目能登上 HN 首页视为荣耀。HN 除了提供原文链接外，还提供了用户评论功能，这些评论很多时候比原文中的评论还热闹。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Landing a blog post or personal project on the front page is a badge of honor for many technologists.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;但有人的地方就有江湖。评论往往在几楼之后就开始偏离主题，语气刻薄、傲慢，甚至充满攻击和敌意。Facebook 和 Youtube 有人数众多的外包团队做内容和评论审查，而 Reddit 在遇到问题内容时也会毫不留情的清扫干净。但 HN 的维护者只有两个人，加克尔(Gackle)和贝尔(Bell)，他们的做法则温和的多，也慢的多，甚至会与 HN 的用户通过邮件方式交心长谈。&lt;/p&gt;
+
+&lt;p&gt;这篇《纽约客》的文章主要内容是对 HN 维护者加克尔和贝尔的采访。加克尔毕业论文写的是19世纪俄罗斯诗人，贝尔学的是网络工程，业余搞朋克乐队。他们因为爱好 Lisp 语言而结识，共同创业做了一个在线表格服务 Skysheet, 被 Y-Combinator 投资。后来 Skysheet 做不下去了，格雷厄姆邀请他们加入 HN, 专职做 HN 的代码开发。而他们就成为了 HN 唯二的员工，不但维护其技术架构，还要做社区运营管理和内容审查。&lt;/p&gt;
+
+&lt;p&gt;他们对待社区用户的态度是：耐心。耐心到他们开始学习非暴力沟通、社会学、心理疗法，贝尔还特别推荐了一本个人成长的书《个人形成论》(&lt;em&gt;On Becoming a Person&lt;/em&gt;)，该书被誉为人文心理学运动圣经。他们甚至还期望从印度哲学等古老文化中获得帮助。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“If we’re trying to change something deep, the ingredient is time,” Bell said. “Patience allows us to be ambitious—to imagine people being more kind to each other, for example. It sounds kind of crazy.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;但他们发现社区上的用户仍不能互相友好对待时，还是会感觉受到打击。而且随着 HN 的用户规模扩大，社区不文明的现象也更多，特别是在政治话题上。加克尔和贝尔还实验了“政治排毒周”(Political Detox Week)的想法，将政治类文章打上标签，以便让理性的用户绕开政治类文章讨论。&lt;/p&gt;
+
+&lt;p&gt;作者最后借助加克尔的原话说他们就像是试图阻止潮水上涨的卡努特国王，但这是有意义的尝试：在飞速发展的互联网时代，需要人文主义来建设更好的网络社区。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I pictured Bell and Gackle as swimmers in a resistance pool, doing slow crawls against the currents of online discourse. I hoped the project of Hacker News was worth the effort. I wondered if their work might show that tech really does need humanism—that better online communities can be built one relationship at a time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;看完这篇文章我最大的感受是，原来 HN 竟然只有两名员工在维护，包揽了从开发到运维的所有工作。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-你的电脑不再是你的&quot;&gt;3. 你的电脑不再是你的&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://sneak.berlin/20201112/your-computer-isnt-yours/&quot; target=&quot;_blank&quot;&gt;Your Computer Isn’t Yours&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;理查德·斯托曼(RMS)曾写过一篇著名的科幻短文《阅读的权利》&lt;em&gt;&lt;a href=&quot;https://www.gnu.org/philosophy/right-to-read.en.html&quot; target=&quot;_blank&quot;&gt;The Right to Read&lt;/a&gt;&lt;/em&gt;, 在文中描述的未来2096年，那时的人们不能自由分享书本，因为电脑上的书籍都是有版权的，电脑预装的软件实时进行版权监控，何时何地被何人阅读的信息都会被上报到服务器；只要一联网，版权机构便可以抓到阅读盗版者。而制作破解软件的人被投入监狱，电脑甚至不提供 root 权限给安装可以绕过版权软件的自由操作系统。而反抗的人们最终只能逃离到月球。&lt;/p&gt;
+
+&lt;p&gt;作者说，这种看似荒诞的预言正在成为现实：在苹果最新发布的操作系统 macOS Big Sur 中，OS 会给苹果服务器发送用户每次运行软件的唯一识别码，即使在离线状态下也会记录下来，在联网后一起发送。包括了应用程序、时间、地点、IP 等信息，也就是说，苹果知道你在哪里用电脑，用什么软件，什么时候用。而且，这些信息数据并没有加密，且发送到另一家CDN服务商接收；前不久还报出来新版 macOS 上的苹果自家软件可以绕过防火墙和 VPN 发送数据：&lt;a href=&quot;https://thenextweb.com/plugged/2020/11/16/apple-apps-on-big-sur-bypass-firewalls-vpns-analysis-macos/&quot; target=&quot;_blank&quot;&gt;Apple apps on Big Sur bypass firewalls and VPNs — this is terrible&lt;/a&gt;，这也就是说即使用户想通过 VPN 来隐藏接入网络的信息也不可能。&lt;/p&gt;
+
+&lt;p&gt;当然很多用户可能不关心这些（实际上，iPhone、iPad 等苹果移动设备很早就这么干了），因为相对于隐私而言苹果提供的产品体验更好。苹果这么做的目的并不是要窃取用户隐私，而是收集信息来打造更佳的体验，RMS 曾称呼乔布斯为“邪恶的天才”（参见&lt;a href=&quot;/articles/rms&quot;&gt;《自由的代价》&lt;/a&gt;），因为苹果创造的数字蜜糖是包裹着毒药的，让自己“心甘情愿”的放弃隐私。最后用户只剩下两种选择：1. 拥有一台没有隐私的先进时髦的电脑；2. 或一台过时的旧电脑（保护自己的隐私）。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;These machines are the first general purpose computers ever where you have to make an exclusive choice: you can have a fast and efficient machine, or you can have a private one. (Apple mobile devices have already been this way for several years.)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后，作者疾呼: “Dear Frog, This Water Is Now Boiling.” RMS 和 Cory Doctorow(一位知识共享运动倡导者)警告过我们的事情正在变成现实。&lt;/p&gt;
+
+&lt;p&gt;关于科技体验和隐私之间的冲突问题，相信人们应该能找到解决办法。&lt;/p&gt;
+
+&lt;h2 id=&quot;工具&quot;&gt;工具&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-在线架子鼓&quot;&gt;1. 在线架子鼓&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://drumbit.app/&quot; target=&quot;_blank&quot;&gt;drumbit - online drum machine&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一个在线的架子鼓应用，可以通过标记按键录制打击乐。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-书格&quot;&gt;2. 书格&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://new.shuge.org/&quot; target=&quot;_blank&quot;&gt;书格&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;摘自书格的官方介绍：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;书格（Shuge.org）是一个自由开放的在线古籍图书馆。致力于开放式分享、介绍、推荐有价值的古籍善本，并鼓励将文化艺术作品数字化归档。分享内容限定为公共版权领域的书籍（参照标准 伯尔尼公约）；我们最大限度地还原书籍品貌、内容；借此计划让大家自由、免费地欣赏到那些难以现世的书籍。让大家能从中感受到人类文明进程。&lt;/p&gt;
+
+  &lt;p&gt;书格发布的书籍主要以高清彩色影像版本 PDF 格式，大部分书籍书籍单页宽度在 1400 像素以上，跨页宽度在 2400 像素以上。书籍刊行年代有从宋元珍本，明清善本到近代刊本。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;3-海明威编辑器&quot;&gt;3. 海明威编辑器&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;http://www.hemingwayapp.com/&quot; target=&quot;_blank&quot;&gt;Hemingway App makes your writing bold and clear.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;海明威的写作风格以简洁著称，作品以短句为主，而且主张积极避免消极，多用肯定少用否定，并使用充满激情的词语；这让他在二十一世纪初众多的意识流派作家中显得特立独行。海明威编辑器便是源自该灵感，如果句子长了会给予提示告警，并且会对一些隐晦的词语、委婉的语气词给予替换建议。如标题所说：海明威编辑器让你的文字更清晰、更有力量。&lt;/p&gt;
+
+&lt;h2 id=&quot;人物&quot;&gt;人物&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-guido-van-rossum&quot;&gt;1. Guido van Rossum&lt;/h3&gt;
+
+&lt;p&gt;链接： &lt;a href=&quot;https://mobile.twitter.com/gvanrossum/status/1326932991566700549&quot; target=&quot;_blank&quot;&gt;I decided that retirement was boring and have joined the Developer Division at Microsoft. &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;64岁的 Python 语言创始人 Guido van Rossum 发推特声称自己觉得退休生活太无聊，决定加入微软开发部门。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;天生的喜欢离群索居，而又能说会道，一方面不愿与人交接，另方面又巴不得找个人谈谈天，结果就只好对自己瞎聊了。凡是过惯孤独生活的人都懂得独语是很自然的事情。心里的话非发泄一下不可。对着空间大声讲话，便是一个发泄的办法。一个人独个儿高声讲话，就是和心里的神道交谈。&lt;/p&gt;
+
+  &lt;p&gt;雨果《笑面人》 鲁膺 译&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="weekly" /><category term="周刊" /><summary type="html">本文为周刊第八期，前期的周刊参见：周刊系列。</summary></entry><entry><title type="html">周刊第七期：如何学习</title><link href="https://hutusi.com/articles/weekly-7" rel="alternate" type="text/html" title="周刊第七期：如何学习" /><published>2020-11-08T07:15:00+00:00</published><updated>2020-11-08T07:15:00+00:00</updated><id>https://hutusi.com/articles/weekly-7</id><content type="html" xml:base="https://hutusi.com/articles/weekly-7">&lt;p&gt;本文为周刊第七期，前期的周刊参见：&lt;a href=&quot;/tags/周刊&quot;&gt;周刊系列&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;话题如何学习&quot;&gt;话题：如何学习&lt;/h2&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.simplethread.com/learning-to-learn/&quot; target=&quot;_blank&quot;&gt;Learning to Learn&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;作者经历了一次特别的面试，面试中的一个环节是考察应试者学习新的 Web 框架；作者需要花七天时间学习一个从未接触过的 Web 框架，然后在在线编程面试中展示学到的知识和技能。也就是说，雇主考察的不是面试者已具有的技能，而是他学习新技术的技能，这其实也是软件行业最重要的技能。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Rather, they wanted to see how quickly, when left to my own devices, could I learn a new technology. This exercise highlighted perhaps the most important skill in the software industry–learning.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;作者总结了他的学习经验，学习的最佳方式是实践，而实践需要应用正确的态度和方法。这里，作者引用了布卢姆分类学金字塔(Bloom’s Taxonomy Pyramid)：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://rmt.dogedoge.com/fetch/hutusi/storage/blog/weekly-7-blooms-taxonomy_upside_down_pyramid.png?w=1280&quot; alt=&quot;Bloom’s Taxonomy Pyramid&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;图片摘自：Anderson, L. W. and Krathwohl, D. R., et al (Eds..) (2001) A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom’s Taxonomy of Educational Objectives.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;金字塔底层是低层次思维能力(lower-level thinking skills), 而往上是越来越高层次的思维能力(higher-level thinking skills)。&lt;/p&gt;
+
+&lt;p&gt;早期的教育都聚焦于教授学生低层次思维能力：记忆(remembering)和理解(understanding)。记单词、数字、课文，并要花很多时间去理解这些死记硬背的东西。学生在这个阶段都很痛苦，但一旦理解了概念抽象，开始进入应用(applying)、分析(analyzing)、评鉴(evaluating)阶段，学习就开始突飞猛进。这就是学习的曲线。&lt;/p&gt;
+
+&lt;p&gt;学生在学校阶段就是一直在学习如何学习，但这是很难的一件事，即使对于一个有经验的学习者来说，在进入新领域时第一步仍是困难的。&lt;/p&gt;
+
+&lt;p&gt;学习第一种编程语言很难，可是当你掌握了一种编程语言，再学第二、第三种编程语言时，你开始发现它们之间的关联————相似点和不同点，而学习曲线也会平滑的多，进步也更快。而学习新语言还会让你对已掌握的语言理解更深刻。&lt;/p&gt;
+
+&lt;p&gt;作者用一个词“水涨船高”(A rising tide lifts all boats)来总结这一现象，即学习新知识可以提升已有的知识体系。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“A rising tide lifts all boats,” phenomenon, meaning that learning something new can actually improve your network of existing knowledge.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;比较有名的是如下的这幅图，几乎所有的知识管理文章都会提及：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://rmt.dogedoge.com/fetch/hutusi/storage/blog/weekly-7-data-info-knowledge-insight-wisdom-dikiw.png?w=1280&quot; alt=&quot;dikiw&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;图片摘自：https://frontaal.net/201604/gauc-2016-tips-inzichten-google-analytics-user-conference-amsterdam/information-isnt-power-david-somerville-data-info-knowledge-insight-wisdom-dikiw-700x228/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;学习了一种新技术就是在图中增加信息点(information)，并与其他信息点连接，当越来越多的点线连起来，你所拥有的知识大图也会呈现出来。&lt;/p&gt;
+
+&lt;p&gt;作者将这次学习 Web 框架的经历还写了另一篇博文 &lt;a href=&quot;https://www.simplethread.com/ruby-on-rails-in-a-week/&quot; target=&quot;_blank&quot;&gt;Ruby on Rails in a Week&lt;/a&gt;。回顾我之前学习 Ruby on Rails 的经历，我觉得 Web 技术、Ruby 语言基础是学习前的必备知识；跟着网上的资料做了一些 Rails 应用，这些实践帮助学习掌握了 Rails。但让我真正理解 Rails 的是一本叫 &lt;em&gt;Rebuilding Rails&lt;/em&gt; 的书，我按照书中的指导从零实现了一遍简易版的 Rails 框架后，才真正领悟到了 Rails 的思想。这种以实现该技术本身的方式虽然会比较耗费精力，但却是很有效果的一种方法，特别是在软件领域。我认识到的人中也有在做这方面的努力，geektutu 有个&lt;a href=&quot;https://geektutu.com/post/gee.html&quot; target=&quot;_blank&quot;&gt;“七天从零实现”系列&lt;/a&gt;就是棒的学习 Go 语言的参考。&lt;/p&gt;
+
+&lt;h2 id=&quot;文摘&quot;&gt;文摘&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-哪种编程语言最环保&quot;&gt;1. 哪种编程语言最环保&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://thenewstack.io/which-programming-languages-use-the-least-electricity/&quot; target=&quot;_blank&quot;&gt;Which Programming Languages Use the Least Electricity?&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;去年来自葡萄牙三所学校的六名研究人员发布了一份调查报告，对比了27种编程语言的能耗情况（解决相同问题）。不出意外，结果显示 C 语言能耗最低。并且编译型语言的能耗普遍比解释型语言低。&lt;/p&gt;
+
+&lt;p&gt;不过最快的不一定是最节能的，比如 go. 另外，文中图表显示 go 的内存使用比 C 少，这一点我表示不解。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-我想回到台式机电脑的时代&quot;&gt;2. 我想回到台式机电脑的时代&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;http://misc-stuff.terraaeon.com/articles/locked-down-computers.html&quot; target=&quot;_blank&quot;&gt;I am Seriously Considering Going Back to Desktop Computers&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;作者对个人电脑的未来表示悲观，他认为1980年代个人电脑的黄金时期已经过去了。那时候可以自由组装电脑，自由装软件，自由下载、传播并存储电影、音乐等资料。而现在，信息资料不需要（有时也不能）被个人拥有或存储，全都在互联网巨头的云服务中，比如 Apple、Google、Netflix 等，而这些资料说不定什么时候就因为版权原因被删除了。UEFI 阻止了很多未认证的 Linux 操作系统的安装，如果想装自由的操作系统只能在没有 UEFI 主板的电脑上安装，但 2012 起已经买不到没有 UEFI 安全启动组件的笔记本电脑了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is why the trend toward stripped-down, Big-Brother-controlled computers has me genuinely worried.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;作者已经七年没有用过台式机了，但他现在很想 DIY 台式机，选择没有 UEFI 的主板，但这种愿望越来越难以实现了。很多人不能理解他的想法，因为现在的年轻人已经习惯被锁在巨头所控制的平台下的世界了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;They have no experience with anything but locked-down platforms–just as 96% of the generation before them knew nothing but Microsoft operating systems. To call this a tragedy is not being overly dramatic.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;3-糟糕的-google-新-logo&quot;&gt;3. 糟糕的 Google 新 Logo&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://techcrunch.com/2020/10/06/googles-new-logos-are-bad/&quot; target=&quot;_blank&quot;&gt;Google’s new logos are bad&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Google 最近换了一批产品的 logo, 引起了诸多方面的吐槽。不过 Google 经常抛弃自己的app、服务、设计语言，这种事情其实也属司空见惯。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;That can be important, especially with a company like Google, which abandons apps, services, design languages, and other things like ballast out of a sinking hot air balloon (a remarkably apt comparison, in fact).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这套新 logo 设计太过于激进，以至于将原先的设计理念都推翻了，作者从三个方面来阐述新设计的问题：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;颜色：每个产品的 logo 都包含了 Google 的四种设计颜色（红蓝绿黄），这也就意味着它们实际并没有代表的颜色。特别是大多数时候，用户只能看到浏览器工具栏上的小图标，更加区分不出它们之间的颜色区别了。&lt;/li&gt;
+  &lt;li&gt;形状：旧图标是符合 Google Material Design 设计理念的，新图标的扁平、中空的设计，而且几乎都是矩形，用户很难分清。&lt;/li&gt;
+  &lt;li&gt;商标：旧 Gmail 图标的 M 和信封的形状结合已经深入人心，而现在的新图标只不过是千万个彩虹图标中的一种，没有什么特色。这似乎是在告诉用户：“Gmail 这个服务没什么特殊的，它只是 Google 这家互联网巨头的一根小指头而已。”同质化的标志是在压缩品牌的价值，你不再是 Gmail 的用户，只不过是每天待在 Google 大房子里。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Google’s no stranger to throwing value in the trash.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后作者引用了 Google VP 的一段话，总结说 Google 是在丢弃那些长久以来建立在用户心中的信任，而重新来定义信任。这里作者用了 “capitalize” 一语双关：既说明这些新图标的设计是首字母大写(capitalize)的体现，也说明这是在商业化套现(capitalize)用户的信任。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“This is the moment in which we break free from defining the structure and the role of our offerings in terms that were invented by somebody else in a very different era,” Google VP Javier Soltero told Fast Company.&lt;/p&gt;
+
+  &lt;p&gt;The message is clear: Out with the old — the things that built your trust; and in with the new — the things that capitalize on your trust.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;4-世界需要核动力我们不应该害怕它&quot;&gt;4. 世界需要核动力，我们不应该害怕它&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.forbes.com/sites/startswithabang/2020/10/21/the-world-needs-nuclear-power-and-we-shouldnt-be-afraid-of-it/?sh=7124d4216576&quot; target=&quot;_blank&quot;&gt;The World Needs Nuclear Power, And We Shouldn’t Be Afraid Of It&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;几千年来的人类文明是由能源来推动发展的，近两百年来人类主要依赖化石燃料能源，而碳排放造成的温室效应已经危及人类的未来。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For thousands upon thousands of years, humans have been harnessing the power of nature to provide energy to push our civilization forward.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;本文从核能的物理原理、可控核能、可控核废料等方面试图消除普通民众对核能的误解。不过我觉得本文并没有讲到点子上，民众对核能的误解或恐惧主要不是源自上述几个方面，而是因为切尔诺贝利、福岛核电站等几次重大事故产生的阴影：如何保证核电站的百分之百的安全性？&lt;/p&gt;
+
+&lt;p&gt;以前看过 Netflix 关于比尔·盖茨的纪录片，对于第三集中安全核能的研究让我印象深刻，而该片对此问题的解释也更合理：比尔·盖茨认为现在全球大部分的核电站用的还是上世纪六、七十年代的技术，包括2011年因海啸失事的福岛核电站：它们在设计之初就缺少完善的软件建模，因此福岛核电站在设计上就有诸多缺陷，而导致了该次事故的严重后果。比尔·盖茨一直在试图建立新一代的核电站，本来计划在中国建造，由于贸易战被美国政府叫停。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The world needs nuclear power now more than ever. If we can overcome our entrenched biases against it, we just might solve one of the biggest problems facing our world for generations to come.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;有趣&quot;&gt;有趣&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-react-版的-windows-xp&quot;&gt;1. React 版的 Windows XP&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://winxp.now.sh/&quot; target=&quot;_blank&quot;&gt;Windows XP in React&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一位网友用 React 实现了模拟 Windows XP 的页面，里面的扫雷游戏甚至可以玩。该应用已开源，有人给它贡献了 Winamp 播放功能和 画图功能。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-无需编码轻松创建机器学习模型&quot;&gt;2. 无需编码轻松创建机器学习模型&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://lobe.ai/&quot; target=&quot;_blank&quot;&gt;Lobe: Machine Learning Made Easy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;微软出品的简单易用的机器学习软件，可以通过拍照来训练，做一些有意思的 AI 应用。上手视频也做的非常棒。&lt;/p&gt;
+
+&lt;h2 id=&quot;有用&quot;&gt;有用&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-google-产品服务的替代品&quot;&gt;1. Google 产品服务的替代品&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://nomoregoogle.com/&quot; target=&quot;_blank&quot;&gt;No More Google&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;该网站列出了一些 Google 服务的替代品，以防止 Google 追踪个人隐私。另外，个人的数据如果都放在了 Google 上，一旦 Google 账号被封，就会导致自己的邮件、照片、文档等全都不能访问，一位网友就遇到了这种情况：&lt;a href=&quot;https://www.businessinsider.com/google-users-locked-out-after-years-2020-10&quot; target=&quot;_blank&quot;&gt;What it’s like to get locked out of Google indefinitely&lt;/a&gt;。他的 Google 账号被官方封锁，Google 通知他是因为违反了用户条例，但又没有解释具体是因为什么原因。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-提示友好的-git-命令行工具&quot;&gt;2. 提示友好的 Git 命令行工具&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://github.com/chriswalz/bit&quot; target=&quot;_blank&quot;&gt;Bit is a modern Git CLI&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一个增强型的 Git 命令行工具，在输入 git 命令时弹出候选补全命令及解释。&lt;/p&gt;
+
+&lt;h2 id=&quot;词条&quot;&gt;词条&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-hector&quot;&gt;1. hector&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://www.merriam-webster.com/dictionary/hector#note-1&quot; target=&quot;_blank&quot;&gt;Merriam-Webster&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;v. 威吓，恐吓&lt;/p&gt;
+
+&lt;p&gt;单词音标：/ˈhek.tɚ/&lt;/p&gt;
+
+&lt;p&gt;来源：hector 来自荷马史诗中一位英雄的名字赫克托耳。他是特洛伊第一勇士，身型高大，头戴闪亮的头盔。在特洛伊战争中，赫克托耳数次带领特洛伊军队击退希腊联军。然而到了 17 世纪，在英国伦敦，由于一群无所事事、在街头巷尾打砸抢的小青年自称 hectors，觉得自己是年轻的勇士，hector 的名声“一落千丈”，现在作为动词都用在负面的语境里。&lt;/p&gt;
+
+&lt;p&gt;例句：The judge ordered the attorney to stop hectoring the witness.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-bibliophilia-和-bibliomania&quot;&gt;2. Bibliophilia 和 Bibliomania&lt;/h3&gt;
+
+&lt;p&gt;词条链接: &lt;a href=&quot;https://en.wikipedia.org/wiki/Bibliophilia&quot; target=&quot;_blank&quot;&gt;Bibliophilia&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;词条链接: &lt;a href=&quot;https://en.wikipedia.org/wiki/Bibliomania&quot; target=&quot;_blank&quot;&gt;Bibliomania&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bibliophilia 和 Bibliomania 拼写很相近，但意义各为褒贬。Bibliophilia 为爱书族、藏书家；而 Bibliomania 则是藏书癖。&lt;/p&gt;
+
+&lt;p&gt;19世纪英国有位叫 Thomas Phillipps 的爵士，藏书成癖，一辈子收集超过了十六万本书籍和手抄本，直到他死后一百年都还在拍卖。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“我要你长成一个壮实坚强的人。一个高尚、坚强的人，自己有自己的意志，能坚定不移，”我姨婆说，同时把头上的便帽冲着我摇晃，把拳头紧紧握着；“能富贵不移、威武不屈，能见义勇为、不惧强暴，特洛，能勇往直前，除了真理，不受任何人、任何事的驱使——我要你长成的就是这样一个人。”&lt;/p&gt;
+
+  &lt;p&gt;查尔斯·狄更斯《大卫·考坡菲》 张谷若 译&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="weekly" /><category term="周刊" /><summary type="html">本文为周刊第七期，前期的周刊参见：周刊系列。</summary></entry><entry><title type="html">周刊第六期</title><link href="https://hutusi.com/articles/weekly-6" rel="alternate" type="text/html" title="周刊第六期" /><published>2020-10-25T12:30:00+00:00</published><updated>2020-10-25T12:30:00+00:00</updated><id>https://hutusi.com/articles/weekly-6</id><content type="html" xml:base="https://hutusi.com/articles/weekly-6">&lt;p&gt;本周刊系列最早是效仿阮一峰做单周分享，但对于我个人来说整理工作量较大，而改成月刊的话周期又太长，且积累素材过多。因此准备改成双周刊形式，每两周的周末发布，记录这段时间里看到的一些有价值的信息。本文为周刊第六期，前期的周刊参见：&lt;a href=&quot;/tag/周刊&quot;&gt;周刊系列&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;关于这份周刊，还缺一个名字。阮一峰的叫“科技爱好者周刊”，他又曾调侃为“赛博朋克周刊”。我还没想好冠名。&lt;/p&gt;
+
+&lt;h2 id=&quot;文摘&quot;&gt;文摘&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-业内专家说可回收是一场骗局只是为了卖更多的塑料制品&quot;&gt;1. 业内专家说：可回收是一场骗局，只是为了卖更多的塑料制品&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.cbc.ca/documentaries/the-passionate-eye/recycling-was-a-lie-a-big-lie-to-sell-more-plastic-industry-experts-say-1.5735618&quot; target=&quot;_blank&quot;&gt;Recycling was a lie — a big lie — to sell more plastic, industry experts say&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一部名为《塑料战争》(&lt;em&gt;Plastic Wars&lt;/em&gt;)的纪录片通过塑料行业专家视角揭露所谓可回收塑料制品的骗局：只有不到10%的塑料制品被回收，塑料瓶上的可回收标记被用来做营销工具；大量的塑料废品被运到中国，以及东南亚“被回收”。（中国已于2018年停止塑料废品进口。）最后，专家估计，到2050年塑料产品将是现在的三倍。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-比尔盖茨新冠病毒很致命但气候变暖更糟糕&quot;&gt;2. 比尔·盖茨：新冠病毒很致命，但气候变暖更糟糕&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.gatesnotes.com/Energy/Climate-and-COVID-19&quot; target=&quot;_blank&quot;&gt;COVID-19 is awful. Climate change could be worse.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;比尔·盖茨说，虽然新冠(COVID-19)给世界带来了很大的灾难，但相比之下，气候变化带来的灾难会更糟糕。截止到上周，有60万人死于新冠病毒（十万分之14），而气候变化造成的四万人数将在2060年达到同等比例，2100年将是这个数字的5倍。&lt;/p&gt;
+
+&lt;p&gt;今年因为新冠疫情，全球碳排放减少了八个百分点，但这是以全球“封城”的代价换来的，对经济造成的损失是巨大的。文中也预计，环境变化造成的经济损失远大于新冠造成的损失。&lt;/p&gt;
+
+&lt;p&gt;新冠病毒尽管破坏力强，但盖茨预计疫苗明年就可以面世，但气候变化是很难逆转和快速治理的，全球必须团结起来：1. 探索科学和创新之路；2. 让贫穷国家也能用上；3. 必须立即开始行动。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Health advocates said for years that a pandemic was virtually inevitable. The world did not do enough to prepare, and now we are trying to make up for lost time. This is a cautionary tale for climate change, and it points us toward a better approach. If we start now, tap into the power of science and innovation, and ensure that solutions work for the poorest, we can avoid making the same mistake with climate change.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;3-互联网坏了ev-在试图去修复&quot;&gt;3. 互联网坏了，@ev 在试图去修复&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.nytimes.com/2017/05/20/technology/evan-williams-medium-twitter-internet.html?emc=edit_th_20170521&amp;amp;nl=todaysheadlines&amp;amp;nlid=68634180/%27The&quot; target=&quot;_blank&quot;&gt;‘The Internet Is Broken’: @ev Is Trying to Salvage It&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evan Williams(网名 @ev) 是 Blogger, Twitter, Medium 三代社交媒体平台的创始人（或联合创始人），本文是《纽约时报》在2017年对他的采访。Evan 曾经认为只要人们可以自由发声并交换信息和想法，这个时间就会自动的变得更好。而互联网正是这样的平台，他因此创造了 Blogger 以及更为自由的 Twitter.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“I thought once everybody could speak freely and exchange information and ideas, the world is automatically going to be a better place,” Mr. Williams says. “I was wrong about that.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;但随着人们利用互联网社交平台来传播暴力、自杀行为、凶杀，以及虚假新闻的大规模传播，并被不良分子利用时。他开始反思自己曾经的认识是错误的：互联网的问题在于它奖励极端行为。就像马路上发生了一起车祸，大家都来观看，而社交行为看上去像是大家都在期待车祸。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The trouble with the internet, Mr. Williams says, is that it rewards extremes.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;因此 Evan 创造了新的社交媒体平台: Medium. 而 Medium 的目标是创造一个新的媒体模型来对抗虚假和无用信息。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Its ambition: define a new model for media in a world struggling under the weight of fake or worthless content. Medium is supposed to be social and collaborative without rewarding the smash-ups. It is supposed to be a force for good.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;4-linux-kernel-中十分之一的代码是-amd-显卡驱动代码&quot;&gt;4. Linux Kernel 中十分之一的代码是 AMD 显卡驱动代码&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.phoronix.com/scan.php?page=news_item&amp;amp;px=Linux-5.9-AMDGPU-Stats&quot; target=&quot;_blank&quot;&gt;The AMD Radeon Graphics Driver Makes Up Roughly 10.5% Of The Linux Kernel&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Linux Kernel 5.9 版本代码有两千多万行代码(20.49M Loc)，其中两百多万行代码(2.16M Loc)是 AMD GPU 的驱动代码，不过这里面大部分(1.79M Loc)是自动生成的头文件。&lt;/p&gt;
+
+&lt;h3 id=&quot;5-开源是开发模式还是商业模式或是其他&quot;&gt;5. 开源是开发模式还是商业模式，或是其他？&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://opensource.com/article/20/10/open-source-supply-chain&quot; target=&quot;_blank&quot;&gt;Is open source a development model, business model, or something else?&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;有人认为开源是一种开发模式，强调其协作、去中心化的特点；也有人认为开源是一种商业模式，通过开源来提供服务与支持、SaaS、付费功能等。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Instead of thinking about open source as a development model or a business model, perhaps companies should think in terms of a supply chain from which they can purchase technology.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;另外，文中提到有些人会混淆开源项目(open source projects)和开源产品(open source products)这两个概念。作者给了简单的解释区分：产品就是人们愿意花钱付费购买的东西，而项目是人们参与、贡献或使用的东西。&lt;/p&gt;
+
+&lt;p&gt;因此，如果以产品为中心来看待开源，那么开源构建了软件的供应链。也就是说，开源是组成软件产业的基座。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Open source is a supply chain model.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;6-珍惜幸福远离政治&quot;&gt;6. 珍惜幸福，远离政治&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.theatlantic.com/family/archive/2020/10/reading-too-much-political-news-bad-happiness/616651/&quot; target=&quot;_blank&quot;&gt;Reading Too Much Political News Is Bad for Your Well-Being&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;本文是 Arthur C. Brooks 在 The Atlantic 上的系列 &lt;em&gt;HOW TO BUILD A LIFE&lt;/em&gt; 的其中一篇，文章标题即“阅读过多的政治新闻不利于幸福”。&lt;/p&gt;
+
+&lt;p&gt;作者认为，政治越来越影响（美国）人们的生活，而且是往坏的方向影响，沉迷于政治会损害自己的幸福和与他人的关系。政治观念甚至影响了择偶，根据盖洛普统计报告，1958年，%33的民主党人希望孩子的对象是民主党，25%的共和党人希望孩子的对象是共和党；而到了2016年，这两个数字分别变成了60%和63%，作者怀疑2020年会更高。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Those attached to perception and views roam the world offending people.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;而政治的偏见也会影响人们对于世界的正确认识，研究表明，那些只看带有政治倾向（无论是左还是右）电视新闻的人比不看新闻的人对世界知识了解的更少。也就是说，他们选择相信不客观的信息。&lt;/p&gt;
+
+&lt;p&gt;作者最后给出几个建议：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;参与其中，而不是观看不做。关掉电视，去参加社区活动、和他人一起工作。&lt;/li&gt;
+  &lt;li&gt;理性消费政治，限制花在政治争论上的时间。&lt;/li&gt;
+  &lt;li&gt;关掉极右或极左的新闻信息源，特别是你正站队的一边。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;7-还值得写书吗&quot;&gt;7. 还值得写书吗？&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://martin.kleppmann.com/2020/09/29/is-book-writing-worth-it.html&quot; target=&quot;_blank&quot;&gt;Writing a book: is it worth it?&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;作者的技术书籍刚卖出十万本，作者在本文分享了他对于写书（技术类）的一些看法。&lt;/p&gt;
+
+&lt;p&gt;从经济角度讲，大部分书卖不了什么钱。虽然《哈利·波特》卖的很火，但就像组乐队一样，成为摇滚明星的可能性接近于0. 作者花了两年半时间来全职写书，通过该书获得了47万美元的版税收入，只不过不是每个人都能像他一样获得成功。作者认为除了版税带来的经济价值外，写书还有如下好处：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;书是最容易获得的教育资源。相比其他教育方式，书是最便宜的。&lt;/li&gt;
+  &lt;li&gt;书能带来更多的收益。如果花2.5年写书，但可以节省其他人总共833年的时间，这是300倍的杠杆效应。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;总结起来，作者认为写技术书是很有意义的事情，因为书：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;有价值(valuable): 让读者提升技能，更好的工作）。&lt;/li&gt;
+  &lt;li&gt;可扩展性(scalable): （相比其他教学方式）更多的人可以受益。&lt;/li&gt;
+  &lt;li&gt;可获得性(accessible): （相比其他教学方式）更容易获得，成本也更低。&lt;/li&gt;
+  &lt;li&gt;经济上可靠(economically viable): 版税带来的收入支撑作者。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It would be interesting to compare it to working on open source software, another activity that can have significant positive impact but is difficult to get paid for.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;8-github-因-riaa-版权要求删除-youtube-dl-开源代码仓&quot;&gt;8. GitHub 因 RIAA 版权要求删除 youtube-dl 开源代码仓&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://github.com/github/dmca/blob/master/2020/10/2020-10-23-RIAA.md&quot; target=&quot;_blank&quot;&gt;github/dmca&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;GitHub 应美国唱片工业协会(RIAA)要求，删除涉嫌违反版权条例的 youtube-dl 开源代码仓及相关 fork 仓库。同时，声明中还指出，代码样例中使用到的音乐下载样例也有误导用户违反版权的嫌疑。&lt;/p&gt;
+
+&lt;p&gt;截止当前，&lt;a href=&quot;https://youtube-dl.org/&quot; target=&quot;_blank&quot;&gt;youtube-dl 官网&lt;/a&gt;注明了这一事件，但仍可以通过压缩包方式下载源码和工具。&lt;/p&gt;
+
+&lt;h2 id=&quot;有趣&quot;&gt;有趣&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-买可用一生的产品&quot;&gt;1. 买可用一生的产品&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.buyforlifeproducts.com/&quot; target=&quot;_blank&quot;&gt;Buy for life&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;为了环保，网站推荐可以使用一生的产品，有耐穿的衣服，有经用的家电。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-bash-上试试-q&quot;&gt;2. Bash 上试试 :!q&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://til.simonwillison.net/til/til/bash_escaping-a-string.md&quot; target=&quot;_blank&quot;&gt;Escaping strings in Bash using !:q&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;在命令行上先输入以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; 开头的任意字符，回车执行；然后再输入 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;!:q&lt;/code&gt; 执行，看看会发生什么：&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# hello, world!&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;:q
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hello,'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'world!'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;文中对 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;!:q&lt;/code&gt; 命令解释：这是一个脚本的小技巧，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;!&lt;/code&gt; 将历史命令展开，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q&lt;/code&gt; 对结果加引用标记(quote)。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-猫咪演奏&quot;&gt;3. 猫咪演奏&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://bongo.cat/&quot; target=&quot;_blank&quot;&gt;bongo cat&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一个网页演奏的小应用，通过敲击键盘控制屏幕上的小猫来演奏不同的乐器：手鼓、铙钹、铃铛、钢琴和木琴。即使不会乐器，通过敲击键盘即可演奏一首曲子，如《生日快乐歌》：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1 1 3 1 6 5
+1 1 3 1 8 6&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;该网页应用已开源。&lt;/p&gt;
+
+&lt;h2 id=&quot;有用&quot;&gt;有用&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-16000个-bbc-音效资源下载&quot;&gt;1. 16000个 BBC 音效资源下载&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;http://bbcsfx.acropolis.org.uk/&quot; target=&quot;_blank&quot;&gt;BBC Sound Effects Archive Resource&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;BBC 公开了音效资源，并开放下载，可供个人、教育及研究用途使用。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-互联网时间穿梭机&quot;&gt;2. 互联网时间穿梭机&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;http://theoldnet.com/&quot; target=&quot;_blank&quot;&gt;The Old Internet&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一个利用互联网档案馆(Internet Archive)资源提供的访问各网站以往历史的网站，用户可以看google、youtube 这些网站多年前是什么样子的，甚至可以看到扎克伯格在中学时做的个人网站。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-真伪佛陀语录&quot;&gt;3. 真伪佛陀语录&lt;/h3&gt;
+
+&lt;p&gt;伪佛陀语录: &lt;a href=&quot;https://fakebuddhaquotes.com/&quot; target=&quot;_blank&quot;&gt;Fake Buddha Quotes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;真佛陀语录: &lt;a href=&quot;https://www.realbuddhaquotes.com/&quot; target=&quot;_blank&quot;&gt;Real Buddha Quotes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;正如我们写作文喜欢引用外国名人语录一样，欧美人写作也会引用东方的名人语录。引用最多的估计就是佛陀、孔子、老子。但因为翻译的关系，很多语录被张冠李戴甚至是后人杜撰的。因此，有网站专门写博客来辟谣伪佛陀语录，而且作者还开设了真佛陀语录博客网站。至于这里面说的准不准确，也需要考证一番。&lt;/p&gt;
+
+&lt;h3 id=&quot;4-visual-studio-code&quot;&gt;4. Visual Studio Code&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://blog.robenkleene.com/2020/09/21/the-era-of-visual-studio-code/&quot; target=&quot;_blank&quot;&gt;The Era of Visual Studio Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;从 Visual Studio Code (VS Code) 发布以来，受欢迎程度越来越高。作者总结了编辑器流行的趋势，如下：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;BBEdit/Emacs/Vim –&amp;gt; TextMate –&amp;gt; Sublime Text –&amp;gt; Atom –&amp;gt; VS Code&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;可谓是编辑器代有才人出，各领风骚数几年。VS Code 是不是编辑器的终结不知道，但现在确实是 VS Code 的时代。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;我们有时会怜悯那些对我们或自己或对别人都没有一点怜悯感觉的人。&lt;/p&gt;
+
+  &lt;p&gt;艾米莉·勃朗特《呼啸山庄》 方平 译&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="weekly" /><category term="周刊" /><summary type="html">本周刊系列最早是效仿阮一峰做单周分享，但对于我个人来说整理工作量较大，而改成月刊的话周期又太长，且积累素材过多。因此准备改成双周刊形式，每两周的周末发布，记录这段时间里看到的一些有价值的信息。本文为周刊第六期，前期的周刊参见：周刊系列。</summary></entry><entry><title type="html">周刊第五期</title><link href="https://hutusi.com/articles/weekly-5" rel="alternate" type="text/html" title="周刊第五期" /><published>2020-10-11T08:30:00+00:00</published><updated>2020-10-11T08:30:00+00:00</updated><id>https://hutusi.com/articles/weekly-5</id><content type="html" xml:base="https://hutusi.com/articles/weekly-5">&lt;p&gt;本文为周刊第五期，但距离前一期已经过去半年。叫周刊似乎不合适，但又想到更好的名字，暂且用这个名字，只不过会不定期发布。前四期: &lt;a href=&quot;/weekly-1&quot;&gt;周刊开刊&lt;/a&gt;, &lt;a href=&quot;/weekly-2&quot;&gt;周刊第二期&lt;/a&gt;, &lt;a href=&quot;/weekly-3&quot;&gt;周刊第三期&lt;/a&gt;, &lt;a href=&quot;/weekly-4&quot;&gt;周刊第四期&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;文摘&quot;&gt;文摘&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-excel-导致新冠数据上报缺失&quot;&gt;1. Excel 导致新冠数据上报缺失&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.bbc.com/news/technology-54423988&quot; target=&quot;_blank&quot;&gt;Excel: Why using Microsoft’s tool caused Covid-19 results to be lost&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;因为使用 Excel 的旧版格式 XLS 导致英国有一万六千多例新冠名单没有上报。为什么呢？因为 xls 格式的文档中一个表最多只支持 65535 行单元格，而其他的数据丢失了。XLS 是 Excel 旧文档格式，从 Office 2007 起开始采用新的 XLSX 格式文档，只不过一直兼容旧文档格式。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The badly thought-out use of Microsoft’s Excel software was the reason nearly 16,000 coronavirus cases went unreported in England.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;2-法国酒吧店主因为提供的-wifi-没有保留日志被逮捕&quot;&gt;2. 法国酒吧店主因为提供的 WIFI 没有保留日志被逮捕&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://www.cozyit.com/french-bar-owners-arrested-for-offering-free-wifi-but-not-keeping-logs/&quot; target=&quot;_blank&quot;&gt;French bar owners arrested for offering free WiFi but not keeping logs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;至少五名法国酒吧店主因为提供给客人的免费 WIFI 没有保留日志记录而被捕，因为违反了法国因反恐而出台的 2006-64 法律条款：任何 ISP (Internet service provider) 提供商必须保留一年的连接日志记录。而违反此条款意味着将面临一年的牢狱和最多七万五千欧元的罚款。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;At least five bar owners in Grenoble, France have been arrested for providing WiFi at their businesses without keeping logs. The bar owners were arrested under a 2006 law that technically classifies WiFi hotspot providing establishments as ISPs, and requires them to store one year’s worth of logs or connection records for anti-terrorism purposes. This requirement is in place even if the WiFi network is password protected.&lt;/p&gt;
+
+  &lt;p&gt;The law No. 2006-64 extends the traditional ISP logging requirements “to all persons who, in respect of an activity primary or secondary professional, offer the public a connection allowing on-line communication via network access, including free of charge.” Violating this crime means that the owner of a small cafe that offers WiFi to patrons could face up to one year in prison and up to a 75,000 euro fine.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;3-为什么隐私是我们这个时代最重要的概念&quot;&gt;3. 为什么隐私是我们这个时代最重要的概念&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://inre.me/why-privacy-is-the-most-important-concept-of-our-time/&quot; target=&quot;_blank&quot;&gt;Why Privacy Is the Most Important Concept of Our Time&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;标题这样写是因为：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;互联网已经不是完全的虚拟世界了，它已经渗透到我们的生活、工作及社交。&lt;/li&gt;
+  &lt;li&gt;我们的社会已变得多样化，我们与邻居有着相同和不同的社区。&lt;/li&gt;
+  &lt;li&gt;隐私将我们的多个生活部分（如家庭、工作单位）变成一体，对信息传播已没有实体的障碍阻拦。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;而作者认为隐私关乎边界，隐私将会影响人的所有生活。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Privacy is about boundaries.
+&lt;strong&gt;Privacy Affects Everything&lt;/strong&gt;: Privacy is the most important concept of our time, because it influences everything else. Without privacy we do not know what rules applies. Our lives will be judged according to the rules of somebody else in ways we cannot even imagine.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后作者认为：因为明确私有、社交及公共空间的边界。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;私有空间：你和你的家人。&lt;/li&gt;
+  &lt;li&gt;社交空间：工作的同事、生活的社区、虚拟网上论坛或实际所处的城市。&lt;/li&gt;
+  &lt;li&gt;公共空间：社会所有人。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There should be clear boundaries about private, social and public spaces.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;网友对此文有赞成，也有反对，参见&lt;a href=&quot;https://news.ycombinator.com/item?id=24661271&quot; target=&quot;_blank&quot;&gt;Hacker news 上的评论&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;有趣&quot;&gt;有趣&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-300-欧元-diy-躺式办公工作台&quot;&gt;1. 300 欧元 DIY 躺式办公工作台&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://blog.luap.info/drafts/i-built-a-lay-down-desk.html?hnn&quot; target=&quot;_blank&quot;&gt;I built a lay-down desk&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一个可以躺下办公的工作台贵到需要 7000 美元，一位独立博主便自己手工 DIY 了一个，一共花了不到300 欧元。&lt;/p&gt;
+
+&lt;p&gt;看着视频的卖家秀，这真是我一直想要的办公工作台，可以舒缓腰椎和颈椎。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-从零打造-cpu-和编译器&quot;&gt;2. 从零打造 CPU 和编译器&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://fuel.edby.coffee/posts/how-we-ported-xv6-os-to-a-home-built-cpu-with-a-home-built-c-compiler/&quot; target=&quot;_blank&quot;&gt;How we ran a Unix-like OS (Xv6) on our home-built CPU with our home-built C compiler&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;作者是一位日本人，就职于日本微软，他和他的同事八人小组，从零设计 ISA(
+Instruction set architecture 指令集)&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;，利用 FPGA 构建实现该指令集的 CPU，并将 Xv6 操作系统移植运行在这个 CPU 上，最后他们还在上面编写并运行起了2048游戏。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-六天赚十万美元&quot;&gt;3. 六天赚十万美元&lt;/h3&gt;
+
+&lt;p&gt;原文: &lt;a href=&quot;https://tr.af/6&quot; target=&quot;_blank&quot;&gt;Six Figures in 6 days&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;作者是为极简主义者，这从 URL 就可以看出；他也是位全栈开发者兼产品设计。本文介绍他自己设计制作了一款 ios 上的图标套件，只用了六天售卖了三千多套因而赚了十万多美元；但实际上在此之前他已经花了七年时间制作并打磨这些图标，一共卖了大约17美元。而这次的成功源于他自己的一条推特（图标截屏）被转发火了，很多人包括知名网站来购买他的图标。&lt;/p&gt;
+
+&lt;p&gt;作者说，他发现了电子内容产品的杠杆优势：以最大努力一次创作，然后只需花很小的代价重复售卖。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;create something once with sufficient effort, then sell it repeatedly with minimal effort.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;而作者也总结了他认为自己的一些产品经验：频繁发布、立即行动、对用户透明、清晰的计划、收费标准要高、为艺术而作。&lt;/p&gt;
+
+&lt;p&gt;作者还说，这件事最好的部分是给他带来的自由，而自由可以让他创造更多，创造更多东西可以带来更多的自由。要花时间在哪些能够给你买来时间的东西上。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The best part about this is the freedom its bought me, to keep building things that’ll create even more freedom. Spending time on things that will buy you time is always a good use of it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;有用&quot;&gt;有用&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-darling---将-macos-软件移植到-linux&quot;&gt;1. Darling - 将 macOS 软件移植到 Linux&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://www.darlinghq.org/&quot; target=&quot;_blank&quot;&gt;Darling - macOS translation layer for Linux&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Darling 可以将将 macOS 软件移植到 Linux, 类似的软件还有：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Wine: 将 Windows 软件移植到 Linux.&lt;/li&gt;
+  &lt;li&gt;Anbox: 将 Android 软件移植到 Linux.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-typelitio---读经典练打字&quot;&gt;2. typelit.io - 读经典，练打字&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://www.typelit.io/&quot; target=&quot;_blank&quot;&gt;TypeLit - Practice Typing, Read Lit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;TypeLit 是一个练习打字工具，与其他打字软件不同的是，TypeLit 提供的样例是经典小说，如 《1984》, 《了不起的盖茨比》等，这样，用户可以边看经典小说，边练习打字。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-seeing-theory---看得见的统计概率入门&quot;&gt;3. Seeing Theory - 看得见的统计概率入门&lt;/h3&gt;
+
+&lt;p&gt;链接: &lt;a href=&quot;https://seeing-theory.brown.edu/index.html&quot; target=&quot;_blank&quot;&gt;Seeing Theory - A visual introduction to probality and statistics&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;用 D3.js 构建的在线网站以可视化展示统计学和概率学理论。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;当她带着那压得她喘不过气来的无数经历，带着旅途的疲惫，昏昏欲睡地回到家时，港口的人们同她的第一个问题便是对欧洲的种种神奇之处有何感受，而她用一句四个字的加勒比俚语就概括了这许多个月的幸福生活：  &lt;br /&gt;
+“浮华而已。”&lt;/p&gt;
+
+  &lt;p&gt;加西亚·马尔克斯《霍乱时期的爱情》 杨玲 译&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Instruction set architecture 维基百科解释： https://en.wikipedia.org/wiki/Instruction_set_architecture &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="weekly" /><category term="周刊" /><summary type="html">本文为周刊第五期，但距离前一期已经过去半年。叫周刊似乎不合适，但又想到更好的名字，暂且用这个名字，只不过会不定期发布。前四期: 周刊开刊, 周刊第二期, 周刊第三期, 周刊第四期。</summary></entry><entry><title type="html">只买书：一个失败的微信小程序产品</title><link href="https://hutusi.com/articles/failure-of-zhimaishu" rel="alternate" type="text/html" title="只买书：一个失败的微信小程序产品" /><published>2020-10-06T14:00:00+00:00</published><updated>2020-10-06T14:00:00+00:00</updated><id>https://hutusi.com/articles/failure-of-zhimaishu</id><content type="html" xml:base="https://hutusi.com/articles/failure-of-zhimaishu">&lt;h2 id=&quot;背景&quot;&gt;背景&lt;/h2&gt;
+
+&lt;p&gt;去年因为换部门的原因，我从原工位搬走，有很多旧书，送了些给同事，仍有一大堆需搬走。我便在想，这些旧书是否有更好的处理方式。我自己喜欢买书，但看完的书就成了鸡肋，丢掉也不舍得。虽然有多抓鱼、孔夫子这种旧书平台，但仍不是我理想中的处理旧书的方式。理想中的应该是像图书馆那样，想看的人去借阅，到了时间归还或传递给下一位借书人。因此，如果能有一个网上平台，大家可以把闲置的书籍共享出来，在网上自由流动，由需要的读者借阅，看完后再传递给下一个读者；就像是图书漂流，永远传递下去，这样会很有意思也很有意义。&lt;/p&gt;
+
+&lt;p&gt;我发现国外有个叫 bookcrossing 的网站&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;，建站时间比亚马逊还早，很像我说的这种网上平台。bookcrossing 即图书漂流，玩法是在网站登记闲置书籍，用户得到一个唯一的图书编号 BCID, 下载带有 BCID 的标签，打印贴到书上。然后可以将书送人或放到“野外”：咖啡厅、车站、旅游景点等，等着被人“抓到”。这种图书漂流的方式挺有趣，不过问题是捡到书的人不一定会到网站上去登记，这样图书追踪信息会丢失。&lt;/p&gt;
+
+&lt;p&gt;而国内我也没找到类似的图书分享网站，于是就想不如自己动手做一个。说干就干，于是买了个 zhimaishu.com（只买书）的域名&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;，准备做个图书分享的平台。“只买书”这个名字源于我在公司内创建的一个兴趣组织“只买书不读书”，这是一个线上的团队，最多的时候有四千多人加入。团队成员还会自发组织一些线下读书活动，上个月在深圳开会时遇到一位未谋面的同事，她认出了我并提到“只买书不读书”团队，让我感到惊喜。因此，对“只买书不读书”这个名字我是很有感情的，而为了让域名短一些就取了前三个字。&lt;/p&gt;
+
+&lt;h2 id=&quot;设计实现&quot;&gt;设计实现&lt;/h2&gt;
+
+&lt;p&gt;“只买书”的流程设计与 bookscrossing.com 不太一样：用户通过线下传递书籍，然后在“只买书”网上平台上记录追踪过程。一个常规的分享书流程如下：1) 藏书人在“只买书”上登记书本；2) 藏书人发布共享图书信息；3) 借书人浏览到共享图书信息并申请该书；4)藏书人确认申请并约定交书地点时间；5) 线下传递书本后，在“只买书”上确认。6) 书本成为共享图书后不能为私人所有，等到借书人看完或不再需要，下一位借书人会申请该书，重复上述3~5流程。&lt;/p&gt;
+
+&lt;p&gt;产品技术选型我考虑用微信小程序，因为微信的用户基础以及不需要额外的应用安装、跨平台；后台数据存储处理采用 ruby on rails&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, 作 api server. 由于我没微信小程序开发经验甚至没有前端开发经验，在快速实现了基本的几个 API 后，便开始学习如果做微信小程序。在简单比较了微信小程序原生框架和其他开发框架后，我决定选用 taro 这个开发框架&lt;sup id=&quot;fnref:4&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;。选用 taro 除了它支持多端特性外，更多是因为它使用 react 基础框架，技术栈上相对成熟且资源更丰富。&lt;/p&gt;
+
+&lt;p&gt;功能上除了图书共享，还实现了个人藏书的功能，通过扫描 ISBN 码获取图书信息并记录在案，这样可以管理自己的图书，选择是否将书共享出去，或做标记（未来也考虑做读书笔记等扩展功能）。在实现扫描图书 ISBN 码获取图书信息的功能时遇到了些技术难题。这块我记得豆瓣有 API 提供这种服务，可是当我动手做“只买书”小程序时，才发现豆瓣早已经停止了这项服务（网上的说法是做图书小程序的太多，豆瓣因此停止了义务服务）。于是我几经周折，找到了一位网友提供的豆瓣 API 代理服务，限制是该服务每小时一共提供一千次请求，因此每个小时的后半段往往获取不到信息。（后来该代理服务也停止了。）&lt;/p&gt;
+
+&lt;p&gt;在小程序起初的版本里，我还实现了借书功能：与共享图书不同的是，借出去的书还属于自己，等借书人看完后归还给自己。后来觉得该功能多此一举，且容易给用户造成误解，因此我在1.5版本时去除了该功能。仅保留了共享图书功能，以及个人藏书管理的功能。&lt;/p&gt;
+
+&lt;h2 id=&quot;发布上线&quot;&gt;发布上线&lt;/h2&gt;
+
+&lt;p&gt;今年春节期间因为疫情而意外获得了长假，正好利用这段时间将小程序完成并上线。微信小程序上线过程总体上比较顺利，有两次版本被拒是一次因为后台没有数据，因此在审核时被误认为是测试版本；还有一次是因为增加了评论功能后，审核时认为超出了原申请小程序时的服务范围了，增加申请服务范围后通过。&lt;/p&gt;
+
+&lt;p&gt;上线后我给一些熟悉的朋友推广并询问他们的使用体会，虽然大家礼节性的给予热情的支持，但随着连我自己也用的越来越少后，慢慢的得到的反馈越来越少，而我更新的动力也越来越少。一方面上班后可支配时间变少，另一方面我也意识到这种共享图书的方式极不方便，因为“只买书”小程序并没有解决共享图书的便利性的问题，仅仅是提供一个共享图书的信息发布平台。开始的时候我把家里的藏书扫描了一遍，但后来便发现没有打开小程序的机会了。&lt;/p&gt;
+
+&lt;p&gt;于是，在几个迭代的修改和发布上线后，我便停止了小程序的开发和更新。而最终也没有在任何的论坛或社交网站去推广“只买书”。&lt;/p&gt;
+
+&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;“只买书”的失败可以总结以下几点原因：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;伪痛点。共享图书看上去是源自我自己的一个痛点，但实际上这不是痛点，而是源于我的其他诉求：要开发一个软件产品。而共享书也不是要解决书多的“痛点”，而是一种公益活动。&lt;/li&gt;
+  &lt;li&gt;没有市场，缺少目标用户群。买实体书的人已经很少了，而有共享书需求的人更少。不过，我能看到的有分享（或出售）实体书的群体，是儿童的家长。童书（特别是绘本等）的更新频率更高，一般半年或一年就要换很多套童书，这些倒是有很大的二手或转让市场。&lt;/li&gt;
+  &lt;li&gt;缺少核心卖点，也缺少亮点。一位朋友跟我反馈使用感受，想了半天说“扫码添加图书挺方便的”；也许能想到的只有这点了。而扫码添加图书和个人书籍管理几乎是所有做图书应用类应用的必备特性，而核心的功能——图书共享又缺少让人眼睛一亮的特性。&lt;/li&gt;
+  &lt;li&gt;过于依赖线下流程。“只买书”的主交互流程中有太多线下的处理环节：登记、借书、确认，需要约定时间地点取书，这显然是非常不互联网的做法。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;从去年国庆节假期的第一次代码提交到这个国庆节，刚好一年。半年业余时间实现，半年失败并遗忘。“只买书”微信小程序除了占用了些业余时间外及后台服务器的支出，倒是没有其他成本。所以，算是一次成本不大的失败尝试，而我也从中了解了小程序的开发及发布，并收获了一些产品开发的经验和教训。总体而言，还是值得的。&lt;/p&gt;
+
+&lt;p&gt;“只买书”的前后端代码已经开源在 GitHub 上，如果感兴趣，欢迎 star 或 fork。因为当时希望尽快上线，代码不是那么整洁；特别是小程序端的 js 代码，更是能 run 就行的那种。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;后端： &lt;a href=&quot;https://github.com/hutusi/bookshare&quot;&gt;hutusi/bookshare&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;小程序： &lt;a href=&quot;https://github.com/hutusi/bookshare-wechat&quot;&gt;hutusi/bookshare-wechat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;书游记 bookcrossing: https://www.bookcrossing.com/ &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;只买书: https://zhimaishu.com/ &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Ruby on Rails: https://rubyonrails.org/ &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Taro - 多端统一开发解决方案: https://taro.jd.com/ &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>hutusi</name><email>huziyong@gmail.com</email></author><category term="tech" /><category term="产品" /><category term="微信小程序" /><summary type="html">背景</summary></entry></feed>

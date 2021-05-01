@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>阅读开源代码小技巧 | 胡涂说</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="阅读开源代码小技巧" />
+<meta name="author" content="hutusi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="通过阅读源码来学习开源项目是最直接也最有效的方法。而想要了解一个开源项目，最好是从第一个 commit 开始看起，特别是第一个最小可用版本发布前的 commits, 通过阅读对每一次 commit 提交源码，能够最直接的理解作者的设计思路和开发过程中的思考。" />
+<meta property="og:description" content="通过阅读源码来学习开源项目是最直接也最有效的方法。而想要了解一个开源项目，最好是从第一个 commit 开始看起，特别是第一个最小可用版本发布前的 commits, 通过阅读对每一次 commit 提交源码，能够最直接的理解作者的设计思路和开发过程中的思考。" />
+<link rel="canonical" href="https://hutusi.com/articles/git-paging" />
+<meta property="og:url" content="https://hutusi.com/articles/git-paging" />
+<meta property="og:site_name" content="胡涂说" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-08-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="阅读开源代码小技巧" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@hutusi" />
+<script type="application/ld+json">
+{"datePublished":"2019-08-18T00:00:00+00:00","description":"通过阅读源码来学习开源项目是最直接也最有效的方法。而想要了解一个开源项目，最好是从第一个 commit 开始看起，特别是第一个最小可用版本发布前的 commits, 通过阅读对每一次 commit 提交源码，能够最直接的理解作者的设计思路和开发过程中的思考。","url":"https://hutusi.com/articles/git-paging","@type":"BlogPosting","dateModified":"2019-08-18T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://hutusi.com/articles/git-paging"},"author":{"@type":"Person","name":"hutusi"},"headline":"阅读开源代码小技巧","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700"> -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="https://hutusi.com/feed.xml" title="胡涂说" />
+
+  <!-- Google Analytics-->
+  
+    <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-30399492-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+
+  <!-- Google AdSense-->
+  <script data-ad-client="ca-pub-7800526822107892" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">胡涂说</h2>
+    </a>
+
+    <ul><li class='nav-item' role='presentation'>
+              <a class='nav-link' href='/about/'>关于</a>
+            </li><li class='nav-item' role='presentation'>
+              <a class='nav-link' href='/archive/'>归档</a>
+            </li><li class='nav-item' role='presentation'>
+              <a class='nav-link' href='/links/'>友链</a>
+            </li><li class='nav-item' role='presentation'>
+              <a class='nav-link' href='/toolbox/'>有用</a>
+            </li><li class='nav-item' role='presentation'>
+              <a class='nav-link' href='/subscription/'>订阅</a>
+            </li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <h1 class="post-title">阅读开源代码小技巧</h1>
+  <h2 class="post-subtitle">Git历史记录快速翻页式签出</h2>
+
+  <div class="post-info">
+    
+      <time datetime="2019-08-18 00:00:00 +0000">August 18, 2019</time>
+    
+  </div>
+
+  <p>通过阅读源码来学习开源项目是最直接也最有效的方法。而想要了解一个开源项目，最好是从第一个 commit 开始看起，特别是第一个最小可用版本发布前的 commits, 通过阅读对每一次 commit 提交源码，能够最直接的理解作者的设计思路和开发过程中的思考。</p>
+
+<p>在 GitHub 的 repository 页面上可以很方便的看到所有历史记录及其演进。不过，使用 IDE 或有跳转功能的编辑器来阅读会更方便。这就需要我们将代码仓 Clone 到本地。</p>
+
+<p>Clone 下来的开源 Git 仓，想要签出第一次 commit 也简单：通过 <code class="language-plaintext highlighter-rouge">git log --reverse</code> 倒序展示 log,排在第一个的即是第一次 commit, 拷贝 commit sha 值，然后 <code class="language-plaintext highlighter-rouge">git checkout commit_sha</code> 便可以签出该commit的代码。</p>
+
+<p>当我们想继续跟着作者的节奏看接来下开发的内容，便需要再次 show log, 并找出下一次的 commit sha 值，如果 commit 记录很多，找起来就不那么容易了。因此我在看 git 代码历史的时候想，能不能将 git commits 历史记录当成像网站页面一样可以分页查看呢，通过简单的上翻下翻命令来 checkout 到各 commit 节点的代码。</p>
+
+<p>其实也不难，无非是用管道将上面提到的命令串起来，写成 shell 可执行文件放到 git 安装的 bin 目录即可。签出第一次 Commit 节点代码的 shell 脚本如下：（通过 <code class="language-plaintext highlighter-rouge">git log --reverse --pretty=%H</code> 可以将 log 记录倒序并只显示sha值，然后通过 args 获取管道输出 checkout.）</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+
+first<span class="o">()</span> <span class="o">{</span>
+	<span class="nv">branch</span><span class="o">=</span>refs/heads/master
+	git log <span class="nt">--reverse</span> <span class="nt">--pretty</span><span class="o">=</span>%H <span class="nv">$branch</span> | <span class="nb">head</span> <span class="nt">-1</span> | xargs git checkout 
+<span class="o">}</span>
+first
+</code></pre></div></div>
+
+<p>将它存为 <code class="language-plaintext highlighter-rouge">git-first</code> 可执行文件，放到 git 安装的 bin 目录（Linux、Mac 或 Windows 皆可）。在 git 仓中执行 <code class="language-plaintext highlighter-rouge">git first</code> 即可 checkout 出第一次 commit 节点的代码。</p>
+
+<blockquote>
+  <p>Windows 的 Git 一般安装在 <code class="language-plaintext highlighter-rouge">C:\Program Files\Git</code> 下，bin 目录非根目录下的 bin, 而是在 usr/bin 下，直接将 git-first 等文件拷贝至该目录即可。（注意：该目录原来有 git-flow 等文件。）</p>
+</blockquote>
+
+<p>签出当前 commit 记录的下一个节点代码要稍微复杂些，不过也就是多了些命令的组合, stackoverflow 搜一下就能找到。通过 <code class="language-plaintext highlighter-rouge">git rev-parse HEAD</code> 可获取当前工作区代码的 commit sha 值，然后用 <code class="language-plaintext highlighter-rouge">grep -A</code> 找出倒序 log 后当前 commit sha 值的后一条记录，得到 sha 值后进行 Checkout 操作。<code class="language-plaintext highlighter-rouge">git-next</code> 的脚本如下：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># git-next</span>
+
+next<span class="o">()</span> <span class="o">{</span>
+	<span class="nv">branch</span><span class="o">=</span>refs/heads/master
+	git log <span class="nt">--reverse</span> <span class="nt">--pretty</span><span class="o">=</span>%H <span class="nv">$branch</span> | <span class="nb">grep</span> <span class="nt">-A</span> 1 <span class="si">$(</span>git rev-parse HEAD<span class="si">)</span> | <span class="nb">tail</span> <span class="nt">-1</span> | xargs git checkout
+<span class="o">}</span>
+next
+</code></pre></div></div>
+
+<p>同样的，签出最后一条记录(<code class="language-plaintext highlighter-rouge">git-last</code>)和上一条记录(<code class="language-plaintext highlighter-rouge">git-prev</code>)也可以通过命令组合来实现。我还增加可选参数，可以一次上翻/下翻 n条 commit. 四个脚本的源码放在了<a href="https://github.com/hutusi/git-paging">GitHub</a>上。</p>
+
+<p>在查看 git 仓库源码时便可以通过 <code class="language-plaintext highlighter-rouge">git next</code>, <code class="language-plaintext highlighter-rouge">git prev</code> 来轻松逐个 commit 进行 checkout 了。也可以通过 <code class="language-plaintext highlighter-rouge">git next 5</code> 来签出当前 commit 依次往后第5条 commit 的代码。 通过<code class="language-plaintext highlighter-rouge">git first</code>, <code class="language-plaintext highlighter-rouge">git last</code> 来签出第一条 commit 及最后一条节点的代码。</p>
+
+<p>于是，拿到一份开源代码后，我便首先通过 <code class="language-plaintext highlighter-rouge">git first</code> 签出第一次 commit 的代码，然后通过 <code class="language-plaintext highlighter-rouge">git next</code> 逐个 commit 进行阅读。为了快速了解 commit 之间的差异，可以通过执行 <code class="language-plaintext highlighter-rouge">git diff HEAD^ HEAD</code> 来了解当前 commit 改了哪些内容。（嫌每次执行 diff 命令太长，可以设置 alias: <code class="language-plaintext highlighter-rouge">git config --global alias.df 'diff HEAD^ HEAD'</code>。这样，每次仅需执行 <code class="language-plaintext highlighter-rouge">git df</code> 便可以快速浏览差异了。）</p>
+
+<p>在调试脚本时发现一个问题, shell 中的函数如果写上<code class="language-plaintext highlighter-rouge">function</code>在 Ubuntu 等 Linux 上反倒执行会报错。比如<code class="language-plaintext highlighter-rouge">first() {...}</code> 写成 <code class="language-plaintext highlighter-rouge">function first() {...}</code>. 执行时会报 <code class="language-plaintext highlighter-rouge">syntax error: "(" unexpected.</code> 的错误。上网查了一下，了解到在某些 Linux 发行版上 <code class="language-plaintext highlighter-rouge">sh</code> 指向 <code class="language-plaintext highlighter-rouge">dash</code>，不识别 <code class="language-plaintext highlighter-rouge">function</code> 标志符。 解决办法是要么将脚本的执行器改成 <code class="language-plaintext highlighter-rouge">bash</code> ，或直接将 <code class="language-plaintext highlighter-rouge">function</code> 去掉，这也是能兼容多种 shell 的最好方式。</p>
+
+<p>最后再附一遍脚本地址，如果你觉得有用，请加 star: <a href="https://github.com/hutusi/git-paging">hutusi/git-paging</a>，提 issue 或 pr 帮助改进。 <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>之前脚本源码放在 gist (https://gist.github.com/hutusi/e4f32e2bcd8d53ec86de8254ab0d5127)上，但 gist 管理批量源码不太方便，且有时访问不了，因此移到 repos 中管理，也方便提 issue 或 pr. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+
+<div class='tags'>
+  
+    <a href='/tag/Git'>Git</a>
+  
+    <a href='/tag/效率'>效率</a>
+  
+    <a href='/tag/开源'>开源</a>
+  
+</div>
+
+<div><h3>如果你觉得本文不错，欢迎<a href="/subscription">订阅“胡涂说”博客</a>。</h3></div>
+
+
+  <!-- ref: gitalk -->
+<!-- https://github.com/geektutu/hexo-theme-geektutu/blob/master/layout/_widget/comments.ejs#L31 -->
+<!-- ref: https://geektutu.com/post/blog-experience-7.html -->
+
+<!-- Start gitalk -->
+<script src="/assets/js/gitalk.min.js" /></script>
+<!-- <div id="disqus_thread"><h3>Discussion and feedback</h3></div> -->
+<div id="gitalk-container">
+    <div class="gt-container text-center" style="margin-top: 50px;">
+        <button class="gt-btn gt-btn-public"><span class="gt-btn-text">去 Github 评论</span></button>
+    </div>
+</div>
+
+<div id="gitalk-related"></div>
+
+<script>
+    window.addEventListener('load', function () {
+        function renderCommentUrl(data) {
+            var url = (data[window.location.pathname] || {}).url
+            url && getDom('#gitalk-container button').addEventListener('click', function (e) { window.open(url)})
+            url || (getDom('#gitalk-container').style.display = 'none')
+        }
+        function getDom(str) { return document.querySelector(str) }
+
+        const gitalk = new Gitalk({
+            clientID: '3ecf7aac87e37cbe772c',
+            clientSecret: '887d16569177e1f6336cce32e9c58974c2932807',
+            repo: 'hutusi.github.com',
+            owner: 'hutusi',
+            admin: 'hutusi',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        fetch("https://api.github.com/user").then(function(resp){
+            gitalk.render('gitalk-container');
+        }).catch(function(e){
+            fetch('/assets/data/issues.json').then(function (r) { return r.json() }).then(renderCommentUrl).catch(function (e) { })
+        })
+        getDom('#gitalk-container').addEventListener('click', function (e) {
+            e && e.stopPropagation && e.stopPropagation();
+        });
+    })
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://gitalk.github.io/">comments powered by gitalk.</a></noscript>
+<!-- End gitalk -->
+
+<!-- gitalk plus -->
+<script>
+    window.addEventListener('load', function () {
+        function render(comments) {
+            var template = '<a href="${comment.url}?utm_source=gitalk" class="dis-item-url"><h3 class="dis-item-title">${comment.title}</h3>' +
+                '<p class="dis-item-des">${comment.count} 评论 ● ${comment.date}</p>' +
+                '<div class="dis-item-content"><img class="dis-item-img" src="${comment.icon}" alt="icon"><p><b><span class="dis-item-user">${comment.user}</span></b>&nbsp;——&nbsp;${comment.body}</p></div>' +
+                '</a>'
+
+            var wrapper = getDom('#gitalk-related');
+            comments = shuffle(comments);
+            comments.slice(0, 4).forEach(function (c) {
+                var div = document.createElement('div');
+                div.classList.add('dis-item');
+                div.innerHTML = template.replace("${comment.url}", c.url)
+                    .replace("${comment.title}", c.title)
+                    .replace("${comment.count}", c.count)
+                    .replace("${comment.date}", c.date)
+                    .replace("${comment.icon}", c.icon)
+                    .replace("${comment.user}", c.user)
+                    .replace("${comment.body}", c.body)
+                wrapper.appendChild(div)
+            })
+            var p = document.createElement('p')
+            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.classList.add('dis-divide');
+            wrapper.appendChild(p);
+            wrapper.classList.add('dis-wrapper')
+        }
+        function shuffle(a) {
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+        function getDom(str) { return document.querySelector(str) }
+        fetch('/assets/data/comments.json').then(function (r) { return r.json() }).then(render).catch(function (e) { })
+    })
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/articles/weekly-1" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/articles/relearn-c" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4fa6932104ee5f3f"></script>
+
+    </main>
+
+    <footer>
+  <span>
+    &copy; <time>2021</time> 胡涂说 hutusi.com <br />
+    <a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备19043788号-1 沪ICP备19043788号-2 沪ICP备19043788号-3</a><br />
+    Made with Jekyll using the <a href="https://github.com/hutusi/tale/" target="_blank">TaleType</a> theme, 
+    CDN for images sponsored by <a href="https://www.dogedoge.com/" target="_blank">多吉搜索</a>
+    <br />
+  </span>
+
+  
+  <div class="busuanzi-count">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user">UV </i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye">PV </i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+  </div>
+
+  <!-- Baidu Statistic-->
+  
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?95ca94128a63c7bb77a40c9d3b73d22c";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<!-- baidu auto push for seo -->
+<script>
+  window.addEventListener('load', function () {
+      var src = 'http://push.zhanzhang.baidu.com/push.js'
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      globalAddScript(src);
+  })
+</script>
+
+  
+
+  <!-- cnzz Statistic-->
+  
+    <div>
+  <center>
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278872520'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278872520%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </center>
+</div>
+
+  
+
+</footer>
+
+  </body>
+</html>
