@@ -28,4 +28,4 @@ gh_issue: 108
 2022年的期望是将心情调整好，不用那么焦虑（可以适当的小焦虑）。搞好家庭关系，把娃带好。坚持锻炼，游泳、滑冰及跑步。再多读些书，也拾起些文学类的书。给自己定个任务：读一本陀思妥耶夫斯基的小说。适应新岗位，做好产品。学一门新技术，就 Kubernetes 吧。
 
 
-[^1]: 人到中年(黄华): https://mp.weixin.qq.com/s?src=11&timestamp=1641201266&ver=3536&signature=ryGL-mcRZ77WwJ923Q1sgVuqy4EZpvRd7lEXQoJ2JD3XFvLXhy2qZrHEbm9JRei*dqZtnBrJ**1n7ySQv0dI7j65DtwCyjgCPsT6eAWGwx7QIKXszBx57jc8WfaOtWbF&new=1
+[^1]: 人到中年(黄华): https://mp.weixin.qq.com/s/MDOuIUNI1zKTU44zYxLO3g
