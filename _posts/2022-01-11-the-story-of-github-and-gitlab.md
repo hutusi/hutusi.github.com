@@ -2,11 +2,17 @@
 layout: post
 category: tech
 tags: 产品 开源 GitHub GitLab
-title: GitHub 和 GitLab 的故事
-subtitle: 从 GitHub 和 GitLab 的历史学习做产品
+title: 从零到百亿美金之路
+subtitle: GitHub 和 GitLab 的故事
 date: "2022-01-11 23:30:00 +0800"
 gh_issue: 109
 ---
+
+TL;DR 本文字数约6000字，全文阅读约10分钟，分为引子、GitHub的故事、GitLab的故事以及启示几个部分。
+
+> 虽然某些技术进步似乎是微不足道的，但是技术的发展不仅体现在重大的飞跃之中，还是由无数个小幅的改进累积而成的。
+>
+> —— Walter Isaacson 《创新者》
 
 ### 引子
 
@@ -67,7 +73,7 @@ GitHub 创始人 Tom Preston-Werner 曾在2011年时写过一篇博文 *Open Sou
 
 几年后，GitLab 也在官网上发布的一篇博客，名为 *Almost Everything We Do Will Be Open*, 在文章中，GitLab 宣称他们将公开所有能公开的东西，包括源码、文档、工作手册、工作讨论交流等，除了涉及隐私或安全相关的内容，能公开的都会公开。虽然 GitHub 开源了很多组件，但他们核心的产品 GitHub 本身是闭源的。而GitLab是完全开源的，用他们自己的话说，这是 Open Core, 即核心开放，这是开源的一种商业模式，产品的核心是开源的，而提供商业收费的增值或附加特性。
 
-The Org 曾发表过一篇专题报道“全世界最透明的公司”(*GitLab: The World’s Most Transparent Company*)，介绍了 GitLab 的公司运作。GitLab 全球1400名员工，分布在全球65个国家，因此远程(Remote)是 GitLab 的基本工作方式。GitLab 按照他们所声称的那样公开了几乎所有的东西，最著名的是他们的员工手册(handbook)，涵盖了公司价值观、内部沟通、开发流程、公司运作，以及如何请假、如何报销等方方面面。这份员工手册如果打印成纸质文档的话，会超过8000页。并不是每位新进 GitLab 的员工都能理解这种透明的文化，刚开始他们会很不习惯被“暴露”在公开社区的工作方式。但很快员工就会习惯，因为透明和开放让协作变得更简单。而透明也有利于流程和效率改进，比如员工手册，一直在持续优化更新。
+The Org 曾发表过一篇专题报道“全世界最透明的公司” (*GitLab: The World’s Most Transparent Company*)，介绍了 GitLab 的公司运作。GitLab 全球1400名员工，分布在全球65个国家，因此远程(Remote)是 GitLab 的基本工作方式。GitLab 按照他们所声称的那样公开了几乎所有的东西，最著名的是他们的员工手册(handbook)，涵盖了公司价值观、内部沟通、开发流程、公司运作，以及如何请假、如何报销等方方面面。这份员工手册如果打印成纸质文档的话，会超过8000页。并不是每位新进 GitLab 的员工都能理解这种透明的文化，刚开始他们会很不习惯被“暴露”在公开社区的工作方式。但很快员工就会习惯，因为透明和开放让协作变得更简单。而透明也有利于流程和效率改进，比如员工手册，一直在持续优化更新。
 
 这种近乎偏执的透明文化让 GitLab 持续保持着创业公司的特质，当然这与公司创始人的黑客风格也是密不可分的。2011年，乌克兰的两个程序员 Dmitriy Zaporozhets 和 Valery Sizov 想做一个能帮助他们团队协作的工具，于是就开发了 GitLab。2011年10月9日，GitLab 发布了第一版并开源了源码，而后，每个月他们都会发布新版本。2012年，荷兰程序员 Sid Sijbrandij 发现了 GitLab，正好他手中握有 GitLab.com 这个域名（Dmitriy发布GitLab时用的是 gitlabhq.com），于是 Sid 和 Dmitriy 一拍即合，决定成立公司来全职投入GitLab。
 
@@ -75,7 +81,7 @@ The Org 曾发表过一篇专题报道“全世界最透明的公司”(*GitLab:
 
 > GitLab 的两位创始人（左: Sid Sijbrandij; 右: Dmitriy Zaporozhets）在去年 NASDAQ 上市时的合影
 
-最初，GitLab 是定位为开源的 GitHub（确切的说，是 GitHub Enterprise，也就是可在企业内私有部署的 GitHub 版本）。当时 GitHub Enterprise 的一个License 大约是500美元每人年。因此，功能接近 GitHub 而又开源的 GitLab 开始被越来越多的公司和个人所采用。我在2012年5月在公司搭建了第一个 GitLab 服务，好像是2.5版本，后来几乎每个月我都会升级，因为每个月都能感受到 GitLab 日新月异的变化。从最初仅仅是Git仓库托管，到项目管理功能(issues, milestone)，到借鉴与 GitHub PR 的 Merge Request。实际上，Merge Request 还是有很大的流程性创新的，在 GitLab 的 MR 流程中，无需 Fork 仓库，而是创建分支提交MR，这其实比 GitHub PR 更适合项目内协作。GitHub 后来也将这种无需 Fork 创建分支提 PR 的功能也实现了，可谓是学生教了老师。而 GitLab 的更新迭代非常快，他们也非常积极听取用户特别是企业用户的意见。记得应该是在2013年左右，我发了封邮件(也许是issue)给 GitLab，很快就收到了 Sid 的回复，并约我和 Dmitriy 一起开了个电话会议，我还记得 Sid 在电话会议快结束时说我们三个非英语国家的人分别在三个时区完成了对 GitLab 发展很重要的交流，这是互联网带来的奇迹（我脑洞一下，莫不是从那次会议起 Sid 动了 Remote 工作的念头^_^）。GitLab持续加强企业代码托管及开发协作所需的特性和服务，在 GitLab 之外还发布了持续集成服务 GitLab CI.
+最初，GitLab 是定位为开源的 GitHub（确切的说，是 GitHub Enterprise，也就是可在企业内私有部署的 GitHub 版本）。当时 GitHub Enterprise 的一个License 大约是500美元每人年。因此，功能接近 GitHub 而又开源的 GitLab 开始被越来越多的公司和个人所采用。我在2012年5月在公司搭建了第一个 GitLab 服务，好像是2.5版本，后来几乎每个月我都会升级，因为每个月都能感受到 GitLab 日新月异的变化。从最初仅仅是Git仓库托管，到项目管理功能(issues, milestone)，到借鉴于 GitHub PR 的 Merge Request。实际上，Merge Request 还是有很大的流程性创新的，在 GitLab 的 MR 流程中，无需 Fork 仓库，而是创建分支提交MR，这其实比 GitHub PR 更适合项目内协作。GitHub 后来也将这种无需 Fork 创建分支提 PR 的功能也实现了，可谓是学生教了老师。而 GitLab 的更新迭代非常快，他们也非常积极听取用户特别是企业用户的意见。记得应该是在2013年左右，我发了封邮件(也许是issue)给 GitLab，很快就收到了 Sid 的回复，并约我和 Dmitriy 一起开了个电话会议，我还记得 Sid 在电话会议快结束时说我们三个非英语国家的人分别在三个时区完成了对 GitLab 发展很重要的交流，这是互联网带来的奇迹（我脑洞一下，莫不是从那次会议起 Sid 动了 Remote 工作的念头^_^）。GitLab持续加强企业代码托管及开发协作所需的特性和服务，在 GitLab 之外还发布了持续集成服务 GitLab CI.
 
 2015年初，GitLab 申请成为 Y Combinator 孵化器成员并获得通过。Y Combiantor 是 Paul Graham（即《黑客与画家》的作者）创办的风险投资结构，对投资项目要求极为严格。GitLab 获得 Y Combiantor 投资后整个团队（包括两创始人在内也就5个人）便搬到了硅谷。GitLab 也有了更为清晰的商业路线，加快了扩张，从最初的能装在一辆SUV的团队扩张到了140人。
 
@@ -97,7 +103,7 @@ GitLab 发现如果单纯做开源版的 GitHub Enterprise，商业变现比较�
 
 > GitLab 代码量增长曲线
 
-除了透明和敏捷，GitLab 的联合创始人及 CEO Sid Sijbrandij 总结了 GitLab的文化，将它归纳为 CREDIT: 及 Collaboration(开放协作), Results(结果导向), Efficiency(效率优先), Diversity Inclusion and Belonging(多样性、包容及归属感), Iteration(敏捷迭代), Transparency(透明)。从最初的两个创始人到目前全球分布的1400多员工，从最初的一次开源代码提交到现在市值160亿美元的上市企业，GitLab 的故事激励着初创企业和开源社区。可以说，GitLab 是将开源软件的开放与透明文化与商业模式结合最为成功的案例之一。
+除了透明和敏捷，GitLab 的联合创始人及 CEO Sid Sijbrandij 总结了 GitLab的文化，将它归纳为 CREDIT: 及 Collaboration(开放协作), Results(结果导向), Efficiency(效率优先), Diversity Inclusion and Belonging(多样性、包容及归属感), Iteration(敏捷迭代), Transparency(透明)。从最初的两个创始人到目前全球分布的1400多员工，从最初的一次开源代码提交到现在市值160亿美元的上市企业，GitLab 的故事激励着初创企业和开源社区。可以说，GitLab 是将开源软件的开放、透明文化与商业模式结合最为成功的案例之一。
 
 ### 启示
 
@@ -111,7 +117,7 @@ GitHub 和 GitLab 的故事带给我的启发大概有如下几点：
 
 4. **后发产品要想实现超越必须要探索出一条新路，沿着领先竞争对手的路去走只能是跟随。**GitLab 初期是以开源可私有部署的 GitHub 方式而深入人心，因此得到了很多期望以更低成本私有化部署 GitHub 的用户的青睐。后来 GitLab 做代码托管 SaaS 服务 GitLab.com, 曾想以免费私有仓的差异化来获取用户，但在产品路线上并没有与 GitHub 形成太大差异，因此效果并不理想，而等到微软收购 GitHub 宣布免费创建私有仓后，这点唯一的优势也就没有了。因此 GitLab 后来将重点放到了支持企业级 DevOps 上，全力打造 DevOps 能力，探索出另一条新路，也使得自己的估值指数级上升，获得了市场认可。
 
-如果你有任何想法和建议，欢迎与我交流或联系。
+如果你有做产品的想法和建议，欢迎与我交流或联系。
 
 ### 参考
 
