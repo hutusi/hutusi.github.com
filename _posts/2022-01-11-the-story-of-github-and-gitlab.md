@@ -89,7 +89,7 @@ The Org 曾发表过一篇专题报道“全世界最透明的公司” (*GitLab
 
 > GitLab 搬到硅谷初期的时候的团队，他们将这辆能塞下整个团队的车称为 Boat
 
-GitLab 发现如果单纯做开源版的 GitHub Enterprise，商业变现比较困难，虽然GitLab 提供了收费的 GitLab EE 版本，但营收一直不是很理想。因为小企业其实部署开源免费的 GitLab CE 版本就够了，而大企业也会优先选择在 GitLab CE 版本上做二次开发和功能增强。因此 GitLab 在加入 Y Combinator 孵化器后，在商业策略上也开始调整，着重打造 GitLab.com SaaS 服务，将 GitLab CI 合入到 GitLab 中，并增加项目管理、CICD、性能安全检测等全链路的DevOps功能。对比 GitLab 和 GitHub 的订阅费可以看出，GitLab 的 Premium 版本每用户每月收费19美元，Ultimate 版本每用户每月 99美元；相对应的 GitHub 的两档收费版本 Team 和 Enterprise 分别是每用户每月 4美元和 21美元。可以说，GitLab 的收费远远高于 GitHub. 而 GitLab之所以有这样的底气，是因为它能给客户提供比 GitHub 更多功能特性的产品，用 GitLab 自己的话说，他们是（唯一的） DevOps 平台(The DevOps Platform, 注意这个 “The”)。当然，这个唯一是GitLab 自己声称的，其实各大云厂商都有自己的DevOps平台。不过仅就比较GitHub而言，确实 GitLab 在 DevOps 能力方面更胜一筹，GitLab 在官网也有与其他工具对比：GitLab = JIRA + GitHub + Jenkis + JFrog + 性能监控 + 安全检查。
+GitLab 发现如果单纯做开源版的 GitHub Enterprise，商业变现比较困难，虽然GitLab 提供了收费的 GitLab EE 版本，但营收一直不是很理想。因为小企业其实部署开源免费的 GitLab CE 版本就够了，而大企业也会优先选择在 GitLab CE 版本上做二次开发和功能增强。因此 GitLab 在加入 Y Combinator 孵化器后，在商业策略上也开始调整，着重打造 GitLab.com SaaS 服务，将 GitLab CI 合入到 GitLab 中，并增加项目管理、CICD、性能安全检测等全链路的DevOps功能。对比 GitLab 和 GitHub 的订阅费可以看出，GitLab 的 Premium 版本每用户每月收费19美元，Ultimate 版本每用户每月 99美元；相对应的 GitHub 的两档收费版本 Team 和 Enterprise 分别是每用户每月 4美元和 21美元。可以说，GitLab 的收费远远高于 GitHub. 而 GitLab之所以有这样的底气，是因为它能给客户提供比 GitHub 更多功能特性的产品，用 GitLab 自己的话说，他们是（唯一的） DevOps 平台(The DevOps Platform, 注意这个 “The”)。当然，这个唯一是GitLab 自己声称的，其实各大云厂商都有自己的DevOps平台。不过仅就比较GitHub而言，确实 GitLab 在 DevOps 能力方面更胜一筹，GitLab 在官网也有与其他工具对比：GitLab = JIRA + GitHub + Jenkins + JFrog + 性能监控 + 安全检查。
 
 ![gitlab-compare-to-tools]({{site.images_baseurl}}/gitlab-compare-to-tools.png?w=600)
 
@@ -97,7 +97,7 @@ GitLab 发现如果单纯做开源版的 GitHub Enterprise，商业变现比较�
 
 2020年，新冠疫情席卷全球，而提供企业 DevOps 服务的 GitLab 获得了快速发展的机会，成员也增长到了1200人，GitLab 获得了2亿6千万美元的风投，而 GitLab 也开启了它的上市计划。2021年，在 GitLab 创立10周年之际，GitLab 在纳斯达克(NASDAQ)上市，开盘市值冲到150亿美元（目前市值 100亿美元 10.24B）。
 
-从2011年9月在 GitHub 上发布第一个版本，GitLab 每个月都会发布一个新版本，而且基本上都在每月的22日，前后相差不过一两天。十多年如一日，即使 GitLab 体量已经非常大了，还保持着最初版本一样的敏捷迭代效率，真的是令人佩服。而这体现了 GitLab 良好的构架守护。GitLab 最初采用 Ruby on Rails 框架编写，一直是学习 Ruby on Rails 的最好实例样板，代码非常干净整洁，测试用例也很齐全。而后关键性能组件用 Go 重写，前后端分离前端使用 VUE 重构。GitLab 一直采用合适的新技术来保持架构的弹性。
+从2011年9月在 GitHub 上发布第一个版本，GitLab 每个月都会发布一个新版本，而且基本上都在每月的22日，前后相差不过一两天。十多年如一日，即使 GitLab 体量已经非常大了，还保持着最初版本一样的敏捷迭代效率，真的是令人佩服。而这体现了 GitLab 良好的构架守护。GitLab 最初采用 Ruby on Rails 框架编写，一直是学习 Ruby on Rails 的最好实例样板，代码非常干净整洁，测试用例也很齐全。而后关键性能组件用 Go 重写，前后端分离前端使用 Vue.js 重构。GitLab 一直采用合适的新技术来保持架构的弹性。
 
 ![gitlab-loc-curve]({{site.images_baseurl}}/gitlab-loc-curve.jpeg?w=600)
 
@@ -111,7 +111,7 @@ GitHub 和 GitLab 的故事带给我的启发大概有如下几点：
 
 1. **文化是公司或团队最重要的东西。**任总说过：“只有文化才能生生不息。”很多组织的文化是在组织创立后逐渐形成的。一个积极而正向的文化能将优秀的人聚集在一起，所谓物以类聚，人以群分。GitHub 的黑客文化，GitLab 的透明开放文化，都将一批有同样理想和追求的人聚集在了一起，从而创造出优秀的产品。
 
-2. **解决自己遇到的问题，这往往是做好产品的前提。**如果别人也有这个问题，那么商业模式就有了。如果这是个普遍存在的问题，那么这将是个很好的商业模式。GitHub 和 GitLab 在创立初期都是为了解决自己遇到的问题，吃狗粮(eating dog food)，直到发现更广阔的用户场景。
+2. **解决自己遇到的问题，这往往是做好产品的前提。**如果别人也有这个问题，那么商业模式就有了。如果这是个普遍存在的问题，那么这将是个很好的商业模式。GitHub 和 GitLab 在创立初期都是为了解决自己遇到的问题，吃狗粮(eating dog food)，直到发现更广阔的用户场景。关于这一点，可参见 GitHub 员工早期的演讲: *How GitHub Uses GitHub to Build GitHub*.
 
 3. **持续迭代，持续演进，持续更新。**GitLab 可以说将迭代做到了极致，而 GitHub 的更新迭代也是很快的。与之形成对比的是 Gitorious，作为 Git 托管平台，Gitorious 很早就开源了，它的诞生不仅比 GitLab 早，甚至比 GitHub 还早。但 Gitorious 基本上是对标 SourceForge 做的，后期也不怎么更新，最终被 GitLab 所收购。产品如果不及时更新，很快就会被用户所遗忘。
 
@@ -132,4 +132,4 @@ GitHub 和 GitLab 的故事带给我的启发大概有如下几点：
 9. [History of GitLab](https://about.gitlab.com/company/history/)
 10. [Welcome to the DevOps Platform era](https://about.gitlab.com/blog/2021/08/03/welcome-to-the-devops-platform-era/)
 11. [GitLab: The World’s Most Transparent Company](https://theorg.com/insights/gitlab-the-worlds-most-transparent-company)
-
+12. [How GitHub Uses GitHub to Build GitHub](https://zachholman.com/talk/how-github-uses-github-to-build-github/)
