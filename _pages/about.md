@@ -86,6 +86,12 @@ commentable: true
 * 2020年10月，算是认真的写了关于页面。
 * 2022年3月，更新关于页面。
 
+### 知识共享许可协议
+
+如无特殊声明，本站所有原创文章采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh">知识共享署名-相同方式共享 4.0 国际许可协议</a>进行许可。 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+
+<br />
+
 <div>
 <span class="footnotes">本站最后更新时间 {{ site.time }}</span>
 </div>
