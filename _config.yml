@@ -18,7 +18,7 @@ facebook:    'https://facebook.com/hutusi'
 
 copyright:    '胡涂说 hutusi.com'
 # time:         2012-2020
-icp_info:     '沪ICP备19043788号-1 沪ICP备19043788号-2 沪ICP备19043788号-3'
+icp_info:     '沪ICP备19043788号-1'
 # Author
 author:
   name:       hutusi
@@ -35,7 +35,7 @@ permalink: /articles/:title
 paginate:  10
 
 # Navigators
-nav_page_names: ['about.md', 'archive.html', 'links.md', 'toolbox.md', 'subscription.md']
+nav_page_names: ['about.md', 'archive.html', 'links.md', 'subscription.md']
 # can be ['feeds.pub', 'xml', 'na']
 nav_feed: 'na'
 
