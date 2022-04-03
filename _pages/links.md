@@ -10,6 +10,7 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份[「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs)的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。
 
+* [forecho's Blog](https://blog.forecho.com) 把生命浪费在美好的事物上
 * [Surmon](https://surmon.me) 一位很厉害的全栈工程师
 * [土木坛子](https://tumutanzi.com/) 资深中文博主
 * [Airing 的小屋](https://me.ursb.me) 学哲学的程序员
