@@ -102,7 +102,11 @@ jekyll-archives:
     category: '/category/:name/'
 
 # comments
-comments_engine: gitalk
+comments_engine: giscus
+giscus:
+  repo: "hutusi/hutusi.github.com"
+  category: "Comments"
+
 gitalk:
   client_id: '3ecf7aac87e37cbe772c'
   client_secret: '887d16569177e1f6336cce32e9c58974c2932807'
