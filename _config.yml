@@ -102,7 +102,9 @@ jekyll-archives:
     category: '/category/:name/'
 
 # comments
-comments_engine: giscus
+comments_engine: disqus
+disqus: hutusi
+
 giscus:
   repo: "hutusi/hutusi.github.com"
   category: "Comments"
