@@ -12,7 +12,7 @@ commentable: true
 
 如果你也在写博客，欢迎与我交换友链，将我的链接添加在你的网站上，并在此留言，或给我发消息（可以在[关于页面](/about/)找到我的联系方式）。
 
-* [v3u.cn](https://v3u.cn) 乐于助人的敏捷开发者
+* [刘悦的技术博客](https://v3u.cn) 乐于助人的敏捷开发者
 * [你好我是森林](https://chensenlin.cn) 坚持每周一本书
 * [forecho's Blog](https://blog.forecho.com) 把生命浪费在美好的事物上
 * [Surmon](https://surmon.me) 一位很厉害的全栈工程师
