@@ -10,6 +10,10 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份[「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs)的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。
 
+如果你也在写博客，欢迎与我交换友链，将我的链接添加在你的网站上，并在此留言，或给我发消息（可以在[关于页面](/about/)找到我的联系方式）。
+
+* [v3u.cn](https://v3u.cn) 乐于助人的敏捷开发者
+* [你好我是森林](https://chensenlin.cn) 坚持每周一本书
 * [forecho's Blog](https://blog.forecho.com) 把生命浪费在美好的事物上
 * [Surmon](https://surmon.me) 一位很厉害的全栈工程师
 * [土木坛子](https://tumutanzi.com/) 资深中文博主
@@ -28,4 +32,4 @@ commentable: true
 
 ### 如何添加友链
 
-欢迎添加友链，请在此留言或到 [GitHub issue](https://github.com/hutusi/hutusi.github.com/issues/4) 上评论登记，或者添加我的微信(微信id: hutusi)联系。
+请在此留言或到 [GitHub discussion](https://github.com/hutusi/hutusi.github.com/discussions/118) 上评论登记。

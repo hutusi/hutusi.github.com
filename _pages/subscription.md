@@ -4,7 +4,7 @@ title: "订阅"
 description: "订阅博客"
 navigable: true
 permalink: /subscription/
-commentable: false
+commentable: true
 ---
 
 ## 1. RSS 订阅
