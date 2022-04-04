@@ -108,6 +108,10 @@ disqus: hutusi
 giscus:
   repo: "hutusi/hutusi.github.com"
   category: "Comments"
+  mapping: 'pathname'
+  input_position: 'top'
+  theme: 'light'
+  lang: "en"
 
 gitalk:
   client_id: '3ecf7aac87e37cbe772c'
