@@ -31,7 +31,7 @@ img {
 
 微信扫码订阅公众号“胡涂说”：
 
-![wechat]({{site.images_baseurl}}/qrcode_for_hututalk_8cm.jpg?w=1280)
+![wechat]({{site.images_baseurl}}/site/qrcode_for_hututalk_8cm.jpg?w=1280){:width="600px"}
 
 
 ## 3. 邮件订阅

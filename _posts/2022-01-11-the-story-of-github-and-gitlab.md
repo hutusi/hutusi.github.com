@@ -27,7 +27,7 @@ TL;DR 本文字数约6000字，全文阅读约10分钟，分为引子、GitHub�
 
 2007年，Tom Preston-Werner 刚刚卖掉上一个创业项目 Gravatar, 开始构建新的想法。他的新项目叫 Grit，这是一个使用 Ruby 语言开发的 Git 组件库，通过 Ruby 封装操作 Git 仓库的接口。那个时候 Ruby 以及 Ruby on Rails 在硅谷很流行，很多前卫的创业公司都会选择 Ruby。Tom 在酒吧里碰到了 Chris Wanstrath 和 PJ Hyett，向他们推销自己的想法并拉他们一起入伙。这便是 GitHub 的开始，而 Tom Preston-Werner, Chris Wanstrath 和 PJ Hyett 也成了 GitHub 的三位创始人。后来他们又找了一名程序员，名叫 Scott Chacon, 负责 Git 接口开发。这哥们很长一段时间一直在简介中写着：第一位 GitHub 员工。是的，GitHub 的初始创业团队里，就是三个老板和一个员工。
 
-![GitHub founders and first employee]({{site.images_baseurl}}/github-founders-and-first-employee.jpeg?w=600)
+![GitHub founders and first employee]({{site.images_baseurl}}/posts/github-founders-and-first-employee.jpeg?w=600){:width="600px"}
 
 > GitHub三位创始人(左一: Chris Wanstrath; 左二: Tom Preston-Werner; 右一: PJ Hyett)和第一个员工(右二: Scott Chacon)
 
@@ -35,7 +35,7 @@ TL;DR 本文字数约6000字，全文阅读约10分钟，分为引子、GitHub�
 
 Tom Preston-Werner 回忆他第一次创业，他躺在学校宿舍的床上绞尽脑汁去想有什么创业的机会，但好像互联网上点子都被人实现了。于是又去想有哪些服务可以提供公共 SaaS 服务，比如提供评论服务的 disqus. 他想到每次在网站上注册账号时都要上传头像，于是就做了头像服务 Gravatar，用户只要在 Gravatar 上传头像，那么支持 Gravatar 的网站便可以直接显示用户的头像。但这个服务赚不到钱，一直到卖给 WordPress 后 Tom 才还清了自己的贷款。等到创立 GitHub 时，Tom 就认定首先要把商业模式想清楚，因而 GitHub 在一开始就是提供私有仓库收费服务的。从2008年创立到2012年的四年间，GitHub 从未融过资，在它的官网介绍页面一直自豪的写着0融资。2012年，GitHub 接受了 a16z 的1亿美元投资，2015年再次接受红杉资本2.5亿美元投资，此时估值已达20亿美元。2018年6月，微软宣布以75亿美元收购 GitHub. 
 
-![Microsoft acquires github]({{site.images_baseurl}}/microsoft-acquires-github.jpeg?w=600)
+![Microsoft acquires github]({{site.images_baseurl}}/posts/microsoft-acquires-github.jpeg?w=600){:width="600px"}
 
 > 微软收购 GitHub 后三位大佬的合影(左: 收购前 GitHub CEO Chris Wanstrath; 中: 微软 CEO Satya Nadella; 右: 收购后 GitHub CEO Nat Friedman)
 
@@ -43,19 +43,19 @@ Tom Preston-Werner 回忆他第一次创业，他躺在学校宿舍的床上绞�
 
 GitHub 最初的 Slogan 是 “Social coding”(后来改为 Build software better, together, 现在是 Where the world builds software)，因此也认为是程序员版的 Facebook. 在 GitHub 之前，全球最大的开源项目平台是SourceForge, 任何人都可以在上面创建并发布开源软件，但它侧重于开源软件的展示和发布，没有考虑开发者的社交活动。而 GitHub 在面世时就突出开发者社交，最亮点的特性有三个：开发者社交功能、”Fork+Pull Request”、Explore 页面。
 
-![github-social-coding]({{site.images_baseurl}}/github-social-coding.jpeg?w=600)
+![github-social-coding]({{site.images_baseurl}}/posts/github-social-coding.jpeg?w=600){:width="600px"}
 
 > GitHub最初的 Slogan: Social coding 以及GitHub的著名Logo章鱼猫 octocat
 
 社交功能主要体现在登录用户的首页和用户 Profile 页面。登录用户首页上以 timeline 状态流的方式呈现与用户关注的用户和项目的动态，感觉就像刷社交媒体一样爽 GitHub。GitHub 的用户 Profile 页面在2012年做过重大调整，这种风格基本保持到了现在。Profile 页面上展示用户的项目和 follow 及被 follow 的数量；后来加上了贡献图，就是那些绿色小格子的日历图，每个勤奋的程序员都想点亮它们。这就成了程序员的最真实的个人名片，因此早在2009年就有人在 Twitter 上提出：对程序员来说，GitHub 比简历和 Linkedin 重要的多。GitHub 非常注重它的社交属性，这是它成功的最主要原因。
 
-![tweet-about-github]({{site.images_baseurl}}/tweet-about-github.png?w=480)
+![tweet-about-github]({{site.images_baseurl}}/posts/tweet-about-github.png?w=480){:width="480px"}
 
 > 早在2009年，Twitter 上就有网友提出 GitHub 比简历更重要
 
 GitHub 第二个亮点特性是“Fork+Pull Request(简称 PR)”，这种开源协作模式充分利用了 Git 的分布式特性。在以往的开源协作模式中，程序员们主要通过邮件+patch的方式来交换代码。而 GitHub 提供的 PR 机制，让程序员在 GitHub 上可以一键 Fork 仓库到自己名下，然后通过提交 PR 来将自己的共享合回社区（或原项目所有者），基于 PR 公开讨论，并决定是否合入主干。这种社区协作的方式让大家觉得很酷，很快 GitHub 就在硅谷的黑客圈子里流行了起来。最开始是 Ruby 社区（因为 GitHub 本身也是用 Ruby on Rails 写的），Ruby on Rails 的创始人 DHH 开始注意到了它，并将 Ruby on Rails 源码托管迁移到了 GitHub。在2014年前的几年里，Ruby 一直是 GitHub 上排名第一的语言。接着，是更多的社区、企业和个人将自己的代码迁移到 GitHub. 当然，不是每个人都喜欢 PR，最大的反对声音来自于 Git 的创始人 Linus Torvalds。Linus 曾直言不讳的批评 GitHub PR 制造了“一堆毫无用处的垃圾合并”。
 
-![linus-criticize-github-pr]({{site.images_baseurl}}/linus-criticize-github-pr.jpeg?w=480)
+![linus-criticize-github-pr]({{site.images_baseurl}}/posts/linus-criticize-github-pr.jpeg?w=480){:width="480px"}
 
 > Linus 在邮件列表中痛批 GitHub PR
 
@@ -63,7 +63,7 @@ GitHub 第二个亮点特性是“Fork+Pull Request(简称 PR)”，这种开源
 
 虽然 GitHub 后来又增加了项目管理的 Project 功能、CI/CD 功能(GitHub Actions)，看上去似乎是在向 DevOps 平台发展；但本质上，GitHub 仍然是一个社区，并且也在着重打造社区。GitHub 提供更多更全面的服务，也是为了让社区里的用户体验更好。根据 GitHub 发布的报告，GitHub 上已经有7300万开发者用户，其中2021年新增了1600万；托管代码仓超过2亿，仅2021年新增代码仓6100万。
 
-![github-home]({{site.images_baseurl}}/github-home.png?w=600)
+![github-home]({{site.images_baseurl}}/posts/github-home.png?w=600){:width="600px"}
 
 > GitHub 首页上的地球动图，当该地区有人提交代码到 GitHub，地球动图的该位置就会被点亮
 
@@ -77,7 +77,7 @@ The Org 曾发表过一篇专题报道“全世界最透明的公司” (*GitLab
 
 这种近乎偏执的透明文化让 GitLab 持续保持着创业公司的特质，当然这与公司创始人的黑客风格也是密不可分的。2011年，乌克兰的两个程序员 Dmitriy Zaporozhets 和 Valery Sizov 想做一个能帮助他们团队协作的工具，于是就开发了 GitLab。2011年10月9日，GitLab 发布了第一版并开源了源码，而后，每个月他们都会发布新版本。2012年，荷兰程序员 Sid Sijbrandij 发现了 GitLab，正好他手中握有 GitLab.com 这个域名（Dmitriy发布GitLab时用的是 gitlabhq.com），于是 Sid 和 Dmitriy 一拍即合，决定成立公司来全职投入GitLab。
 
-![gitlab-founders]({{site.images_baseurl}}/gitlab-founders.jpeg?w=600)
+![gitlab-founders]({{site.images_baseurl}}/posts/gitlab-founders.jpeg?w=600){:width="600px"}
 
 > GitLab 的两位创始人（左: Sid Sijbrandij; 右: Dmitriy Zaporozhets）在去年 NASDAQ 上市时的合影
 
@@ -85,13 +85,13 @@ The Org 曾发表过一篇专题报道“全世界最透明的公司” (*GitLab
 
 2015年初，GitLab 申请成为 Y Combinator 孵化器成员并获得通过。Y Combiantor 是 Paul Graham（即《黑客与画家》的作者）创办的风险投资结构，对投资项目要求极为严格。GitLab 获得 Y Combiantor 投资后整个团队（包括两创始人在内也就5个人）便搬到了硅谷。GitLab 也有了更为清晰的商业路线，加快了扩张，从最初的能装在一辆SUV的团队扩张到了140人。
 
-![gitlab-the-boat]({{site.images_baseurl}}/gitlab-the-boat.jpeg?w=600)
+![gitlab-the-boat]({{site.images_baseurl}}/posts/gitlab-the-boat.jpeg?w=600){:width="600px"}
 
 > GitLab 搬到硅谷初期的时候的团队，他们将这辆能塞下整个团队的车称为 Boat
 
 GitLab 发现如果单纯做开源版的 GitHub Enterprise，商业变现比较困难，虽然GitLab 提供了收费的 GitLab EE 版本，但营收一直不是很理想。因为小企业其实部署开源免费的 GitLab CE 版本就够了，而大企业也会优先选择在 GitLab CE 版本上做二次开发和功能增强。因此 GitLab 在加入 Y Combinator 孵化器后，在商业策略上也开始调整，着重打造 GitLab.com SaaS 服务，将 GitLab CI 合入到 GitLab 中，并增加项目管理、CICD、性能安全检测等全链路的DevOps功能。对比 GitLab 和 GitHub 的订阅费可以看出，GitLab 的 Premium 版本每用户每月收费19美元，Ultimate 版本每用户每月 99美元；相对应的 GitHub 的两档收费版本 Team 和 Enterprise 分别是每用户每月 4美元和 21美元。可以说，GitLab 的收费远远高于 GitHub. 而 GitLab之所以有这样的底气，是因为它能给客户提供比 GitHub 更多功能特性的产品，用 GitLab 自己的话说，他们是（唯一的） DevOps 平台(The DevOps Platform, 注意这个 “The”)。当然，这个唯一是GitLab 自己声称的，其实各大云厂商都有自己的DevOps平台。不过仅就比较GitHub而言，确实 GitLab 在 DevOps 能力方面更胜一筹，GitLab 在官网也有与其他工具对比：GitLab = JIRA + GitHub + Jenkins + JFrog + 性能监控 + 安全检查。
 
-![gitlab-compare-to-tools]({{site.images_baseurl}}/gitlab-compare-to-tools.png?w=600)
+![gitlab-compare-to-tools]({{site.images_baseurl}}/posts/gitlab-compare-to-tools.png?w=600){:width="600px"}
 
 > GitLab 官网上将自己与其他工具对比
 
@@ -99,7 +99,7 @@ GitLab 发现如果单纯做开源版的 GitHub Enterprise，商业变现比较�
 
 从2011年9月在 GitHub 上发布第一个版本，GitLab 每个月都会发布一个新版本，而且基本上都在每月的22日，前后相差不过一两天。十多年如一日，即使 GitLab 体量已经非常大了，还保持着最初版本一样的敏捷迭代效率，真的是令人佩服。而这体现了 GitLab 良好的构架守护。GitLab 最初采用 Ruby on Rails 框架编写，一直是学习 Ruby on Rails 的最好实例样板，代码非常干净整洁，测试用例也很齐全。而后关键性能组件用 Go 重写，前后端分离前端使用 Vue.js 重构。GitLab 一直采用合适的新技术来保持架构的弹性。
 
-![gitlab-loc-curve]({{site.images_baseurl}}/gitlab-loc-curve.jpeg?w=600)
+![gitlab-loc-curve]({{site.images_baseurl}}/posts/gitlab-loc-curve.jpeg?w=600){:width="600px"}
 
 > GitLab 代码量增长曲线
 

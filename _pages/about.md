@@ -93,7 +93,7 @@ commentable: true
 
 下面是 “胡涂说” 微信公众号的二维码，公众号发表文章与博客并不一致，订阅博客请见 **[订阅页面](/subscription)**。
 
-![]({{site.images_baseurl}}/qrcode_for_hututalk_8cm.jpg?w=1280)
+![]({{site.images_baseurl}}/site/qrcode_for_hututalk_8cm.jpg?w=1280){:width="600px"}
 
 
 ### 关于本站的历史

@@ -51,7 +51,7 @@ BLOB: 即二进制对象，这就是 Git 存储的文件，Git 不像某些 VCS 
 
 TREE: 目录树对象。在 Linus 的设计里 TREE 对象就是一个时间切片中的目录树信息抽象，包含了文件名、文件属性及BLOB对象的SHA1值信息，但没有历史信息。这样的设计好处是可以快速比较两个历史记录的 TREE 对象，不能读取内容，而根据 SHA1 值显示一致和差异的文件。另外，由于 TREE 上记录文件名及属性信息，对于修改文件属性或修改文件名、移动目录而不修改文件内容的情况，可以复用 BLOB 对象，节省存储资源。而 Git 在后来的开发演进中又优化了 TREE 的设计，变成了某一时间点文件夹信息的抽象，TREE 包含其子目录的 TREE 的对象信息（SHA1）。这样，对于目录结构很复杂或层级较深的 Git库 可以节约存储资源。历史信息被记录在第三种对象 CHANGESET 里。
 
-![Git simple objects model]({{site.images_baseurl}}/git-object-model-tree.png?w=1280)
+![Git simple objects model]({{site.images_baseurl}}/software/git-object-model-tree.png?w=1280){:width="800px"}
 
 > 图片摘自：*Pro Git, 10.2 Git Internals - Git Objects* [^1]
  
@@ -63,7 +63,7 @@ Linus 在三种对象的设计解释后着重阐述了可信(TRUST)：虽然 Git
 
 Linus 解释了“当前目录缓存”的设计，该缓存就是一个二进制文件，内容结构很像 TREE 对象，与 TREE 对象不同的是 index 不会再包含嵌套 index 对象，即当前修改目录树内容都在一个 index 文件里。这样设计有两个好处：1. 能够快速的复原缓存的完整内容，即使不小心把当前工作区的文件删除了，也可以从缓存中恢复所有文件；2. 能够快速找出缓存中和当前工作区内容不一致的文件。
 
-![Git Working tree, staging area, and Git directory.]({{site.images_baseurl}}/git-working-tree-staging-area-git-repo.png?w=1280)
+![Git Working tree, staging area, and Git directory.]({{site.images_baseurl}}/software/git-working-tree-staging-area-git-repo.png?w=1280){:width="800px"}
 
 > 图片摘自：*Things About Git and Github You Need to Know as Developer* [^2]
 
