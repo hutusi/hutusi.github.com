@@ -47,7 +47,7 @@ commentable: true
 
 在线好用的工具中，用 [ASCII Flow](http://asciiflow.com/) 做字符版流程图, 用 [mdnice](https://mdnice.com/) 来做微信公众号发布前排版, 偶尔用 [幕布](https://mubu.com/) 画思维导图。其他有用的工具有： [Codepoints.net 字符编码大全](https://codepoints.net/)。
 
-在网上找资源时，首选 Google 搜索，GitHub 和 StackOverflow 自不必少。还会到 [unsplash](https://unsplash.com/) 上搜图片, 偶尔在 [zlibrary](https://b-ok.global/) 上搜书。
+在网上找资源时，首选 Google 搜索，GitHub 和 StackOverflow 自不必少。还会到 [unsplash](https://unsplash.com/) 上搜图片, 偶尔在 [zlibrary](https://b-ok.global/) 上搜书。一些好资源： 阿里的李鼎在 github 上创建的[英文资料翻译项目](https://github.com/oldratlee/translations)。
 
 收集的有趣的网站有：著名的漫画 [xkcd](https://xkcd.com/), RMS 的编程照片 [rms](https://rms.sexy/).
 
@@ -93,7 +93,7 @@ commentable: true
 
 下面是 “胡涂说” 微信公众号的二维码，公众号发表文章与博客并不一致，订阅博客请见 **[订阅页面](/subscription)**。
 
-![]({{site.images_baseurl}}/site/qrcode_for_hututalk_8cm.jpg?w=1280){:width="600px"}
+![]({{site.images_baseurl}}/site/qrcode_for_hututalk_8cm.jpg?w=1280){:width="240px"}
 
 
 ### 关于本站的历史
