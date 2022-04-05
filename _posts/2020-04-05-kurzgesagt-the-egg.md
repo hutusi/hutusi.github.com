@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: kurzgesagt youtube
+tags: kurzgesagt youtube 大卫
 title: 宇宙就是一个蛋
 subtitle: "Kurzgesagt: The Egg"
 date: "2020-04-05 09:00:05 +0800"

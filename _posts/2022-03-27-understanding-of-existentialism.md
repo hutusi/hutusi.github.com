@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 读书笔记 哲学 存在主义
+tags: 读书 书评 哲学 存在主义
 title: 我所理解的存在主义
 subtitle: 《存在主义咖啡馆》、《非理性的人》读书笔记
 date: "2022-03-27 15:55:00 +0800"

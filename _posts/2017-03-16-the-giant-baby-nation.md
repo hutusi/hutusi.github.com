@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 书评
+tags: 读书 书评 心理学
 title: 《巨婴国》读后
 gh_issue: 36
 redirect_from:

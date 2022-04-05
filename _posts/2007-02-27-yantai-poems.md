@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 随笔
+tags: 随笔 诗词
 title: 诗歌与烟台
 subtitle: 
 backgrounds:

@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 读书笔记 访谈
+tags: 读书 书评 访谈
 title: 巨人的笔记
 subtitle: 《巨人的工具》和《巨人的方法》的读书笔记
 date: "2022-01-24 22:45:00 +0800"

@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 育儿 阅读
+tags: 育儿 阅读 大卫
 title: 大卫四岁读的书
 subtitle: 大卫四岁时的藏书已经超过了我三十多年的藏书数了
 date: "2020-04-11 11:00:00 +0800"

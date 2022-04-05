@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 书评 写作
+tags: 读书 书评 写作
 title: 听斯蒂芬·金谈写作
 subtitle: 《写作这回事》读书笔记
 date: "2021-10-04 23:10:00 +0800"

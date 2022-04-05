@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 随笔
+tags: 随笔 王小波
 title: 一只特立独行的猪
 subtitle: 
 backgrounds:

@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 诗歌 七律
+tags: 诗词 格律诗
 title: 七律三首
 subtitle: 2008年前写的几首诗
 date: 2010-07-29 00:00:00 +0800

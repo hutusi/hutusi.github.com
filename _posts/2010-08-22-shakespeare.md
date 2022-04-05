@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 书评
+tags: 读书 书评 文学
 title: 四月莎士比亚
 subtitle: “惟兰蕙之幽姿兮，蘧一朝而摧焚”
 backgrounds:

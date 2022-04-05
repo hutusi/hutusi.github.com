@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 读书笔记 宗教 传记
+tags: 读书 书评 宗教 传记
 title: 觉悟之道就是活在当下
 subtitle: 《佛陀传》(《故道白云》)读书笔记
 date: "2022-02-02 17:50:00 +0800"

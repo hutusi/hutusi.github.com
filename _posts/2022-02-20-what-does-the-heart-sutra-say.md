@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 读书笔记 宗教
+tags: 读书 书评 宗教
 title: 心经说了什么
 subtitle: 比尔·波特《心经解读》读书笔记
 date: "2022-02-20 20:35:00 +0800"

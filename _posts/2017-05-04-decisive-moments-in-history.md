@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 书评 传记
+tags: 读书 书评 传记
 title: 人类伟大的时刻
 subtitle: "《人类群星闪耀时》读书笔记"
 gh_issue: 6

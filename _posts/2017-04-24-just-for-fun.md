@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 书评 传记
+tags: 读书 书评 传记 开源
 title: 最著名的黑客
 subtitle: "《只是为了好玩》——林纳斯·托瓦兹（Linus Torvalds）传记"
 gh_issue: 35

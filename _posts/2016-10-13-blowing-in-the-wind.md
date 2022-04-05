@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: "bob dylan"
+tags: "bob dylan" 音乐
 title: 答案在风中飘
 subtitle: Bob Dylan 之获诺贝尔文学奖
 date: 2016-10-13 00:00:00 +0800
