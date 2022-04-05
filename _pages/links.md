@@ -16,6 +16,8 @@ commentable: true
 > 网址: https://hutusi.com/    
 > 关于博客简介，可以写“读书写作、程序人生、软件产品”，或使用“任抛星汉归园圃，留取乾坤盛酒囊”。
 
+* [思圆笔记](https://hintsnet.com/pimgeek/) 百科知识爱好者，数字化个人知识库构建者
+* [飞刀博客](https://www.feidaoboke.com/) 独立的个人博客，涵盖读书、随笔、足球、信息技术和新闻评论
 * [Jason](https://atjason.com/) 独立开发者，自由职业者
 * [李雪含](https://dajiayouxuan.com/) 每天分享几篇值得看的商业，创业或者投资的文章
 * [刘悦的技术博客](https://v3u.cn) 乐于助人的敏捷开发者
