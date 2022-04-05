@@ -8,13 +8,7 @@ permalink: /links/
 commentable: true
 ---
 
-写博客的人越来越少了，中文独立博客更少，因此有网友做了份[「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs)的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。
-
-如果你也在写博客，欢迎与我交换友链，将我的链接添加在你的网站上，并在此留言，或给我发消息（可以在[关于页面](/about/)找到我的联系方式）。你可以简单描述你的网站，像这样：
-
-> 博客: 胡涂说   
-> 网址: https://hutusi.com/    
-> 关于博客简介，可以写“读书写作、程序人生、软件产品”，或使用“任抛星汉归园圃，留取乾坤盛酒囊”。
+写博客的人越来越少了，中文独立博客更少，因此有网友做了份[「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs)的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
 * [歪酷博客](https://y.cool/) y.cool! 熊的猫，媒体工作者
 * [思圆笔记](https://hintsnet.com/pimgeek/) 百科知识爱好者，数字化个人知识库构建者
@@ -38,7 +32,16 @@ commentable: true
 * [食灯鬼](https://shidenggui.com/) 人生意何存，我思故我在
 * ~~[寒夏汢](https://hanxiatu.com/)~~ 已失联
 * [极客兔兔](https://geektutu.com/) 一个爱探索爱折腾的年轻极客
+* [胡涂说](https://hutusi.com/) 任抛星汉归园圃，留取乾坤盛酒囊
 
 ### 如何添加友链
 
-请在此留言或到 [GitHub discussion](https://github.com/hutusi/hutusi.github.com/discussions/118) 上评论登记。
+如果你也在写博客，欢迎与我交换友链，将我的链接添加在你的网站上，并在此留言，或给我发消息（可以在[关于页面](/about/)找到我的联系方式），也可以在 [GitHub discussion](https://github.com/hutusi/hutusi.github.com/discussions/118) 上评论登记。你可以简单描述你的网站，像这样：
+
+> 博客: 胡涂说   
+> 网址: https://hutusi.com/    
+> RSS订阅地址: https://hutusi.com/feed.xml   
+
+关于博客简介，你可以写一句话，或者让我来写，我会附在上面的友链介绍中。希望贵站上也能够给「胡涂说」一个简介，可以按照你的语言来描述，或者就使用「任抛星汉归园圃，留取乾坤盛酒囊」这句诗。
+
+提供「RSS订阅地址」的目的，是为了让我能够在 feeds.pub 上订阅你的博客（有些童鞋的网站我找不到明显的订阅入口）。我会订阅并阅读所有能够订阅的友链博客。
