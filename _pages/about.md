@@ -15,7 +15,27 @@ commentable: true
 
 自认为是终身学习者，只是经常忘了学习。最主要的原因是三分钟热度，不过后来我知道了一个词叫 [Yak Shaving](https://antfu.me/posts/about-yak-shaving-zh), 于是我觉得这也没什么不好。如果缺点改正不了，那就把它当成是优点，会好很多。
 
-可以找到我地方: [GitHub](https://github.com/hutusi), [豆瓣](https://www.douban.com/people/hutusi/)。也可以加我微信 (`hutusi`) 交流。当然，我最希望的是你能给我博客留言。
+下面列举些我的一些偏好，便于你对我有更全面了解。
+
+### 读书
+
+我比较爱看书，以前是文学居多，现在偏重社科类。文学方面，我喜欢的作家有君特·格拉斯、马尔克斯、福克纳、王小波、卡尔维诺、村上春树、雨果、狄更斯。读过的书中，对我产生影响的有：
+
+* 雨果《悲惨世界》	做一个善良的人
+* 王小波《黄金时代》	做一个有趣的人
+* 奥威尔《1984》	要独立思考
+* GoF《设计模式》	抽象思维
+* Robert C. Martin《敏捷软件开发》	写好代码
+* 马歇尔·卢森堡《非暴力沟通》	与自己、与别人相处之道
+* 傅高义《邓小平时代》	成熟而理性的思考
+
+最近开始读哲学方面的书，感兴趣的话可以通过最近写的[我所理解的存在主义](/articles/understanding-of-existentialism)来了解，你也可以在「[/tag/读书/](/tag/读书/)」里看到我写的所有关于读书的总结和思考。
+
+### 音乐、电影及其他
+
+从中学时接触小虎队、Beyond开始听流行音乐，到大学开始听摇滚乐，国内的如唐朝、崔健及魔岩三杰等，曾经有段时间特别喜欢鲍家街43及没有娱乐化前的汪峰，万能青年旅社之后不再关注国内摇滚乐。国外的摇滚乐听的比较多，最喜欢的乐队和歌手是老牌的 Led Zepplin, Pink Floyd, Queen, the Cure, the Doors, Nirvana, U2, Bod Dylan, Leonard Cohen ... 如果要选最喜欢的一位，那可能就是 David Bowie. 曾有段时间非常喜欢 Suede 和 Nick Cave. 女歌手方面如 Kate Bush, Tori Amos, the Cranberries. 有人说“变老的一个标志是只听老歌”，我表示深感赞同。
+
+电影我看的比较杂，很难圈定类型。有关音乐和电影的偏好，可以在[我的豆瓣主页](https://www.douban.com/people/hutusi/)找到我标注的一些。其他娱乐比较少，周末会去骑车、滑冰、游泳。在学校的时候比较喜欢玩暴雪出品的游戏，如暗黑2、星际1、魔兽3；还有个印象很深的游戏是光荣的《曹操传》。
 
 ### 我常用的工具
 
@@ -39,7 +59,9 @@ commentable: true
 
 随身携带的有 iPhone 12 Pro Max, Apple Watch Series 7 以及 AirPods Pro 三件套。不得不说苹果的生态做的很好。
 
-去年因为体验报告为鼾症（虽然本人很瘦，但打鼾已经很多年），复查做了睡眠监测说有呼吸暂停且血氧饱和指数低，因此最近购买了 ResMed S10 呼吸机，使用一周效果感觉不错，白天也精神多了。
+### 联系方式
+
+可以找到我地方: [GitHub](https://github.com/hutusi), [豆瓣](https://www.douban.com/people/hutusi/)。也可以加我微信 (`hutusi`) 交流，或发邮件 hutusi#outlook.com。当然，我最希望的是你能给我博客留言。
 
 ## 关于 “胡涂说”
 
