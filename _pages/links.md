@@ -34,6 +34,10 @@ commentable: true
 * [极客兔兔](https://geektutu.com/) 一个爱探索爱折腾的年轻极客
 * [胡涂说](https://hutusi.com/) 任抛星汉归园圃，留取乾坤盛酒囊
 
+### 推荐的博客
+
+[阮一峰的网络日志](http://www.ruanyifeng.com/blog/)无疑是很多中文独立博主的榜样，技术博客里推荐的有老牌的[酷壳](https://coolshell.cn/)，以及新生代的[面向信仰编程](https://draveness.me/)，很难想象这是[刚毕业三年](https://draveness.me/2020-summary/)的年轻人所写。还有[极客兔兔](https://geektutu.com/)，同样热衷于钻研技术，我博客的重建很大程度上也受他的影响和帮助。[Beyond the Void](https://byvoid.com/)作者郭家宝，曾获 NOI 金牌，毕业后在 Google 多个国家工作，写的旅行游记很有意思。[GeekPlux](https://geekplux.com/)也是位写作多年的持续产出者。当然还有我的[胡涂说](https://hutusi.com/)，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi)有我订阅的所有博客。
+
 ## 如何添加友链
 
 如果你也在写博客，欢迎与我交换友链，将我的链接添加在你的网站上，并在此留言，或给我发消息（可以在 [关于页面](/about/) 找到我的联系方式），也可以在 [GitHub discussion](https://github.com/hutusi/hutusi.github.com/discussions/118) 上评论登记。你可以简单描述你的网站，像这样：

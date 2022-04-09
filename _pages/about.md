@@ -45,7 +45,7 @@ commentable: true
 
 使用 Day One 写日记， 1Password 保存密码，「微信读书」看书。
 
-在线好用的工具中，用 [ASCII Flow](http://asciiflow.com/) 做字符版流程图, 用 [mdnice](https://mdnice.com/) 来做微信公众号发布前排版, 偶尔用 [幕布](https://mubu.com/) 画思维导图。其他有用的工具有： [Codepoints.net 字符编码大全](https://codepoints.net/)。
+在线好用的工具中，用 [ASCII Flow](http://asciiflow.com/) 做字符版流程图，用 [mdnice](https://mdnice.com/) 来做微信公众号发布前排版，用[Asciinema](https://asciinema.org/)录制命令行终端操作视频，偶尔用 [幕布](https://mubu.com/) 画思维导图。其他有用的工具有： [Codepoints.net 字符编码大全](https://codepoints.net/)。
 
 在网上找资源时，首选 Google 搜索，GitHub 和 StackOverflow 自不必少。还会到 [unsplash](https://unsplash.com/) 上搜图片, 偶尔在 [zlibrary](https://b-ok.global/) 上搜书。一些好资源： 阿里的李鼎在 github 上创建的[英文资料翻译项目](https://github.com/oldratlee/translations)。
 
