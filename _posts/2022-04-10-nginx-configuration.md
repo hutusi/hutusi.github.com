@@ -73,9 +73,9 @@ http {
             root   html;
             index  index.html index.htm;
         }
-	}
+    }
 
-  include servers/*;
+    include servers/*;
 }
 ```
 
@@ -102,29 +102,23 @@ Server 块的典型配置如：
 
 ```bash
 server {
-        listen 80 default_server;
-				listen [::]:80 default_server;
-        server_name  hutusi.com www.hutusi.com;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name  hutusi.com www.hutusi.com;
 
-				root /var/www/blog;
-        location / {
-            index  index.html index.htm;
-        }
+    root /var/www/blog;
+    location / {
+        index  index.html index.htm;
+    }
 
-        error_page 404 /404.html;
-        # redirect server error pages to the static page /50x.html
-        error_page   500 502 503 504  /50x.html;
+    error_page 404 /404.html;
+    # redirect server error pages to the static page /50x.html
+    error_page   500 502 503 504  /50x.html;
 ```
 
 `listen` 指令表示服务监听的IP 和端口， `default_server` 表明这个 server 块是默认的服务。
 
-```bash
-listen 127.0.0.1:8000;  # 只监听来自 127.0.0.1 这个 IP 并且请求 8000 端口的请求
-listen 127.0.0.1;       # 只监听来自127.0.0.1这个IP 并请求80端口的请求（不指定端口，默认80）
-listen 8000; # 监听来自所有IP，请求8000端口的请求
-listen *:8000; # 和上面效果一样
-listen localhost:8000; # 和第一种效果一致
-```
+例如 `listen 127.0.0.1` 表示只监听来自 127.0.0.1 这个 IP 并请求80端口的请求（不指定端口则默认为 80）；而 `listen 8080` 表示监听来自所有 IP 并请求 8080 端口的请求。
 
 第二行的 `listen [::]:80` 表示支持 IPv6，监听来自于 IPv6 的连接。
 
@@ -168,23 +162,23 @@ Nginx 首先检查使用前缀字符串定义的 location。在这些 location �
 
 ```bash
 server {
-  listen 443 ssl http2 default_server;
-  listen [::]:443 ssl http2 default_server;
-  server_name  hutusi.com www.hutusi.com;
-
-  ssl_certificate cert/hutusi.com.pem;
-  ssl_certificate_key cert/hutusi.com-key.pem;
-  ssl_session_cache shared:SSL:10m;
-  ssl_session_timeout  10m;
-  ssl_ciphers HIGH:!aNULL:!MD5;
-  ssl_prefer_server_ciphers on;
-
-  root /var/www/blog;
-	location / {
-      index  index.html index.htm;
-  }
-
-  error_page 404 /404.html;
+    listen 443 ssl http2 default_server;
+    listen [::]:443 ssl http2 default_server;
+    server_name  hutusi.com www.hutusi.com;
+    
+    ssl_certificate cert/hutusi.com.pem;
+    ssl_certificate_key cert/hutusi.com-key.pem;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout  10m;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    
+    root /var/www/blog;
+    location / {
+        index  index.html index.htm;
+    }
+    
+    error_page 404 /404.html;
 }
 ```
 
@@ -214,10 +208,10 @@ $ openssl ciphers -V 'HIGH'
 
 ```bash
 server {
-  listen 80;
-  listen [::]:80;
-  server_name hutusi.com www.hutusi.com;
-  return 301 https://hutusi.com$request_uri;
+    listen 80;
+    listen [::]:80;
+    server_name hutusi.com www.hutusi.com;
+    return 301 https://hutusi.com$request_uri;
 }
 ```
 
@@ -253,7 +247,7 @@ location / {
     if (!-e $request_filename) {
         rewrite ^(.*)$ /$1.html last;
     }
-  }
+}
 ```
 
 这里的逻辑：如果找不到页面（if 条件），则重定向到新地址（在原地址后追加 `.html`）。其中，`rewrite` 指令的前两个参数分别是原 URI 和替换后的 URI，`^(.*)$ ` 和 `$1` 都是正则和正则替换语法。最后的参数 `last` 表示停止处理当前的 rewrite 并开始根据替换后的 URI 搜索新的 location 匹配。
@@ -266,7 +260,7 @@ location / {
 
 ```bash
 location ~ ^/articles/.*(?<!\.html)$ {
-	  rewrite ^(.*)$ /$1.html last;
+    rewrite ^(.*)$ /$1.html last;
 }
 ```
 
