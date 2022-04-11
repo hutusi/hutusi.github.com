@@ -26,7 +26,8 @@ author:
   email:      huziyong@gmail.com
 
 # images CDN
-images_baseurl: '/images'
+# images_baseurl: '/images'
+images_baseurl: 'https://cdn.hutusi.com/images'
 # images_newurl: 'https://rmt.ladydaily.com/fetch/hutusi/storage/blog'
 
 markdown:  kramdown
@@ -111,6 +112,8 @@ disqus: hutusi
 giscus:
   repo: "hutusi/hutusi.github.com"
   category: "Comments"
+  repo_id: "MDEwOlJlcG9zaXRvcnkzNjc5MDgy"
+  category_id: "DIC_kwDOADgjas4COYln"
   mapping: 'pathname'
   input_position: 'top'
   theme: 'light'
