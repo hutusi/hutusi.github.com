@@ -41,7 +41,7 @@ commentable: true
 
 #### 软件
 
-我使用 VSCode 来编程、写作， Notion 做笔记，也会用 flomo 来摘录看到比较好的片段或记录一些灵感。使用 [feeds.pub](https://feeds.pub/) 订阅博客，可以在 [这里](https://feeds.pub/hutusi) 看到我订阅的博客。
+我使用 VSCode 来编程、写作， Notion 做笔记，也会用 [flomo](https://flomoapp.com/register2/?MzI2MzI) 来摘录看到比较好的片段或记录一些灵感。使用 [feeds.pub](https://feeds.pub/) 订阅博客，可以在 [这里](https://feeds.pub/hutusi) 看到我订阅的博客。
 
 使用 Day One 写日记， 1Password 保存密码，「微信读书」看书。
 
@@ -63,9 +63,9 @@ commentable: true
 
 可以找到我地方: [GitHub](https://github.com/hutusi), [豆瓣](https://www.douban.com/people/hutusi/)。也可以加我微信 (`hutusi`) 交流，或发邮件 hutusi#outlook.com。当然，我最希望的是你能给我博客留言。
 
-## 关于 “胡涂说”
+## 关于「胡涂说」
 
-注册公众号时需要起一个中文名，看到很多公众号名称都叫 “某某说”，于是我就注册了个叫“胡涂说” 的公众号 (id: hututalk)。后来干脆将这个名称作为个人博客的名称。借用郑板桥的“难得糊涂”，用“胡涂说” 来表达我的想法。写我所想，写我想说。
+注册公众号时需要起一个中文名，看到很多公众号名称都叫「某某说」，于是我就注册了个叫「胡涂说」的公众号 (id: hututalk)。后来干脆将这个名称作为个人博客的名称。借用郑板桥的「难得糊涂」，用「胡涂说」来表达我的想法。写我所想，写我想说。
 
 我从 2006 年开始写博客以来，换过几个博客平台，最后选择自己建设独立博客。写写删删，留下来自己较为满意的有：
 
