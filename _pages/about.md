@@ -29,11 +29,11 @@ commentable: true
 * 马歇尔·卢森堡《非暴力沟通》	与自己、与别人相处之道
 * 傅高义《邓小平时代》	成熟而理性的思考
 
-最近开始读哲学方面的书，感兴趣的话可以通过最近写的[我所理解的存在主义](/articles/understanding-of-existentialism)来了解，你也可以在「[/tag/读书/](/tag/读书/)」里看到我写的所有关于读书的总结和思考。
+最近开始读哲学方面的书，感兴趣的话可以通过最近写的[我所理解的存在主义](/articles/understanding-of-existentialism)来了解，也可以在「[/tag/读书/](/tag/读书/)」里看到我写的关于读书的总结和思考。
 
 ### 音乐、电影及其他
 
-从中学时接触小虎队、Beyond开始听流行音乐，到大学开始听摇滚乐，国内的如唐朝、崔健及魔岩三杰等，曾经有段时间特别喜欢鲍家街43及没有娱乐化前的汪峰，万能青年旅社之后不再关注国内摇滚乐。国外的摇滚乐听的比较多，最喜欢的乐队和歌手是老牌的 Led Zepplin, Pink Floyd, Queen, the Cure, the Doors, Nirvana, U2, Bod Dylan, Leonard Cohen ... 如果要选最喜欢的一位，那可能就是 David Bowie. 曾有段时间非常喜欢 Suede 和 Nick Cave. 女歌手方面如 Kate Bush, Tori Amos, the Cranberries. 有人说“变老的一个标志是只听老歌”，我表示深感赞同。
+从中学时接触小虎队、Beyond开始听流行音乐，到大学开始听摇滚乐，国内的如唐朝、崔健及魔岩三杰等，有段时间特别欣赏鲍家街43号及没有娱乐化前的汪峰，万能青年旅社之后不再关注国内摇滚乐。国外的摇滚乐听的比较多，最喜欢的乐队和歌手是老牌的 Led Zeppelin, Pink Floyd, Queen, the Cure, the Doors, Nirvana, U2, Bod Dylan, Leonard Cohen ... 如果要选最喜欢的一位，那可能就是 David Bowie. 曾有段时间非常喜欢 Suede 和 Nick Cave. 女歌手方面如 Kate Bush, Tori Amos, the Cranberries. 有人说“变老的一个标志是只听老歌”，我表示深感赞同。
 
 电影我看的比较杂，很难圈定类型。有关音乐和电影的偏好，可以在[我的豆瓣主页](https://www.douban.com/people/hutusi/)找到我标注的一些。其他娱乐比较少，周末会去骑车、滑冰、游泳。在学校的时候比较喜欢玩暴雪出品的游戏，如暗黑2、星际1、魔兽3；还有个印象很深的游戏是光荣的《曹操传》。
 
