@@ -10,6 +10,7 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
+* [咕咚同学](http://gudong.site) 喜欢打篮球的代码工作者
 * [semyin](https://semyin.com) 一位前端工程师
 * [古是](https://adminsun.com/) 有故事的人
 * [歪酷博客](https://y.cool/) y.cool! 熊的猫，媒体工作者
