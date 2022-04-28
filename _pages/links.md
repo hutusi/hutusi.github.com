@@ -10,6 +10,7 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
+* [Godot's Blog](https://iamgodot.com/) 以博客构筑精神家园的 Python 程序员
 * [咕咚同学](http://gudong.site) 喜欢打篮球的代码工作者
 * [semyin](https://semyin.com) 一位前端工程师
 * [古是](https://adminsun.com/) 有故事的人
@@ -39,7 +40,7 @@ commentable: true
 
 ### 推荐的博客
 
-[阮一峰的网络日志](http://www.ruanyifeng.com/blog/)无疑是很多中文独立博主的榜样，技术博客里推荐的有老牌的[酷壳](https://coolshell.cn/)，以及新生代的[面向信仰编程](https://draveness.me/)，很难想象这是[刚毕业三年](https://draveness.me/2020-summary/)的年轻人所写。还有[极客兔兔](https://geektutu.com/)，同样热衷于钻研技术，我博客的重建很大程度上也受他的影响和帮助。[Beyond the Void](https://byvoid.com/)作者郭家宝，曾获 NOI 金牌，毕业后在 Google 多个国家工作，写的旅行游记很有意思。[GeekPlux](https://geekplux.com/)也是位写作多年的持续产出者。当然还有我的[胡涂说](https://hutusi.com/)，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi)有我订阅的所有博客。
+[阮一峰的网络日志](http://www.ruanyifeng.com/blog/)无疑是很多中文独立博主的榜样，技术博客里推荐的有老牌的[酷壳](https://coolshell.cn/)，以及新生代的[面向信仰编程](https://draveness.me/)，很难想象这是[刚毕业三年](https://draveness.me/2020-summary/)的年轻人所写。还有[极客兔兔](https://geektutu.com/)，同样热衷于钻研技术，我博客的重建很大程度上也受他的影响和帮助。其他推荐的还有：[Beyond the Void](https://byvoid.com/)作者郭家宝，技术牛人，毕业后借助工作机会在多个国家工作，写的旅行游记很有意思；[GeekPlux](https://geekplux.com/)，写作多年的持续产出者；[程序员的喵](https://catcoding.me/)，一位热爱写作的软件工程师。当然还有我的[胡涂说](https://hutusi.com/)，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi)有我订阅的所有博客。
 
 ## 如何添加友链
 
