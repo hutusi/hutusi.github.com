@@ -70,7 +70,7 @@ defaults:
       permalink: /:basename:output_ext
 
 feed:
-  excerpt_only: false
+  excerpt_only: true
 
 # Google Analytics
 google_analytics: G-MCBGNJDDPS
