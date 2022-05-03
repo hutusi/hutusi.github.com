@@ -42,11 +42,19 @@ commentable: true
 
 ### 推荐的博客
 
-[阮一峰的网络日志](http://www.ruanyifeng.com/blog/)无疑是很多中文独立博主的榜样，技术博客里推荐的有老牌的[酷壳](https://coolshell.cn/)，以及新生代的[面向信仰编程](https://draveness.me/)，很难想象这是[刚毕业三年](https://draveness.me/2020-summary/)的年轻人所写。还有[极客兔兔](https://geektutu.com/)，同样热衷于钻研技术，我博客的重建很大程度上也受他的影响和帮助。其他推荐的还有：[Beyond the Void](https://byvoid.com/)作者郭家宝，技术牛人，毕业后借助工作机会在多个国家工作，写的旅行游记很有意思；[GeekPlux](https://geekplux.com/)，写作多年的持续产出者；[程序员的喵](https://catcoding.me/)，一位热爱写作的软件工程师。当然还有我的[胡涂说](https://hutusi.com/)，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi)有我订阅的所有博客。
+- [谢益辉的个人博客](https://yihui.org/) 统计学博士，文笔很好，独立思考和个性，每年在7月份左右发布博客。网站设计和字体也非常棒。
+- [阮一峰的网络日志](http://www.ruanyifeng.com/blog/)无疑是很多中文独立博主的榜样。
+- [酷壳](https://coolshell.cn/) 老技术人陈皓的博客。
+- [面向信仰编程](https://draveness.me/) 年轻技术人的博客。
+- [极客兔兔](https://geektutu.com/)，同样热衷于钻研技术，我博客的重建很大程度上也受他的影响和帮助。
+- [Beyond the Void](https://byvoid.com/)作者郭家宝，技术牛人，毕业后借助工作机会在多个国家工作，写的旅行游记很有意思。
+- [GeekPlux](https://geekplux.com/)，写作多年的持续产出者。
+- [程序员的喵](https://catcoding.me/)，一位热爱写作的软件工程师。
+- [胡涂说](https://hutusi.com/)，我的博客，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi)有我订阅的所有博客。
 
 ## 如何添加友链
 
-如果你也在写博客，欢迎与我交换友链，将我的链接添加在你的网站上，并在此留言，或给我发消息（可以在 [关于页面](/about/) 找到我的联系方式），也可以在 [GitHub discussion](https://github.com/hutusi/hutusi.github.com/discussions/118) 上评论登记。你可以简单描述你的网站，像这样：
+如果你也在写博客，欢迎与我交换友链（要求是有独立域名），将我的链接添加在你的网站上，并在此留言，或给我发消息（可以在 [关于页面](/about/) 找到我的联系方式），也可以在 [GitHub discussion](https://github.com/hutusi/hutusi.github.com/discussions/118) 上评论登记。你可以简单描述你的网站，像这样：
 
 > 博客: 胡涂说   
 > 网址: https://hutusi.com/   
