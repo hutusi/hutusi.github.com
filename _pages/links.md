@@ -10,6 +10,11 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
+* [Keanu-42's blog](https://keanu-42.cn/) 分享实用的 Linux 编程工具
+* [Chancel's blog](https://www.chancel.me) 努力做一个没有标准答案的人
+* [泠泫凝的异次元空间](https://lxnchan.cn) 异次元空间的技术人
+* [退役debug选手](http://www.debuglive.cn/) 技术博客
+* [涓滴意念汇成河](http://www.zahui.top/) 技术博客
 * [冬雷博客](https://www.idonglei.com/) 三餐四季，从来都是一半生存一半诗，做到哪里算哪里咯
 * [蓝卡](https://www.lanka.cn) 2006年开始写博客，美好科技生活方式
 * [Godot's Blog](https://iamgodot.com/) 以博客构筑精神家园的 Python 程序员
