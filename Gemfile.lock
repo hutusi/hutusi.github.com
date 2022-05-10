@@ -64,7 +64,7 @@ GEM
     safe_yaml (1.0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
-    taletype (0.1.16)
+    taletype (0.1.17)
       jekyll (>= 4.0)
       jekyll-feed (>= 0.10)
       jekyll-paginate (>= 1.1)

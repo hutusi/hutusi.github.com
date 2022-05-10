@@ -29,6 +29,7 @@ author:
 # images_baseurl: '/images'
 images_baseurl: 'https://cdn.hutusi.com/images'
 # images_newurl: 'https://rmt.ladydaily.com/fetch/hutusi/storage/blog'
+wechat_official: 'https://cdn.hutusi.com/images/site/qrcode_for_hututalk_8cm.jpg'
 
 markdown:  kramdown
 # permalink: pretty
