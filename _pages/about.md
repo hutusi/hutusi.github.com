@@ -61,7 +61,7 @@ commentable: true
 
 ### 联系方式
 
-可以找到我地方: [GitHub](https://github.com/hutusi), [豆瓣](https://www.douban.com/people/hutusi/)。也可以加我微信 (`hutusi`) 交流，或发邮件 hutusi#outlook.com。当然，我最希望的是你能给我博客留言。
+可以找到我地方: [GitHub](https://github.com/hutusi), [Twitter](https://twitter.com/hutusi), [豆瓣](https://www.douban.com/people/hutusi/)。也可以加我微信 (`hutusi`) 交流，或发邮件 hutusi#outlook.com。当然，我最希望的是你能给我博客留言。
 
 ## 关于「胡涂说」
 
