@@ -10,7 +10,7 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
-* [雷烈](leilie.top){:target="_blank" rel="nofollow"} 一个记录科研中遇见各种问题的技术博客
+* [雷烈](https://leilie.top){:target="_blank" rel="nofollow"} 一个记录科研中遇见各种问题的技术博客
 * [风与牧歌](https://blog.besscroft.com){:target="_blank" rel="nofollow"} 旅行终将迎来终点
 * [云原生实验室](https://icloudnative.io){:target="_blank" rel="nofollow"} Kubernetes 等云原生知识分享
 * [Keanu-42's blog](https://keanu-42.cn/){:target="_blank" rel="nofollow"} 分享实用的 Linux 编程工具
