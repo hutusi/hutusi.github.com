@@ -72,6 +72,8 @@ defaults:
 
 feed:
   excerpt_only: true
+  posts_limit: 10
+  posts_sort: last_modified_at
 
 # Google Analytics
 google_analytics: G-MCBGNJDDPS
