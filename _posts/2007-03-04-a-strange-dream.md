@@ -1,7 +1,7 @@
 ---
 layout: post
 category: essay
-tags: 随笔
+tags: 随笔 梦
 title: 爱美丽、黑暗王子和豌豆公主
 subtitle: 
 backgrounds:
