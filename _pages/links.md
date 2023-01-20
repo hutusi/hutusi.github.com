@@ -10,6 +10,8 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
+* [吐司面包](https://toast.pub){:target="_blank" rel="nofollow"} 
+* [林林杂语](https://www.xiaozonglin.cn/){:target="_blank" rel="nofollow"} 
 * [长街短梦](https://wangyunzi.com/){:target="_blank" rel="nofollow"} 用笨拙的文字记录最真实的故事
 * [牧人池塘](https://dba.kim){:target="_blank" rel="nofollow"} 时光匆匆，记录是对思维的沉淀
 * [子恒的博客](https://chestnutheng.cn/){:target="_blank" rel="nofollow"} 爱好广泛的程序员博主：互联网、读书和旅行
