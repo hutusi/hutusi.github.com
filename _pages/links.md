@@ -10,6 +10,7 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
+* [夜路](https://emmm.space/){:target="_blank" rel="nofollow"} 上士无争，下士好争
 * [有意栽花花满枝](https://huangjia.site){:target="_blank" rel="nofollow"} 心中有光、点亮生活
 * [吐司面包](https://toast.pub){:target="_blank" rel="nofollow"} 
 * [林林杂语](https://www.xiaozonglin.cn/){:target="_blank" rel="nofollow"} 
@@ -34,7 +35,7 @@ commentable: true
 * [semyin](https://semyin.com){:target="_blank" rel="nofollow"} 一位前端工程师
 * [古是](https://adminsun.com/){:target="_blank" rel="nofollow"} 有故事的人
 * [歪酷博客](https://y.cool/){:target="_blank" rel="nofollow"} y.cool! 熊的猫，媒体工作者
-* [思圆笔记](https://hintsnet.com/pimgeek/){:target="_blank" rel="nofollow"} 百科知识爱好者，数字化个人知识库构建者
+* [思圆笔记](https://pimgeek.com/){:target="_blank" rel="nofollow"} 百科知识爱好者，数字化个人知识库构建者
 * [飞刀博客](https://www.feidaoboke.com/){:target="_blank" rel="nofollow"} 独立的个人博客，涵盖读书、随笔、足球、信息技术和新闻评论
 * [Jason](https://atjason.com/){:target="_blank" rel="nofollow"} 独立开发者，自由职业者
 * [李雪含](https://dajiayouxuan.com/){:target="_blank" rel="nofollow"} 每天分享几篇值得看的商业，创业或者投资的文章
@@ -68,6 +69,7 @@ commentable: true
 - [Beyond the Void](https://byvoid.com/){:target="_blank" rel="nofollow"} 技术牛人，写的旅行游记很有意思。
 - [Limboy](https://limboy.me/){:target="_blank" rel="nofollow"} 在他的 About 页面介绍了很多有意思的人。
 - [程序员的喵](https://catcoding.me/){:target="_blank" rel="nofollow"} 一位热爱写作的软件工程师。
+- [Conge](https://conge.github.io/){:target="_blank" rel="nofollow"} 坚持跑步、冥想、写博客
 - [胡涂说](https://hutusi.com/)，我的博客，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi){:target="_blank" rel="nofollow"}有我订阅的所有博客。
 
 ## 如何添加友链
