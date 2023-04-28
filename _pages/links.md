@@ -10,8 +10,10 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
+* [南生余](https://www.chenii.com/){:target="_blank" rel="nofollow"} 一个喜欢怀旧和复古的文人墨客
+* [tanscp](https://tanscp.com/){:target="_blank" rel="nofollow"} 笔记工具折腾者，少数派Matrix作者
 * [夜路](https://emmm.space/){:target="_blank" rel="nofollow"} 上士无争，下士好争
-* [有意栽花花满枝](https://huangjia.site){:target="_blank" rel="nofollow"} 心中有光、点亮生活
+* [有意栽花花满枝](https://blog.hjroyal.top){:target="_blank" rel="nofollow"} 心中有光、点亮生活
 * [吐司面包](https://toast.pub){:target="_blank" rel="nofollow"} 
 * [林林杂语](https://www.xiaozonglin.cn/){:target="_blank" rel="nofollow"} 
 * [长街短梦](https://wangyunzi.com/){:target="_blank" rel="nofollow"} 用笨拙的文字记录最真实的故事
