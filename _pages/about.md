@@ -7,7 +7,7 @@ commentable: true
 
 ## 关于我
 
-现居上海，打杂为生，写字和编码为乐。
+现居上海(近一年经常长期出差于深圳)，打杂为生，读书写字~~和编码~~为乐。
 
 写过诗，自认为最得意的一句是 “任抛星汉归园圃，留取乾坤盛酒囊”。早期的博文中整理过：[七律三首](/articles/three-poems-qi-lv)，[诗歌与烟台](/articles/yantai-poems)。
 
@@ -15,7 +15,7 @@ commentable: true
 
 自认为是终身学习者，只是经常忘了学习。最主要的原因是三分钟热度，不过后来我知道了一个词叫 [Yak Shaving](https://antfu.me/posts/about-yak-shaving-zh), 于是我觉得这也没什么不好。如果缺点改正不了，那就把它当成是优点，会好很多。
 
-下面列举些我的一些偏好，便于你对我有更全面了解。
+下面列举些我的一些偏好，便于你对我有更全面了解。如果想快速了解本博客的博文，可以参看我筛选出自己[比较满意的一些博文](#blog-product)。
 
 ### 读书
 
@@ -24,10 +24,11 @@ commentable: true
 * 雨果《悲惨世界》	做一个善良的人
 * 王小波《黄金时代》	做一个有趣的人
 * 奥威尔《1984》	要独立思考
-* GoF《设计模式》	抽象思维
-* Robert C. Martin《敏捷软件开发》	写好代码
+* 埃里克·乔根森《纳瓦尔宝典》 向死而生
 * 马歇尔·卢森堡《非暴力沟通》	与自己、与别人相处之道
 * 傅高义《邓小平时代》	成熟而理性的思考
+* GoF《设计模式》	抽象思维
+* Robert C. Martin《敏捷软件开发》	写好代码
 
 最近开始读哲学方面的书，感兴趣的话可以通过最近写的[我所理解的存在主义](/articles/understanding-of-existentialism)来了解，也可以在「[/tag/读书/](/tag/读书/)」里看到我写的关于读书的总结和思考。
 
@@ -37,7 +38,7 @@ commentable: true
 
 电影我看的比较杂，很难圈定类型。有关音乐和电影的偏好，可以在[我的豆瓣主页](https://www.douban.com/people/hutusi/)找到我标注的一些。其他娱乐比较少，周末会去骑车、滑冰、游泳。在学校的时候比较喜欢玩暴雪出品的游戏，如暗黑2、星际1、魔兽3；还有个印象很深的游戏是光荣的《曹操传》。
 
-### 我常用的工具
+### 我常用的工具 
 
 #### 软件
 
@@ -69,22 +70,26 @@ commentable: true
 
 我从 2006 年开始写博客以来，换过几个博客平台，最后选择自己建设独立博客。写写删删，留下来自己较为满意的有：
 
-### 技术 && 产品
+### <a id="blog-product"></a> 产品
 
 * [从零到百亿美金之路](/articles/the-story-of-github-and-gitlab) 2022 年
 * [改变世界的一次代码提交](/articles/the-greatest-git-commit) 2020 年
 * [阅读开源代码小技巧](/articles/git-paging) 2019 年
 
-### 读书 && 随笔
+### 读书
 
+* [纳瓦尔的智慧](/articles/naval) 2023 年
+* [云门胡饼赵州茶](/articles/zen-baggage) 2022 年
+* [当下我们还需要启蒙吗？](/articles/enlightenment-now) 2022 年
 * [我所理解的存在主义](/articles/understanding-of-existentialism) 2022 年
-* [变成神的动物](/articles/sapiens) 2017 年
+* [人类伟大的时刻](/articles/decisive-moments-in-history) 2017 年
 * [答案在风中飘](/articles/blowing-in-the-wind) 2016 年
 * [自由的代价](/articles/rms) 2015 年
 * [读《霍乱时期的爱情》](/articles/love-in-the-time-of-cholera) 2013 年
 
 ### 生活
 
+* [当魔法消失时](/articles/nostalgia) 2023 年
 * [买房记](/articles/buying-property) 2017 年
 * [陪产记](/articles/paternity) 2015 年
 * [我是丽莎呀](/articles/i-am-lisa) 2008 年
