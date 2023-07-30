@@ -10,6 +10,7 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
+* [艾瑞可erik](https://erik.xyz/){:target="_blank" rel="nofollow"} 一只PHP开发的程序猿，偶尔做做运维、Goland、Python、Java、摄影、画画、写作、顺便睡觉，反正整站都搞过
 * [闲言语](https://ret2neo.cn/){:target="_blank" rel="nofollow"} 网络安全从业者，喜欢思考和阅读
 * [碎言博客](https://suiyan.cc/){:target="_blank" rel="nofollow"} 编码、学习、记录
 * [南生余](https://www.chenii.com/){:target="_blank" rel="nofollow"} 一个喜欢怀旧和复古的文人墨客
