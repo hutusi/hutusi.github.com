@@ -10,7 +10,7 @@ commentable: true
 
 ## Builder
 
-> 数字时代的真正创新都是来自那些能够将人文和科学联系在一起的人，这点让我感到十分意外。他们信奉没美感的重要性。
+> 数字时代的真正创新都是来自那些能够将人文和科学联系在一起的人，这点让我感到十分意外。他们信奉美感的重要性。
 > —— 沃尔特·艾萨克森 《创新者》
 
 在这里记录我所欣赏的独立开发者、创造者、Coder、Designer……统称为Builder，正是他们构建了中文互联网的未来。
@@ -18,8 +18,8 @@ commentable: true
 * [Tim Qian](https://timqian.com/){:target="_blank" rel="nofollow"} feeds.pub, star-history, open prompt 作者
 * [yihong](https://github.com/yihong0618){:target="_blank" rel="nofollow"} 开源爱好者，running page 作者
 * [Anthony Fu](https://antfu.me/){:target="_blank" rel="nofollow"} Vue核心开发者， Vitest, Slidev 等项目作者
-* [Tienson Qin](https://github.com/tiensonqin){:target="_blank" rel="nofollow"} logseq.com 作者
-
+* [Tienson Qin](https://github.com/tiensonqin){:target="_blank" rel="nofollow"} logseq.com 作者  
+* 待补充……
 
 ## Blogger
 
