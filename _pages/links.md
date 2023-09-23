@@ -37,6 +37,7 @@ commentable: true
 - [程序员的喵](https://catcoding.me/){:target="_blank" rel="nofollow"} 一位热爱写作的软件工程师。
 - [Conge](https://conge.github.io/){:target="_blank" rel="nofollow"} 坚持跑步、冥想、写博客
 * [食灯鬼](https://shidenggui.com/){:target="_blank" rel="nofollow"} 人生意何存，我思故我在
+* [Surmon](https://surmon.me){:target="_blank" rel="nofollow"} 一位很厉害的全栈工程师
 - [胡涂说](https://hutusi.com/)，我的博客，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi){:target="_blank" rel="nofollow"}有我订阅的所有博客。
 
 ### 友链
@@ -69,7 +70,6 @@ commentable: true
 * [蓝卡](https://www.lanka.cn){:target="_blank" rel="nofollow"} 2006年开始写博客，美好科技生活方式
 * [Godot's Blog](https://iamgodot.com/){:target="_blank" rel="nofollow"} 以博客构筑精神家园的 Python 程序员
 * [咕咚同学](http://gudong.site){:target="_blank" rel="nofollow"} 喜欢打篮球的代码工作者
-* [semyin](https://semyin.com){:target="_blank" rel="nofollow"} 一位前端工程师
 * [古是](https://adminsun.com/){:target="_blank" rel="nofollow"} 有故事的人
 * [歪酷博客](https://y.cool/){:target="_blank" rel="nofollow"} y.cool! 熊的猫，媒体工作者
 * [思圆笔记](https://pimgeek.com/){:target="_blank" rel="nofollow"} 百科知识爱好者，数字化个人知识库构建者
@@ -79,14 +79,12 @@ commentable: true
 * [刘悦的技术博客](https://v3u.cn){:target="_blank" rel="nofollow"} 乐于助人的敏捷开发者
 * [你好我是森林](https://chensenlin.cn){:target="_blank" rel="nofollow"} 坚持每周一本书
 * [forecho's Blog](https://blog.forecho.com){:target="_blank" rel="nofollow"} 把生命浪费在美好的事物上
-* [Surmon](https://surmon.me){:target="_blank" rel="nofollow"} 一位很厉害的全栈工程师
 * [土木坛子](https://tumutanzi.com/){:target="_blank" rel="nofollow"} 资深中文博主
 * [Airing 的小屋](https://me.ursb.me){:target="_blank" rel="nofollow"} 学哲学的程序员
 * [甜欣屋](https://tcxx.info/){:target="_blank" rel="nofollow"} 95 后程序媛
 * [清澄秋爽](https://dashen.tech/){:target="_blank" rel="nofollow"} 酷爱诗词的 Golang 程序员
 * [一大加贝](https://www.yidajiabei.xyz/){:target="_blank" rel="nofollow"} 一位爱探索的前端开发者
 * [IT 老兵哥](http://www.itlaobingge.com/){:target="_blank" rel="nofollow"} 从事 IT 行业十多年的老司机
-* ~~ElasticSearch 教程~~ 对方删除
 * [Tom](https://ie9.org/){:target="_blank" rel="nofollow"} 北美创业者的日常
 * [凯哥 stack](https://kaige86.com/){:target="_blank" rel="nofollow"} 计算机底层技术实现分享
 * [薛定喵君的博客](http://xuedingmiao.com){:target="_blank" rel="nofollow"} 工作、学习、思考
