@@ -42,6 +42,7 @@ commentable: true
 
 ### 友链
 
+* [AcboxSky](https://index.acbox.lol/){:target="_blank" rel="nofollow"} 一个高中生记录技术的个人博客
 * [梦幻派的艺术花园](https://zeriy.art/){:target="_blank" rel="nofollow"} 以“梦幻风格”为主题的文学艺术网站
 * [艾瑞可erik](https://erik.xyz/){:target="_blank" rel="nofollow"} 一只PHP开发的程序猿，偶尔做做运维、Goland、Python、Java、摄影、画画、写作、顺便睡觉，反正整站都搞过
 * [闲言语](https://ret2neo.cn/){:target="_blank" rel="nofollow"} 网络安全从业者，喜欢思考和阅读
