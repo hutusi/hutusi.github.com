@@ -84,7 +84,7 @@ commentable: true
 * [Airing 的小屋](https://me.ursb.me){:target="_blank" rel="nofollow"} 学哲学的程序员
 * [甜欣屋](https://tcxx.info/){:target="_blank" rel="nofollow"} 95 后程序媛
 * [清澄秋爽](https://dashen.tech/){:target="_blank" rel="nofollow"} 酷爱诗词的 Golang 程序员
-* [一大加贝](https://www.yidajiabei.xyz/){:target="_blank" rel="nofollow"} 一位爱探索的前端开发者
+* [一大加贝](https://tianheg.co/){:target="_blank" rel="nofollow"} 一位爱探索的前端开发者
 * [IT 老兵哥](http://www.itlaobingge.com/){:target="_blank" rel="nofollow"} 从事 IT 行业十多年的老司机
 * [Tom](https://ie9.org/){:target="_blank" rel="nofollow"} 北美创业者的日常
 * [凯哥 stack](https://kaige86.com/){:target="_blank" rel="nofollow"} 计算机底层技术实现分享
