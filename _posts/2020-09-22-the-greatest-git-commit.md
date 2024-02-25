@@ -26,7 +26,7 @@ Linux 作为最大也是最成功的开源项目，吸引了全球程序员的�
 
 Git 已经成为全球软件开发者的标配，关于 Git 的介绍和用法不需多说，我今天想要谈谈 Git 的内部实现。不过在看本文之前，我先给大家提一个问题：如果是你来设计 git（或者重新设计 git），你打算怎么设计？第一个版本发布准备实现哪些功能？看完本文，再对照自己的想法做个比较。欢迎留言讨论。
 
-学习 Git 的内部实现，最好的办法是看 Linus 最初的代码提交，checkout 出 git 项目的第一次提交节点（方法参见博客：[《阅读开源代码小技巧》](/git-paging)），可以看到代码库中只有几个文件：一个 README，一个构建脚本Makefile，剩下几个 C 源文件。这次 commit 的备注写的也非常特别： Initial revision of "git", the information manager from hell.
+学习 Git 的内部实现，最好的办法是看 Linus 最初的代码提交，checkout 出 git 项目的第一次提交节点（方法参见博客：[《阅读开源代码小技巧》](/articles/git-paging)），可以看到代码库中只有几个文件：一个 README，一个构建脚本Makefile，剩下几个 C 源文件。这次 commit 的备注写的也非常特别： Initial revision of "git", the information manager from hell.
 
 ```sh
 commit e83c5163316f89bfbde7d9ab23ca2e25604af290
@@ -56,7 +56,7 @@ TREE: 目录树对象。在 Linus 的设计里 TREE 对象就是一个时间切�
 ![Git simple objects model]({{site.images_baseurl}}/software/git-object-model-tree.png?w=1280){:width="800px"}
 
 > 图片摘自：*Pro Git, 10.2 Git Internals - Git Objects* [^1]
- 
+
 CHANGESET: 即 Commit 对象。一个 CHANGESET 对象中记录了该次提交的 TREE 对象信息（SHA1），以及提交者(committer)、提交备注(commit message)等信息。跟其他SCM（软件配置管理）工具所不同的是，Git 的 CHANGESET 对象不记录文件重命名和属性修改操作，也不会记录文件修改的 Delta 信息等，CHANGESET 中会记录父节点 CHANGESET 对象的 SHA1 值，通过比较本节点和父节点的 TREE 信息来获取差异。Linus 在设计 CHANGESET 父节点时允许一个节点最多有 16 个父节点，虽然超过两个父节点的合并是很奇怪的事情，但实际上，Git 是支持超过两个分支的多头合并的。
 
 Linus 在三种对象的设计解释后着重阐述了可信(TRUST)：虽然 Git 在设计上没有涉及可信的范畴，但 Git 作为配置管理工具是可以做到可信的。原因是所有的对象都以SHA1编码（Google 实现 SHA1 碰撞攻击是后话，且 Git 社区也准备使用更高可靠性的 SHA256 编码来代替），而签入对象的过程可信靠签名工具保证，如 GPG 工具等。
