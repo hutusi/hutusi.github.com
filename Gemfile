@@ -7,7 +7,7 @@ gem 'webrick'
 # theme
 # gem 'jekyll-remote-theme'
 gem 'taletype'
-# gem 'taletype', path: '~/workspace/git/tale'
+# gem 'taletype', path: '~/workspace/git/taletype'
 
 # plugins
 gem 'jekyll-paginate'
