@@ -190,22 +190,22 @@ Hugging Face继续开发了并开源了其他一系列的机器学习工具：Da
 
 文章：
 
-《神经网络入门》阮一峰 https://www.ruanyifeng.com/blog/2017/07/neural-network.html
+《神经网络入门》阮一峰
 
-《2012，改变人类命运的180天》远川研究所 https://36kr.com/p/2421889040802823
+《2012，改变人类命运的180天》远川研究所
 
-《GPT家族进化史》MetaPost https://36kr.com/p/2175356267112706
+《GPT家族进化史》MetaPost
 
-《Transformer - Attention is all you need》知乎 https://zhuanlan.zhihu.com/p/311156298
+《Transformer - Attention is all you need》知乎
 
-《预训练语言模型的发展历程》 知乎 https://zhuanlan.zhihu.com/p/553209306
+《预训练语言模型的发展历程》 知乎
 
-《提示工程指南》https://www.promptingguide.ai/zh
+《提示工程指南》
 
-《ChatGPT 背后的“功臣”——RLHF 技术详解》 Huggingface https://huggingface.co/blog/zh/rlhf
+《ChatGPT 背后的“功臣”——RLHF 技术详解》
 
-《ChatGPT大模型技术发展与应用》https://sjcj.nuaa.edu.cn/sjcjycl/article/html/202305002
+《ChatGPT大模型技术发展与应用》
 
-《The Bitter Lesson》 Rich Sutton http://www.incompleteideas.net/IncIdeas/BitterLesson.html
+《The Bitter Lesson》 Rich Sutton
 
-《专访HuggingFace CTO：开源崛起、创业故事和AI民主化》 https://hub.baai.ac.cn/view/32282
+《专访HuggingFace CTO：开源崛起、创业故事和AI民主化》
