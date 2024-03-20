@@ -44,6 +44,7 @@ commentable: true
 
 ### 友链
 
+- [Johnny @ Life Clips](https://dwith.com/){:target="\_blank" rel="nofollow"} 探索互联网艺术花园的数字游民
 - [AcboxSky](https://index.acbox.lol/){:target="\_blank" rel="nofollow"} 一个高中生记录技术的个人博客
 - [梦幻派的艺术花园](https://zeriy.art/){:target="\_blank" rel="nofollow"} 以“梦幻风格”为主题的文学艺术网站
 - [艾瑞可erik](https://erik.xyz/){:target="\_blank" rel="nofollow"} 一只PHP开发的程序猿，偶尔做做运维、Goland、Python、Java、摄影、画画、写作、顺便睡觉，反正整站都搞过
