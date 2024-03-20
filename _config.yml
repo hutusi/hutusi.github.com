@@ -6,40 +6,40 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title:       胡涂说
-email:       'huziyong@gmail.com'
-description: 'hutusi.com'
-baseurl:     '' # The subpath of your site, e.g. /blog
-url:         'https://hutusi.com' # The base hostname & protocol for your site
-twitter:     'https://twitter.com/hutusi'
-github:      'https://github.com/hutusi'
-instagram:   'https://instagram.com/hutusi'
-facebook:    'https://facebook.com/hutusi'
+title: 胡涂说
+email: "huziyong@gmail.com"
+description: "hutusi.com"
+baseurl: "" # The subpath of your site, e.g. /blog
+url: "https://hutusi.com" # The base hostname & protocol for your site
+twitter: "https://twitter.com/hutusi"
+github: "https://github.com/hutusi"
+instagram: "https://instagram.com/hutusi"
+facebook: "https://facebook.com/hutusi"
 
-copyright:    '胡涂说 hutusi.com'
+copyright: "胡涂说 hutusi.com"
 # time:         2012-2020
-icp_info:     '沪ICP备19043788号-1'
+icp_info: "沪ICP备19043788号-1"
 # Author
 author:
-  name:       hutusi
-  url:        https://hutusi.com
-  email:      huziyong@gmail.com
+  name: hutusi
+  url: https://hutusi.com
+  email: huziyong@gmail.com
 
 # images CDN
 # images_baseurl: '/images'
-images_baseurl: 'https://cdn.hutusi.com/images'
+images_baseurl: "https://cdn.hutusi.com/images"
 # images_newurl: 'https://rmt.ladydaily.com/fetch/hutusi/storage/blog'
-wechat_official: 'https://cdn.hutusi.com/images/site/qrcode_for_hututalk_8cm.jpg'
+wechat_official: "https://cdn.hutusi.com/images/site/qrcode_for_hututalk_8cm.jpg"
 
-markdown:  kramdown
+markdown: kramdown
 # permalink: pretty
 permalink: /articles/:title
-paginate:  10
+paginate: 10
 
 # Navigators
-nav_page_names: ['about.md', 'archive.html', 'links.md', 'subscription.md']
+nav_page_names: ["about.md", "archive.html", "links.md", "subscription.md"]
 # can be ['feeds.pub', 'xml', 'na']
-nav_feed: 'na'
+nav_feed: "na"
 
 theme: taletype
 # remote_theme: hutusi/tale
@@ -66,14 +66,14 @@ exclude:
 # Pages path
 defaults:
   - scope:
-      path: '_pages'
+      path: "_pages"
     values:
       permalink: /:basename:output_ext
 
 feed:
   excerpt_only: true
   posts_limit: 10
-  posts_sort: last_modified_at
+  # posts_sort: last_modified_at
 
 # Google Analytics
 google_analytics: G-MCBGNJDDPS
@@ -105,8 +105,8 @@ jekyll-archives:
   layouts:
     tag: tag-archive
   permalinks:
-    tag: '/tag/:name/'
-    category: '/category/:name/'
+    tag: "/tag/:name/"
+    category: "/category/:name/"
 
 # comments
 comments_engine: disqus
@@ -117,15 +117,15 @@ giscus:
   category: "Comments"
   repo_id: "MDEwOlJlcG9zaXRvcnkzNjc5MDgy"
   category_id: "DIC_kwDOADgjas4COYln"
-  mapping: 'pathname'
-  input_position: 'top'
-  theme: 'light'
+  mapping: "pathname"
+  input_position: "top"
+  theme: "light"
   lang: "en"
 
 gitalk:
-  client_id: '3ecf7aac87e37cbe772c'
-  client_secret: '887d16569177e1f6336cce32e9c58974c2932807'
-  repo: 'hutusi.github.com'
-  owner: 'hutusi'
-  admin: 
-    - 'hutusi'
+  client_id: "3ecf7aac87e37cbe772c"
+  client_secret: "887d16569177e1f6336cce32e9c58974c2932807"
+  repo: "hutusi.github.com"
+  owner: "hutusi"
+  admin:
+    - "hutusi"
