@@ -44,6 +44,7 @@ commentable: true
 
 ### 友链
 
+- [潘智祥](https://panzhixiang.cn/){:target="\_blank" rel="nofollow"} 一位DevOps工程师
 - [Johnny @ Life Clips](https://dwith.com/){:target="\_blank" rel="nofollow"} 探索互联网艺术花园的数字游民
 - [AcboxSky](https://index.acbox.lol/){:target="\_blank" rel="nofollow"} 一个高中生记录技术的个人博客
 - [梦幻派的艺术花园](https://zeriy.art/){:target="\_blank" rel="nofollow"} 以“梦幻风格”为主题的文学艺术网站
@@ -61,7 +62,7 @@ commentable: true
 - [子恒的博客](https://chestnutheng.cn/){:target="\_blank" rel="nofollow"} 爱好广泛的程序员博主：互联网、读书和旅行
 - [月神夜的树洞](http://www.zounuo.cc/){:target="\_blank" rel="nofollow"} 人生五象限
 - [浮云翩迁之间](https://blognas.hwb0307.com){:target="\_blank" rel="nofollow"}
-- [胡言胡语](https://eirms.com/){:target="\_blank" rel="nofollow"} 朴素生活，高尚思考
+- [印记](https://yinji.org/){:target="\_blank" rel="nofollow"} 朴素生活，高尚思考
 - [雷烈](https://leilie.top){:target="\_blank" rel="nofollow"} 一个记录科研中遇见各种问题的技术博客
 - [风与牧歌](https://blog.besscroft.com){:target="\_blank" rel="nofollow"} 旅行终将迎来终点
 - [云原生实验室](https://icloudnative.io){:target="\_blank" rel="nofollow"} Kubernetes 等云原生知识分享
