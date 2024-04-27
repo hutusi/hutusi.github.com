@@ -44,6 +44,7 @@ commentable: true
 
 ### 友链
 
+- [德普王's Blog](https://depp.wang){:target="\_blank" rel="nofollow"} 一个爱折腾的程序员
 - [潘智祥](https://panzhixiang.cn/){:target="\_blank" rel="nofollow"} 一位DevOps工程师
 - [Johnny @ Life Clips](https://dwith.com/){:target="\_blank" rel="nofollow"} 探索互联网艺术花园的数字游民
 - [AcboxSky](https://index.acbox.lol/){:target="\_blank" rel="nofollow"} 一个高中生记录技术的个人博客
