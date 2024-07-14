@@ -44,6 +44,7 @@ commentable: true
 
 ### 友链
 
+- [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富~
 - [德普王's Blog](https://depp.wang){:target="\_blank" rel="nofollow"} 一个爱折腾的程序员
 - [潘智祥](https://panzhixiang.cn/){:target="\_blank" rel="nofollow"} 一位DevOps工程师
 - [Johnny @ Life Clips](https://dwith.com/){:target="\_blank" rel="nofollow"} 探索互联网艺术花园的数字游民
