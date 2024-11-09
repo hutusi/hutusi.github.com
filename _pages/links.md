@@ -44,6 +44,8 @@ commentable: true
 
 ### 友链
 
+- [SimonSu](https://simonsu.cn/){:target="\_blank" rel="nofollow"} 记录生活、工作点滴
+- [前端徐徐](https://taotaoxu.com/){:target="\_blank" rel="nofollow"} 技术备忘录
 - [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富~
 - [德普王's Blog](https://depp.wang){:target="\_blank" rel="nofollow"} 一个爱折腾的程序员
 - [潘智祥](https://panzhixiang.cn/){:target="\_blank" rel="nofollow"} 一位DevOps工程师
@@ -60,7 +62,7 @@ commentable: true
 - [吐司面包](https://toast.pub){:target="\_blank" rel="nofollow"}
 - [林林杂语](https://www.xiaozonglin.cn/){:target="\_blank" rel="nofollow"}
 - [长街短梦](https://wangyunzi.com/){:target="\_blank" rel="nofollow"} 用笨拙的文字记录最真实的故事
-- [牧人池塘](https://dba.kim){:target="\_blank" rel="nofollow"} 时光匆匆，记录是对思维的沉淀
+- [牧人池塘](https://dbanote.com){:target="\_blank" rel="nofollow"} 时光匆匆，记录是对思维的沉淀
 - [子恒的博客](https://chestnutheng.cn/){:target="\_blank" rel="nofollow"} 爱好广泛的程序员博主：互联网、读书和旅行
 - [月神夜的树洞](http://www.zounuo.cc/){:target="\_blank" rel="nofollow"} 人生五象限
 - [浮云翩迁之间](https://blognas.hwb0307.com){:target="\_blank" rel="nofollow"}
