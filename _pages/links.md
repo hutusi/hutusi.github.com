@@ -43,7 +43,8 @@ commentable: true
 - [胡涂说](https://hutusi.com/)，我的博客，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi){:target="\_blank" rel="nofollow"}有我订阅的所有博客。
 
 ### 友链
-
+- [SeerSu](https://suus.me/){:target="\_blank" rel="nofollow"} 在数字的海洋中，寻找属于自己的星辰
+- [安全代码](https://www.usmacd.com/){:target="\_blank" rel="nofollow"} 关注 网络安全、金融投资，和个人成长
 - [SimonSu](https://simonsu.cn/){:target="\_blank" rel="nofollow"} 记录生活、工作点滴
 - [前端徐徐](https://taotaoxu.com/){:target="\_blank" rel="nofollow"} 技术备忘录
 - [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富~
