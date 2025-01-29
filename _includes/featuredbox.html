@@ -29,7 +29,7 @@
                                 {% endif %}
                             </h2>
 
-                            <h4 class="card-text">{{ post.excerpt | strip_html | strip_newlines | truncate: 80, "..." }}</h4>
+                            <h4 class="card-text">{{ post.content | strip_html | strip_newlines | truncate: 120, "..." }}</h4>
                         </div>
                         <div class="card-footer b-0 bg-white mt-auto">
                             <div class="wrapfooter">

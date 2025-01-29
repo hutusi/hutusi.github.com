@@ -117,7 +117,8 @@ section.recent-posts {
 }
 
 .maxthumb {
-    max-height: 300px;
+    max-height: 220px;
+    min-height: 220px;
     overflow: hidden;
 }
 

@@ -25,7 +25,7 @@
                 </div>
                 {% endif %}
             </h2>
-            <h4 class="card-text">{{ post.excerpt | strip_html | strip_newlines | truncate: 95, "..." }}</h4>
+            <h4 class="card-text">{{ post.content | strip_html | strip_newlines | truncate: 85, "..." }}</h4>
         </div>
         <div class="card-footer bg-white">
             <div class="wrapfooter">
