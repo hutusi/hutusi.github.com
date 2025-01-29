@@ -37,6 +37,11 @@ markdown: kramdown
 permalink: /articles/:title
 paginate: 9
 
+collections:
+    weekly:
+        output: true
+        permalink: /weekly/:title
+
 # Navigators
 nav_page_names: ["about.md", "archive.html", "links.md", "subscription.md"]
 # can be ['feeds.pub', 'xml', 'na']
