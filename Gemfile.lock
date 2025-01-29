@@ -1,12 +1,3 @@
-PATH
-  remote: ../mediumish-theme-jekyll
-  specs:
-    medium-theme (0.0.1)
-      jekyll (>= 4.0)
-      jekyll-feed (>= 0.10)
-      jekyll-paginate (>= 1.1)
-      jekyll-seo-tag (>= 2.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -103,7 +94,8 @@ DEPENDENCIES
   jekyll-redirect-from
   jekyll-seo-tag
   jekyll-sitemap
-  medium-theme!
+  kramdown
+  rouge
   webrick
 
 BUNDLED WITH

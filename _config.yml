@@ -47,7 +47,7 @@ nav_page_names: ["about.md", "archive.html", "links.md", "subscription.md"]
 # can be ['feeds.pub', 'xml', 'na']
 nav_feed: "na"
 
-theme: medium-theme
+# theme: medium-theme
 # remote_theme: hutusi/mediumish-theme-jekyll
 
 sass:
@@ -60,6 +60,7 @@ plugins:
     - jekyll-archives
     - jekyll-sitemap
     - jekyll-redirect-from
+    - jekyll-seo-tag
 
 include:
     - _pages
