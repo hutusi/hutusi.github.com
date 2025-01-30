@@ -35,12 +35,27 @@ wechat_official: "https://cdn.hutusi.com/images/site/qrcode_for_hututalk_8cm.jpg
 markdown: kramdown
 # permalink: pretty
 permalink: /articles/:title
-paginate: 9
 
 collections:
-    weekly:
+    weeklies:
         output: true
-        permalink: /weekly/:title
+        permalink: /weeklies/:title
+
+pagination:
+    enabled: true
+    per_page: 9
+    sort_field: 'date'
+    sort_reverse: true
+    # indexpage: 'articles.html'
+    # collection: weeklies
+
+autopages:
+  enabled: false
+#   collections:
+#     # layouts: 
+#     #   - 'weeklies.html'
+#     title: 'Posts in collection :coll' # :coll is replaced by the collection name
+#     permalink: '/:coll'
 
 # Navigators
 nav_page_names: ["about.md", "archive.html", "links.md", "subscription.md"]
@@ -56,7 +71,7 @@ sass:
 plugins:
     # - jekyll-remote-theme
     - jekyll-feed
-    - jekyll-paginate
+    - jekyll-paginate-v2
     - jekyll-archives
     - jekyll-sitemap
     - jekyll-redirect-from

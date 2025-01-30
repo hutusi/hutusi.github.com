@@ -11,7 +11,8 @@ gem 'webrick'
 # gem 'medium-theme', path: '~/workspace/git/mediumish-theme-jekyll'
 
 # plugins
-gem 'jekyll-paginate'
+# gem 'jekyll-paginate'
+gem 'jekyll-paginate-v2'
 gem 'jekyll-archives'
 gem 'jekyll-seo-tag'
 gem 'jekyll-feed' # , github: 'hutusi/jekyll-feed'
