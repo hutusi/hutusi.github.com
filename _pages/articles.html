@@ -3,7 +3,7 @@ layout: default
 permalink: /articles
 pagination:
     enabled: true
-    permalink: /:num/
+    permalink: /page:num/
     sort_field: 'date'
     sort_reverse: true
 ---
@@ -49,7 +49,7 @@ pagination:
         {% elsif page == 1 %}
         <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
         {% else %}
-        <a class="ml-1 mr-1" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+        <a class="ml-1 mr-1" href="{{ paginator.first_page_path | prepend: site.baseurl | replace: '//', '/' }}page{{page}}">{{ page }}</a>
         {% endif %}
     {% endfor %}
 

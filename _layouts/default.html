@@ -49,9 +49,11 @@ ga('send', 'pageview');
 
     <!-- Begin Logo -->
     <!-- <div class="mainheading"> -->
+    <div class="main-title">
         <a href="{{ site.baseurl }}/">
             <h2 class="sitetitle">{{ site.title }}</h2>
         </a>
+    </div>
     <!-- </div> -->
     <!-- End Logo -->
 
@@ -65,27 +67,20 @@ ga('send', 'pageview');
 
             <ul class="navbar-nav ml-auto">
 
-                {% if page.url == "/" %}
-                <li class="nav-item active">
-                {% else %}
-                <li class="nav-item">
-                {% endif %}
-                <a class="nav-link" href="{{ site.baseurl }}/index.html">Blog</a>
-                </li>
+                {%- for nav_page in site.nav_pages -%}
 
-                <li class='nav-item'>
-                    <a class='nav-link' href="{{ site.baseurl }}/articles">文章</a>
-                </li>
+                    {% if page.url == nav_page.url %}
+                    <li class="nav-item active">
+                    {% else %}
+                    <li class="nav-item">
+                    {% endif %}
+                        <a class="nav-link" href="{{ site.baseurl }}{{ nav_page.url }}">{{ nav_page.title }}</a>
+                    </li>
 
-                <li class='nav-item'>
-                    <a class='nav-link' href="{{ site.baseurl }}/weeklies">周刊</a>
-                </li>
+                {%- endfor -%}
 
-                <li class="nav-item">
-                <a class="nav-link" href="{{ site.baseurl }}/about">关于</a>
-                </li>
-
-                {% include search-lunr.html %}
+                <!-- todo: 搜索功能 -->
+                <!-- {% include search-lunr.html %} -->
 
             </ul>
 
