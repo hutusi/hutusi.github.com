@@ -34,28 +34,50 @@ title: Home
 
     <div class="section-title">
 
-        <h2><span>All Articles</span></h2>
+        <h2><span>Recent Articles</span></h2>
 
     </div>
 
     <div class="row listrecent">
 
-        {% for post in paginator.posts %}
-
-        {% include postbox.html %}
-
+        {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+        {% for post in sorted_posts limit:3 %}
+            {% include postbox.html post=post %}
         {% endfor %}
 
     </div>
 
 </section>
 
+
+<!-- Weeklies Index
+================================================== -->
+<section class="recent-posts">
+
+    <div class="section-title">
+
+        <h2><span>Recent Weeklies</span></h2>
+
+    </div>
+
+    <div class="row listrecent">
+
+        {% assign sorted_posts = site.weeklies | sort: "date" | reverse %}
+        {% for post in sorted_posts limit:3 %}
+            {% include postbox.html post=post %}
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
 <!-- Pagination
 ================================================== -->
-<div class="bottompagination">
+<!-- <div class="bottompagination">
 <div class="pointerup"><i class="fa fa-caret-up"></i></div>
 <span class="navigation" role="navigation">
     {% include pagination.html %}
 </span>
-</div>
+</div> -->
 
