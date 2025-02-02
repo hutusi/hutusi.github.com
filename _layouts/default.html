@@ -168,7 +168,46 @@ ga('send', 'pageview');
                 Copyright © {{ site.time | date: "%Y" }} {{ site.name }} 
             </div>
             <div class="col-md-6 col-sm-6 text-center text-lg-right">    
-                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+                Made with Jekyll and <a href="https://github.com/hutusi/mediumish-theme-jekyll/" target="_blank">Mediumish Theme</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <a href="https://beian.miit.gov.cn/" target="_blank">{{ site.icp_info }}</a><br /> 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <div class="busuanzi-count">
+                    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                
+                    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+                      <span class="post-meta-item-icon">
+                        <i>UV </i>
+                      </span>
+                      <span class="site-uv" title="总访客量">
+                        <span id="busuanzi_value_site_uv"></span>
+                      </span>
+                    </span>
+                    <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+                      <span class="post-meta-item-icon">
+                        <i>PV </i>
+                      </span>
+                      <span class="site-pv" title="总访问量">
+                        <span id="busuanzi_value_site_pv"></span>/<span id="busuanzi_value_page_pv"></span>
+                      </span>
+                    </span>
+                  </div>
+                
+                  <!-- Baidu Statistic-->
+                  {% if site.baidu_statistic %}
+                    {% include baidu_statistic.html %}
+                  {% endif %}
+                
+                  <!-- cnzz Statistic-->
+                  {% if site.cnzz_statistic %}
+                    {% include cnzz_statistic.html %}
+                  {% endif %}
             </div>
         </div>
     </div>

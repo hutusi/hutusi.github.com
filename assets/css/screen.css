@@ -344,6 +344,10 @@ span.post-read-more a:hover {
     margin-bottom: 62px;
     position: relative;
     background: #fff;
+
+    a, a:hover {
+        color: rgba(0, 0, 0, .44);
+    }
 }
 
 .link-dark {
