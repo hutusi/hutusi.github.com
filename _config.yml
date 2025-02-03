@@ -46,22 +46,6 @@ collections:
         output: true
         permalink: /weeklies/:title
 
-pagination:
-    enabled: true
-    per_page: 9
-    sort_field: 'date'
-    sort_reverse: true
-    # indexpage: 'articles.html'
-    # collection: weeklies
-
-autopages:
-  enabled: false
-#   collections:
-#     # layouts: 
-#     #   - 'weeklies.html'
-#     title: 'Posts in collection :coll' # :coll is replaced by the collection name
-#     permalink: '/:coll'
-
 # Navigators
 nav_pages:
     - title: "首页"
@@ -90,7 +74,7 @@ plugins:
     # - jekyll-remote-theme
     - jekyll-feed
     - jekyll-paginate-v2
-    # - jekyll-archives
+    - jekyll-archives
     - jekyll-sitemap
     - jekyll-redirect-from
     - jekyll-seo-tag
@@ -130,23 +114,38 @@ google_adsense: ca-pub-7800526822107892
 # addthis
 addthis: ra-4fa6932104ee5f3f
 
-# # Tagging
-# tag_page_dir:         tag
-# tag_page_layout:      tag_page
-# tag_permalink_style:  pretty
+# pagination-v2
+pagination:
+    enabled: true
+    per_page: 9
+    sort_field: 'date'
+    sort_reverse: true
+    # indexpage: 'articles.html'
+    # collection: weeklies
+autopages:
+  enabled: false
+#   collections:
+#     # layouts: 
+#     #   - 'weeklies.html'
+#     title: 'Posts in collection :coll' # :coll is replaced by the collection name
+#     permalink: '/:coll'
 
 # tag_page_data:
 #     sitemap: false
 
 # Archives
-# jekyll-archives:
-#     enabled: all
-#     layout: archive
-#     layouts:
-#         tag: tag-archive
-#     permalinks:
-#         tag: "/tag/:name/"
-#         category: "/category/:name/"
+jekyll-archives:
+    enabled: 
+        - year
+        - categories
+        - tags
+    layout: archive
+    layouts:
+        tag: tag-archive
+    permalinks:
+        tag: "/tag/:name/"
+        category: "/category/:name/"
+        year: '/:year/'
 
 # comments
 comments_engine: disqus
