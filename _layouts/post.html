@@ -142,7 +142,7 @@ post_class: post-template
 
 <!-- Begin Comments
 ================================================== -->
-{% if page.comments != false %}
+<!-- {% if page.comments != false %}
     <div class="container">
         <div id="comments" class="row justify-content-center mb-5">
             <div class="col-md-8">
@@ -150,6 +150,16 @@ post_class: post-template
             </div>
         </div>
     </div>
+{% endif %} -->
+
+{% if page.comments != false %}
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            {% include comments.html %}
+        </div>
+    </div>
+</div>
 {% endif %}
 <!--End Comments
 ================================================== -->

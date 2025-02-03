@@ -1,0 +1,11 @@
+.commentation {
+	padding-top: 2rem;
+	margin-top: 1rem;
+	position: relative;
+	text-align: center;
+
+	.active, .btn:hover {
+		background-color: #666;
+		color: white;
+	}
+}
