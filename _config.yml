@@ -88,7 +88,7 @@ plugins:
     # - jekyll-remote-theme
     - jekyll-feed
     - jekyll-paginate-v2
-    - jekyll-archives
+    # - jekyll-archives
     - jekyll-sitemap
     - jekyll-redirect-from
     - jekyll-seo-tag
@@ -133,18 +133,18 @@ addthis: ra-4fa6932104ee5f3f
 # tag_page_layout:      tag_page
 # tag_permalink_style:  pretty
 
-tag_page_data:
-    sitemap: false
+# tag_page_data:
+#     sitemap: false
 
 # Archives
-jekyll-archives:
-    enabled: all
-    layout: archive
-    layouts:
-        tag: tag-archive
-    permalinks:
-        tag: "/tag/:name/"
-        category: "/category/:name/"
+# jekyll-archives:
+#     enabled: all
+#     layout: archive
+#     layouts:
+#         tag: tag-archive
+#     permalinks:
+#         tag: "/tag/:name/"
+#         category: "/category/:name/"
 
 # comments
 comments_engine: disqus
@@ -159,11 +159,3 @@ giscus:
     input_position: "top"
     theme: "light"
     lang: "en"
-
-gitalk:
-    client_id: "3ecf7aac87e37cbe772c"
-    client_secret: "887d16569177e1f6336cce32e9c58974c2932807"
-    repo: "hutusi.github.com"
-    owner: "hutusi"
-    admin:
-        - "hutusi"

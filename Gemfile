@@ -13,7 +13,7 @@ gem 'webrick'
 # plugins
 # gem 'jekyll-paginate'
 gem 'jekyll-paginate-v2'
-gem 'jekyll-archives'
+# gem 'jekyll-archives'
 gem 'jekyll-seo-tag'
 gem 'jekyll-feed' # , github: 'hutusi/jekyll-feed'
 gem 'jekyll-sitemap'
