@@ -9,7 +9,7 @@ title: Home
 ================================================== -->
 <section class="featured-posts">
     <div class="section-title">
-        <h2><span>Featured</span></h2>
+        <h2><span>置顶</span></h2>
     </div>
     <div class="row">
 
@@ -34,7 +34,7 @@ title: Home
 
     <div class="section-title">
 
-        <h2><span>Recent Articles</span></h2>
+        <h2><span>最新文章(<a href="{{site.baseurl}}/{{site.articles_path}}">全部</a>)</span></h2>
 
     </div>
 
@@ -46,6 +46,9 @@ title: Home
         {% endfor %}
 
     </div>
+    <!-- <div class="bottompagination">
+        <a class="ml-1 mr-1" href="{{ site.posts_path }}">查看所有文章</a>        
+    </div> -->
 
 </section>
 
@@ -56,7 +59,7 @@ title: Home
 
     <div class="section-title">
 
-        <h2><span>Recent Weeklies</span></h2>
+        <h2><span><span>最新周刊(<a href="{{site.baseurl}}/{{site.weeklies_path}}">全部</a>)</span></h2>
 
     </div>
 

@@ -36,6 +36,9 @@ markdown: kramdown
 # permalink: pretty
 permalink: /articles/:title
 
+articles_path: articles/
+weeklies_path: weeklies/
+
 collections:
     weeklies:
         output: true

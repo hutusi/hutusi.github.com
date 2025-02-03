@@ -143,7 +143,8 @@ ga('send', 'pageview');
                 <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
             </div>
 		</div>
-		<div class="col-md-8 p-5 align-self-center text-center">
+        <!-- Show categories -->
+		<!-- <div class="col-md-8 p-5 align-self-center text-center">
             {% assign categories_list = site.categories %}
             {% if categories_list.first[0] == null %}
                 {% for category in categories_list %}
@@ -155,6 +156,25 @@ ga('send', 'pageview');
                 {% endfor %}
             {% endif %}
             {% assign categories_list = nil %}
+		</div> -->
+        <!-- Show tags -->
+        <!-- <div class="col-md-8 p-5 align-self-center text-center">
+            {% assign tags_list = site.tags %}
+            {% if tags_list.first[0] == null %}
+                {% for tag in tags_list %}
+                    <a class="mt-1 mb-1" href="{{site.baseurl}}/tags#{{ tag | url_escape | strip | replace: ' ', '-' }}">{{ tag | camelcase }} ({{ site.tags.size }})</a>
+                {% endfor %}
+            {% else %}
+                {% for tag in tags_list %}
+                    <a class="mt-1 mb-1" href="{{site.baseurl}}/tags#{{ tag[0] | url_escape | strip | replace: ' ', '-' }}">{{ tag[0] | camelcase }} ({{ tag[1].size }})</a>
+                {% endfor %}
+            {% endif %}
+            {% assign tags_list = nil %}
+		</div> -->
+
+        <div class="col-md-8 p-5 align-self-center text-center">
+            <a class="mt-1 mb-1" href="{{site.baseurl}}/{{site.articles_path}}">所有文章</a>
+            <a class="mt-1 mb-1" href="{{site.baseurl}}/{{site.weeklies_path}}">所有周刊</a>
 		</div>
 	</div>
 </div>
