@@ -142,6 +142,7 @@ jekyll-archives:
     layout: archive
     layouts:
         tag: tag-archive
+        category: category-archive
     permalinks:
         tag: "/tag/:name/"
         category: "/category/:name/"
