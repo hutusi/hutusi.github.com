@@ -9,3 +9,23 @@
 		color: white;
 	}
 }
+
+.extra-info {
+	margin-top: 30px;
+
+	figure {
+	  display: block;
+	  margin: auto;
+	  
+	  img {
+		display: block;
+		margin: auto;
+		text-align: center;
+	  }
+	  
+	  figcaption {
+		text-align: center;
+		font-size: 14px;
+	  }
+	}
+}
