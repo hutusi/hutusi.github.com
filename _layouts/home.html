@@ -40,7 +40,7 @@ title: Home
 
     <div class="row listrecent">
 
-        {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+        {% assign sorted_posts = site.posts | where_exp: "post", "post.featured != true" | sort: "date" | reverse %}
         {% for post in sorted_posts limit:3 %}
             {% include postbox.html post=post %}
         {% endfor %}
@@ -59,13 +59,13 @@ title: Home
 
     <div class="section-title">
 
-        <h2><span><span>最新周刊(<a href="{{site.baseurl}}/{{site.weeklies_path}}">全部</a>)</span></h2>
+        <h2><span>最新周刊(<a href="{{site.baseurl}}/{{site.weeklies_path}}">全部</a>)</span></h2>
 
     </div>
 
     <div class="row listrecent">
 
-        {% assign sorted_posts = site.weeklies | sort: "date" | reverse %}
+        {% assign sorted_posts = site.weeklies | where_exp: "post", "post.featured != true" | sort: "date" | reverse %}
         {% for post in sorted_posts limit:3 %}
             {% include postbox.html post=post %}
         {% endfor %}
