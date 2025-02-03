@@ -64,15 +64,29 @@ task :fetch_comments do
   puts "评论数已更新到 #{COMMENTS_FILE}"
 end
 
+def read_title(file)
+  slug = File.basename(file, ".md")
+  slug = slug.sub(/^\d{4}-\d{2}-\d{2}-/, '')
+  content = File.read(file)
+  title_match = content.match(/^title:\s*["']?(.*?)["']?$/i)
+  title = title_match ? title_match[1] : slug
+  return slug, title
+end
+
 # 读取 Jekyll 文章信息
 def load_posts
   posts = {}
   Dir["_posts/*.md"].each do |file|
-    slug = File.basename(file, ".md")
-    content = File.read(file)
-    title_match = content.match(/^title:\s*["']?(.*?)["']?$/i)
-    title = title_match ? title_match[1] : slug
-    posts[slug] = title
+    slug, title = read_title file
+    posts["articles/"+slug] = title
+  end
+  Dir["_weeklies/*.md"].each do |file|
+    slug, title = read_title file
+    posts["articles/"+slug] = title
+  end
+  Dir["_pages/*.md"].each do |file|
+    slug, title = read_title file
+    posts[slug+"/"] = title
   end
   posts
 end
@@ -115,11 +129,10 @@ task :fetch_discussions do
   discussions_data = {}
 
   posts.each do |slug, title|
-    key = "articles/" + slug.sub(/^\d{4}-\d{2}-\d{2}-/, '')
-    puts "Fetching Discussion ID for: #{key} #{title}..."
+    puts "Fetching Discussion ID for: #{slug} #{title}..."
     # discussion_id = ''
-    discussion_id = fetch_discussion_id(key)
-    discussions_data[key] = discussion_id if discussion_id
+    discussion_id = fetch_discussion_id(slug)
+    discussions_data[slug] = discussion_id if discussion_id
   end
 
   File.write(DISCUSSION_IDS_FILE, JSON.pretty_generate(discussions_data))

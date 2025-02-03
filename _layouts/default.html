@@ -252,7 +252,7 @@ ga('send', 'pageview');
 
 <script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script> 
 
-{% if page.layout == 'post' %}
+{% if page.layout == 'post' or page.layout == 'page' %}
 <script src="{{ site.baseurl }}/assets/js/comments.js"></script>
 <!-- <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script> -->
 {% endif %}
