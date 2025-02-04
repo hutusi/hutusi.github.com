@@ -8,6 +8,7 @@
 # Site settings
 title: 胡涂说
 email: "huziyong@gmail.com"
+name: 胡涂说
 description: "hutusi.com"
 baseurl: "" # The subpath of your site, e.g. /blog
 url: "https://hutusi.com" # The base hostname & protocol for your site
@@ -21,59 +22,82 @@ copyright: "胡涂说 hutusi.com"
 icp_info: "沪ICP备19043788号-1"
 # Author
 author:
-  name: hutusi
-  url: https://hutusi.com
-  email: huziyong@gmail.com
+    name: hutusi
+    url: https://hutusi.com
+    email: huziyong@gmail.com
 
 # images CDN
 # images_baseurl: '/images'
 images_baseurl: "https://cdn.hutusi.com/images"
 # images_newurl: 'https://rmt.ladydaily.com/fetch/hutusi/storage/blog'
+default_image: "/assets/images/4.jpg"
+
 wechat_official: "https://cdn.hutusi.com/images/site/qrcode_for_hututalk_8cm.jpg"
 
 markdown: kramdown
 # permalink: pretty
 permalink: /articles/:title
-paginate: 10
+
+articles_path: articles/
+weeklies_path: weeklies/
+
+collections:
+    weeklies:
+        output: true
+        permalink: /weeklies/:title
 
 # Navigators
-nav_page_names: ["about.md", "archive.html", "links.md", "subscription.md"]
+nav_pages:
+    - title: "首页"
+      url: "/"
+    - title: "关于"
+      url: "/about/"
+    - title: "文章"
+      url: "/articles/"
+    - title: "周刊"
+      url: "/weeklies/"
+    - title: "归档"
+      url: "/archive/"
+    - title: "订阅"
+      url: "/subscription/"
+# nav_page_names: ["about.md", "archive.html", "links.md", "subscription.md"]
 # can be ['feeds.pub', 'xml', 'na']
 nav_feed: "na"
 
-theme: taletype
-# remote_theme: hutusi/tale
+# theme: medium-theme
+# remote_theme: hutusi/mediumish-theme-jekyll
 
 sass:
-  style: compressed
+    style: compressed
 
 plugins:
-  # - jekyll-remote-theme
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-archives
-  - jekyll-sitemap
-  - jekyll-redirect-from
+    # - jekyll-remote-theme
+    - jekyll-feed
+    - jekyll-paginate-v2
+    - jekyll-archives
+    - jekyll-sitemap
+    - jekyll-redirect-from
+    - jekyll-seo-tag
 
 include:
-  - _pages
+    - _pages
 
 exclude:
-  - vendor
-  - Gemfile
-  - Gemfile.lock
+    - vendor
+    - Gemfile
+    - Gemfile.lock
 
 # Pages path
 defaults:
-  - scope:
-      path: "_pages"
-    values:
-      permalink: /:basename:output_ext
+    - scope:
+          path: "_pages"
+      values:
+          permalink: /:basename:output_ext
 
 feed:
-  excerpt_only: true
-  posts_limit: 10
-  # posts_sort: last_modified_at
+    excerpt_only: true
+    posts_limit: 10
+    # posts_sort: last_modified_at
 
 # Google Analytics
 google_analytics: G-MCBGNJDDPS
@@ -90,42 +114,50 @@ google_adsense: ca-pub-7800526822107892
 # addthis
 addthis: ra-4fa6932104ee5f3f
 
-# # Tagging
-# tag_page_dir:         tag
-# tag_page_layout:      tag_page
-# tag_permalink_style:  pretty
+# pagination-v2
+pagination:
+    enabled: true
+    per_page: 9
+    sort_field: 'date'
+    sort_reverse: true
+    # indexpage: 'articles.html'
+    # collection: weeklies
+autopages:
+  enabled: false
+#   collections:
+#     # layouts: 
+#     #   - 'weeklies.html'
+#     title: 'Posts in collection :coll' # :coll is replaced by the collection name
+#     permalink: '/:coll'
 
-tag_page_data:
-  sitemap: false
+# tag_page_data:
+#     sitemap: false
 
 # Archives
 jekyll-archives:
-  enabled: all
-  layout: archive
-  layouts:
-    tag: tag-archive
-  permalinks:
-    tag: "/tag/:name/"
-    category: "/category/:name/"
+    enabled: 
+        - year
+        - categories
+        - tags
+    layout: archive
+    layouts:
+        tag: tag-archive
+        category: category-archive
+    permalinks:
+        tag: "/tag/:name/"
+        category: "/category/:name/"
+        year: '/:year/'
 
 # comments
 comments_engine: disqus
 disqus: hutusi
 
 giscus:
-  repo: "hutusi/hutusi.github.com"
-  category: "Comments"
-  repo_id: "MDEwOlJlcG9zaXRvcnkzNjc5MDgy"
-  category_id: "DIC_kwDOADgjas4COYln"
-  mapping: "pathname"
-  input_position: "top"
-  theme: "light"
-  lang: "en"
-
-gitalk:
-  client_id: "3ecf7aac87e37cbe772c"
-  client_secret: "887d16569177e1f6336cce32e9c58974c2932807"
-  repo: "hutusi.github.com"
-  owner: "hutusi"
-  admin:
-    - "hutusi"
+    repo: "hutusi/hutusi.github.com"
+    category: "Comments"
+    repo_id: "MDEwOlJlcG9zaXRvcnkzNjc5MDgy"
+    category_id: "DIC_kwDOADgjas4COYln"
+    mapping: "pathname"
+    input_position: "top"
+    theme: "light"
+    lang: "en"

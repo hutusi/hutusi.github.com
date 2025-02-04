@@ -5,6 +5,7 @@ tags: 神经网络 机器学习 深度学习 Huggingface
 title: 从神经网络到 Hugging Face
 subtitle: 神经网络和深度学习简史
 date: "2024-03-17 18:43:00 +0800"
+image: people/geoffery-hinton.jpg
 ---
 
 TL;DR 本文8200+字，全文阅读约需15分钟。从去年开始，我读了十余本人工智能方面入门的书籍（参见文末附2），酝酿了两个月，花了两周时间写作此文。本文简要回顾了从感知机到深度学习及Hugging Face的历史，并试图以通俗的语言来介绍神经网络和深度学习的原理。

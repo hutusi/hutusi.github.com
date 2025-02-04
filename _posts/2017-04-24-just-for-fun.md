@@ -8,6 +8,7 @@ gh_issue: 35
 redirect_from:
   - /blog/2017/04/24/hacker
   - /just-for-fun
+image: articles/2017-just-for-fun.jpg
 ---
 
 这是一篇读书笔记。

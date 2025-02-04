@@ -1,0 +1,42 @@
+<div class="commentation" onload="onSelectGiscus()">
+	<div>对我博客最大的鼓励来自于你的评论，欢迎选择
+		<button id="giscus-btn" onclick="onSelectGiscus()" class="active">giscus</button>
+		或
+		<button id="disqus-btn" onclick="onSelectDisqus()">disqus</button>
+		来回复，
+		也可以在 <a href="https://github.com/{{ site.giscus.repo }}/discussions/{{ page.gh_discussion }}" target="_blank">GitHub discussion</a> 留言。
+	</div>
+
+	<br />
+
+	<div id="giscus-tab" style="display:block">
+		{% include giscus_comments.html %}
+	</div>
+	<div id="disqus-tab" style="display:none">
+		{% include disqus_comments.html %}
+	</div>
+</div>
+
+<script type="text/javascript">
+	var loadedDisqus = false;
+	var giscusBtn = document.querySelector('#giscus-btn');
+	var disqusBtn = document.querySelector('#disqus-btn')
+	var giscusTab = document.querySelector('#giscus-tab');
+	var disqusTab = document.querySelector('#disqus-tab')
+    function onSelectGiscus() {
+		giscusBtn.classList.add('active');
+		disqusBtn.classList.remove('active');
+		giscusTab.style.display = "block";
+		disqusTab.style.display = "none";
+	}
+	function onSelectDisqus() {
+		if (!loadedDisqus) {
+			loadedDisqus = true;
+			loadDisqus();
+		}
+		giscusBtn.classList.remove('active');
+		disqusBtn.classList.add('active');
+		giscusTab.style.display = "none";
+		disqusTab.style.display = "block";
+	}
+</script>

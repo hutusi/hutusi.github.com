@@ -11,6 +11,7 @@ gh_issue: 33
 redirect_from:
   - /blog/2007/03/04/dream
   - /a-strange-dream
+image: articles/2007-dream.jpg
 ---
 
 早上的时候做了个奇怪的梦，或者说是几个连续的梦，大致记录如下：

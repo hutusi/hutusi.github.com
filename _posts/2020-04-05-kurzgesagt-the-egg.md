@@ -9,6 +9,7 @@ last_modified_at: "2020-04-05 09:03:11 +0800"
 gh_issue: 45
 redirect_from:
   - /kurzgesagt-the-egg
+image: articles/2020-the-egg.jpg
 ---
 
 最近，我和大卫几乎每天都会看一集 [kurzgesagt](https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q){:target="_blank"} 的视频。kurzgesagt 是一家德国的设计工作室，在 youtube 上发布科普视频，视频制作质量很高，目前已有一千万多订阅。kurzgesagt 英语意为 In a Nutshell, 即简而言之、概述的意思。前几天看到他们的 *[蛋 The Egg](https://www.youtube.com/watch?v=h6fcK_fRYaI){:target="_blank"}*, 觉得挺有意思。[^1]

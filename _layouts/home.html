@@ -1,0 +1,86 @@
+---
+layout: default
+title: Home
+---
+
+{% if page.url == "/" %}
+
+<!-- Featured
+================================================== -->
+<section class="featured-posts">
+    <div class="section-title">
+        <h2><span>置顶</span></h2>
+    </div>
+    <div class="row">
+
+    {% for post in site.posts %}
+
+        {% if post.featured == true %}
+
+            {% include featuredbox.html %}
+
+        {% endif %}
+
+    {% endfor %}
+
+    </div>
+</section>
+
+{% endif %}
+
+<!-- Posts Index
+================================================== -->
+<section class="recent-posts">
+
+    <div class="section-title">
+
+        <h2><span>最新文章(<a href="{{site.baseurl}}/{{site.articles_path}}">全部</a>)</span></h2>
+
+    </div>
+
+    <div class="row listrecent">
+
+        {% assign sorted_posts = site.posts | where_exp: "post", "post.featured != true" | sort: "date" | reverse %}
+        {% for post in sorted_posts limit:3 %}
+            {% include postbox.html post=post %}
+        {% endfor %}
+
+    </div>
+    <!-- <div class="bottompagination">
+        <a class="ml-1 mr-1" href="{{ site.posts_path }}">查看所有文章</a>        
+    </div> -->
+
+</section>
+
+
+<!-- Weeklies Index
+================================================== -->
+<section class="recent-posts">
+
+    <div class="section-title">
+
+        <h2><span>最新周刊(<a href="{{site.baseurl}}/{{site.weeklies_path}}">全部</a>)</span></h2>
+
+    </div>
+
+    <div class="row listrecent">
+
+        {% assign sorted_posts = site.weeklies | where_exp: "post", "post.featured != true" | sort: "date" | reverse %}
+        {% for post in sorted_posts limit:3 %}
+            {% include postbox.html post=post %}
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- Pagination
+================================================== -->
+<!-- <div class="bottompagination">
+<div class="pointerup"><i class="fa fa-caret-up"></i></div>
+<span class="navigation" role="navigation">
+    {% include pagination.html %}
+</span>
+</div> -->
+

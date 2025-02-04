@@ -8,6 +8,7 @@ gh_issue: 9
 redirect_from:
   - /blog/2017/02/12/property
   - /buying-property
+image: articles/2017-neighbourhood.jpg
 ---
 
 > 当你想要回家，却找不到回家的路   

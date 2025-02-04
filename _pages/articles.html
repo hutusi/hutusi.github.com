@@ -1,0 +1,69 @@
+---
+layout: default
+permalink: /articles
+pagination:
+    enabled: true
+    permalink: /page:num/
+    sort_field: 'date'
+    sort_reverse: true
+---
+
+<!-- Posts Index
+================================================== -->
+<section class="recent-posts">
+
+    <div class="section-title">
+
+        {% assign target_url = "/weeklies/" | relative_url %}
+        {% if page.collection == "weeklies" or page.url contains target_url %}
+            <h2><span>全部周刊</span></h2>
+        {% else %}
+            <h2><span>全部文章</span></h2>
+        {% endif %}
+
+    </div>
+
+    <div class="row listrecent">
+
+        {% for post in paginator.posts %}
+
+            {% include postbox.html %}
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- Pagination
+================================================== -->
+<div class="bottompagination">
+<div class="pointerup"><i class="fa fa-caret-up"></i></div>
+<span class="navigation" role="navigation">
+    {% if paginator.total_pages > 1 %}
+    <div class="pagination">
+    {% if paginator.previous_page %}
+        <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+    {% else %}
+        <span>&laquo; Prev</span>
+    {% endif %}
+
+    {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+        <span class="ml-1 mr-1">{{ page }}</span>
+        {% elsif page == 1 %}
+        <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+        {% else %}
+        <a class="ml-1 mr-1" href="{{ paginator.first_page_path | prepend: site.baseurl | replace: '//', '/' }}page{{page}}">{{ page }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if paginator.next_page %}
+        <a class="ml-1 mr-1" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+    {% else %}
+        <span>Next &raquo;</span>
+    {% endif %}
+    </div>
+    {% endif %}
+</span>
+</div>

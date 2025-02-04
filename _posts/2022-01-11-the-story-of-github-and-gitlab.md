@@ -7,6 +7,7 @@ subtitle: GitHub 和 GitLab 的故事
 date: "2022-01-11 23:30:00 +0800"
 last_modified_at: "2022-01-11 23:30:00 +0800"
 gh_issue: 109
+image: posts/github-founders-and-first-employee.jpeg
 ---
 
 TL;DR 本文字数约6000字，全文阅读约10分钟，分为引子、GitHub的故事、GitLab的故事以及启示几个部分。

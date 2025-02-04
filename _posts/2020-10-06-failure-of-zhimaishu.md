@@ -7,6 +7,7 @@ date: 2020-10-06 22:00:00 +0800
 gh_issue: 86
 redirect_from:
   - /failure-of-zhimaishu
+image: articles/2020-guangfulin.jpg
 ---
 
 ## 背景

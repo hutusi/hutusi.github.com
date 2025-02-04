@@ -7,6 +7,7 @@ gh_issue: 36
 redirect_from:
   - /blog/2017/03/16/giant-baby
   - /the-giant-baby-nation
+image: articles/2017-the-giant-baby-nation.jpg
 ---
 
 这是一篇读书笔记。

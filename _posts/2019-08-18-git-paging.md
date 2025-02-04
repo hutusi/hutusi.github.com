@@ -8,6 +8,7 @@ gh_issue: 41
 redirect_from:
   - /blog/2019/08/18/git-paging
   - /git-paging
+image: articles/2019-git-tips.jpg
 ---
 
 通过阅读源码来学习开源项目是最直接也最有效的方法。而想要了解一个开源项目，最好是从第一个 commit 开始看起，特别是第一个最小可用版本发布前的 commits, 通过阅读对每一次 commit 提交源码，能够最直接的理解作者的设计思路和开发过程中的思考。
