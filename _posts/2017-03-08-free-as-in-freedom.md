@@ -8,6 +8,7 @@ gh_issue: 32
 redirect_from:
   - /blog/2017/03/08/free
   - /free-as-in-freedom
+image: articles/2017-rms-book.jpg
 ---
 
 这是一篇读书笔记。

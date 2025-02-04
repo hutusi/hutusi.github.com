@@ -11,6 +11,7 @@ gh_issue: 47
 redirect_from:
   - /blog/2007/02/27/yantai
   - /yantai-poems
+image: articles/2007-yantai.jpeg
 ---
 
 > 海上飞来落港城，旅尘未洗酒先迎。   

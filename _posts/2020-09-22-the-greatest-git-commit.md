@@ -8,6 +8,7 @@ date: 2020-09-22 00:00:00 +0800
 gh_issue: 59
 redirect_from:
   - /the-greatest-git-commit
+image: articles/2020-linus-torvalds.jpg
 ---
 
 TL;DR 本文较长，如果对 Git 内部实现不感兴趣可以快速跳过中间两个章节。

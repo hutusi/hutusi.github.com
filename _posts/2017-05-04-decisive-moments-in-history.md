@@ -9,6 +9,7 @@ gh_issue: 6
 redirect_from:
   - /blog/2017/05/04/geniuses
   - /decisive-moments-in-history
+image: articles/2017-decisive-moments-in-history.jpg
 ---
 
 《人类群星闪耀时》是奥地利作家斯蒂芬·茨威格的历史传记文集，描写了历史上一些重要事件的关键时刻。德文原书名《Sternstunden der Menschheit》，意为“人类伟大的时刻”。英文一般翻译为“Decisive Moments in History”（历史决定性的时刻）。

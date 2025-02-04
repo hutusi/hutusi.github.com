@@ -6,6 +6,7 @@ title: 给博客换了套新评论系统
 subtitle: 用 giscus 替换 gitalk
 date: "2022-04-04 14:20:00 +0800"
 last_modified_at: "2022-04-04 14:20:00 +0800"
+image: articles/2022-jekyll-comments.jpg
 ---
 
 我的博客引擎用的是 [Jekyll](https://jekyllrb.com/)，一款 “古老” 的静态博客引擎。写下 “古老” 这个词，我不禁感叹时间飞逝，回想当时刚用 Jekyll 时，那时可是新东西。在那个年代，如果不是在 Blogspot、新浪博客这种博客托管平台上写博客而是想自建的话，wordpress 几乎是不二选择。可以说，wordpress 几乎是博客软件的代名词。而 Jekyll 的发明可以说是创造性的，用作者 Tom Preston-Werner（同时也是 GitHub 的创始人）的话说就是用 Jekyll 写博客就“像黑客一样写博客”(*[Blogging Like a Hacker](https://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html)*)。从此，自建博客系统不需要关系服务器，不需要配置数据库，只需要懂 Git、熟悉 Markdown 语法就可以拥有一个完美的程序员的博客。

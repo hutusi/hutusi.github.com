@@ -11,6 +11,7 @@ gh_issue: 26
 redirect_from:
   - /blog/2008/06/09/lightness
   - /the-unbearable-lightness-of-being
+image: articles/2008-the-unbearable-lightness-of-being.jpg
 ---
 
 昆德拉说，上帝一发笑，人类就思考。看官且莫笑，我不是无意把这两句弄反，只是想证明一下康德的先验论。诸君大概是因为已形成“人类一思考，上帝就发笑”的先知才对我提到的那句才发笑的吧。若有人说我是因为看到这句话产生经验后才发笑的，那么马克思该为他的唯物论被证实而暗地发笑了。如此说来，哲学是个费人脑筋的问题。我们的生活如果要被哲学证明来证明去，那么一辈子应该过的很累。

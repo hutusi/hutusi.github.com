@@ -11,6 +11,7 @@ gh_issue: 13
 redirect_from:
   - /blog/2015/04/11/learning-english
   - /learning-english
+image: articles/2015-learn-english.webp
 ---
 
 有同事向我请教英语学习的方法，我很诧异。因为我英语水平其实还很差，只不过在公司内部的英语培训上跟外教分享了自己“苦学”的历程，让外教很惊讶，他也向这位同事提到了我。

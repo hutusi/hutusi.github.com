@@ -8,6 +8,7 @@ date: "2020-09-13 19:00:00 +0800"
 gh_issue: 57
 redirect_from:
   - /the-road-to-open-source
+image: articles/2020-the-cathedral-and-the-bazaar.jpg
 ---
 
 ## 从自由软件到开源软件

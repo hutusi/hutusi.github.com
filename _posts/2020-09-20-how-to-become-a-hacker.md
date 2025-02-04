@@ -8,6 +8,7 @@ date: "2020-09-20 20:00:00 +0800"
 gh_issue: 58
 redirect_from:
   - /how-to-become-a-hacker
+image: articles/2020-hackers.jpeg
 ---
 
 在[上一篇博客](/the-road-to-open-source)中谈到开源软件，开源软件可以上溯到自由软件，而自由软件可以上溯到黑客社区的传统。那么什么是黑客呢？黑客这个词源于1960年代 MIT 的一个学生俱乐部，当时他们将快速解决问题的方式叫做 hack, 解决问题的过程叫 hacking, 解决问题的人即 hacker, 翻译过来也就是黑客。自由软件的发起者 Richard Stallman (RMS) 说：“出于兴趣而解决某个难题，不管它有没有用，这就是黑客。”随着自由软件和开源软件的兴起，黑客们找到了更符合自己身份的标签：用自由软件/开源软件解决计算机问题。

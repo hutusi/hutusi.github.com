@@ -9,6 +9,7 @@ last_modified_at: "2020-04-12 08:39:00 +0800"
 gh_issue: 49
 redirect_from:
   - /david-reading-books-at-four-years-old
+image: articles/2020-david-with-his-books.jpg
 ---
 
 ![David with his books]({{site.images_baseurl}}/photos/david-with-his-books-2020.jpg?w=1280){:width="800px"}
