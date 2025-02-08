@@ -26,8 +26,8 @@ License: https://www.wowthemes.net/freebies-license/
 
     span.sitetitle {
         font-size: 2.0rem;
-        font-weight: 700;
-        margin-right: 10px;
+        font-weight: 600;
+        /* margin-right: 10px; */
     }
 }
 
