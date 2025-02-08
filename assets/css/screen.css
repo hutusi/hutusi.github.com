@@ -7,11 +7,9 @@ License: https://www.wowthemes.net/freebies-license/
     html { font-size:18px; } /* Increase the font size on higher resolutions */
     .container {max-width:80%;}
 }
-.mainheading {
-    padding: 1rem 0rem;
-}
 
-.main-title {
+.mainheading {
+    /* padding: 1rem 0rem; */
     display: flex;
     align-items: center; /* 垂直居中 */
     justify-content: center; /* 水平居中（可选） */
@@ -24,6 +22,12 @@ License: https://www.wowthemes.net/freebies-license/
     a:hover,
     a:focus {
       opacity: .6;
+    }
+
+    span.sitetitle {
+        font-size: 2.0rem;
+        font-weight: 700;
+        margin-right: 10px;
     }
 }
 
