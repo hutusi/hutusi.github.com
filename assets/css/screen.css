@@ -8,11 +8,11 @@ License: https://www.wowthemes.net/freebies-license/
     .container {max-width:80%;}
 }
 
-.mainheading {
+.sitetitle {
     /* padding: 1rem 0rem; */
     display: flex;
     align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中（可选） */
+    /* justify-content: center; 水平居中（可选） */
     min-height: 50px;
 
     a, a:hover {
@@ -24,10 +24,21 @@ License: https://www.wowthemes.net/freebies-license/
       opacity: .6;
     }
 
-    span.sitetitle {
+    span {
         font-size: 2.0rem;
         font-weight: 600;
         /* margin-right: 10px; */
+    }
+}
+
+.mainheading {
+    a, a:hover {
+        color: rgba(0, 0, 0, .8);
+    }
+
+    a:hover,
+    a:focus {
+      opacity: .6;
     }
 }
 
