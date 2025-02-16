@@ -349,6 +349,12 @@ span.post-read-more a:hover {
     margin-bottom: 1rem;
 }
 
+.mainheading .postsubtitle {
+    font-size: 1.2rem;
+    opacity: .6;
+    margin-bottom: 1rem;
+}
+
 .footer {
     border-top: 1px solid rgba(0, 0, 0, .05) !important;
     padding-top: 15px;
