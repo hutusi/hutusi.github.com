@@ -94,10 +94,24 @@ defaults:
       values:
           permalink: /:basename:output_ext
 
+# Feeds
 feed:
     excerpt_only: true
-    posts_limit: 10
-    # posts_sort: last_modified_at
+    posts_limit: 20
+    collections:
+        - weeklies
+
+# jekyll-feed:
+#     posts_limit: 20
+#     excerpt_only: true
+#     collections:
+#         weeklies:
+#             output: true
+#     # categories: true
+#     # tags: true
+#     # collections: true
+#     # output: true
+
 
 # Google Analytics
 google_analytics: G-MCBGNJDDPS

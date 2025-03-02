@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/hutusi/jekyll-feed.git
+  revision: 7a1ca04ad54e29333cb3ebafc45dca528153dc2a
+  specs:
+    jekyll-feed (0.17.0)
+      jekyll (>= 3.7, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,8 +49,6 @@ GEM
       webrick (~> 1.7)
     jekyll-archives (2.3.0)
       jekyll (>= 3.6, < 5.0)
-    jekyll-feed (0.17.0)
-      jekyll (>= 3.7, < 5.0)
     jekyll-paginate-v2 (3.0.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-redirect-from (0.16.0)
@@ -92,7 +97,7 @@ DEPENDENCIES
   dotenv
   jekyll
   jekyll-archives
-  jekyll-feed
+  jekyll-feed!
   jekyll-paginate-v2
   jekyll-redirect-from
   jekyll-seo-tag
