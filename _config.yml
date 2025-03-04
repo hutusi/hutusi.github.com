@@ -13,6 +13,7 @@ description: "hutusi.com"
 baseurl: "" # The subpath of your site, e.g. /blog
 url: "https://hutusi.com" # The base hostname & protocol for your site
 twitter: "https://twitter.com/hutusi"
+twitter_username: "hutusi"
 github: "https://github.com/hutusi"
 instagram: "https://instagram.com/hutusi"
 facebook: "https://facebook.com/hutusi"
@@ -31,6 +32,7 @@ author:
 images_baseurl: "https://cdn.hutusi.com/images"
 # images_newurl: 'https://rmt.ladydaily.com/fetch/hutusi/storage/blog'
 default_image: "/assets/images/4.jpg"
+featured_image: "/assets/images/logo-square.jpg"
 
 wechat_official: "https://cdn.hutusi.com/images/site/qrcode_for_hututalk_8cm.jpg"
 

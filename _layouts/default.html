@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!-- Open Graph (Facebook/LinkedIn/Pinterest) -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ page.title | escape }}" />
+<meta property="og:description" content="{{ page.excerpt | strip_html | truncate: 160 }}" />
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+<meta property="og:image" content="{{ site.url }}{{ page.image | default: site.featured_image }}" />
+<meta property="og:site_name" content="{{ site.title }}" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ page.title | escape }}" />
+<meta name="twitter:description" content="{{ page.excerpt | strip_html | truncate: 160 }}" />
+<meta name="twitter:image" content="{{ site.url }}{{ page.image | default: site.featured_image }}" />
+{% if site.twitter_username %}
+<meta name="twitter:site" content="@{{ site.twitter_username }}" />
+{% endif %}
+
 <!-- <link rel="icon" href="{{ site.baseurl }}/assets/images/logo.png"> -->
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
