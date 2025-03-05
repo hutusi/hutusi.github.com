@@ -32,7 +32,7 @@ author:
 images_baseurl: "https://cdn.hutusi.com/images"
 # images_newurl: 'https://rmt.ladydaily.com/fetch/hutusi/storage/blog'
 default_image: "/assets/images/4.jpg"
-featured_image: "/assets/images/logo-square.jpg"
+featured_image: "/site/logo-256x256.jpg"
 
 wechat_official: "https://cdn.hutusi.com/images/site/qrcode_for_hututalk_8cm.jpg"
 
