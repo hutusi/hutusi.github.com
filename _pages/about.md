@@ -7,13 +7,15 @@ commentable: true
 
 ## 关于我
 
-现居上海(近一年经常长期出差于深圳)，打杂为生，读书写字~~和编码~~为乐。
+我是胡智勇，网名 hutusi, 1984年出生于安徽铜陵。从事软件行业20余年，目前就职于国内一家大厂。
+
+现居上海(近几年经常出差于深圳等各地)，打杂为生，读书写字~~和编码~~为乐。我每年大概会阅读60本左右的各类书籍，而这个博客网站也是我总结和思考的对外窗口。
 
 写过诗，自认为最得意的一句是 “任抛星汉归园圃，留取乾坤盛酒囊”。早期的博文中整理过：[七律三首](/articles/three-poems-qi-lv)，[诗歌与烟台](/articles/yantai-poems)。
 
-喜欢看书，最近几年看得不多；喜欢看电影，最近几年看得少了；喜欢听摇滚乐，最近几年几乎没听了。 T_T
+从去年开始，新的兴趣有跑步和听交响乐，并开始学习打网球。
 
-自认为是终身学习者，只是经常忘了学习。最主要的原因是三分钟热度，不过后来我知道了一个词叫 [Yak Shaving](https://antfu.me/posts/about-yak-shaving-zh), 于是我觉得这也没什么不好。如果缺点改正不了，那就把它当成是优点，会好很多。
+从2022年开始，我都会对过去一年做个总结，审视自己的学习和进步情况。去年的总结是[心猿意马](/articles/restless-mind-2024-review)。
 
 下面列举些我的一些偏好，便于你对我有更全面了解。如果想快速了解本博客的博文，可以参看我筛选出自己[比较满意的一些博文](#blog-product)。
 
@@ -30,11 +32,13 @@ commentable: true
 * GoF《设计模式》	抽象思维
 * Robert C. Martin《敏捷软件开发》	写好代码
 
-最近开始读哲学方面的书，感兴趣的话可以通过最近写的[我所理解的存在主义](/articles/understanding-of-existentialism)来了解，也可以在「[/tag/读书/](/tag/读书/)」里看到我写的关于读书的总结和思考。
+最近几年开始读哲学方面的书，感兴趣的话可以通过[我所理解的存在主义](/articles/understanding-of-existentialism)这篇博文来了解，也可以在「[/tag/读书/](/tag/读书/)」里看到我写的关于读书的总结和思考。
 
 ### 音乐、电影及其他
 
 从中学时接触小虎队、Beyond开始听流行音乐，到大学开始听摇滚乐，国内的如唐朝、崔健及魔岩三杰等，有段时间特别欣赏鲍家街43号及没有娱乐化前的汪峰，万能青年旅社之后不再关注国内摇滚乐。国外的摇滚乐听的比较多，最喜欢的乐队和歌手是老牌的 Led Zeppelin, Pink Floyd, Queen, the Cure, the Doors, Nirvana, U2, Bob Dylan, Leonard Cohen ... 如果要选最喜欢的一位，那可能就是 David Bowie. 曾有段时间非常喜欢 Suede 和 Nick Cave. 女歌手方面如 Kate Bush, Tori Amos, the Cranberries. 有人说“变老的一个标志是只听老歌”，我表示深感赞同。
+
+不过，幸运的是，从前年开始又开始发掘一些新歌手，如 Lana Del Rey, Metallica 等。从去年开始学习听交响乐，入坑的是德沃夏克第九交响曲，目前在听贝多芬第五。
 
 电影我看的比较杂，很难圈定类型。有关音乐和电影的偏好，可以在[我的豆瓣主页](https://www.douban.com/people/hutusi/)找到我标注的一些。其他娱乐比较少，周末会去骑车、滑冰、游泳。在学校的时候比较喜欢玩暴雪出品的游戏，如暗黑2、星际1、魔兽3；还有个印象很深的游戏是光荣的《曹操传》。
 
@@ -42,7 +46,7 @@ commentable: true
 
 #### 软件
 
-我使用 VSCode 来编程、写作， Notion 做笔记，也会用 [flomo](https://flomoapp.com/register2/?MzI2MzI) 来摘录看到比较好的片段或记录一些灵感。使用 [feeds.pub](https://feeds.pub/) 订阅博客，可以在 [这里](https://feeds.pub/hutusi) 看到我订阅的博客。
+我使用 VSCode 来编程、写作， Notion 做笔记，也会用 [flomo](https://flomoapp.com/register2/?MzI2MzI) 来摘录看到比较好的片段或记录一些灵感。
 
 使用 Day One 写日记， 1Password 保存密码，「微信读书」看书。
 
@@ -50,15 +54,13 @@ commentable: true
 
 在网上找资源时，首选 Google 搜索，GitHub 和 StackOverflow 自不必少。还会到 [unsplash](https://unsplash.com/) 上搜图片, 偶尔在 [zlibrary](https://b-ok.global/) 上搜书。一些好资源： 阿里的李鼎在 github 上创建的[英文资料翻译项目](https://github.com/oldratlee/translations)。
 
-收集的有趣的网站有：著名的漫画 [xkcd](https://xkcd.com/), RMS 的编程照片 [rms](https://rms.sexy/).
-
 日常使用移动应用 app 较多的有：微信、微信读书、Day One、Flomo、Pocket、得到、网易云音乐、Apple Music。社交媒体常用的有：微信、Twitter、豆瓣。偶尔会看 知乎、哔哩哔哩、Youtube。最近在用「小宇宙」听播客。
 
 #### 硬件
 
-在家使用 iMac(24 英寸，2021 版)，还有个 MacBook(2018 年款) 自从买了 iMac 后很少使用。平时上班用 Thinkpad(Windows 10)，双屏。因为有时出差或不在工位，因此我又买了 ThinkVision 便携屏。
+常用电脑 MacBook Air(M2, 业余) 和 华为 MateBook X Pro(2024，工作使用)。
 
-随身携带的有 iPhone 12 Pro Max, Apple Watch Series 7 以及 AirPods Pro 三件套。不得不说苹果的生态做的很好。
+随身携带的有 iPhone 15 Pro Max, Apple Watch Series 7 以及 AirPods Pro 三件套。不得不说苹果的生态做的很好。
 
 ### 联系方式
 
@@ -70,14 +72,18 @@ commentable: true
 
 我从 2006 年开始写博客以来，换过几个博客平台，最后选择自己建设独立博客。写写删删，留下来自己较为满意的有：
 
-### <a id="blog-product"></a> 产品
+### <a id="blog-product"></a> 产品&技术
 
+* [从神经网络到 Hugging Face](/articles/the-history-of-neural-networks) 2024年
 * [从零到百亿美金之路](/articles/the-story-of-github-and-gitlab) 2022 年
 * [改变世界的一次代码提交](/articles/the-greatest-git-commit) 2020 年
 * [阅读开源代码小技巧](/articles/git-paging) 2019 年
 
-### 读书
+### 读书&总结
 
+* [心猿意马](/articles/restless-mind-2024-review) 2024年
+* [从铁幕到硅幕](/articles/the-silicon-curtain) 2024年
+* [凡所有相，皆是虚妄](/articles/awareness-2023-review) 2024年
 * [纳瓦尔的智慧](/articles/naval) 2023 年
 * [云门胡饼赵州茶](/articles/zen-baggage) 2022 年
 * [当下我们还需要启蒙吗？](/articles/enlightenment-now) 2022 年
@@ -87,7 +93,7 @@ commentable: true
 * [自由的代价](/articles/rms) 2015 年
 * [读《霍乱时期的爱情》](/articles/love-in-the-time-of-cholera) 2013 年
 
-### 生活
+### 生活&随笔
 
 * [当魔法消失时](/articles/nostalgia) 2023 年
 * [买房记](/articles/buying-property) 2017 年
@@ -113,6 +119,7 @@ commentable: true
 * 2020 年 10 月，算是认真的写了关于页面。
 * 2022 年 3 月，更新关于页面。
 * 2022 年 4 月，更换了评论系统，采用双评论系统：giscus 和 disqus.
+* 2025 年 2 月，更换博客样式 Mediumish, 并将博客分为“文章”和“周刊”两大系列。
 
 ### 知识共享许可协议
 
