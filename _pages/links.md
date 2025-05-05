@@ -8,24 +8,14 @@ permalink: /links/
 commentable: true
 ---
 
-## Builder
+## 数字时代的创造者
 
 > 数字时代的真正创新都是来自那些能够将人文和科学联系在一起的人，这点让我感到十分意外。他们信奉美感的重要性。
 > —— 沃尔特·艾萨克森 《创新者》
 
-在这里记录我所欣赏的独立开发者、创造者、Coder、Designer……统称为Builder，正是他们构建了中文互联网的未来。
+在这里记录对我有启发和帮助的互联网Builder: 
 
-- [Tim Qian](https://timqian.com/){:target="\_blank" rel="nofollow"} feeds.pub, star-history, open prompt 作者
-- [yihong](https://github.com/yihong0618){:target="\_blank" rel="nofollow"} 开源爱好者，running page 作者
-- [Anthony Fu](https://antfu.me/){:target="\_blank" rel="nofollow"} Vue核心开发者， Vitest, Slidev 等项目作者
-- [Tienson Qin](https://github.com/tiensonqin){:target="\_blank" rel="nofollow"} logseq.com 作者
-- 待补充……
-
-## Blogger
-
-写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
-
-### 推荐的博客
+### 中文
 
 - [谢益辉的个人博客](https://yihui.org/){:target="\_blank" rel="nofollow"} 统计学博士，文笔很好，独立思考和个性，每年在7月份左右发布博客。网站设计和字体也非常棒。
 - [阮一峰的网络日志](http://www.ruanyifeng.com/blog/){:target="\_blank" rel="nofollow"} 无疑是很多中文独立博主的榜样。
@@ -36,18 +26,25 @@ commentable: true
 - [Limboy](https://limboy.me/){:target="\_blank" rel="nofollow"} 在他的 About 页面介绍了很多有意思的人。
 - [程序员的喵](https://catcoding.me/){:target="\_blank" rel="nofollow"} 一位热爱写作的软件工程师。
 - [Conge](https://conge.github.io/){:target="\_blank" rel="nofollow"} 坚持跑步、冥想、写博客
-
 * [食灯鬼](https://shidenggui.com/){:target="\_blank" rel="nofollow"} 人生意何存，我思故我在
 * [Surmon](https://surmon.me){:target="\_blank" rel="nofollow"} 一位很厉害的全栈工程师
-
+- [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富~
 - [胡涂说](https://hutusi.com/)，我的博客，希望能持续输出对读者有价值的内容。[这里](https://feeds.pub/hutusi){:target="\_blank" rel="nofollow"}有我订阅的所有博客。
 
-### 友链
+### 英文
+
+- [Paul Graham's Essays](https://www.paulgraham.com/articles.html){:target="\_blank" rel="nofollow"} YCombinator创始人、《黑客与画家》作者 Paul Graham 的博客
+
+## 互联网上的异乡者
+
+写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
+
+以下上添加的友链，排名不分先后：
+
 - [SeerSu](https://suus.me/){:target="\_blank" rel="nofollow"} 在数字的海洋中，寻找属于自己的星辰
 - [安全代码](https://www.usmacd.com/){:target="\_blank" rel="nofollow"} 关注 网络安全、金融投资，和个人成长
 - [SimonSu](https://simonsu.cn/){:target="\_blank" rel="nofollow"} 记录生活、工作点滴
 - [前端徐徐](https://taotaoxu.com/){:target="\_blank" rel="nofollow"} 技术备忘录
-- [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富~
 - [德普王's Blog](https://depp.wang){:target="\_blank" rel="nofollow"} 一个爱折腾的程序员
 - [潘智祥](https://panzhixiang.cn/){:target="\_blank" rel="nofollow"} 一位DevOps工程师
 - [Johnny @ Life Clips](https://dwith.com/){:target="\_blank" rel="nofollow"} 探索互联网艺术花园的数字游民
