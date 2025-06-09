@@ -98,7 +98,7 @@ defaults:
 
 # Feeds
 feed:
-    excerpt_only: true
+    excerpt_only: false
     posts_limit: 20
     collections:
         - weeklies
