@@ -10,7 +10,8 @@ title: 胡涂说
 email: "huziyong@gmail.com"
 name: 胡涂说
 description: "hutusi.com"
-baseurl: "" # The subpath of your site, e.g. /blog
+baseurl: "https://hutusi.com/" 
+basepath: "" # The subpath of your site, e.g. /blog
 url: "https://hutusi.com" # The base hostname & protocol for your site
 twitter: "https://twitter.com/hutusi"
 twitter_username: "hutusi"
@@ -40,8 +41,8 @@ markdown: kramdown
 # permalink: pretty
 permalink: /articles/:title
 
-articles_path: articles/
-weeklies_path: weeklies/
+articles_path: /articles/
+weeklies_path: /weeklies/
 
 collections:
     weeklies:
