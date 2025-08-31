@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 获取评论数和 Discussions 主题编号
 	// 通过 AJAX 获取 JSON 数据
-    fetch("/assets/data/comments.json")
+    fetch("/assets/data/comments.json?ts=" + Date.now())
         .then(response => response.json())
         .then(commentsData => {
             if (commentsData[currentSlug]) {
