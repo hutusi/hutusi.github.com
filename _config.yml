@@ -10,7 +10,7 @@ title: 胡涂说
 email: "huziyong@gmail.com"
 name: 胡涂说
 description: "hutusi.com"
-baseurl: "https://hutusi.com/" 
+baseurl: ""
 basepath: "" # The subpath of your site, e.g. /blog
 url: "https://hutusi.com" # The base hostname & protocol for your site
 twitter: "https://twitter.com/hutusi"
