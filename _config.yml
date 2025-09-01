@@ -11,13 +11,13 @@ email: "huziyong@gmail.com"
 name: 胡涂说
 description: "hutusi.com"
 baseurl: ""
-basepath: "" # The subpath of your site, e.g. /blog
 url: "https://hutusi.com" # The base hostname & protocol for your site
 twitter: "https://twitter.com/hutusi"
 twitter_username: "hutusi"
 github: "https://github.com/hutusi"
 instagram: "https://instagram.com/hutusi"
 facebook: "https://facebook.com/hutusi"
+basepath: "" # The subpath of your site, e.g. /blog
 
 copyright: "胡涂说 hutusi.com"
 # time:         2012-2020
