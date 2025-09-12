@@ -4,7 +4,10 @@ title: 归档
 permalink: /archive/
 ---
 
-{% for post in site.posts %}
+{% assign all_posts = site.posts | concat: site.weeklies %}
+{% assign sorted_posts = all_posts | sort: 'date' | reverse %}
+
+{% for post in sorted_posts %}
     {% capture currentyear %}{{ post.date | date: "%Y" }}{% endcapture %}
     {% if currentyear != year %}
         {% unless forloop.first %}
