@@ -23,11 +23,17 @@ permalink: /archive/
 
 <!-- 第一行：类型过滤（文字链接） -->
 <nav class="archive-filter mb-2" aria-label="Archive filters">
-  <a href="#t=all"    class="filter-link is-active" data-filter="all">全部 ({{ total_count }})</a>
+  <a href="#t=all" class="filter-link is-active" data-filter="all">
+    全部 (<span id="count-all">{{ total_count }}</span>)
+  </a>
   <span class="mx-2">|</span>
-  <a href="#t=post"   class="filter-link" data-filter="post">文章 ({{ post_count }})</a>
+  <a href="#t=post" class="filter-link" data-filter="post">
+    文章 (<span id="count-post">{{ post_count }}</span>)
+  </a>
   <span class="mx-2">|</span>
-  <a href="#t=weekly" class="filter-link" data-filter="weekly">周刊 ({{ weekly_count }})</a>
+  <a href="#t=weekly" class="filter-link" data-filter="weekly">
+    周刊 (<span id="count-weekly">{{ weekly_count }}</span>)
+  </a>
 </nav>
 
 <!-- 第二行：年份过滤（文字链接） -->
@@ -75,37 +81,62 @@ permalink: /archive/
 </ul></section>
 
 <noscript>
-  （已显示全部；启用 JavaScript 可使用“类型 / 年份”双重筛选。）
+  （已显示全部；启用 JavaScript 可使用“类型 / 年份”双重筛选与动态计数。）
 </noscript>
 
 <style>
   .filter-link, .year-link { text-decoration:none; color:#6c757d; }
   .filter-link.is-active, .year-link.is-active { color:#0d6efd; font-weight:600; }
-  .archive-item.is-hidden, .year-block.is-hidden { display:none !important; }
+  .archive-item.is-hidden, .year-block.is-hidden, .year-link.is-hidden { display:none !important; }
 </style>
 
 <script>
 (function() {
-  const typeLinks = Array.from(document.querySelectorAll('.filter-link'));
-  const yearLinks = Array.from(document.querySelectorAll('.year-link'));
+  const typeLinks  = Array.from(document.querySelectorAll('.filter-link'));
+  const yearLinks  = Array.from(document.querySelectorAll('.year-link'));
   const yearBlocks = Array.from(document.querySelectorAll('.year-block'));
+
+  const countAllEl    = document.getElementById('count-all');
+  const countPostEl   = document.getElementById('count-post');
+  const countWeeklyEl = document.getElementById('count-weekly');
 
   // 当前选择
   let selectedType = 'all'; // all | post | weekly
   let selectedYear = 'all'; // all | YYYY
 
-  // 解析 hash：支持 #t=weekly&y=2024 / #y=2024&t=post / #t=all / #y=all 等
+  // 预计算：每年各类型计数 & 总计
+  const countsByYear = {}; // { '2025': {post:n, weekly:n, total:n}, ... }
+  yearBlocks.forEach(block => {
+    const y = block.dataset.year;
+    const items = Array.from(block.querySelectorAll('.archive-item'));
+    const c = { post: 0, weekly: 0, total: 0 };
+    items.forEach(li => {
+      const t = li.dataset.type;
+      if (t === 'post') c.post++;
+      else if (t === 'weekly') c.weekly++;
+      c.total++;
+    });
+    countsByYear[y] = c;
+  });
+
+  const totals = Object.keys(countsByYear).reduce((acc, y) => {
+    acc.post   += countsByYear[y].post;
+    acc.weekly += countsByYear[y].weekly;
+    acc.total  += countsByYear[y].total;
+    return acc;
+  }, { post: 0, weekly: 0, total: 0 });
+
   function parseHash() {
     const h = (location.hash || '').replace(/^#/, '');
-    const parts = h.split('&').filter(Boolean);
-    const next = { t: selectedType, y: selectedYear };
-    parts.forEach(p => {
-      const [k,v] = p.split('=');
-      if (k === 't' && v) next.t = v;
-      if (k === 'y' && v) next.y = v;
+    if (!h) return;
+    const obj = {};
+    h.split('&').forEach(p => {
+      const [k, v] = p.split('=');
+      if (!k) return;
+      obj[k] = v;
     });
-    selectedType = ['all','post','weekly'].includes(next.t) ? next.t : 'all';
-    selectedYear = (next.y === 'all' || /^\d{4}$/.test(next.y)) ? next.y : 'all';
+    if (['all','post','weekly'].includes(obj.t)) selectedType = obj.t;
+    if (obj.y === 'all' || /^\d{4}$/.test(obj.y)) selectedYear = obj.y;
   }
 
   function updateHash() {
@@ -116,20 +147,46 @@ permalink: /archive/
     }
   }
 
-  function setActive(links, matchAttr, val) {
-    links.forEach(a => {
-      const isActive = a.getAttribute(matchAttr) === val ||
-                      (val === 'all' && a.getAttribute(matchAttr) === 'all');
-      a.classList.toggle('is-active', isActive);
-    });
+  function setActive(links, attr, val) {
+    links.forEach(a => a.classList.toggle('is-active', a.getAttribute(attr) === val));
   }
 
-  // 核心：同时应用类型与年份
+  // 动态更新顶部“类型”计数（受年份选择影响）
+  function updateTypeCounts() {
+    const src = (selectedYear === 'all') ? totals : (countsByYear[selectedYear] || {post:0, weekly:0, total:0});
+    countAllEl.textContent    = src.total;
+    countPostEl.textContent   = src.post;
+    countWeeklyEl.textContent = src.weekly;
+  }
+
+  // 动态控制“年份”链接的显示（受类型选择影响）
+  function updateYearLinksVisibility() {
+    yearLinks.forEach(a => {
+      const y = a.dataset.year;
+      if (y === 'all') {
+        a.classList.remove('is-hidden');
+        return;
+      }
+      const c = countsByYear[y] || {post:0, weekly:0, total:0};
+      let show = true;
+      if (selectedType === 'post')   show = c.post   > 0;
+      if (selectedType === 'weekly') show = c.weekly > 0;
+      if (selectedType === 'all')    show = c.total  > 0;
+      a.classList.toggle('is-hidden', !show);
+    });
+
+    // 若当前选中的年份在当前类型下已无数据（被隐藏），自动回退到“全部年份”
+    const currYearLink = document.querySelector(`.year-link[data-year="${selectedYear}"]`);
+    if (!currYearLink || currYearLink.classList.contains('is-hidden')) {
+      selectedYear = 'all';
+    }
+  }
+
+  // 应用双重筛选 + 隐藏无数据的年份块
   function applyFilters() {
     yearBlocks.forEach(block => {
-      const blockYear = block.dataset.year;
-      const yearMatch = (selectedYear === 'all') || (blockYear === selectedYear);
-
+      const byear = block.dataset.year;
+      const yearMatch = (selectedYear === 'all') || (byear === selectedYear);
       let visibleCount = 0;
       const items = block.querySelectorAll('.archive-item');
       items.forEach(li => {
@@ -138,23 +195,27 @@ permalink: /archive/
         li.classList.toggle('is-hidden', !show);
         if (show) visibleCount++;
       });
-
-      // 如果该年份下没有任何可见条目，隐藏整个年份块
       block.classList.toggle('is-hidden', visibleCount === 0);
     });
 
-    // 更新“激活”样式
+    // 激活态
     setActive(typeLinks, 'data-filter', selectedType);
     setActive(yearLinks, 'data-year', selectedYear);
   }
 
-  // 事件绑定
+  function refreshUI() {
+    updateYearLinksVisibility(); // 先决定哪些年份可见 & 修正 selectedYear
+    updateTypeCounts();          // 再根据最终 selectedYear 更新顶部计数
+    applyFilters();              // 实际过滤列表
+    updateHash();                // 同步 URL
+  }
+
+  // 事件
   typeLinks.forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
       selectedType = a.dataset.filter || 'all';
-      updateHash();
-      applyFilters();
+      refreshUI();
     });
   });
 
@@ -162,20 +223,18 @@ permalink: /archive/
     a.addEventListener('click', e => {
       e.preventDefault();
       selectedYear = a.dataset.year || 'all';
-      updateHash();
-      applyFilters();
+      refreshUI();
     });
   });
 
   // 初始化
   parseHash();
-  updateHash();
-  applyFilters();
+  refreshUI();
 
-  // 允许手动修改 hash 联动
+  // 允许手动改 hash
   window.addEventListener('hashchange', () => {
     parseHash();
-    applyFilters();
+    refreshUI();
   });
 })();
 </script>
