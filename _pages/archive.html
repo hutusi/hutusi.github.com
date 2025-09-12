@@ -21,27 +21,24 @@ permalink: /archive/
 {% endfor %}
 {% assign years = years | sort | reverse %}
 
-<!-- 第一行：类型过滤（文字链接） -->
-<nav class="archive-filter mb-2" aria-label="Archive filters">
+<!-- 第一行：类型过滤（纯文字分隔符） -->
+<nav class="archive-filter mb-2" aria-label="Archive filters" id="type-nav">
   <a href="#t=all" class="filter-link is-active" data-filter="all">
     全部 (<span id="count-all">{{ total_count }}</span>)
-  </a>
-  <span class="mx-2">|</span>
+  </a> | 
   <a href="#t=post" class="filter-link" data-filter="post">
     文章 (<span id="count-post">{{ post_count }}</span>)
-  </a>
-  <span class="mx-2">|</span>
+  </a> | 
   <a href="#t=weekly" class="filter-link" data-filter="weekly">
     周刊 (<span id="count-weekly">{{ weekly_count }}</span>)
   </a>
 </nav>
 
-<!-- 第二行：年份过滤（文字链接） -->
-<nav class="year-filter mb-3" aria-label="Year filters">
+<!-- 第二行：年份过滤（纯文字分隔符） -->
+<nav class="year-filter mb-3" aria-label="Year filters" id="year-nav">
   <a href="#y=all" class="year-link is-active" data-year="all">全部年份</a>
   {% for y in years %}
-    <span class="mx-2">|</span>
-    <a href="#y={{ y }}" class="year-link" data-year="{{ y }}">{{ y }}</a>
+    | <a href="#y={{ y }}" class="year-link" data-year="{{ y }}">{{ y }}</a>
   {% endfor %}
 </nav>
 
@@ -87,29 +84,31 @@ permalink: /archive/
 <style>
   .filter-link, .year-link { text-decoration:none; color:#6c757d; }
   .filter-link.is-active, .year-link.is-active { color:#0d6efd; font-weight:600; }
-  .archive-item.is-hidden, .year-block.is-hidden, .year-link.is-hidden { display:none !important; }
+  .archive-item.is-hidden, .year-block.is-hidden,
+  .filter-link.is-hidden, .year-link.is-hidden { display:none !important; }
 </style>
 
 <script>
 (function() {
-  const typeLinks  = Array.from(document.querySelectorAll('.filter-link'));
-  const yearLinks  = Array.from(document.querySelectorAll('.year-link'));
-  const yearBlocks = Array.from(document.querySelectorAll('.year-block'));
+  const typeNav   = document.getElementById('type-nav');
+  const yearNav   = document.getElementById('year-nav');
+  const typeLinks = Array.from(typeNav.querySelectorAll('.filter-link'));
+  const yearLinks = Array.from(yearNav.querySelectorAll('.year-link'));
+  const yearBlocks= Array.from(document.querySelectorAll('.year-block'));
 
   const countAllEl    = document.getElementById('count-all');
   const countPostEl   = document.getElementById('count-post');
   const countWeeklyEl = document.getElementById('count-weekly');
 
-  // 当前选择
   let selectedType = 'all'; // all | post | weekly
   let selectedYear = 'all'; // all | YYYY
 
-  // 预计算：每年各类型计数 & 总计
+  // 每年计数预计算
   const countsByYear = {}; // { '2025': {post:n, weekly:n, total:n}, ... }
   yearBlocks.forEach(block => {
     const y = block.dataset.year;
     const items = Array.from(block.querySelectorAll('.archive-item'));
-    const c = { post: 0, weekly: 0, total: 0 };
+    const c = { post:0, weekly:0, total:0 };
     items.forEach(li => {
       const t = li.dataset.type;
       if (t === 'post') c.post++;
@@ -124,21 +123,16 @@ permalink: /archive/
     acc.weekly += countsByYear[y].weekly;
     acc.total  += countsByYear[y].total;
     return acc;
-  }, { post: 0, weekly: 0, total: 0 });
+  }, { post:0, weekly:0, total:0 });
 
   function parseHash() {
     const h = (location.hash || '').replace(/^#/, '');
     if (!h) return;
-    const obj = {};
-    h.split('&').forEach(p => {
-      const [k, v] = p.split('=');
-      if (!k) return;
-      obj[k] = v;
-    });
-    if (['all','post','weekly'].includes(obj.t)) selectedType = obj.t;
-    if (obj.y === 'all' || /^\d{4}$/.test(obj.y)) selectedYear = obj.y;
+    const kv = {};
+    h.split('&').forEach(p => { const [k,v] = p.split('='); if (k) kv[k]=v; });
+    if (['all','post','weekly'].includes(kv.t)) selectedType = kv.t;
+    if (kv.y === 'all' || /^\d{4}$/.test(kv.y)) selectedYear = kv.y;
   }
-
   function updateHash() {
     const hash = `#t=${selectedType}&y=${selectedYear}`;
     if (location.hash !== hash) {
@@ -146,27 +140,51 @@ permalink: /archive/
       else location.hash = hash;
     }
   }
-
   function setActive(links, attr, val) {
     links.forEach(a => a.classList.toggle('is-active', a.getAttribute(attr) === val));
   }
 
-  // 动态更新顶部“类型”计数（受年份选择影响）
-  function updateTypeCounts() {
+  // 仅用纯文本“|”分隔：根据可见链接重排
+  function layoutSeparators(nav, linkSel) {
+    const links = Array.from(nav.querySelectorAll(linkSel));
+    // 清掉每个链接前紧邻的文本“| ”
+    links.forEach(l => {
+      const prev = l.previousSibling;
+      if (prev && prev.nodeType === 3) prev.textContent = '';
+    });
+    // 重新为可见链接添加分隔符
+    const visible = links.filter(l => !l.classList.contains('is-hidden'));
+    visible.forEach((l, idx) => {
+      if (idx === 0) return;
+      l.insertAdjacentText('beforebegin', ' | ');
+    });
+  }
+
+  function updateTypeCountsAndVisibility() {
     const src = (selectedYear === 'all') ? totals : (countsByYear[selectedYear] || {post:0, weekly:0, total:0});
     countAllEl.textContent    = src.total;
     countPostEl.textContent   = src.post;
     countWeeklyEl.textContent = src.weekly;
+
+    const postLink   = typeNav.querySelector('.filter-link[data-filter="post"]');
+    const weeklyLink = typeNav.querySelector('.filter-link[data-filter="weekly"]');
+    postLink.classList.toggle('is-hidden',   src.post   === 0);
+    weeklyLink.classList.toggle('is-hidden', src.weekly === 0);
+
+    // 如果当前类型被隐藏，自动回退
+    const current = typeNav.querySelector(`.filter-link[data-filter="${selectedType}"]`);
+    if (!current || current.classList.contains('is-hidden')) {
+      if (src.post > 0) selectedType = 'post';
+      else if (src.weekly > 0) selectedType = 'weekly';
+      else selectedType = 'all';
+    }
+    layoutSeparators(typeNav, '.filter-link');
   }
 
-  // 动态控制“年份”链接的显示（受类型选择影响）
   function updateYearLinksVisibility() {
     yearLinks.forEach(a => {
       const y = a.dataset.year;
-      if (y === 'all') {
-        a.classList.remove('is-hidden');
-        return;
-      }
+      if (y === 'all') { a.classList.remove('is-hidden'); return; }
       const c = countsByYear[y] || {post:0, weekly:0, total:0};
       let show = true;
       if (selectedType === 'post')   show = c.post   > 0;
@@ -174,16 +192,14 @@ permalink: /archive/
       if (selectedType === 'all')    show = c.total  > 0;
       a.classList.toggle('is-hidden', !show);
     });
+    // 选中年份如果被隐藏，回退到全部年份
+    const curr = yearNav.querySelector(`.year-link[data-year="${selectedYear}"]`);
+    if (!curr || curr.classList.contains('is-hidden')) selectedYear = 'all';
 
-    // 若当前选中的年份在当前类型下已无数据（被隐藏），自动回退到“全部年份”
-    const currYearLink = document.querySelector(`.year-link[data-year="${selectedYear}"]`);
-    if (!currYearLink || currYearLink.classList.contains('is-hidden')) {
-      selectedYear = 'all';
-    }
+    layoutSeparators(yearNav, '.year-link');
   }
 
-  // 应用双重筛选 + 隐藏无数据的年份块
-  function applyFilters() {
+  function applyFiltersToList() {
     yearBlocks.forEach(block => {
       const byear = block.dataset.year;
       const yearMatch = (selectedYear === 'all') || (byear === selectedYear);
@@ -198,43 +214,34 @@ permalink: /archive/
       block.classList.toggle('is-hidden', visibleCount === 0);
     });
 
-    // 激活态
     setActive(typeLinks, 'data-filter', selectedType);
     setActive(yearLinks, 'data-year', selectedYear);
   }
 
   function refreshUI() {
-    updateYearLinksVisibility(); // 先决定哪些年份可见 & 修正 selectedYear
-    updateTypeCounts();          // 再根据最终 selectedYear 更新顶部计数
-    applyFilters();              // 实际过滤列表
-    updateHash();                // 同步 URL
+    updateTypeCountsAndVisibility();
+    updateYearLinksVisibility();
+    applyFiltersToList();
+    updateHash();
   }
 
   // 事件
-  typeLinks.forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      selectedType = a.dataset.filter || 'all';
-      refreshUI();
-    });
-  });
-
-  yearLinks.forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      selectedYear = a.dataset.year || 'all';
-      refreshUI();
-    });
-  });
+  typeLinks.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    if (a.classList.contains('is-hidden')) return;
+    selectedType = a.dataset.filter || 'all';
+    refreshUI();
+  }));
+  yearLinks.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    if (a.classList.contains('is-hidden')) return;
+    selectedYear = a.dataset.year || 'all';
+    refreshUI();
+  }));
 
   // 初始化
   parseHash();
   refreshUI();
-
-  // 允许手动改 hash
-  window.addEventListener('hashchange', () => {
-    parseHash();
-    refreshUI();
-  });
+  window.addEventListener('hashchange', () => { parseHash(); refreshUI(); });
 })();
 </script>
