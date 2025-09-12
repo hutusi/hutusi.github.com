@@ -11,12 +11,32 @@ permalink: /archive/
 {%- assign weekly_count = site.weeklies | size -%}
 {%- assign total_count = post_count | plus: weekly_count -%}
 
-<nav class="archive-filter" aria-label="Archive filters" style="margin-bottom:1rem;">
+{%- comment -%} 收集年份列表 {%- endcomment -%}
+{% assign years = "" | split: "" %}
+{% for post in sorted_posts %}
+  {% assign y = post.date | date: "%Y" %}
+  {% unless years contains y %}
+    {% assign years = years | push: y %}
+  {% endunless %}
+{% endfor %}
+{% assign years = years | sort | reverse %}
+
+<!-- 分类过滤 -->
+<nav class="archive-filter mb-2" aria-label="Archive filters">
   <a href="#all" class="filter-link is-active" data-filter="all">全部 ({{ total_count }})</a>
   <span class="mx-2">|</span>
   <a href="#post" class="filter-link" data-filter="post">文章 ({{ post_count }})</a>
   <span class="mx-2">|</span>
   <a href="#weekly" class="filter-link" data-filter="weekly">周刊 ({{ weekly_count }})</a>
+</nav>
+
+<!-- 年份过滤 -->
+<nav class="year-filter mb-3" aria-label="Year filters">
+  <a href="#year-all" class="year-link is-active" data-year="all">全部年份</a>
+  {% for y in years %}
+    <span class="mx-2">|</span>
+    <a href="#year-{{ y }}" class="year-link" data-year="{{ y }}">{{ y }}</a>
+  {% endfor %}
 </nav>
 
 {%- assign year = nil -%}
@@ -27,11 +47,10 @@ permalink: /archive/
       </ul>
     {%- endunless -%}
     <h3 class="post-archive-year">{{ currentyear }}</h3>
-    <ul class="post-archive">
+    <ul class="post-archive" data-year="{{ currentyear }}">
     {%- capture year -%}{{ currentyear }}{%- endcapture -%}
   {%- endif -%}
 
-  {%- comment -%} 判定集合，标记类型与徽章文字 {%- endcomment -%}
   {%- assign coll = post.collection | default: "" -%}
   {%- if coll == "posts" -%}
     {%- assign dtype = "post" -%}
@@ -54,52 +73,55 @@ permalink: /archive/
 {%- endfor -%}
 </ul>
 
-<noscript>
-  （已显示全部；启用 JavaScript 可使用“全部 / 文章 / 周刊”筛选。）
-</noscript>
-
 <style>
-  .filter-link { text-decoration:none; color:#6c757d; }
-  .filter-link.is-active { color:#0d6efd; font-weight:600; }
-  .archive-item.is-hidden { display:none !important; }
+  .filter-link, .year-link { text-decoration:none; color:#6c757d; }
+  .filter-link.is-active, .year-link.is-active { color:#0d6efd; font-weight:600; }
+  .archive-item.is-hidden, .post-archive.is-hidden { display:none !important; }
 </style>
 
 <script>
 (function() {
-  const links = Array.from(document.querySelectorAll('.filter-link'));
-  const items = Array.from(document.querySelectorAll('.archive-item'));
-  if (!links.length || !items.length) return;
+  const filterLinks = Array.from(document.querySelectorAll('.filter-link'));
+  const yearLinks   = Array.from(document.querySelectorAll('.year-link'));
+  const items       = Array.from(document.querySelectorAll('.archive-item'));
+  const yearBlocks  = Array.from(document.querySelectorAll('.post-archive'));
 
-  function applyFilter(filter) {
+  function applyTypeFilter(filter) {
     items.forEach(li => {
       const show = (filter === 'all') || (li.dataset.type === filter);
       li.classList.toggle('is-hidden', !show);
-      li.style.display = show ? '' : 'none'; // 双保险
     });
   }
 
-  function setActive(target) {
+  function applyYearFilter(year) {
+    yearBlocks.forEach(ul => {
+      const show = (year === 'all') || (ul.dataset.year === year);
+      ul.classList.toggle('is-hidden', !show);
+    });
+  }
+
+  function setActive(links, target) {
     links.forEach(a => a.classList.toggle('is-active', a === target));
   }
 
-  links.forEach(a => {
-    a.addEventListener('click', function(e) {
+  filterLinks.forEach(a => {
+    a.addEventListener('click', e => {
       e.preventDefault();
-      const filter = this.dataset.filter;
-      setActive(this);
-      applyFilter(filter);
-      if (history.replaceState) {
-        history.replaceState(null, '', filter === 'all' ? '#all' : '#' + filter);
-      } else {
-        location.hash = filter;
-      }
+      setActive(filterLinks, a);
+      applyTypeFilter(a.dataset.filter);
     });
   });
 
-  // 初始根据 hash 预设；默认 all
-  const hash = (location.hash || '#all').slice(1);
-  const valid = ['all','post','weekly'];
-  const initial = valid.includes(hash) ? hash : 'all';
-  (document.querySelector(`.filter-link[data-filter="${initial}"]`) || links[0]).click();
+  yearLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      setActive(yearLinks, a);
+      applyYearFilter(a.dataset.year);
+    });
+  });
+
+  // 初始状态
+  applyTypeFilter('all');
+  applyYearFilter('all');
 })();
 </script>
