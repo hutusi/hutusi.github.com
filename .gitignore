@@ -9,3 +9,4 @@ _site/
 .jekyll-cache/
 /images/
 .env
+/node_modules/
