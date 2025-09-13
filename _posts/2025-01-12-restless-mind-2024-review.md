@@ -6,8 +6,8 @@ title: 心猿意马
 subtitle: 2024年总结
 date: "2025-01-12 16:30:00 +0800"
 last_modified_at: "2025-01-12 16:30:00 +0800"
-featured: true
 image: photos/shenzhen-road.jpg
+featured: true
 ---
 
 2024年，我年满四十。

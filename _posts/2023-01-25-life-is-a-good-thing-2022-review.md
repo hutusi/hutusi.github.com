@@ -7,6 +7,7 @@ subtitle: 迟到的且不像总结的2022年度非工作总结回顾
 date: "2023-01-25 19:45:00 +0800"
 last_modified_at: "2023-01-25 19:45:00 +0800"
 image: articles/2023-horse-on-the-moon.jpg
+featured: true
 ---
 
 ## 修行

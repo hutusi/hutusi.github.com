@@ -9,6 +9,7 @@ gh_issue: 63
 redirect_from:
   - /three-poems-qi-lv
 image: articles/2010-qilv.jpg
+featured: true
 ---
 
 整理以前写的几首七律。 [^1]

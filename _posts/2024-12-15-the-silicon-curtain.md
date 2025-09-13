@@ -5,8 +5,8 @@ tags: 读书 书评 神经网络 人工智能
 title: 从铁幕到硅幕
 subtitle: 《智人之上》读书笔记及延伸
 date: "2024-12-15 18:00:00 +0800"
-featured: true
 image: books/nexus.jpg
+featured: true
 ---
 
 > 谁控制过去就控制未来，谁就控制现在就控制过去。

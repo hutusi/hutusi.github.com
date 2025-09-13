@@ -7,6 +7,7 @@ subtitle: 重温《邓小平时代》
 date: "2022-04-17 14:05:00 +0800"
 last_modified_at: "2022-04-17 14:05:00 +0800"
 image: articles/2022-Dengxiaoping-and-the-Transformation-of-China.jpeg
+featured: true
 ---
 
 《邓小平时代》是去年读完的，后来又在 iBooks 上买了原版有声书听了一遍。最近因为居家二十余天，便翻了翻回顾了下。作者傅高义是位出生美国的犹太人，精通中文和日文，是最为著名的中国问题专家。《邓小平时代》英文原版名为 *Deng Xiaoping and the Transformation of China*, 于 2011年出版，简体中文版于2013年在大陆出版，有删节，不过作者认为保留了他想表达的核心内容。

@@ -9,6 +9,7 @@ gh_issue: 59
 redirect_from:
   - /the-greatest-git-commit
 image: articles/2020-linus-torvalds.jpg
+featured: true
 ---
 
 TL;DR 本文较长，如果对 Git 内部实现不感兴趣可以快速跳过中间两个章节。

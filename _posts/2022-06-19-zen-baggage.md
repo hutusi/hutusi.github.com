@@ -7,6 +7,7 @@ subtitle: 比尔·波特的禅宗之旅——《禅的行囊》
 date: "2022-06-19 19:01:00 +0800"
 last_modified_at: "2022-06-19 19:01:00 +0800"
 image: articles/2022-zen-baggage.jpeg
+featured: true
 ---
 
 花了几天时间，读完了比尔·波特写的[《禅的行囊》](https://book.douban.com/subject/30269210/){:target="_blank"}，这是我读过的他的第二本书。自从看了[《心经解读》](/articles/what-does-the-heart-sutra-say)，我就对比尔·波特这个老头产生了兴趣，他写的书很符合我的口味。在《禅的行囊》中，作者从北京到香港，从北到南，穿行了小半个中国，寻访禅宗在中国的印记。既有对禅宗历史的追溯，也有对禅宗在中国当前的状态观察。
