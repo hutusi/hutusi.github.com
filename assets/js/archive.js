@@ -39,21 +39,20 @@
   }, { post:0, weekly:0, featured:0, total:0 });
 
   // hash 解析与更新
-  function parseHash() {
-    const h = (location.hash || '').replace(/^#/, '');
-    if (!h) return;
-    const kv = {};
-    h.split('&').forEach(p => { const [k,v] = p.split('='); if (k) kv[k]=v; });
-    if (['all','featured','post','weekly'].includes(kv.t)) selectedType = kv.t;
-    if (kv.y === 'all' || /^\d{4}$/.test(kv.y)) selectedYear = kv.y;
-  }
-  function updateHash() {
-    const hash = `#t=${selectedType}&y=${selectedYear}`;
-    if (location.hash !== hash) {
-      if (history.replaceState) history.replaceState(null, '', hash);
-      else location.hash = hash;
-    }
-  }
+  function parseQuery() {
+	const params = new URLSearchParams(window.location.search);
+	const t = params.get('t');
+	const y = params.get('y');
+	if (['all','featured','post','weekly'].includes(t)) selectedType = t;
+	if (y === 'all' || /^\d{4}$/.test(y)) selectedYear = y;
+}
+  function updateQuery() {
+    const params = new URLSearchParams(window.location.search);
+    params.set('t', selectedType);
+    params.set('y', selectedYear);
+    const newUrl = window.location.pathname + '?' + params.toString();
+    history.replaceState(null, '', newUrl);
+}
 
   function setActive(links, attr, val) {
     links.forEach(a => a.classList.toggle('is-active', a.getAttribute(attr) === val));
@@ -146,7 +145,7 @@
     updateTypeCountsAndVisibility();
     updateYearLinksVisibility();
     applyFiltersToList();
-    updateHash();
+    updateQuery();
   }
 
   // 事件
@@ -164,7 +163,7 @@
   }));
 
   // 初始化
-  parseHash();
+  parseQuery();
   refreshUI();
-  window.addEventListener('hashchange', () => { parseHash(); refreshUI(); });
+  window.addEventListener('hashchange', () => { parseQuery(); refreshUI(); });
 })();
