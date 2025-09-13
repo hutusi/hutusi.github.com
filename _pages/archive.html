@@ -21,10 +21,13 @@ permalink: /archive/
 {% endfor %}
 {% assign years = years | sort | reverse %}
 
-<!-- 第一行：类型过滤（纯文字分隔符） -->
+<!-- 第一行：类型过滤（纯文字分隔符，顺序：全部 | 精选 | 文章 | 周刊） -->
 <nav class="archive-filter mb-2" aria-label="Archive filters" id="type-nav">
   <a href="#t=all" class="filter-link is-active" data-filter="all">
     全部 (<span id="count-all">{{ total_count }}</span>)
+  </a> | 
+  <a href="#t=featured" class="filter-link" data-filter="featured">
+    精选 (<span id="count-featured">0</span>)
   </a> | 
   <a href="#t=post" class="filter-link" data-filter="post">
     文章 (<span id="count-post">{{ post_count }}</span>)
@@ -67,181 +70,19 @@ permalink: /archive/
     {%- assign badge = coll -%}
   {%- endif -%}
 
-  <li class="archive-item" data-type="{{ dtype }}">
+  <li class="archive-item" data-type="{{ dtype }}" {% if post.featured %}data-featured="1"{% endif %}>
     <span class="post-archive-badge" style="font-size:.8rem; color:#888; margin-right:.5rem;">{{ badge }}</span>
     <a href="{{ post.url | relative_url }}" class="post-archive-link">{{ post.title }}</a>
     <time class="post-archive-date" datetime="{{ post.date | date_to_xmlschema }}" style="margin-left:.5rem; color:#888;">
-      {{ post.date | date: "%m-%d" }}
+        {{ post.date | date: "%m-%d" }}
     </time>
-  </li>
+    {% if post.featured %}
+        <span class="featured-star" title="精选" aria-label="精选">★</span>
+    {% endif %}</li>
+
 {%- endfor -%}
 </ul></section>
 
 <noscript>
-  （已显示全部；启用 JavaScript 可使用“类型 / 年份”双重筛选与动态计数。）
+  （已显示全部；启用 JavaScript 可使用“类型 / 年份 / 精选”筛选与动态计数。）
 </noscript>
-
-<style>
-  .filter-link, .year-link { text-decoration:none; color:#6c757d; }
-  .filter-link.is-active, .year-link.is-active { color:#0d6efd; font-weight:600; }
-  .archive-item.is-hidden, .year-block.is-hidden,
-  .filter-link.is-hidden, .year-link.is-hidden { display:none !important; }
-</style>
-
-<script>
-(function() {
-  const typeNav   = document.getElementById('type-nav');
-  const yearNav   = document.getElementById('year-nav');
-  const typeLinks = Array.from(typeNav.querySelectorAll('.filter-link'));
-  const yearLinks = Array.from(yearNav.querySelectorAll('.year-link'));
-  const yearBlocks= Array.from(document.querySelectorAll('.year-block'));
-
-  const countAllEl    = document.getElementById('count-all');
-  const countPostEl   = document.getElementById('count-post');
-  const countWeeklyEl = document.getElementById('count-weekly');
-
-  let selectedType = 'all'; // all | post | weekly
-  let selectedYear = 'all'; // all | YYYY
-
-  // 每年计数预计算
-  const countsByYear = {}; // { '2025': {post:n, weekly:n, total:n}, ... }
-  yearBlocks.forEach(block => {
-    const y = block.dataset.year;
-    const items = Array.from(block.querySelectorAll('.archive-item'));
-    const c = { post:0, weekly:0, total:0 };
-    items.forEach(li => {
-      const t = li.dataset.type;
-      if (t === 'post') c.post++;
-      else if (t === 'weekly') c.weekly++;
-      c.total++;
-    });
-    countsByYear[y] = c;
-  });
-
-  const totals = Object.keys(countsByYear).reduce((acc, y) => {
-    acc.post   += countsByYear[y].post;
-    acc.weekly += countsByYear[y].weekly;
-    acc.total  += countsByYear[y].total;
-    return acc;
-  }, { post:0, weekly:0, total:0 });
-
-  function parseHash() {
-    const h = (location.hash || '').replace(/^#/, '');
-    if (!h) return;
-    const kv = {};
-    h.split('&').forEach(p => { const [k,v] = p.split('='); if (k) kv[k]=v; });
-    if (['all','post','weekly'].includes(kv.t)) selectedType = kv.t;
-    if (kv.y === 'all' || /^\d{4}$/.test(kv.y)) selectedYear = kv.y;
-  }
-  function updateHash() {
-    const hash = `#t=${selectedType}&y=${selectedYear}`;
-    if (location.hash !== hash) {
-      if (history.replaceState) history.replaceState(null, '', hash);
-      else location.hash = hash;
-    }
-  }
-  function setActive(links, attr, val) {
-    links.forEach(a => a.classList.toggle('is-active', a.getAttribute(attr) === val));
-  }
-
-  // 仅用纯文本“|”分隔：根据可见链接重排
-  function layoutSeparators(nav, linkSel) {
-    const links = Array.from(nav.querySelectorAll(linkSel));
-    // 清掉每个链接前紧邻的文本“| ”
-    links.forEach(l => {
-      const prev = l.previousSibling;
-      if (prev && prev.nodeType === 3) prev.textContent = '';
-    });
-    // 重新为可见链接添加分隔符
-    const visible = links.filter(l => !l.classList.contains('is-hidden'));
-    visible.forEach((l, idx) => {
-      if (idx === 0) return;
-      l.insertAdjacentText('beforebegin', ' | ');
-    });
-  }
-
-  function updateTypeCountsAndVisibility() {
-    const src = (selectedYear === 'all') ? totals : (countsByYear[selectedYear] || {post:0, weekly:0, total:0});
-    countAllEl.textContent    = src.total;
-    countPostEl.textContent   = src.post;
-    countWeeklyEl.textContent = src.weekly;
-
-    const postLink   = typeNav.querySelector('.filter-link[data-filter="post"]');
-    const weeklyLink = typeNav.querySelector('.filter-link[data-filter="weekly"]');
-    postLink.classList.toggle('is-hidden',   src.post   === 0);
-    weeklyLink.classList.toggle('is-hidden', src.weekly === 0);
-
-    // 如果当前类型被隐藏，自动回退
-    const current = typeNav.querySelector(`.filter-link[data-filter="${selectedType}"]`);
-    if (!current || current.classList.contains('is-hidden')) {
-      if (src.post > 0) selectedType = 'post';
-      else if (src.weekly > 0) selectedType = 'weekly';
-      else selectedType = 'all';
-    }
-    layoutSeparators(typeNav, '.filter-link');
-  }
-
-  function updateYearLinksVisibility() {
-    yearLinks.forEach(a => {
-      const y = a.dataset.year;
-      if (y === 'all') { a.classList.remove('is-hidden'); return; }
-      const c = countsByYear[y] || {post:0, weekly:0, total:0};
-      let show = true;
-      if (selectedType === 'post')   show = c.post   > 0;
-      if (selectedType === 'weekly') show = c.weekly > 0;
-      if (selectedType === 'all')    show = c.total  > 0;
-      a.classList.toggle('is-hidden', !show);
-    });
-    // 选中年份如果被隐藏，回退到全部年份
-    const curr = yearNav.querySelector(`.year-link[data-year="${selectedYear}"]`);
-    if (!curr || curr.classList.contains('is-hidden')) selectedYear = 'all';
-
-    layoutSeparators(yearNav, '.year-link');
-  }
-
-  function applyFiltersToList() {
-    yearBlocks.forEach(block => {
-      const byear = block.dataset.year;
-      const yearMatch = (selectedYear === 'all') || (byear === selectedYear);
-      let visibleCount = 0;
-      const items = block.querySelectorAll('.archive-item');
-      items.forEach(li => {
-        const typeMatch = (selectedType === 'all') || (li.dataset.type === selectedType);
-        const show = yearMatch && typeMatch;
-        li.classList.toggle('is-hidden', !show);
-        if (show) visibleCount++;
-      });
-      block.classList.toggle('is-hidden', visibleCount === 0);
-    });
-
-    setActive(typeLinks, 'data-filter', selectedType);
-    setActive(yearLinks, 'data-year', selectedYear);
-  }
-
-  function refreshUI() {
-    updateTypeCountsAndVisibility();
-    updateYearLinksVisibility();
-    applyFiltersToList();
-    updateHash();
-  }
-
-  // 事件
-  typeLinks.forEach(a => a.addEventListener('click', e => {
-    e.preventDefault();
-    if (a.classList.contains('is-hidden')) return;
-    selectedType = a.dataset.filter || 'all';
-    refreshUI();
-  }));
-  yearLinks.forEach(a => a.addEventListener('click', e => {
-    e.preventDefault();
-    if (a.classList.contains('is-hidden')) return;
-    selectedYear = a.dataset.year || 'all';
-    refreshUI();
-  }));
-
-  // 初始化
-  parseHash();
-  refreshUI();
-  window.addEventListener('hashchange', () => { parseHash(); refreshUI(); });
-})();
-</script>

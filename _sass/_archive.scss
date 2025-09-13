@@ -1,0 +1,38 @@
+/* 类型 / 年份 链接 */
+.filter-link, .year-link {
+  text-decoration: none;
+  color: #6c757d;
+}
+.filter-link.is-active, .year-link.is-active {
+  color: #00ab6b;
+  font-weight: 600;
+}
+
+/* 隐藏状态 */
+.archive-item.is-hidden,
+.year-block.is-hidden,
+.filter-link.is-hidden,
+.year-link.is-hidden {
+  display: none !important;
+}
+
+/* 徽章与时间 */
+.post-archive-badge {
+  font-size: .8rem;
+  color: #888;
+  margin-right: .5rem;
+}
+.post-archive-date {
+  margin-left: .5rem;
+  color: #888;
+}
+
+/* 精选星标 */
+.featured-star {
+  color: #6c757d; /* 灰色 */
+  font-size: 0.85rem;
+  margin-left: .5rem;
+}
+.featured-star:hover {
+  color: #212529; /* hover 更深 */
+}
