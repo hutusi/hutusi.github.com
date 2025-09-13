@@ -40,7 +40,7 @@
 <!------ should put before body -->
 <script src="{{ '/assets/js/featured-random.js' | relative_url }}" defer></script>
 
-</head>
+<script defer src="https://umami-pied-delta-28.vercel.app/script.js" data-website-id="b1ffb0b8-732a-4655-a850-ec5e0b5c2b1b"></script>
 
 <!-- Google Analytics-->
 {% if site.google_analytics %}
@@ -49,6 +49,8 @@
 
 <!-- Google AdSense-->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.google_adsense }}" crossorigin="anonymous"></script>
+
+</head>
 
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
 <body class="{{layout}}">
