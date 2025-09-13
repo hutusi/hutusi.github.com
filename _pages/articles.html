@@ -13,13 +13,15 @@ pagination:
 ================================================== -->
 <section class="recent-posts">
 
-    <div class="section-title">
+    <div class="section-title d-flex align-items-center justify-content-between">
 
         {% assign target_url = "/weeklies/" | relative_url %}
         {% if page.collection == "weeklies" or page.url contains target_url %}
-            <h2><span>全部周刊</span></h2>
+            <h2><span>周刊</span></h2>
+            <a class="text-muted small" href="/archive/?t=weekly&y=all">全部周刊</a>
         {% else %}
-            <h2><span>全部文章</span></h2>
+            <h2><span>文章</span></h2>
+            <a class="text-muted small" href="/archive/?t=post&y=all">全部文章</a>
         {% endif %}
 
     </div>
