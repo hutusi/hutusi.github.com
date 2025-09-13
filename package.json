@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "build:scss": "sass --load-path=_sass --load-path=assets/css assets/css/main.scss assets/dist/style.css --no-source-map --style=expanded",
+    "build:scss": "sass --load-path=assets/scss --load-path=assets/css assets/css/main.scss assets/dist/style.css --no-source-map --style=expanded",
     "build:css": "postcss assets/dist/style.css -o assets/dist/style.min.css",
     "build:styles": "npm run build:scss && npm run build:css",
     "build:js": "esbuild assets/js/*.js --bundle --minify --outdir=assets/dist --entry-names=[name].min",
     "build": "npm run build:styles && npm run build:js",
-    "watch:scss": "sass --load-path=_sass --load-path=assets/css assets/css/main.scss assets/dist/style.css --watch --no-source-map --style=expanded",
+    "watch:scss": "sass --load-path=assets/scss --load-path=assets/css assets/css/main.scss assets/dist/style.css --watch --no-source-map --style=expanded",
     "watch:css": "postcss assets/dist/style.css -o assets/dist/style.min.css --watch",
     "watch:js": "esbuild assets/js/*.js --bundle --outdir=assets/dist --entry-names=[name].min --watch",
     "watch": "concurrently -n scss,css,js -c cyan,yellow,green \"npm:watch:scss\" \"npm:watch:css\" \"npm:watch:js\""
