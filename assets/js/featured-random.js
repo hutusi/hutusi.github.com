@@ -1,4 +1,5 @@
 (function () {
+  // —— 工具函数 ——
   function getJSON(id) {
     const el = document.getElementById(id);
     if (!el) return [];
@@ -34,7 +35,7 @@
   }
 
   function ratingHTML() {
-    // 如需动态星级，可在 JSON 中传具体星数并在这里渲染 SVG。
+    // 预留星级区块（与原来位置一致）。如需真实星级，可在此渲染 SVG。
     return `
       <div class="mb-2 mt-2 font-weight-normal">
         <span class="badge">精选</span>
@@ -44,7 +45,6 @@
 
   function imageHTML(p, lazyFlag) {
     if (!p.image) return '';
-    // 保持一致的 class / 属性
     if (String(lazyFlag).toLowerCase() === 'enabled') {
       return `
         <img class="featured-box-img-cover lazyimg"
@@ -55,8 +55,8 @@
     return `<img class="featured-box-img-cover" src="${esc(p.image)}" alt="${esc(p.title)}">`;
   }
 
+  // —— 使用与 featuredbox.html 一致的结构 —— 
   function cardHTML(p, lazyFlag) {
-    // 与 featuredbox.html 结构 & class 完全一致
     const ratingBlock = p.rating ? ratingHTML() : '';
     const authorThumb = authorThumbHTML(p.author);
     const authorName = (p.author && p.author.display_name) ? esc(p.author.display_name) : '';
@@ -111,23 +111,58 @@
 `;
   }
 
-  function render() {
+  // —— 缓存 key（同一路径复用）——
+  function cacheKey(limit) {
+    // 路径 + limit，避免不同页面冲突
+    return `featured_random_posts:${location.pathname}:n=${limit}`;
+  }
+
+  function render(useCache = true) {
     const mount = document.getElementById('featured-random-mount');
     if (!mount) return;
 
-    const pool = getJSON('featured-posts-data');
-    if (!pool || pool.length < 3) return; // 二次保护；Liquid 层已判断
-
     const limit = parseInt(mount.getAttribute('data-limit') || '2', 10);
     const lazyFlag = mount.getAttribute('data-lazy') || '';
+    const key = cacheKey(limit);
 
-    const picks = pickN(pool.slice(), limit);
+    let picks = [];
+    if (useCache) {
+      try {
+        const cached = JSON.parse(sessionStorage.getItem(key) || 'null');
+        if (Array.isArray(cached) && cached.length === limit) {
+          picks = cached;
+        }
+      } catch (e) {}
+    }
+
+    if (picks.length === 0) {
+      const pool = getJSON('featured-posts-data');
+      if (!pool || pool.length < limit) return;
+      picks = pickN(pool.slice(), limit);
+      sessionStorage.setItem(key, JSON.stringify(picks));
+    }
+
     mount.innerHTML = picks.map(p => cardHTML(p, lazyFlag)).join('');
+
+    // 如果用了懒加载库，这里可手动触发刷新：
+    // if (window.lazySizes) { lazySizes.loader.unveil(document); }
   }
 
+  // 首次渲染（读取缓存 → 不刷新随机）
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', render);
+    document.addEventListener('DOMContentLoaded', function(){ render(true); });
   } else {
-    render();
+    render(true);
   }
+
+  // 可选：“换一换”手动重抽（清缓存后立即重渲染）
+  document.addEventListener('click', function (e) {
+    const t = e.target.closest('#featured-refresh');
+    if (!t) return;
+    const mount = document.getElementById('featured-random-mount');
+    if (!mount) return;
+    const limit = parseInt(mount.getAttribute('data-limit') || '2', 10);
+    sessionStorage.removeItem(cacheKey(limit));
+    render(false); // 不用缓存，直接重抽
+  });
 })();

@@ -13,8 +13,11 @@ title: Home
 
 {%- if __count > 2 -%}
 <section class="featured-posts">
-  <div class="section-title">
-    <h2><span>精选推荐</span></h2>
+  <div class="section-title d-flex align-items-center">
+    <h2 class="m-0 d-flex align-items-baseline">
+        <span>精选推荐</span>
+        <a id="featured-refresh" class="text-muted small" href="javascript:void(0)">换一换</a>
+    </h2>
   </div>
 
   <div class="row" id="featured-random-mount" data-limit="2" data-lazy="{{ site.lazyimages | default: '' }}">
