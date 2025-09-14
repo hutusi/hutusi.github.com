@@ -25,9 +25,15 @@ commentable: true
 
 几乎所有文章和周刊都会在微信公众号“胡涂说”上同步，可通过微信扫码订阅公众号：
 
-![wechat]({{site.images_baseurl}}/site/qrcode_for_hututalk_8cm.jpg?w=1280){:width="240px"}
+![wechat]({{site.images_baseurl}}/site/qrcode_for_hututalk_8cm.jpg){:width="240px"}
 
-## 3. 邮件订阅
+## 3. Telegram Channel 订阅
+
+开通了 Telegram 频道，欢迎通过连接或扫下面二维码订阅： [https://t.me/hututalk](https://t.me/hututalk)
+
+![telegram-channel]({{site.images_baseurl}}/site/telegram-channel.jpg){:width="240px"}
+
+## 4. 邮件订阅
 
 原来本站提供了邮件订阅，使用的是 mailchimp 的服务，但由于长期没有登录后台，导致数据被删。因此也不打算再使用类似邮件订阅平台，而是使用 substack 的邮件发送服务，不过目前只会将周刊部分通过 substack 发送。
 
