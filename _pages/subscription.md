@@ -11,7 +11,7 @@ commentable: true
 
 欢迎通过 RSS 方式订阅我的博客，以下是几个推荐的 RSS 订阅平台：
 
-- [Folo - Follow everything in one place](https://app.folo.is/discover?type=search&keyword=hutusi.com)   搜索 `hutusi.com`
+- [Folo - Follow everything in one place](https://app.folo.is/discover?type=search&keyword=hutusi.com)   搜索 **hutusi.com**
 - [inoreader](https://www.inoreader.com/search/feeds/hutusi.com)
 - [feedly](https://feedly.com/i/discover/sources/search/feed/hutusi.com)
 
