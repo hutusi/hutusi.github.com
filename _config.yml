@@ -51,8 +51,6 @@ collections:
 
 # Navigators
 nav_pages:
-    - title: "首页"
-      url: "/"
     - title: "关于"
       url: "/about/"
     - title: "文章"
@@ -61,6 +59,8 @@ nav_pages:
       url: "/weeklies/"
     - title: "归档"
       url: "/archive/"
+    - title: "链接"
+      url: "/links/"
     - title: "订阅"
       url: "/subscription/"
 # nav_page_names: ["about.md", "archive.html", "links.md", "subscription.md"]
