@@ -14,11 +14,11 @@ commentable: true
 > 
 > —— 沃尔特·艾萨克森 《创新者》
 
-在这里记录对我有启发和帮助的互联网Builder。
+在这里记录对我有启发、帮助或影响的互联网数字创造者们。
 
 ### 目前（2025年）仍在阅读清单中的博客
 
-- [胡涂说](https://hutusi.com/)，我是自己博客的第一读者，也希望能持续输出对读者有价值的内容。
+- [胡涂说](https://hutusi.com/) 我是自己博客的第一读者，也希望能持续输出对读者有价值的内容。
 - [阮一峰的网络日志](http://www.ruanyifeng.com/blog/){:target="\_blank" rel="nofollow"} 无疑是很多中文独立博主的榜样。
 - [Limboy](https://limboy.me/){:target="\_blank" rel="nofollow"} 在他的 About 页面介绍了很多有意思的人。
 - [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富。
@@ -30,7 +30,8 @@ commentable: true
 - [谢益辉的个人博客](https://yihui.org/){:target="\_blank" rel="nofollow"} 统计学博士，文笔很好，独立思考和个性，每年在7月份左右发布博客。网站设计和字体也非常棒。
 - [酷壳](https://coolshell.cn/){:target="\_blank" rel="nofollow"} 老技术人陈皓的博客 R.I.P.
 - [极客兔兔](https://geektutu.com/){:target="\_blank" rel="nofollow"} 同样热衷于钻研技术，我博客的重建很大程度上也受他的影响和帮助。
-- [Tim Qian的透明创业实验](https://blog.t9t.io/){:target="\_blank" rel="nofollow"} 非常有创意、动手能力强的极客，独立开发者
+- [Tim Qian的透明创业实验](https://blog.t9t.io/){:target="\_blank" rel="nofollow"} 非常有创意、动手能力强的极客，独立开发者。
+- [yihong - 从错误中学习](https://blog.yihong0618.me/){:target="\_blank" rel="nofollow"} 喜爱游戏，跑步，读书，编程和有趣的东西，开源达人。
 - [Beyond the Void](https://byvoid.com/){:target="\_blank" rel="nofollow"} 技术牛人，写的旅行游记很有意思。
 - [印记](https://yinji.org/){:target="\_blank" rel="nofollow"} 朴素生活，高尚思考。很有行动力和组织能力。
 - [食灯鬼](https://shidenggui.com/){:target="\_blank" rel="nofollow"} 人生意何存，我思故我在。独立开发者。
@@ -84,7 +85,7 @@ commentable: true
 > 
 > RSS 订阅地址: https://hutusi.com/feed.xml
 > 
-> 简介：「胡涂说」是一个充满好奇心的人记录学习与思考，探索技术与人文的思想交汇的地方。
+> 简介：「胡涂说」是一个充满好奇心的人记录学习与思考，探索技术与人文思想交汇的地方。
 > 
 
 2025/09/14 update: 由于很多友链网站的博主可能没有长期维护的计划，很多已经失联，因此对于后续申请交换友链的网站，我会先简单浏览内容做判断是否交换友链，敬请理解。

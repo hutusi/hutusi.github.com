@@ -7,7 +7,7 @@ permalink: /subscription/
 commentable: true
 ---
 
-> RSS 意味着去中心化。   
+> RSS 意味着去中心化，本站提供RSS全文输出。    
 > Make RSS Great Again!
 >
 
