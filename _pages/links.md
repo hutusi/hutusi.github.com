@@ -11,6 +11,7 @@ commentable: true
 ## 数字时代的创造者
 
 > 数字时代的真正创新都是来自那些能够将人文和科学联系在一起的人，这点让我感到十分意外。他们信奉美感的重要性。
+> 
 > —— 沃尔特·艾萨克森 《创新者》
 
 在这里记录对我有启发和帮助的互联网Builder。
@@ -20,23 +21,23 @@ commentable: true
 - [胡涂说](https://hutusi.com/)，我是自己博客的第一读者，也希望能持续输出对读者有价值的内容。
 - [阮一峰的网络日志](http://www.ruanyifeng.com/blog/){:target="\_blank" rel="nofollow"} 无疑是很多中文独立博主的榜样。
 - [Limboy](https://limboy.me/){:target="\_blank" rel="nofollow"} 在他的 About 页面介绍了很多有意思的人。
-- [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富~
-- [Paul Graham's Essays](https://www.paulgraham.com/articles.html){:target="\_blank" rel="nofollow"} YCombinator创始人、《黑客与画家》作者 Paul Graham 的博客
-- [Lil’Log](https://lilianweng.github.io/){:target="\_blank" rel="nofollow"} Lilian Weng的博客，机器学习，LLM
+- [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富。
+- [Paul Graham's Essays](https://www.paulgraham.com/articles.html){:target="\_blank" rel="nofollow"} YCombinator创始人、《黑客与画家》作者 Paul Graham 的博客。
+- [Lil’Log](https://lilianweng.github.io/){:target="\_blank" rel="nofollow"} Lilian Weng的博客，机器学习，LLM.
 
 ### 对我有过帮助或影响的博客
 
 - [谢益辉的个人博客](https://yihui.org/){:target="\_blank" rel="nofollow"} 统计学博士，文笔很好，独立思考和个性，每年在7月份左右发布博客。网站设计和字体也非常棒。
-- [酷壳](https://coolshell.cn/){:target="\_blank" rel="nofollow"} 老技术人陈皓的博客。
+- [酷壳](https://coolshell.cn/){:target="\_blank" rel="nofollow"} 老技术人陈皓的博客 R.I.P.
 - [极客兔兔](https://geektutu.com/){:target="\_blank" rel="nofollow"} 同样热衷于钻研技术，我博客的重建很大程度上也受他的影响和帮助。
 - [Tim Qian的透明创业实验](https://blog.t9t.io/){:target="\_blank" rel="nofollow"} 非常有创意、动手能力强的极客，独立开发者
 - [Beyond the Void](https://byvoid.com/){:target="\_blank" rel="nofollow"} 技术牛人，写的旅行游记很有意思。
-- [印记](https://yinji.org/){:target="\_blank" rel="nofollow"} 朴素生活，高尚思考。很有行动力和组织能力
-- [食灯鬼](https://shidenggui.com/){:target="\_blank" rel="nofollow"} 人生意何存，我思故我在。独立开发者
+- [印记](https://yinji.org/){:target="\_blank" rel="nofollow"} 朴素生活，高尚思考。很有行动力和组织能力。
+- [食灯鬼](https://shidenggui.com/){:target="\_blank" rel="nofollow"} 人生意何存，我思故我在。独立开发者。
 - [面向信仰编程](https://draveness.me/){:target="\_blank" rel="nofollow"} 年轻技术人的博客。
 - [程序员的喵](https://catcoding.me/){:target="\_blank" rel="nofollow"} 一位热爱写作的软件工程师。
-- [Conge](https://conge.github.io/){:target="\_blank" rel="nofollow"} 坚持跑步、冥想、写博客
-- [Surmon](https://surmon.me){:target="\_blank" rel="nofollow"} 一位很厉害的全栈工程师
+- [Conge](https://conge.github.io/){:target="\_blank" rel="nofollow"} 坚持跑步、冥想、写博客。
+- [Surmon](https://surmon.me){:target="\_blank" rel="nofollow"} 一位很厉害的全栈工程师。
 - [MacTalk-池建强的随想录](https://macshuo.com/){:target="\_blank" rel="nofollow"} 
 - [云风的博客](https://blog.codingnow.com/){:target="\_blank" rel="nofollow"} 
 - [卢昌海的博客](https://www.changhai.org/){:target="\_blank" rel="nofollow"} 
@@ -86,4 +87,4 @@ commentable: true
 > 简介：「胡涂说」是一个充满好奇心的人记录学习与思考，探索技术与人文的思想交汇的地方。
 > 
 
-2025/09/14 update: 由于很多友链网站的博主可能没有长期维护的计划，很多已经失联，因此对于后续申请交换友链的网站，我会先简单浏览内容做判断是否交换友链，感谢理解。
+2025/09/14 update: 由于很多友链网站的博主可能没有长期维护的计划，很多已经失联，因此对于后续申请交换友链的网站，我会先简单浏览内容做判断是否交换友链，敬请理解。

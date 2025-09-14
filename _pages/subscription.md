@@ -7,6 +7,10 @@ permalink: /subscription/
 commentable: true
 ---
 
+> RSS 意味着去中心化。   
+> Make RSS Great Again!
+>
+
 ## 1. RSS 订阅
 
 欢迎通过 RSS 方式订阅我的博客，以下是几个推荐的 RSS 订阅平台：
