@@ -24,6 +24,8 @@ commentable: true
 - [Long Luo's Life Notes](https://www.longluo.me/){:target="\_blank" rel="nofollow"} 一位兴趣广泛，喜欢数学、物理和生物，爱折腾的程序员，博客里数学知识很丰富。
 - [Paul Graham's Essays](https://www.paulgraham.com/articles.html){:target="\_blank" rel="nofollow"} YCombinator创始人、《黑客与画家》作者 Paul Graham 的博客。
 - [Lil’Log](https://lilianweng.github.io/){:target="\_blank" rel="nofollow"} Lilian Weng的博客，机器学习，LLM.
+- [Shawn Wang @swyx](https://www.swyx.io/){:target="\_blank" rel="nofollow"} Learning in Public!
+- [Maggie Appleton](https://maggieappleton.com/){:target="\_blank" rel="nofollow"} 一位打造数字花园的设计师，如她在网站上所描述: Maggie makes visual essays about programming, design, and anthropology.
 
 ### 对我有过帮助或影响的博客
 
