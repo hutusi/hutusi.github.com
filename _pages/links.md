@@ -51,7 +51,7 @@ commentable: true
 
 写博客的人越来越少了，中文独立博客更少，因此有网友做了份 [「中文独立博客列表」](https://github.com/timqian/chinese-independent-blogs) 的清单，来记录坚持独立博客的中文网友。独立博主就像是“互联网上的异乡者”（这个词借用先锋书店的 slogan: 大地上的异乡者），虽身处各地，彼此未必谋面，但大家都有共同的坚持和爱好。我也希望通过这个友链，链接更多的志同道合者。[如何添加友链](/links/#如何添加友链)
 
-以下上添加的友链，排名不分先后：
+以下是添加的友链，排名不分先后：
 
 - [特立独行的异类](https://www.demochen.com){:target="\_blank" rel="nofollow"} 引入变量，跳出死循环，从不确定性中获益
 - [蓝卡](https://www.lanka.cn){:target="\_blank" rel="nofollow"} 2006年开始写博客，美好科技生活方式
@@ -74,6 +74,9 @@ commentable: true
 - [刘悦的技术博客](https://v3u.cn){:target="\_blank" rel="nofollow"} 乐于助人的敏捷开发者
 - [forecho's Blog](https://blog.forecho.com){:target="\_blank" rel="nofollow"} 把生命浪费在美好的事物上
 - [土木坛子](https://tumutanzi.com/){:target="\_blank" rel="nofollow"} 资深中文博主
+- [博客之家](https://www.perass.com/sites/1072.html){:target="\_blank" rel="nofollow"}
+- [竹白百科](https://www.zhubai.wiki/){:target="\_blank" rel="nofollow"}
+- [十年之约](https://foreverblog.cn/blogs.html?year=2020){:target="\_blank" rel="nofollow"}
 
 2025/09/14 update: 删除了一些网站失联或单方面删除友链的网站。
 
