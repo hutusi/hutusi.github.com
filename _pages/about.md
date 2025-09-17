@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 关于
+description: "胡涂说介绍: 一个充满好奇心的人记录学习与思考、探索技术与人文思想交汇的数字花园。"
 permalink: /about/
 commentable: true
 ---

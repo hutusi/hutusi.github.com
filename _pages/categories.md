@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Categories
+description: "全部分类"
 permalink: /categories
 ---
 

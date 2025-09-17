@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Tags
+description: "全部标签"
 permalink: /tags
 ---
 
