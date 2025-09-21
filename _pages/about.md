@@ -77,33 +77,32 @@ commentable: true
 
 我从 2006 年开始写博客以来，换过几个博客平台，最后选择自己建设独立博客。写写删删，留下来自己较为满意的有：
 
-### <a id="blog-product"></a> 产品&技术
+### <a id="blog-product"></a> 技术
 
-* [从神经网络到 Hugging Face](/articles/the-history-of-neural-networks) 2024年
-* [从零到百亿美金之路](/articles/the-story-of-github-and-gitlab) 2022 年
-* [改变世界的一次代码提交](/articles/the-greatest-git-commit) 2020 年
-* [阅读开源代码小技巧](/articles/git-paging) 2019 年
+* [从神经网络到 Hugging Face](/articles/the-history-of-neural-networks) 2024/03
+* [从零到百亿美金之路](/articles/the-story-of-github-and-gitlab) 2022/01
+* [改变世界的一次代码提交](/articles/the-greatest-git-commit) 2020/09
+* [自由的代价](/articles/rms) 2015/04
 
-### 读书&总结
+### 读书
 
-* [心猿意马](/articles/restless-mind-2024-review) 2024年
-* [从铁幕到硅幕](/articles/the-silicon-curtain) 2024年
-* [凡所有相，皆是虚妄](/articles/awareness-2023-review) 2024年
-* [纳瓦尔的智慧](/articles/naval) 2023 年
-* [云门胡饼赵州茶](/articles/zen-baggage) 2022 年
-* [当下我们还需要启蒙吗？](/articles/enlightenment-now) 2022 年
-* [我所理解的存在主义](/articles/understanding-of-existentialism) 2022 年
-* [人类伟大的时刻](/articles/decisive-moments-in-history) 2017 年
-* [答案在风中飘](/articles/blowing-in-the-wind) 2016 年
-* [自由的代价](/articles/rms) 2015 年
-* [读《霍乱时期的爱情》](/articles/love-in-the-time-of-cholera) 2013 年
+* [从铁幕到硅幕](/articles/the-silicon-curtain) 2024/12
+* [纳瓦尔的智慧](/articles/naval) 2023/06
+* [云门胡饼赵州茶](/articles/zen-baggage) 2022/06
+* [当下我们还需要启蒙吗？](/articles/enlightenment-now) 2022/09
+* [我所理解的存在主义](/articles/understanding-of-existentialism) 2022/03
+* [人类伟大的时刻](/articles/decisive-moments-in-history) 2017/05
+* [读《霍乱时期的爱情》](/articles/love-in-the-time-of-cholera) 2013/07
 
-### 生活&随笔
+### 总结&回顾
 
-* [当魔法消失时](/articles/nostalgia) 2023 年
-* [买房记](/articles/buying-property) 2017 年
-* [陪产记](/articles/paternity) 2015 年
-* [我是丽莎呀](/articles/i-am-lisa) 2008 年
+* [心猿意马](/articles/restless-mind-2024-review) 2025/01
+* [凡所有相，皆是虚妄](/articles/awareness-2023-review) 2024/01
+* [当魔法消失时](/articles/nostalgia) 2023/02
+* [买房记](/articles/buying-property) 2017/02
+* [答案在风中飘](/articles/blowing-in-the-wind) 2016/10
+* [陪产记](/articles/paternity) 2015/06
+* [我是丽莎呀](/articles/i-am-lisa) 2008/01
 
 如果你觉得不错，欢迎订阅我的博客。或联系我，交个朋友。
 
@@ -121,13 +120,13 @@ commentable: true
 * 2019/07: 使用 type 作为博客样式，开始认真对待博客，开启友链，创建 about 页面。
 * 2020/03: 博客终于有了中文名：胡涂说，并开始写周刊。
 * 2020/09: 发表《改变世界的一次代码提交》，收获一波流量。
-* 2020/10: 算是认真的写了关于页面。
-* 2022/03: 更新关于页面。
+* 2020/10: 算是认真的写了关于页面，增加关于自己和本站的介绍。
+* 2022/03: 更新关于页面，增加工具清单列表等。
 * 2022/04: 更换了评论系统，采用双评论系统：giscus 和 disqus.
 * 2025/02: 更换博客样式 Mediumish, 并将博客分为“文章”和“周刊”两大系列。
 * 2025/06: 将全站RSS输出改为全文输出（全文输出RSS意味着去中心化，即使可能导致主站流量降低）。
 * 2025/07: 重新开始写周刊，Again!
-* 2025/09: Vibe Coding 帮助优化首页、归档等页面。
+* 2025/09: Vibe Coding 帮助优化首页、归档等页面，首页随机精选呈现。
 
 ### 知识共享许可协议
 
