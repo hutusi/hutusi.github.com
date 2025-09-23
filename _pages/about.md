@@ -65,7 +65,15 @@ commentable: true
 
 常用电脑 MacBook Air(M2, 业余) 和 华为 MateBook X Pro(2024，工作使用)。
 
+KeyChron K9 Pro 蓝牙键盘，罗技 MX Anywhere 3 蓝牙鼠标。
+
 随身携带的有 iPhone 15 Pro Max, Apple Watch Series 7 以及 AirPods Pro 三件套。不得不说苹果的生态做的很好。
+
+#### 生活用品
+
+呼吸机 (ResMed AirSense 10)，呼吸机是近几年买的最值的物品，后悔没有早用呼吸机。
+
+其他必备物品如： B&O A1 随身音箱，松下冲牙器。
 
 ### 联系方式
 
