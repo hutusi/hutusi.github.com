@@ -26,6 +26,9 @@ commentable: true
 - [Lil’Log](https://lilianweng.github.io/){:target="\_blank" rel="nofollow"} Lilian Weng的博客，机器学习，LLM.
 - [Shawn Wang @swyx](https://www.swyx.io/){:target="\_blank" rel="nofollow"} Learning in Public!
 - [Maggie Appleton](https://maggieappleton.com/){:target="\_blank" rel="nofollow"} 一位打造数字花园的设计师，如她在网站上所描述: Maggie makes visual essays about programming, design, and anthropology.
+- [Sebastian Raschka](https://magazine.sebastianraschka.com/){:target="\_blank" rel="nofollow"} 机器学习, LLM.
+- [Simon Willison's Weblog](https://simonwillison.net/){:target="\_blank" rel="nofollow"} Django 联合创始人。
+- [Kalzumeus Software](https://www.kalzumeus.com/){:target="\_blank" rel="nofollow"} 20年博客。
 
 ### 对我有过帮助或影响的博客
 
