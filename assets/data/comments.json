@@ -1,6 +1,6 @@
 {
   "articles/uk-trip": 4,
-  "links/": 60,
+  "links/": 63,
   "articles/buying-property": 4,
   "articles/rms": 2,
   "articles/learning-english": 4,
@@ -62,7 +62,7 @@
   "articles/the-history-of-software-engineering": 5,
   "articles/the-silicon-curtain": 0,
   "articles/restless-mind-2024-review": 10,
-  "articles/why-write": 6,
+  "articles/why-write": 7,
   "posts/2024/07/28/understanding-container-image-layers/": 0,
   "articles/ne-zha": 2,
   "weeklies/14": 0,
@@ -70,5 +70,7 @@
   "articles/maozedong": 3,
   "weeklies/16": 1,
   "weeklies/17": 1,
-  "weeklies/18": 0
+  "weeklies/18": 0,
+  "weeklies/19": 0,
+  "weeklies/20": 2
 }
