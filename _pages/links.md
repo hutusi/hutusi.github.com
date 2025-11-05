@@ -59,6 +59,7 @@ commentable: true
 - [特立独行的异类](https://www.demochen.com){:target="\_blank" rel="nofollow"} 引入变量，跳出死循环，从不确定性中获益
 - [蓝卡](https://www.lanka.cn){:target="\_blank" rel="nofollow"} 2006年开始写博客，美好科技生活方式
 - [咕咚同学](http://gudong.site){:target="\_blank" rel="nofollow"} 喜欢打篮球的代码工作者
+- [Airing 的博客](https://blog.ursb.me/){:target="\_blank" rel="nofollow"} 专注前端技术
 - [SeerSu](https://suus.me/){:target="\_blank" rel="nofollow"} 在数字的海洋中，寻找属于自己的星辰
 - [安全代码](https://www.usmacd.com/){:target="\_blank" rel="nofollow"} 关注 网络安全、金融投资，和个人成长
 - [SimonSu](https://simonsu.cn/){:target="\_blank" rel="nofollow"} 记录生活、工作点滴
