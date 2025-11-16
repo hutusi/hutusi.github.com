@@ -2,7 +2,7 @@
 layout: post
 category: essay
 tags: 读书 书评
-title: 不确定性时代的生存策略
+title: 不确定性世界的生存策略
 subtitle: 塔勒布“不确定性系列”（《随机漫步的傻瓜》、《黑天鹅》、《随机生存的智慧》、《反脆弱》、《非对称风险》）读书笔记
 date: "2025-11-16 17:17:00 +0800"
 image: people/nassim-taleb.webp
