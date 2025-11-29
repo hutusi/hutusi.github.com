@@ -80,7 +80,7 @@ description: "胡涂说: 一个充满好奇心的人记录学习与思考、探�
 
     <div class="row listrecent">
 
-        {% assign sorted_posts = site.posts | where_exp: "post", "post.featured != true" | sort: "date" | reverse %}
+        {% assign sorted_posts = site.posts | sort: "date" | reverse %}
         {% for post in sorted_posts limit:3 %}
             {% include postbox.html post=post %}
         {% endfor %}
