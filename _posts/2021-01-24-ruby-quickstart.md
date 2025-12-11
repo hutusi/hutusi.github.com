@@ -806,7 +806,7 @@ Ruby 是存粹的面向对象语言，上述语法也说明了这一点。
 
 ************
 
-[^1]: *The Ruby Programming Languange*: https://book.douban.com/subject/2337297/
-[^2]: Ruby official: https://www.ruby-lang.org/
-[^3]: Airbnb's Ruby Style Guide: https://github.com/airbnb/ruby
-[^4]: The Philosophy of Ruby - A Conversation with Yukihiro Matsumoto, Part I: https://www.artima.com/intv/ruby.html
+[^1]: [*The Ruby Programming Languange*](https://book.douban.com/subject/2337297/)
+[^2]: [Ruby official](https://www.ruby-lang.org/)
+[^3]: [Airbnb's Ruby Style Guide](https://github.com/airbnb/ruby)
+[^4]: [The Philosophy of Ruby - A Conversation with Yukihiro Matsumoto, Part I](https://www.artima.com/intv/ruby.html)

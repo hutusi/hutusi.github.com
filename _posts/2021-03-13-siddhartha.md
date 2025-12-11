@@ -33,4 +33,4 @@ featured: true
 
 
 [^1]: 《悉达多》(Siddhartha), 又被译为《流浪者之歌》，德国小说家赫尔曼·黑塞于1922年所著。
-[^2]: *对赫尔曼.黑塞的《悉达多》的解读*: https://book.douban.com/review/6390024/
+[^2]: *对赫尔曼.黑塞的《悉达多》的解读*: [豆瓣链接](https://book.douban.com/review/6390024/)

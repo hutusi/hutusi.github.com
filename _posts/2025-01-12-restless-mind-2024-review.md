@@ -56,5 +56,6 @@ featured: true
 <br/>
 
 附：
+
 1. 《[为什么长大](https://book.douban.com/subject/26769136/){:target="\_blank" rel="nofollow"}》[美]苏珊·奈曼(著) 刘建芳(译)  上海文艺出版社
 2. [*This is Water*, 哔哩哔哩双语字幕](https://www.bilibili.com/video/BV1fM4y1f7iB/?share_source=copy_web&vd_source=4638064c6deffb5c84c95c66b70a3241){:target="\_blank" rel="nofollow"}, David Foster Wallace

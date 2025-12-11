@@ -54,7 +54,7 @@ image: articles/2020-guangfulin.jpg
 
 ************
 
-[^1]: 书游记 bookcrossing: https://www.bookcrossing.com/
-[^2]: 只买书: https://zhimaishu.com/
-[^3]: Ruby on Rails: https://rubyonrails.org/
-[^4]: Taro - 多端统一开发解决方案: https://taro.jd.com/
+[^1]: [书游记 bookcrossing](https://www.bookcrossing.com/)
+[^2]: [只买书](https://zhimaishu.com/): 暂时失效
+[^3]: [Ruby on Rails](https://rubyonrails.org/)
+[^4]: [Taro](https://taro.jd.com/): 多端统一开发解决方案
