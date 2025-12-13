@@ -29,6 +29,8 @@ commentable: true
 - [Sebastian Raschka](https://magazine.sebastianraschka.com/){:target="\_blank" rel="nofollow"} 机器学习, LLM.
 - [Simon Willison's Weblog](https://simonwillison.net/){:target="\_blank" rel="nofollow"} Django 联合创始人。
 - [Kalzumeus Software](https://www.kalzumeus.com/){:target="\_blank" rel="nofollow"} 20年博客。
+- [Addy Osmani](https://addyosmani.com/){:target="\_blank" rel="nofollow"} 曾带领 Google Chrome DevEx 团队，现为 Gemini 总监。技术栈：前端+AI.
+- [web.dev Blog](https://web.dev/blog){:target="\_blank" rel="nofollow"} Guidance to build modern web experiences that work on any browser.
 
 ### 对我有过帮助或影响的博客
 
