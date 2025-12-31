@@ -31,6 +31,7 @@ commentable: true
 - [Kalzumeus Software](https://www.kalzumeus.com/){:target="\_blank" rel="nofollow"} 20年博客。
 - [Addy Osmani](https://addyosmani.com/){:target="\_blank" rel="nofollow"} 曾带领 Google Chrome DevEx 团队，现为 Gemini 总监。技术栈：前端+AI.
 - [web.dev Blog](https://web.dev/blog){:target="\_blank" rel="nofollow"} Guidance to build modern web experiences that work on any browser.
+- [OneV's Den](https://onevcat.com/){:target="\_blank" rel="nofollow"} 王巍 (onevcat)，一名长期在日本生活的中国开发者，主要专注于 iOS，Swift 和 AI 相关的话题。
 
 ### 对我有过帮助或影响的博客
 
