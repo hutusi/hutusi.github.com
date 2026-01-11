@@ -14,7 +14,12 @@ export default async function HomePage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      {featured.length >= 2 && <FeaturedSection allFeatured={featured} />}
+      {featured.length >= 2 && (
+        <FeaturedSection
+          allFeatured={featured}
+          initialPosts={featured.slice(0, 2)}
+        />
+      )}
 
       <PostList
         posts={recentPosts}

@@ -6,6 +6,7 @@ import FeaturedCard from "./FeaturedCard";
 
 interface FeaturedSectionProps {
   allFeatured: (Post | Weekly)[];
+  initialPosts: (Post | Weekly)[];
 }
 
 function getRandomItems<T>(items: T[], count: number): T[] {
@@ -13,10 +14,11 @@ function getRandomItems<T>(items: T[], count: number): T[] {
   return shuffled.slice(0, count);
 }
 
-export default function FeaturedSection({ allFeatured }: FeaturedSectionProps) {
-  const [displayedPosts, setDisplayedPosts] = useState(() =>
-    getRandomItems(allFeatured, 2)
-  );
+export default function FeaturedSection({
+  allFeatured,
+  initialPosts,
+}: FeaturedSectionProps) {
+  const [displayedPosts, setDisplayedPosts] = useState(initialPosts);
 
   const handleRefresh = useCallback(() => {
     setDisplayedPosts(getRandomItems(allFeatured, 2));
