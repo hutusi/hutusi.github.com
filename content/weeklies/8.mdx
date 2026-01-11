@@ -1,0 +1,168 @@
+---
+title: 周刊第八期：如何应对公开错误
+date: '2020-11-22T11:50:00.000Z'
+category: weekly
+tags:
+  - 周刊
+subtitle: '如何应对公开错误, 最透明的公司, 黑客新闻, 电脑与隐私, 海明威编辑器'
+image: weeklies/8-gitlab-team.jpg
+gh_discussion: 92
+redirect_from:
+  - /weekly-8
+  - /articles/weekly-8
+---
+
+本文为周刊第八期，前期的周刊参见：[周刊系列](/tag/周刊)。
+
+## 本期话题：如何应对公开错误
+
+原文: [So you've made a mistake and it's public...](https://meta.wikimedia.org/wiki/So_you%27ve_made_a_mistake_and_it%27s_public...)
+
+wikimedia 上的这则文章讲述了在公共场合犯了错误后如何应对和弥补，文中给出了五个步骤的指导：
+
+### 步骤0
+
+首先要认识到错误已经发生了，装作没有做错是没有用的，而且只会让事情变得更糟。
+
+### 步骤1
+
+想一想自己犯的错：
+
+* 是什么造成了这个错误？
+* 是因为基于错误的信息吗？
+* 还是因为信息不足？
+* 或是因为依赖直觉？
+* 是因为迫于期限或他人的压力？
+* 是因为遵从了不完善的流程？
+* 是否因为基于自己的期望而非实际情况作出的行动？
+
+你可以悄悄写下上述问题的答案，然后想想看哪些项可以避免发生错误。
+
+### 步骤2
+
+想一想再次犯该错误或此类错误的可能性：
+
+* 可能性有多大？
+* 从该错误中吸取教训后，可以采取哪些措施来减少再次发生的几率？
+* 在这些措施中，你愿意采取哪些措施？
+* 哪些是现在可以立即实施的？
+* 哪些是准备长期实施的？
+
+### 步骤3
+
+在做好步骤1和步骤2的充分准备后，用简洁清晰的语言写一封公开信或：
+
+* 承认犯了错误。
+* 错误是什么，尽可能准确的描述。
+* 对你的失误造成的损失表示歉意。
+* 你已经从中吸取了教训。
+* 你已经采取了那些措施来减轻或弥补错误造成的影响。
+* 你将采取什么措施来防止类似的错误发生。
+* 邀请大家评论并给予建议。
+
+### 步骤4
+
+* 实际去执行承诺的补救和防范措施。
+* 对不能立即采取的行动措施建立跟踪，必须在下次的年度会议上讨论。
+
+这则指导实际上体现了两件事：1. 对错误进行回顾和反思；2. 如何在公共场合应对错误可能引发的（信任）危机。关于第一点 ，美军有个实践叫 AAR (After-action review), 有很多公司采用；而对于第二点，引用文章的一句话即是：“阳光是最好的消毒剂。”真诚透明与共情是处理公共危机的最好办法，也是与他人共处的最好方式。
+
+> Sunlight is the best disinfectant, as Judge Brandeis observed.
+
+## 文摘
+
+### 1. GitLab: 世界上最透明的公司
+
+原文: [GitLab: The World’s Most Transparent Company](https://theorg.com/insights/gitlab-the-worlds-most-transparent-company)
+
+2017年（我记得好像是春节期间），GitLab 遭受了一起网络攻击，维护团队迅速修复了这个问题。但在运维过程中，一名工程师不小心删除了现网产品数据库，六个小时的生产数据被删。这次事件也上了 Hacker News 的头条，而 GitLab 干脆决定通过 Youtube 实况转播整个恢复过程，这种透明公开的做法得到了网友的肯定。
+
+现在，GitLab 已经成为全球最大的全远程(all-remote)工作公司，1300名员工分布在65个国家，服务三千万注册用户。还有传言该公司将在2021年上市。GitLab 的源码、文档、工作过程都开源在 gitlab.com/gitlab-org 官方组织下，说他们是最透明的公司确实不为过。我最惊讶的一点是他们是有社区办，也有商业版，后来他们将商业版的代码也开放了。（GitHub 的 CEO 曾说过要开放所有的代码，但实际没有 GitLab 做的彻底，当然它们的商业规模相差很大。）
+
+并不是每位新进 GitLab 的员工都能理解这种透明的文化，刚开始他们会很不习惯被“暴露”在公开社区的工作方式。但很快员工就会习惯，因为透明和开放让协作变得更简单。
+
+> “It's deeply uncomfortable, if you're new to it, as it can be unsettling to feel so exposed,” said Rebecca Dodd, the Managing Editor at GitLab. “But we've gotten used to it. Collaboration is easier this way. To have all your work out in the open, you conduct yourself in the way that you would expect when you're doing that in public, so I think the culture is generally really nice and kind and collaborative. When you see that, you see there's no reason to hide things behind closed doors.”
+
+### 2. 管理"黑客新闻"的孤独工作
+
+原文: [The Lonely Work of Moderating Hacker News](https://www.newyorker.com/news/letter-from-silicon-valley/the-lonely-work-of-moderating-hacker-news)
+
+"黑客新闻" Hacker News(以下简称 HN)是硅谷著名的风险投资公司 Y-Combinator 旗下的一个新闻聚合网站，在 IT 行业特别流行。特别是硅谷的科技从业者，对他们来说看 HN 就像纽约人读《纽约时报》或《纽约邮报》一样为生活必需。
+
+HN 于2007年面世，保罗·格雷厄姆(Paul Graham)用 Arc(格雷厄姆设计的一种 Lisp 方言)写成。起初，格雷厄姆给他起名为 Startup News, 但后来考虑到创业的话题过于狭窄，就放宽到黑客(hacker, 此黑客非计算机网络犯罪的骇客，参见格雷厄姆的书《黑客与画家》)领域，提供“有趣”的信息聚合服务。
+
+> Within a few months, though, Graham found that startup-centric conversation had its limits. He renamed the site Hacker News, and expanded its focus to include “anything that good hackers would find interesting . . . anything that gratifies one’s intellectual curiosity.” 
+
+HN 从最初每天一千用户访问到现在的每月约五百万用户访问（本文发表于2019年8月），受到越来越多的技术人员的欢迎。HN 的首页更是成为了技术趋势的榜单，很多技术人员将自己的博客或项目能登上 HN 首页视为荣耀。HN 除了提供原文链接外，还提供了用户评论功能，这些评论很多时候比原文中的评论还热闹。
+
+> Landing a blog post or personal project on the front page is a badge of honor for many technologists.
+
+但有人的地方就有江湖。评论往往在几楼之后就开始偏离主题，语气刻薄、傲慢，甚至充满攻击和敌意。Facebook 和 Youtube 有人数众多的外包团队做内容和评论审查，而 Reddit 在遇到问题内容时也会毫不留情的清扫干净。但 HN 的维护者只有两个人，加克尔(Gackle)和贝尔(Bell)，他们的做法则温和的多，也慢的多，甚至会与 HN 的用户通过邮件方式交心长谈。
+
+这篇《纽约客》的文章主要内容是对 HN 维护者加克尔和贝尔的采访。加克尔毕业论文写的是19世纪俄罗斯诗人，贝尔学的是网络工程，业余搞朋克乐队。他们因为爱好 Lisp 语言而结识，共同创业做了一个在线表格服务 Skysheet, 被 Y-Combinator 投资。后来 Skysheet 做不下去了，格雷厄姆邀请他们加入 HN, 专职做 HN 的代码开发。而他们就成为了 HN 唯二的员工，不但维护其技术架构，还要做社区运营管理和内容审查。
+
+他们对待社区用户的态度是：耐心。耐心到他们开始学习非暴力沟通、社会学、心理疗法，贝尔还特别推荐了一本个人成长的书《个人形成论》(*On Becoming a Person*)，该书被誉为人文心理学运动圣经。他们甚至还期望从印度哲学等古老文化中获得帮助。
+
+> “If we’re trying to change something deep, the ingredient is time,” Bell said. “Patience allows us to be ambitious—to imagine people being more kind to each other, for example. It sounds kind of crazy.”
+
+但他们发现社区上的用户仍不能互相友好对待时，还是会感觉受到打击。而且随着 HN 的用户规模扩大，社区不文明的现象也更多，特别是在政治话题上。加克尔和贝尔还实验了“政治排毒周”(Political Detox Week)的想法，将政治类文章打上标签，以便让理性的用户绕开政治类文章讨论。
+
+作者最后借助加克尔的原话说他们就像是试图阻止潮水上涨的卡努特国王，但这是有意义的尝试：在飞速发展的互联网时代，需要人文主义来建设更好的网络社区。
+
+> I pictured Bell and Gackle as swimmers in a resistance pool, doing slow crawls against the currents of online discourse. I hoped the project of Hacker News was worth the effort. I wondered if their work might show that tech really does need humanism—that better online communities can be built one relationship at a time. 
+
+看完这篇文章我最大的感受是，原来 HN 竟然只有两名员工在维护，包揽了从开发到运维的所有工作。
+
+### 3. 你的电脑不再是你的
+
+原文: [Your Computer Isn't Yours](https://sneak.berlin/20201112/your-computer-isnt-yours/)
+
+理查德·斯托曼(RMS)曾写过一篇著名的科幻短文《阅读的权利》*[The Right to Read](https://www.gnu.org/philosophy/right-to-read.en.html)*, 在文中描述的未来2096年，那时的人们不能自由分享书本，因为电脑上的书籍都是有版权的，电脑预装的软件实时进行版权监控，何时何地被何人阅读的信息都会被上报到服务器；只要一联网，版权机构便可以抓到阅读盗版者。而制作破解软件的人被投入监狱，电脑甚至不提供 root 权限给安装可以绕过版权软件的自由操作系统。而反抗的人们最终只能逃离到月球。
+
+作者说，这种看似荒诞的预言正在成为现实：在苹果最新发布的操作系统 macOS Big Sur 中，OS 会给苹果服务器发送用户每次运行软件的唯一识别码，即使在离线状态下也会记录下来，在联网后一起发送。包括了应用程序、时间、地点、IP 等信息，也就是说，苹果知道你在哪里用电脑，用什么软件，什么时候用。而且，这些信息数据并没有加密，且发送到另一家CDN服务商接收；前不久还报出来新版 macOS 上的苹果自家软件可以绕过防火墙和 VPN 发送数据：[Apple apps on Big Sur bypass firewalls and VPNs — this is terrible](https://thenextweb.com/plugged/2020/11/16/apple-apps-on-big-sur-bypass-firewalls-vpns-analysis-macos/)，这也就是说即使用户想通过 VPN 来隐藏接入网络的信息也不可能。
+
+当然很多用户可能不关心这些（实际上，iPhone、iPad 等苹果移动设备很早就这么干了），因为相对于隐私而言苹果提供的产品体验更好。苹果这么做的目的并不是要窃取用户隐私，而是收集信息来打造更佳的体验，RMS 曾称呼乔布斯为“邪恶的天才”（参见[《自由的代价》](/articles/rms)），因为苹果创造的数字蜜糖是包裹着毒药的，让自己“心甘情愿”的放弃隐私。最后用户只剩下两种选择：1. 拥有一台没有隐私的先进时髦的电脑；2. 或一台过时的旧电脑（保护自己的隐私）。
+
+> These machines are the first general purpose computers ever where you have to make an exclusive choice: you can have a fast and efficient machine, or you can have a private one. (Apple mobile devices have already been this way for several years.)
+
+最后，作者疾呼: "Dear Frog, This Water Is Now Boiling." RMS 和 Cory Doctorow(一位知识共享运动倡导者)警告过我们的事情正在变成现实。
+
+关于科技体验和隐私之间的冲突问题，相信人们应该能找到解决办法。
+
+## 工具
+
+### 1. 在线架子鼓
+
+原文: [drumbit - online drum machine](https://drumbit.app/)
+
+一个在线的架子鼓应用，可以通过标记按键录制打击乐。
+
+### 2. 书格
+
+链接: [书格](https://new.shuge.org/)
+
+摘自书格的官方介绍：
+
+> 书格（Shuge.org）是一个自由开放的在线古籍图书馆。致力于开放式分享、介绍、推荐有价值的古籍善本，并鼓励将文化艺术作品数字化归档。分享内容限定为公共版权领域的书籍（参照标准 伯尔尼公约）；我们最大限度地还原书籍品貌、内容；借此计划让大家自由、免费地欣赏到那些难以现世的书籍。让大家能从中感受到人类文明进程。
+> 
+> 书格发布的书籍主要以高清彩色影像版本 PDF 格式，大部分书籍书籍单页宽度在 1400 像素以上，跨页宽度在 2400 像素以上。书籍刊行年代有从宋元珍本，明清善本到近代刊本。
+
+### 3. 海明威编辑器
+
+链接: [Hemingway App makes your writing bold and clear.](http://www.hemingwayapp.com/)
+
+海明威的写作风格以简洁著称，作品以短句为主，而且主张积极避免消极，多用肯定少用否定，并使用充满激情的词语；这让他在二十一世纪初众多的意识流派作家中显得特立独行。海明威编辑器便是源自该灵感，如果句子长了会给予提示告警，并且会对一些隐晦的词语、委婉的语气词给予替换建议。如标题所说：海明威编辑器让你的文字更清晰、更有力量。
+
+## 人物
+
+### 1. Guido van Rossum
+
+链接： [I decided that retirement was boring and have joined the Developer Division at Microsoft. ](https://mobile.twitter.com/gvanrossum/status/1326932991566700549)
+
+64岁的 Python 语言创始人 Guido van Rossum 发推特声称自己觉得退休生活太无聊，决定加入微软开发部门。
+
+*********************************************
+
+> 天生的喜欢离群索居，而又能说会道，一方面不愿与人交接，另方面又巴不得找个人谈谈天，结果就只好对自己瞎聊了。凡是过惯孤独生活的人都懂得独语是很自然的事情。心里的话非发泄一下不可。对着空间大声讲话，便是一个发泄的办法。一个人独个儿高声讲话，就是和心里的神道交谈。      
+>
+> 雨果《笑面人》 鲁膺 译   

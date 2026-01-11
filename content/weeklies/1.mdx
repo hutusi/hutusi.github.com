@@ -1,0 +1,189 @@
+---
+title: 周刊开刊
+date: '2020-03-21T14:00:00.000Z'
+category: weekly
+tags:
+  - 周刊
+  - Covid-19
+  - 分布式
+  - '6.824'
+  - Go
+  - MapReduce
+  - GFS
+  - BigTable
+subtitle: '开刊, Covid-19, 6.824, Go, MapReduce, GFS, BigTable'
+image: weeklies/1-google-big-data.png
+gh_discussion: 34
+redirect_from:
+  - /blog/2020/03/21/weekly-1
+  - /weekly-1
+  - /articles/weekly-1
+---
+
+[阮一峰](http://www.ruanyifeng.com/blog/)在两年前开始做周刊，记录每周值得分享的科技内容，目前已经做到[99期](http://www.ruanyifeng.com/blog/2020/03/weekly-issue-99.html)了。受他的启发，我也尝试写写周刊，一是总结自己的一周或几周所看所学，二是做个记录和分享。为了避免重蹈先前每天一篇公众号文章的覆辙，我不会限定每周一刊，可能两周，也可能四周，视情形而定。
+
+## 文摘
+
+我的中文信息主要来源是微信，英文信息主要来源是 [twitter](https://twitter.com/hutusi) 和 [Pocket](https://getpocket.com/). Pocket 是一个稍后阅读的应用，我利用 [IFTTT](https://ifttt.com/) 自动每天或每周推送最新文章，目前主要有 [The Economist](https://www.economist.com/) 和 [The New York Times](https://www.nytimes.com/) 两个主动推动的 applet. 
+
+我会尽可能多的选取英文文摘，为了逼着自己学英语。所选文章来自网络，不代表个人观点。最近看到的大部分文章都是关于新冠病毒(Covid-19)的，病毒已经在全球蔓延，估计短时间结束疫情是不可能了。
+
+### 1. [The 100 greatest designs of modern times](https://fortune.com/longform/100-best-designs/)
+
+财富杂志在1959年评选了 [THE 100 "BEST DESIGNED" PRODUCTS](https://content.fortune.com/wp-content/uploads/2020/03/100-Best-Designs.pdf), 于去年(2019) 60周年之际，再次进行了评选。 前十名分别是 iPhone(2007), Macintosh(1984), Google(1997), Eames Fiberglass Armchair(1950), Sony Walkman TPS-L2(1979), OXO Good Grips Peeler(1990), Uber Rideshare(2009), Netflix Streaming(1997), Lego Building Blocks(1939), iPod(2001). 国内入选的产品有 WeChat(2011), Mobike(2015).
+
+### 2. [Why Telling People They Don’t Need Masks Backfired](https://app.getpocket.com/read/2918437247)
+
+新冠疫情在全球蔓延时，各国的应对策略都不太一样。其中有一个明显的区别是国内宣传是必须要戴口罩，而国外大部分官方和主流媒体都建议是不要戴口罩，其理由主要是“只有病人才需要戴口罩避免传染给他人”。但这个理由稍加推敲站不住脚：首先 covid-19 病毒潜伏期长，未发病人也有传染性；再者从主动防护的角度来说大家都戴是最能防护的。不明白这种论调为什么被国外主流媒体一再宣传，终于看到一篇对这种言论反驳的文章。文章认为尽管官方一直指导普通人不需要戴口罩，但实际上适得其反，口罩在市面上被哄抢导致紧缺，主要原因是：
+
+1. 卫生专家认为普通人不要口罩而医护人员需要，这是矛盾的：难道口罩只能在特定医护场所才有效果？
+2. 专家认为普通人一般口罩戴的方法不正确。但很多人洗手的方法也不正确，我们提供各种指导让民众正确洗手，戴口罩也应如是。
+3. 口罩当然有用。经历过2003 SARS 的中国以及亚洲国家官员都建议戴口罩。
+4. WHO 和 CDC 告诉民众病人需要戴口罩，但目前有越来越多的无症状传染案例，尤其是年轻人和轻症患者在不清楚自己染病的情况下仍具有传染性。
+5. 香港等地与中国大陆人员来往频繁，而早期的普遍隔离和戴口罩策略使得他们很好的控制了传染病。
+6. 口罩是一个象征团结的符号，让公民更加意识到大家应该同舟共济。
+7. 给出不戴口罩这种明显矛盾的指导只能适得其反，因为缺乏信任会加剧哄抢和假消息的蔓延。
+
+### 3. [Even tiny Pacific islands cannot escape covid-19](https://app.getpocket.com/read/2921142452)
+
+太平洋上的很多小岛显得避世独立远离喧嚣，甚至被宣传成远离世界末日的净土，但如果你认为他们能远离 Covid-19, 无疑痴人说梦。没有哪个岛屿是孤岛(No island is island).
+
+文章的这句 No island is an island 应该是改编自诗人 John Donne《沉思录》的一句 "No man is an island."
+
+### 4. [Covid-19 is exposing America’s resilience—and vulnerability](https://app.getpocket.com/read/2921132567)
+
+就像网上说的：“疫情是面放大镜”。确实如此，文中引述了一位评论者的话：美国长期习惯了认为自己是世界上最好、效率最高、科技最先进的社会，正被证实为是一个褪去新衣的皇帝。("long accustomed to thinking of itself as the best, most efficient, and most technically advanced society in the world, is about to be proved an unclothed emperor.")
+
+## 技术
+
+### 1. [6.824](https://pdos.csail.mit.edu/6.824/)
+
+在 [geektutu](https://geektutu.com/) 的推荐下(下面的 Go、Google 三篇论文也得益于他的讲解)开始学习 [6.824](https://pdos.csail.mit.edu/6.824/), 这是也被誉为分布式系统的神级课程，是 MIT 推出并公开的在线课程。每节课几乎都对要解读一篇分布式领域的经典论文，课后还有分布式 Lab, 动手用 Go 语言写分布式系统实现，包括经典的 MapReduce、Raft 等。
+
+### 2. [Go 语言](https://golang.org/)
+
+本周及上周因为学习 6.824 也相应入门了 Go 语言。Go 语言很像 C 语言(都是 Ken Thompson 参与设计的嘛)，语法简洁。接近于 C 的运行效率 + Goroutine + 垃圾回收，让它在并发计算上具有很大优势，因此在分布式云计算领域应用很广泛，docker 就是用 Go 编写。
+
+不过 Go 语言因为考虑设计的简洁，没有引入过多的语法，在降低学习成本的同时，也少了很多其他语言的语法糖，显得不那么fancy，不过反倒是这种淳朴的内在更利于工业级的开发应用。
+
+* 入门参考: [Go 语言简明教程](https://geektutu.com/post/quick-golang.html)
+* 官方入门指导: [A Tour of Go](https://tour.golang.org/)
+
+### 3. [MapReduce](https://en.wikipedia.org/wiki/MapReduce)
+
+MapReduce 是一种分布式计算的编程模型，用于大规模数据集的并行计算。它的主要思想是通过 Map 和 Reduce 两个阶段将数据处理分发再归约。
+
+MapRecude 编程模型如下图示：
+
+![Map Reduce](https://cdn.hutusi.com/images/software/mapreduce.png)
+
+1. 用户程序调用 MapReduce 库将输入文件分成 M 个数据片段。然后用户程序在集群中创建大量程序副本。
+2. 其中一个程序副本是 master 进程，其余都是 worker. 由 master 分配任务。有 M 个 map 任务和 R 个 reduce 任务被分配。master 将一个任务分配给一个空闲的 worker.
+3. 被分配了 map 任务的 worker 读取相关输入数据片段，从输入数据中解析出 key/value pair, 然后将 key/value 传给用户自定义的 map 函数，由 map 函数输出中间结果存成 key/value 格式，并缓存在内存中。
+4. 缓存的 key/value pair 通过分区函数（比如求 hash）分成 R 个区域，写入文件系统。存储位置被回传给 master, 由 master 负责将这些存储位置再传给 reduce worker.
+5. Reduce worker 读取所有这些中间数据后，将相同 key 值的数据聚合在一起。
+6. Reduce worker 将这个 key 值和对应所有 value 数据传给用户自定义的 reduce 函数，reduce 函数输出追加到所属 reduce 分区的输出文件。
+7. 所有 map 和 reduce 任务完成后，master 唤醒用户程序，一次 MapReduce 计算完成。
+
+6.824 的[第一个 Lab](https://pdos.csail.mit.edu/6.824/labs/lab-mr.html) 就是实现个简单的 MapReduce 系统，其中的单词统计用例可以帮助理解 MapReduce 模型。
+
+资料：
+
+* [MapReduce 论文](https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf)
+* [MapReduce 论文中文翻译](http://blog.bizcloudsoft.com/wp-content/uploads/Google-MapReduce%E4%B8%AD%E6%96%87%E7%89%88_1.0.pdf)
+
+### 4. [GFS](https://en.wikipedia.org/wiki/Google_File_System)
+
+GFS 即谷歌文件系统(Google File System), 是谷歌大部分服务的基础。它主要的应用场景是大文件(通常 100M 以上)的读写，工作负载主要是大规模的流式读取和小规模的随机读取，以及大规模的顺序追加写。文件一般数据写入后就很少被修改。
+
+GFS 架构如下图示：
+
+![GFS architecture](https://cdn.hutusi.com/images/software/GFS-architecture.JPG)
+
+单个 GFS 集群包含一个 master 和多个 chunkserver(一般是普通 Linux 机器), GFS 将文件分割成若干个固定大小的 chunk。在 chunk 创建的时候，master 会给每个 chunk 分配不变且唯一的64位 chunk 标识。chunkserver 将 chunk 以 Linux 文件形式存储在本地，并根据 chunk 标识和字节范围来读写块数据。一般为了可靠性的考虑会有3个 chunkserver 备份。chunk 设计比较大: 64M.
+
+master 管理所有的文件系统元数据信息。包括： 1. 文件和 chunk 的命名空间（前缀压缩算法存储）；2. 文件和 chunk 的映射；3. chunk 的位置信息。这三种元数据信息都存在内存中，且只有前二者会以日志形式持久化存储。
+
+单一的 master 节点简化了系统设计，但也需要减少对 master 的读写，避免 master 成为瓶颈。master 只存元数据信息，当客户端询问到它应该联系的 chunkserver 后，便直接跟 chunkserver 进行读写操作。
+
+* 系统交互： 通过租约(lease)机制来保证在所有 chunksever 上执行的变更操作顺序一致。
+* 数据一致性：相对松散的一致性模型（保证结果一致性）。
+* 数据完整性：通过 checksum 来检测，并通过 chunkserver 备份恢复数据。
+
+资料：
+
+* [GFS 论文](https://pdos.csail.mit.edu/6.824/papers/gfs.pdf)
+* [GFS 论文中文翻译](http://blog.bizcloudsoft.com/wp-content/uploads/Google-File-System%E4%B8%AD%E6%96%87%E7%89%88_1.0.pdf)
+
+### 5. [Bigtable](https://en.wikipedia.org/wiki/Bigtable)
+
+#### Bigtable 的设计目标
+
+Google 提供的服务很多，需要存储的数据格式种类繁多，有海量的服务请求. 这些诉求也是 Bigtable 的设计目标：
+
+* 广泛的适用性 wide applicabilityy
+* 可扩展性 scalability
+* 高性能 high performance
+* 高可用性 high availability
+
+#### Bigtable 的数据模型
+
+> A Bigtable is a sparse, distributed, persistent multidimensional sorted map.
+
+Map 以 { row key, column key, timestamp } 为索引(key), value 是内容字符串。
+
+```
+(row:string, column:string,time:int64)->string
+```
+
+* row: 每行数据拥有唯一的 row key, 所有数据按 row key 字典序排序。对一行数据的读或者写操作都是原子的。
+* tablet: 一个连续的 row key 区间划分成一个 tablet. tablet 尺寸在 100M ~ 200M, 随着数据的增长一个 tablet 会被分裂成多个 tablets.
+* column: column key 的命名规则为 `列族:限定词`。如 `anchor:cnnsi.com`
+* column family(列族): 一个或多个相同类型的列的集合, 权限控制的最小单元。
+* timestamp: Bigtable 使用 timestamp 来标识不同的版本。同一个 column key 的多个版本按 timestamp 倒序存放，这样查询时总是先读取到最新的版本。每一个 column family 允许用户配置最多保留的版本数量（3个），超出的版本将会被清理掉。
+
+#### Bigtable 系统组成
+
+三个组成部分：
+
+* 链接到客户端的 library.
+* 1 个 master server: 
+	* 为 tablet 分配 tablets
+	* 检测新加入的或者过期失效的 table server
+  * 对 tablet server 进行负载均衡
+	* 对保存在 GFS 上的文件进行垃圾收集
+	* schema 修改
+* 多个 tablet server: 
+  * 每个 tablet server 都管理一个 tablet 的集合 (tablets set, 10 ~ 1000 个 tablets)
+	* 每个 tablet server 负责处理它所加载的 tablet 的读写操作，以及在 tablet 过大时，对其进行分割。
+
+tablet 定位: tablet 的位置信息存储在一个类似 B+ 树的三层结构中，通过 row key 定位 tablet。
+
+tablet 分配: 同一时间，一个 tablet 只能被分配给一个 tablet server. master 通过 chubby 分布式锁服务来监测管理 tablet server.
+
+tablet 读写与服务: tablet 持久化存储在 GFS 上，内存到文件系统是通过 memtable 和 SSTable 的对应转换完成。
+
+#### 关键设计
+
+* LSM Tree (Log-Structured Merge Tree)
+
+资料：
+
+* [Bigtable 论文](https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf)
+* [Bigtable 论文中文翻译](http://blog.bizcloudsoft.com/wp-content/uploads/Google-Bigtable%E4%B8%AD%E6%96%87%E7%89%88_1.0.pdf)
+* 解读: [回顾Bigtable的经典设计](http://www.nosqlnotes.com/technotes/bigtable-keydesign/)
+
+## 其他
+
+### 1. [RSA panel: How to Reduce Supply Chain Risk: Lessons from Efforts to Block Huawei](https://www.rsaconference.com/usa/agenda/how-to-reduce-supply-chain-risk-lessons-from-efforts-to-block-huawei)
+
+RSA 是全球最知名的安全技术峰会，今年的会议上有一个 [panel](https://www.rsaconference.com/usa/agenda/how-to-reduce-supply-chain-risk-lessons-from-efforts-to-block-huawei) 是专门讨论去年美国制裁华为对供应链的影响。嘉宾有: Katie Arrington(美国国防部网络信息安全官 CISO), Andy Purdy(华为首席安全官), Bruce Schneier(安全专家，《应用密码学》的作者), Kathryn Waldron(R Street 机构 Fellow). 
+
+Panel 的主题是如何减少供应链的网络安全风险，是站在美国的角度讨论的。Katie 是美国政府官员，聊着聊着她就回到政治上。Bruce 不止一次纠正她讨论的内容是网络安全，不是贸易战。当大家在说到如何削减网络风险时，Katie 说中国一直在偷窃美国的知识产权；当大家问她华为能不能参加跟其他公司同样的安全测试时，她两手一摊：“法律不允许啊”；当谈到网络风险是否与地域和国家有关时，她的说法是“我们是民主国家”。Bruce 的论述则一直紧扣网络安全，他认为 5G 也是不安全的，而是应该研究更安全的 6G; 那个 NSA 控制了所有技术去监控通信的时代已经过去了（意为这种不安全的传输协议也给其他国家或组织留下了后门），必须要在通信网络和 IoT 设备上提升安全等级。这个 Panel 的视频值得一看，可以侧面了解美国人的一些思维方式。
+
+*********************************************
+
+> 奥斯卡今天已不太相信预兆。然而当时预兆却相当多，这暗示一场灾祸将临。这场灾祸穿上越来越大的皮靴，还想迈开越来越大的步伐，把不幸带到四面八方。这时，我的朋友赫伯特·特鲁钦斯基死了，一个木制女人给他的前胸添了一道创伤。这个女人却没有死。她被封存起来了，据称是为了修复而存放在博物馆的地下室里。可是，人们无法将灾祸关进地下室。灾祸同污水一起从下水道流出去，同煤气一道从煤气管道里散出去，到了每个住家。把汤锅放在蓝色火苗上煮的人，谁都没有料到，煮开他的汤的竟是灾祸。
+>
+> 【德】君特·格拉斯《铁皮鼓》 胡其鼎 译    
+>  (本段摘自章节 有信有望有爱)

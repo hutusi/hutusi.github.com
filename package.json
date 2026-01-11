@@ -1,20 +1,46 @@
 {
+  "name": "hutusi-nextjs",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build:scss": "sass --load-path=assets/scss --load-path=assets/css assets/css/main.scss assets/dist/style.css --no-source-map --style=expanded",
-    "build:css": "postcss assets/dist/style.css -o assets/dist/style.min.css",
-    "build:styles": "npm run build:scss && npm run build:css",
-    "build:js": "esbuild assets/js/*.js --bundle --minify --outdir=assets/dist --entry-names=[name].min",
-    "build": "npm run build:styles && npm run build:js",
-    "watch:scss": "sass --load-path=assets/scss --load-path=assets/css assets/css/main.scss assets/dist/style.css --watch --no-source-map --style=expanded",
-    "watch:css": "postcss assets/dist/style.css -o assets/dist/style.min.css --watch",
-    "watch:js": "esbuild assets/js/*.js --bundle --outdir=assets/dist --entry-names=[name].min --watch",
-    "watch": "concurrently -n scss,css,js -c cyan,yellow,green \"npm:watch:scss\" \"npm:watch:css\" \"npm:watch:js\""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@giscus/react": "^3.1.0",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.1.1",
+    "gray-matter": "^4.0.3",
+    "next": "16.1.1",
+    "next-mdx-remote": "^5.0.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "reading-time": "^1.5.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "cssnano": "^6.1.2",
-    "esbuild": "^0.25.9",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1"
-  }
+    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
 }

@@ -1,0 +1,190 @@
+---
+title: 周刊第六期
+date: '2020-10-25T12:30:00.000Z'
+category: weekly
+tags:
+  - 周刊
+subtitle: '气候问题, 变糟的互联网, 开源, 远离政治, 写书的价值, github, 猫咪演奏, VS Code'
+image: weeklies/6-ev-williams.jpg
+gh_discussion: 90
+redirect_from:
+  - /weekly-6
+  - /articles/weekly-6
+---
+
+本周刊系列最早是效仿阮一峰做单周分享，但对于我个人来说整理工作量较大，而改成月刊的话周期又太长，且积累素材过多。因此准备改成双周刊形式，每两周的周末发布，记录这段时间里看到的一些有价值的信息。本文为周刊第六期，前期的周刊参见：[周刊系列](/tag/周刊)。
+
+关于这份周刊，还缺一个名字。阮一峰的叫“科技爱好者周刊”，他又曾调侃为“赛博朋克周刊”。我还没想好冠名。
+
+## 文摘
+
+### 1. 业内专家说：可回收是一场骗局，只是为了卖更多的塑料制品
+
+原文: [Recycling was a lie — a big lie — to sell more plastic, industry experts say](https://www.cbc.ca/documentaries/the-passionate-eye/recycling-was-a-lie-a-big-lie-to-sell-more-plastic-industry-experts-say-1.5735618)
+
+一部名为《塑料战争》(*Plastic Wars*)的纪录片通过塑料行业专家视角揭露所谓可回收塑料制品的骗局：只有不到10%的塑料制品被回收，塑料瓶上的可回收标记被用来做营销工具；大量的塑料废品被运到中国，以及东南亚“被回收”。（中国已于2018年停止塑料废品进口。）最后，专家估计，到2050年塑料产品将是现在的三倍。
+
+### 2. 比尔·盖茨：新冠病毒很致命，但气候变暖更糟糕
+
+原文: [COVID-19 is awful. Climate change could be worse.](https://www.gatesnotes.com/Energy/Climate-and-COVID-19)
+
+比尔·盖茨说，虽然新冠(COVID-19)给世界带来了很大的灾难，但相比之下，气候变化带来的灾难会更糟糕。截止到上周，有60万人死于新冠病毒（十万分之14），而气候变化造成的四万人数将在2060年达到同等比例，2100年将是这个数字的5倍。
+
+今年因为新冠疫情，全球碳排放减少了八个百分点，但这是以全球“封城”的代价换来的，对经济造成的损失是巨大的。文中也预计，环境变化造成的经济损失远大于新冠造成的损失。
+
+新冠病毒尽管破坏力强，但盖茨预计疫苗明年就可以面世，但气候变化是很难逆转和快速治理的，全球必须团结起来：1. 探索科学和创新之路；2. 让贫穷国家也能用上；3. 必须立即开始行动。
+
+> Health advocates said for years that a pandemic was virtually inevitable. The world did not do enough to prepare, and now we are trying to make up for lost time. This is a cautionary tale for climate change, and it points us toward a better approach. If we start now, tap into the power of science and innovation, and ensure that solutions work for the poorest, we can avoid making the same mistake with climate change.
+
+### 3. 互联网坏了，@ev 在试图去修复
+
+原文: [‘The Internet Is Broken’: @ev Is Trying to Salvage It](https://www.nytimes.com/2017/05/20/technology/evan-williams-medium-twitter-internet.html?emc=edit_th_20170521&nl=todaysheadlines&nlid=68634180/%27The)
+
+Evan Williams(网名 @ev) 是 Blogger, Twitter, Medium 三代社交媒体平台的创始人（或联合创始人），本文是《纽约时报》在2017年对他的采访。Evan 曾经认为只要人们可以自由发声并交换信息和想法，这个时间就会自动的变得更好。而互联网正是这样的平台，他因此创造了 Blogger 以及更为自由的 Twitter. 
+
+> “I thought once everybody could speak freely and exchange information and ideas, the world is automatically going to be a better place,” Mr. Williams says. “I was wrong about that.”
+
+但随着人们利用互联网社交平台来传播暴力、自杀行为、凶杀，以及虚假新闻的大规模传播，并被不良分子利用时。他开始反思自己曾经的认识是错误的：互联网的问题在于它奖励极端行为。就像马路上发生了一起车祸，大家都来观看，而社交行为看上去像是大家都在期待车祸。
+
+> The trouble with the internet, Mr. Williams says, is that it rewards extremes.
+
+因此 Evan 创造了新的社交媒体平台: Medium. 而 Medium 的目标是创造一个新的媒体模型来对抗虚假和无用信息。
+
+> Its ambition: define a new model for media in a world struggling under the weight of fake or worthless content. Medium is supposed to be social and collaborative without rewarding the smash-ups. It is supposed to be a force for good.
+
+### 4. Linux Kernel 中十分之一的代码是 AMD 显卡驱动代码
+
+原文: [The AMD Radeon Graphics Driver Makes Up Roughly 10.5% Of The Linux Kernel](https://www.phoronix.com/scan.php?page=news_item&px=Linux-5.9-AMDGPU-Stats)
+
+Linux Kernel 5.9 版本代码有两千多万行代码(20.49M Loc)，其中两百多万行代码(2.16M Loc)是 AMD GPU 的驱动代码，不过这里面大部分(1.79M Loc)是自动生成的头文件。
+
+### 5. 开源是开发模式还是商业模式，或是其他？
+
+原文: [Is open source a development model, business model, or something else?](https://opensource.com/article/20/10/open-source-supply-chain)
+
+有人认为开源是一种开发模式，强调其协作、去中心化的特点；也有人认为开源是一种商业模式，通过开源来提供服务与支持、SaaS、付费功能等。
+
+> Instead of thinking about open source as a development model or a business model, perhaps companies should think in terms of a supply chain from which they can purchase technology.
+
+另外，文中提到有些人会混淆开源项目(open source projects)和开源产品(open source products)这两个概念。作者给了简单的解释区分：产品就是人们愿意花钱付费购买的东西，而项目是人们参与、贡献或使用的东西。
+
+因此，如果以产品为中心来看待开源，那么开源构建了软件的供应链。也就是说，开源是组成软件产业的基座。
+
+> Open source is a supply chain model.
+
+### 6. 珍惜幸福，远离政治
+
+原文: [Reading Too Much Political News Is Bad for Your Well-Being](https://www.theatlantic.com/family/archive/2020/10/reading-too-much-political-news-bad-happiness/616651/)
+
+本文是 Arthur C. Brooks 在 The Atlantic 上的系列 *HOW TO BUILD A LIFE* 的其中一篇，文章标题即“阅读过多的政治新闻不利于幸福”。
+
+作者认为，政治越来越影响（美国）人们的生活，而且是往坏的方向影响，沉迷于政治会损害自己的幸福和与他人的关系。政治观念甚至影响了择偶，根据盖洛普统计报告，1958年，%33的民主党人希望孩子的对象是民主党，25%的共和党人希望孩子的对象是共和党；而到了2016年，这两个数字分别变成了60%和63%，作者怀疑2020年会更高。
+
+> “Those attached to perception and views roam the world offending people.”
+
+而政治的偏见也会影响人们对于世界的正确认识，研究表明，那些只看带有政治倾向（无论是左还是右）电视新闻的人比不看新闻的人对世界知识了解的更少。也就是说，他们选择相信不客观的信息。
+
+作者最后给出几个建议：
+
+1. 参与其中，而不是观看不做。关掉电视，去参加社区活动、和他人一起工作。
+2. 理性消费政治，限制花在政治争论上的时间。
+3. 关掉极右或极左的新闻信息源，特别是你正站队的一边。
+
+### 7. 还值得写书吗？
+
+原文: [Writing a book: is it worth it?](https://martin.kleppmann.com/2020/09/29/is-book-writing-worth-it.html)
+
+作者的技术书籍刚卖出十万本，作者在本文分享了他对于写书（技术类）的一些看法。
+
+从经济角度讲，大部分书卖不了什么钱。虽然《哈利·波特》卖的很火，但就像组乐队一样，成为摇滚明星的可能性接近于0. 作者花了两年半时间来全职写书，通过该书获得了47万美元的版税收入，只不过不是每个人都能像他一样获得成功。作者认为除了版税带来的经济价值外，写书还有如下好处：
+
+* 书是最容易获得的教育资源。相比其他教育方式，书是最便宜的。
+* 书能带来更多的收益。如果花2.5年写书，但可以节省其他人总共833年的时间，这是300倍的杠杆效应。
+
+总结起来，作者认为写技术书是很有意义的事情，因为书：
+
+* 有价值(valuable): 让读者提升技能，更好的工作）。
+* 可扩展性(scalable): （相比其他教学方式）更多的人可以受益。
+* 可获得性(accessible): （相比其他教学方式）更容易获得，成本也更低。
+* 经济上可靠(economically viable): 版税带来的收入支撑作者。
+
+> It would be interesting to compare it to working on open source software, another activity that can have significant positive impact but is difficult to get paid for.
+
+### 8. GitHub 因 RIAA 版权要求删除 youtube-dl 开源代码仓
+
+原文: [github/dmca](https://github.com/github/dmca/blob/master/2020/10/2020-10-23-RIAA.md)
+
+GitHub 应美国唱片工业协会(RIAA)要求，删除涉嫌违反版权条例的 youtube-dl 开源代码仓及相关 fork 仓库。同时，声明中还指出，代码样例中使用到的音乐下载样例也有误导用户违反版权的嫌疑。
+
+截止当前，[youtube-dl 官网](https://youtube-dl.org/)注明了这一事件，但仍可以通过压缩包方式下载源码和工具。
+
+## 有趣
+
+### 1. 买可用一生的产品
+
+原文: [Buy for life](https://www.buyforlifeproducts.com/)
+
+为了环保，网站推荐可以使用一生的产品，有耐穿的衣服，有经用的家电。
+
+### 2. Bash 上试试 :!q
+
+原文: [Escaping strings in Bash using !:q](https://til.simonwillison.net/til/til/bash_escaping-a-string.md)
+
+在命令行上先输入以 `#` 开头的任意字符，回车执行；然后再输入 `!:q` 执行，看看会发生什么：
+
+```sh
+$ # hello, world!
+$ !:q
+$ '#' 'hello,' 'world!'
+```
+
+文中对 `!:q` 命令解释：这是一个脚本的小技巧，`!` 将历史命令展开，`:q` 对结果加引用标记(quote)。
+
+### 3. 猫咪演奏
+
+原文: [bongo cat](https://bongo.cat/)
+
+一个网页演奏的小应用，通过敲击键盘控制屏幕上的小猫来演奏不同的乐器：手鼓、铙钹、铃铛、钢琴和木琴。即使不会乐器，通过敲击键盘即可演奏一首曲子，如《生日快乐歌》：
+
+> 1 1 3 1 6 5
+> 1 1 3 1 8 6
+
+该网页应用已开源。
+
+## 有用
+
+### 1. 16000个 BBC 音效资源下载
+
+链接: [BBC Sound Effects Archive Resource](http://bbcsfx.acropolis.org.uk/)
+
+BBC 公开了音效资源，并开放下载，可供个人、教育及研究用途使用。
+
+### 2. 互联网时间穿梭机
+
+链接: [The Old Internet](http://theoldnet.com/)
+
+这是一个利用互联网档案馆(Internet Archive)资源提供的访问各网站以往历史的网站，用户可以看google、youtube 这些网站多年前是什么样子的，甚至可以看到扎克伯格在中学时做的个人网站。
+
+### 3. 真伪佛陀语录
+
+伪佛陀语录: [Fake Buddha Quotes](https://fakebuddhaquotes.com/)
+
+真佛陀语录: [Real Buddha Quotes](https://www.realbuddhaquotes.com/)
+
+正如我们写作文喜欢引用外国名人语录一样，欧美人写作也会引用东方的名人语录。引用最多的估计就是佛陀、孔子、老子。但因为翻译的关系，很多语录被张冠李戴甚至是后人杜撰的。因此，有网站专门写博客来辟谣伪佛陀语录，而且作者还开设了真佛陀语录博客网站。至于这里面说的准不准确，也需要考证一番。
+
+### 4. Visual Studio Code
+
+原文: [The Era of Visual Studio Code](https://blog.robenkleene.com/2020/09/21/the-era-of-visual-studio-code/)
+
+从 Visual Studio Code (VS Code) 发布以来，受欢迎程度越来越高。作者总结了编辑器流行的趋势，如下：
+
+> BBEdit/Emacs/Vim --> TextMate --> Sublime Text --> Atom --> VS Code
+
+可谓是编辑器代有才人出，各领风骚数几年。VS Code 是不是编辑器的终结不知道，但现在确实是 VS Code 的时代。
+
+*********************************************
+
+> 我们有时会怜悯那些对我们或自己或对别人都没有一点怜悯感觉的人。      
+>
+> 艾米莉·勃朗特《呼啸山庄》 方平 译   
