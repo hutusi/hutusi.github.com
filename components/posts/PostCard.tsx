@@ -29,7 +29,25 @@ export default function PostCard({ post }: PostCardProps) {
         <p className="text-sm text-gray-600 mt-2 flex-1 line-clamp-3">
           {truncate(post.excerpt, 100)}
         </p>
-        <div className="mt-4 flex items-center justify-between text-xs text-gray-500">
+        {post.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-3">
+            {post.tags.slice(0, 3).map((tag) => (
+              <Link
+                key={tag}
+                href={`/tag/${encodeURIComponent(tag)}/`}
+                className="px-2 py-0.5 text-xs bg-gray-100 text-gray-600 rounded hover:bg-[var(--accent)] hover:text-white transition-colors"
+              >
+                {tag}
+              </Link>
+            ))}
+            {post.tags.length > 3 && (
+              <span className="px-2 py-0.5 text-xs text-gray-400">
+                +{post.tags.length - 3}
+              </span>
+            )}
+          </div>
+        )}
+        <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
           <span>{post.readingTime} min read</span>
         </div>
