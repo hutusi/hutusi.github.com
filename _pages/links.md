@@ -59,6 +59,7 @@ commentable: true
 
 以下是添加的友链，排名不分先后：
 
+- [HaydenBi](https://haydenbi.com){:target="\_blank" rel="nofollow"} Coffee & Indie Developer
 - [Honesty](https://blog.hehouhui.cn){:target="\_blank" rel="nofollow"} 从浩瀚无垠的知识中看到到一缕光
 - [特立独行的异类](https://www.demochen.com){:target="\_blank" rel="nofollow"} 引入变量，跳出死循环，从不确定性中获益
 - [蓝卡](https://www.lanka.cn){:target="\_blank" rel="nofollow"} 2006年开始写博客，美好科技生活方式
