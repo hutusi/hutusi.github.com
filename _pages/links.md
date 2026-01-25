@@ -59,6 +59,7 @@ commentable: true
 
 以下是添加的友链，排名不分先后：
 
+- [MEMEX](https://memex.keinmal.top){:target="\_blank" rel="nofollow"} 博空间隐蔽而开放的角落
 - [HaydenBi](https://haydenbi.com){:target="\_blank" rel="nofollow"} Coffee & Indie Developer
 - [Honesty](https://blog.hehouhui.cn){:target="\_blank" rel="nofollow"} 从浩瀚无垠的知识中看到到一缕光
 - [特立独行的异类](https://www.demochen.com){:target="\_blank" rel="nofollow"} 引入变量，跳出死循环，从不确定性中获益
