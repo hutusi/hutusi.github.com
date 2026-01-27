@@ -96,18 +96,19 @@ This document tracks the migration progress from Jekyll to Next.js.
   - Add gradient backgrounds using accent colors
   - Add scale(1.05) transform on hover
 
-#### Phase 3: Component Enhancements
-- [ ] Enhance PostCard with image effects and badges
+#### Phase 3: Component Enhancements ✓
+- [x] Enhance PostCard with image effects and badges
   - Add image scale effect on hover (group-hover:scale-105)
   - Add gradient overlay on image hover
   - Add category badge in top-left corner
-- [ ] Add page transition animations
+- [x] Add page transition animations
   - Create fadeIn keyframe animation
   - Add .animated-underline for links
   - Add stagger animation for lists
-- [ ] Enhance FeaturedSection with bento grid layout
-  - Create hero + secondary card layout
+- [x] Enhance FeaturedSection with bento grid layout
+  - Create hero + secondary card layout (hero spans 2 cols)
   - Add gradient overlay for text readability
+  - Add FeaturedCard variants (hero, compact, default)
 
 #### Phase 4: Advanced Features
 - [ ] Implement dark mode support

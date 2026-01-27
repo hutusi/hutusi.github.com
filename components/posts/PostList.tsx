@@ -21,7 +21,7 @@ export default function PostList({ posts, title, showMore }: PostListProps) {
           {showMore && (
             <a
               href={showMore.href}
-              className="text-sm text-gray-500 hover:text-[var(--accent)] transition-colors"
+              className="text-sm text-[var(--foreground-muted)] hover:text-[var(--accent)] transition-colors animated-underline"
             >
               {showMore.text} →
             </a>
@@ -30,7 +30,9 @@ export default function PostList({ posts, title, showMore }: PostListProps) {
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
+          <div key={post.slug} className="stagger-item">
+            <PostCard post={post} />
+          </div>
         ))}
       </div>
     </section>
