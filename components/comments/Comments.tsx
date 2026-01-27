@@ -24,7 +24,7 @@ export default function Comments({ url, identifier, title }: CommentsProps) {
 
   return (
     <div className="mt-12 pt-8 border-t border-gray-200" id="comments">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">评论</h2>
+      <h2 className="section-title text-2xl font-bold text-gray-900 mb-6">评论</h2>
 
       <div className="flex gap-2 mb-6">
         <button

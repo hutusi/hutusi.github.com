@@ -2,23 +2,49 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --accent: #00ab6b;
-  --accent-hover: #038252;
-  --muted: #6c757d;
-  --border: rgba(0, 0, 0, 0.125);
+  /* Background colors */
+  --background: #fafafa;
+  --background-elevated: #ffffff;
+
+  /* Foreground colors */
+  --foreground: #18181b;
+  --foreground-secondary: #52525b;
+  --foreground-muted: #a1a1aa;
+
+  /* Accent colors */
+  --accent: #10b981;
+  --accent-hover: #059669;
+  --accent-light: #d1fae5;
+  --accent-lighter: #ecfdf5;
+
+  /* Border colors */
+  --border: #e4e4e7;
+  --border-light: #f4f4f5;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+
+  /* Legacy compatibility */
+  --muted: var(--foreground-muted);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
   --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-muted: var(--foreground-muted);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-  --color-muted: var(--muted);
+  --color-accent-light: var(--accent-light);
+  --color-accent-lighter: var(--accent-lighter);
   --color-border: var(--border);
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --color-border-light: var(--border-light);
+  /* Chinese-optimized font stack */
+  --font-sans: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --font-serif: "Noto Serif SC", "Songti SC", Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 }
 
@@ -27,6 +53,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   line-height: 1.6;
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Prose styles for article content */
@@ -35,17 +65,24 @@ body {
   --tw-prose-headings: var(--foreground);
   --tw-prose-links: var(--accent);
   --tw-prose-bold: var(--foreground);
-  --tw-prose-counters: var(--muted);
-  --tw-prose-bullets: var(--muted);
+  --tw-prose-counters: var(--foreground-muted);
+  --tw-prose-bullets: var(--foreground-muted);
   --tw-prose-hr: var(--border);
   --tw-prose-quotes: var(--foreground);
   --tw-prose-quote-borders: var(--accent);
-  --tw-prose-captions: var(--muted);
+  --tw-prose-captions: var(--foreground-muted);
   --tw-prose-code: var(--foreground);
   --tw-prose-pre-code: #e5e7eb;
   --tw-prose-pre-bg: #1f2937;
   --tw-prose-th-borders: var(--border);
   --tw-prose-td-borders: var(--border);
+  /* Chinese text optimization */
+  letter-spacing: 0.02em;
+}
+
+.prose p {
+  text-align: justify;
+  text-justify: inter-ideograph;
 }
 
 .prose a {
@@ -74,14 +111,33 @@ body {
 
 /* Card styles */
 .card {
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s;
+  background: var(--background-elevated);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border);
+  transform: translateY(-2px);
+}
+
+/* Section title with accent */
+.section-title {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 1.5rem;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 /* Smooth scroll */

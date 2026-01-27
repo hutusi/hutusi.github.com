@@ -63,9 +63,65 @@ This document tracks the migration progress from Jekyll to Next.js.
 
 ## In Progress
 
-### Styling Refinements
-- [ ] Fine-tune Mediumish theme colors and spacing
-- [ ] Optimize typography for Chinese content
+### Visual Design Improvements
+
+#### Phase 1: Foundation ✓
+- [x] Update color palette and CSS variables in globals.css
+  - Add surface colors (--background-elevated)
+  - Add semantic foreground colors (--foreground-secondary, --foreground-muted)
+  - Add accent variations (--accent-light, --accent-lighter)
+  - Add shadow variables (--shadow-sm, --shadow-md, --shadow-lg)
+- [x] Optimize typography for Chinese content
+  - Add Chinese fonts (Noto Sans SC, PingFang SC, Microsoft YaHei)
+  - Increase letter-spacing for Chinese text (0.02em)
+  - Add text-align: justify for prose paragraphs
+- [x] Add section title accent styling
+  - Use ::before pseudo-element for accent bar
+
+#### Phase 2: Core Styling
+- [ ] Improve card styling with better shadows and transitions
+  - Add subtle border (1px solid var(--border-light))
+  - Add translateY(-2px) lift effect on hover
+  - Use cubic-bezier transition timing
+- [ ] Redesign Header with frosted glass effect
+  - Add backdrop-blur-md and bg-white/80
+  - Create logo icon with gradient background
+  - Improve navigation link hover states
+- [ ] Redesign Footer with multi-column layout
+  - Add gradient background
+  - Create link sections (探索, 关于)
+  - Improve social icon styling
+- [ ] Update tag and category pill styling
+  - Add gradient backgrounds using accent colors
+  - Add scale(1.05) transform on hover
+
+#### Phase 3: Component Enhancements
+- [ ] Enhance PostCard with image effects and badges
+  - Add image scale effect on hover (group-hover:scale-105)
+  - Add gradient overlay on image hover
+  - Add category badge in top-left corner
+- [ ] Add page transition animations
+  - Create fadeIn keyframe animation
+  - Add .animated-underline for links
+  - Add stagger animation for lists
+- [ ] Enhance FeaturedSection with bento grid layout
+  - Create hero + secondary card layout
+  - Add gradient overlay for text readability
+
+#### Phase 4: Advanced Features
+- [ ] Implement dark mode support
+  - Add @media (prefers-color-scheme: dark) CSS variables
+  - Create ThemeProvider component
+  - Add theme toggle button in Header
+- [ ] Add reading progress indicator
+  - Fixed position below header
+  - Track scroll progress through article
+- [ ] Create Table of Contents component for articles
+  - Parse headings from MDX content
+  - Create sticky sidebar on desktop
+  - Highlight current section on scroll
+
+### Other Styling
 - [ ] Add syntax highlighting for code blocks (rehype-pretty-code)
 
 ## Pending
@@ -78,9 +134,6 @@ This document tracks the migration progress from Jekyll to Next.js.
 
 ### Additional Features
 - [ ] Social sharing buttons (Twitter, Facebook, LinkedIn, Weibo, Douban, Zhihu)
-- [ ] Table of Contents (TOC) component for long articles
-- [ ] Reading progress indicator
-- [ ] Dark mode toggle
 - [ ] Search functionality (consider Pagefind or Algolia)
 
 ### Content Enhancements
