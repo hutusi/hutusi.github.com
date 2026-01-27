@@ -30,6 +30,24 @@
   --muted: var(--foreground-muted);
 }
 
+/* Dark mode */
+.dark {
+  --background: #0a0a0a;
+  --background-elevated: #171717;
+  --foreground: #fafafa;
+  --foreground-secondary: #a1a1aa;
+  --foreground-muted: #71717a;
+  --accent: #34d399;
+  --accent-hover: #10b981;
+  --accent-light: #064e3b;
+  --accent-lighter: #022c22;
+  --border: #27272a;
+  --border-light: #1c1c1e;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-background-elevated: var(--background-elevated);
@@ -107,6 +125,12 @@ body {
 .prose blockquote {
   border-left-color: var(--accent);
   font-style: italic;
+}
+
+/* Dark mode prose adjustments */
+.dark .prose {
+  --tw-prose-pre-code: #d1d5db;
+  --tw-prose-pre-bg: #1f2937;
 }
 
 /* Card styles */

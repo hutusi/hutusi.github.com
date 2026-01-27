@@ -110,18 +110,19 @@ This document tracks the migration progress from Jekyll to Next.js.
   - Add gradient overlay for text readability
   - Add FeaturedCard variants (hero, compact, default)
 
-#### Phase 4: Advanced Features
-- [ ] Implement dark mode support
-  - Add @media (prefers-color-scheme: dark) CSS variables
-  - Create ThemeProvider component
-  - Add theme toggle button in Header
-- [ ] Add reading progress indicator
+#### Phase 4: Advanced Features ✓
+- [x] Implement dark mode support
+  - Add .dark class CSS variables
+  - Add inline script for flash prevention
+  - Add theme toggle button in Header (sun/moon icons)
+- [x] Add reading progress indicator
   - Fixed position below header
   - Track scroll progress through article
-- [ ] Create Table of Contents component for articles
-  - Parse headings from MDX content
-  - Create sticky sidebar on desktop
-  - Highlight current section on scroll
+  - Gradient accent color bar
+- [x] Create Table of Contents component for articles
+  - Parse headings (h2, h3) from article content
+  - Create sticky sidebar on desktop (xl breakpoint)
+  - Highlight current section on scroll with IntersectionObserver
 
 ### Other Styling
 - [ ] Add syntax highlighting for code blocks (rehype-pretty-code)
