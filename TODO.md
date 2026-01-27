@@ -78,20 +78,21 @@ This document tracks the migration progress from Jekyll to Next.js.
 - [x] Add section title accent styling
   - Use ::before pseudo-element for accent bar
 
-#### Phase 2: Core Styling
-- [ ] Improve card styling with better shadows and transitions
+#### Phase 2: Core Styling ✓
+- [x] Improve card styling with better shadows and transitions
   - Add subtle border (1px solid var(--border-light))
   - Add translateY(-2px) lift effect on hover
   - Use cubic-bezier transition timing
-- [ ] Redesign Header with frosted glass effect
+- [x] Redesign Header with frosted glass effect
   - Add backdrop-blur-md and bg-white/80
   - Create logo icon with gradient background
   - Improve navigation link hover states
-- [ ] Redesign Footer with multi-column layout
+  - Add active state indicator for current page
+- [x] Redesign Footer with multi-column layout
   - Add gradient background
   - Create link sections (探索, 关于)
-  - Improve social icon styling
-- [ ] Update tag and category pill styling
+  - Improve social icon styling with circular buttons
+- [x] Update tag and category pill styling
   - Add gradient backgrounds using accent colors
   - Add scale(1.05) transform on hover
 

@@ -27,11 +27,11 @@ export default async function TagsPage() {
           <Link
             key={tag.name}
             href={`/tag/${encodeURIComponent(tag.name)}/`}
-            className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-[var(--accent)] hover:text-white transition-colors"
+            className="px-4 py-2 bg-gradient-to-br from-[var(--accent-lighter)] to-[var(--accent-light)] text-[var(--accent-hover)] rounded-full hover:bg-[var(--accent)] hover:from-[var(--accent)] hover:to-[var(--accent)] hover:text-white transition-all hover:scale-105"
             style={{ fontSize: `${getFontSize(tag.count)}rem` }}
           >
             {tag.name}
-            <span className="ml-1 text-gray-400">({tag.count})</span>
+            <span className="ml-1 opacity-60">({tag.count})</span>
           </Link>
         ))}
       </div>

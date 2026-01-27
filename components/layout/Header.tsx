@@ -2,29 +2,43 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { navigation } from "@/config/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
+    <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-[var(--border-light)] z-50">
       <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className="text-xl font-bold text-gray-900 hover:text-[var(--accent)] transition-colors"
-        >
-          {siteConfig.title}
+        <Link href="/" className="flex items-center gap-2 group">
+          {/* Logo icon */}
+          <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-sm">
+            胡
+          </span>
+          <span className="text-xl font-bold text-gray-900 group-hover:text-[var(--accent)] transition-colors">
+            {siteConfig.title}
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-1">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-gray-600 hover:text-[var(--accent)] transition-colors"
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                isActive(item.href)
+                  ? "text-[var(--accent)] bg-[var(--accent-lighter)]"
+                  : "text-gray-600 hover:text-[var(--accent)] hover:bg-gray-50"
+              }`}
             >
               {item.title}
             </Link>
@@ -33,7 +47,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-gray-600"
+          className="md:hidden p-2 text-gray-600 hover:text-[var(--accent)] hover:bg-gray-50 rounded-lg transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -64,13 +78,17 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
-          <div className="max-w-6xl mx-auto px-4 py-4 space-y-3">
+        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-[var(--border-light)]">
+          <div className="max-w-6xl mx-auto px-4 py-3 space-y-1">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block text-gray-600 hover:text-[var(--accent)] transition-colors"
+                className={`block px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive(item.href)
+                    ? "text-[var(--accent)] bg-[var(--accent-lighter)]"
+                    : "text-gray-600 hover:text-[var(--accent)] hover:bg-gray-50"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.title}

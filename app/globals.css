@@ -140,6 +140,25 @@ body {
   border-radius: 2px;
 }
 
+/* Tag/pill styles */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--accent-lighter) 0%, var(--accent-light) 100%);
+  color: var(--accent-hover);
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tag:hover {
+  background: var(--accent);
+  color: white;
+  transform: scale(1.05);
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

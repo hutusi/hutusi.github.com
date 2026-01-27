@@ -87,7 +87,7 @@ export default async function ArticlePage({ params }: Props) {
               <Link
                 key={tag}
                 href={`/tag/${encodeURIComponent(tag)}/`}
-                className="px-3 py-1 text-sm bg-gray-100 text-gray-600 rounded-full hover:bg-[var(--accent)] hover:text-white transition-colors"
+                className="tag"
               >
                 {tag}
               </Link>
