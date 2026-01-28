@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
+import Comments from "@/components/comments/Comments";
 import type { Metadata } from "next";
 
 interface Props {
@@ -151,6 +152,9 @@ export default async function WeeklyPage({ params }: Props) {
           )}
         </div>
       </nav>
+
+      {/* Comments */}
+      <Comments url={weekly.url} identifier={weekly.slug} title={weekly.title} />
     </article>
   );
 }
