@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import rehypePrettyCode from "rehype-pretty-code";
 import type { Metadata } from "next";
 
 interface Props {
@@ -101,6 +102,18 @@ export default async function WeeklyPage({ params }: Props) {
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
+              rehypePlugins: [
+                [
+                  rehypePrettyCode,
+                  {
+                    theme: {
+                      dark: "github-dark",
+                      light: "github-light",
+                    },
+                    keepBackground: false,
+                  },
+                ],
+              ],
               format: "md",
             },
           }}

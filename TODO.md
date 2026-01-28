@@ -124,8 +124,12 @@ This document tracks the migration progress from Jekyll to Next.js.
   - Create sticky sidebar on desktop (xl breakpoint)
   - Highlight current section on scroll with IntersectionObserver
 
-### Other Styling
-- [ ] Add syntax highlighting for code blocks (rehype-pretty-code)
+### Other Styling ✓
+- [x] Add syntax highlighting for code blocks (rehype-pretty-code)
+  - Dual theme support (github-light / github-dark)
+  - Inline code styling with accent colors
+  - Line highlighting and line numbers support
+  - Code block title/caption support
 
 ## Pending
 

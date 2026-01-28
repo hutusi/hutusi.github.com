@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import rehypePrettyCode from "rehype-pretty-code";
 import Comments from "@/components/comments/Comments";
 import ReadingProgress from "@/components/posts/ReadingProgress";
 import TableOfContents from "@/components/posts/TableOfContents";
@@ -122,7 +123,19 @@ export default async function ArticlePage({ params }: Props) {
                 options={{
                   mdxOptions: {
                     remarkPlugins: [remarkGfm],
-                    rehypePlugins: [rehypeSlug],
+                    rehypePlugins: [
+                      rehypeSlug,
+                      [
+                        rehypePrettyCode,
+                        {
+                          theme: {
+                            dark: "github-dark",
+                            light: "github-light",
+                          },
+                          keepBackground: false,
+                        },
+                      ],
+                    ],
                     format: "md",
                   },
                 }}
