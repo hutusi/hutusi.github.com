@@ -30,10 +30,12 @@ export async function getAllPosts(): Promise<Post[]> {
     return [];
   }
 
-  const files = fs.readdirSync(postsDirectory).filter((f) => f.endsWith(".mdx"));
+  const files = fs
+    .readdirSync(postsDirectory)
+    .filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
 
   const posts = files.map((file) => {
-    const slug = file.replace(".mdx", "");
+    const slug = file.replace(/\.mdx?$/, "");
     const fullPath = path.join(postsDirectory, file);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
@@ -58,7 +60,10 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  let fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(postsDirectory, `${slug}.md`);
+  }
   if (!fs.existsSync(fullPath)) return null;
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -84,10 +89,10 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
 
   const files = fs
     .readdirSync(weekliesDirectory)
-    .filter((f) => f.endsWith(".mdx"));
+    .filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
 
   const weeklies = files.map((file) => {
-    const slug = file.replace(".mdx", "");
+    const slug = file.replace(/\.mdx?$/, "");
     const fullPath = path.join(weekliesDirectory, file);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
@@ -112,7 +117,10 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
 }
 
 export async function getWeeklyBySlug(slug: string): Promise<Weekly | null> {
-  const fullPath = path.join(weekliesDirectory, `${slug}.mdx`);
+  let fullPath = path.join(weekliesDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(weekliesDirectory, `${slug}.md`);
+  }
   if (!fs.existsSync(fullPath)) return null;
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -214,7 +222,10 @@ export async function getPageContent(slug: string): Promise<{
   description?: string;
   commentable?: boolean;
 } | null> {
-  const fullPath = path.join(pagesDirectory, `${slug}.mdx`);
+  let fullPath = path.join(pagesDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(pagesDirectory, `${slug}.md`);
+  }
   if (!fs.existsSync(fullPath)) return null;
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
