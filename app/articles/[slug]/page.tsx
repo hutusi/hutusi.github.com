@@ -61,7 +61,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <>
       <ReadingProgress />
-      <article className="max-w-3xl mx-auto px-4 py-8">
+      <article className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-[var(--foreground)] mb-4">

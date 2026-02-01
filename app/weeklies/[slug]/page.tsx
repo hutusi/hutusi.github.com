@@ -51,7 +51,7 @@ export default async function WeeklyPage({ params }: Props) {
   const { prev, next } = await getAdjacentPosts(slug, "weekly");
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-8">
+    <article className="max-w-4xl mx-auto px-4 py-8">
       {/* Header */}
       <header className="mb-8">
         <div className="text-sm text-[var(--accent)] font-medium mb-2">

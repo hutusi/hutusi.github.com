@@ -125,6 +125,24 @@ body {
   overflow: hidden;
 }
 
+/* Custom scrollbar for code blocks */
+.prose pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  background: var(--foreground-muted);
+  border-radius: 3px;
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-secondary);
+}
+
 .prose blockquote {
   border-left-color: var(--accent);
   font-style: italic;
@@ -134,38 +152,53 @@ body {
 .prose code:not(pre code) {
   background: var(--accent-lighter);
   color: var(--accent-hover);
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-  font-size: 0.875em;
+  padding: 0.175rem 0.4rem;
+  border-radius: 0.375rem;
+  font-size: 0.85em;
   font-weight: 500;
+  border: 1px solid var(--accent-light);
 }
 
 .dark .prose code:not(pre code) {
   background: var(--accent-lighter);
   color: var(--accent);
+  border-color: var(--accent-light);
 }
 
 /* Code blocks with rehype-pretty-code */
 .prose [data-rehype-pretty-code-figure] {
-  margin: 1.5rem 0;
+  margin: 1.75rem 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.prose [data-rehype-pretty-code-figure]:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .prose [data-rehype-pretty-code-figure] pre {
-  background: #f6f8fa;
-  border: 1px solid var(--border);
-  padding: 1rem;
+  background: #f8f9fb;
+  padding: 1.25rem 0;
   overflow-x: auto;
+  border: none;
+  border-radius: 0;
+}
+
+.dark .prose [data-rehype-pretty-code-figure] {
+  border-color: #2d333b;
 }
 
 .dark .prose [data-rehype-pretty-code-figure] pre {
   background: #0d1117;
-  border-color: #30363d;
 }
 
 .prose [data-rehype-pretty-code-figure] code {
   display: grid;
-  font-size: 0.875rem;
-  line-height: 1.7;
+  font-size: 0.85rem;
+  line-height: 1.75;
 }
 
 /* Line numbers */
@@ -178,36 +211,81 @@ body {
   content: counter(line);
   display: inline-block;
   width: 1.5rem;
-  margin-right: 1.5rem;
+  margin-right: 1.25rem;
   text-align: right;
   color: var(--foreground-muted);
+  opacity: 0.5;
+  font-size: 0.8em;
+}
+
+/* Lines */
+.prose [data-line] {
+  padding: 0 1.25rem;
+  margin: 0;
+  border-left: 2px solid transparent;
 }
 
 /* Line highlighting */
-.prose [data-line] {
-  padding: 0 1rem;
-  margin: 0 -1rem;
+.prose [data-highlighted-line] {
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 2px solid var(--accent);
 }
 
-.prose [data-highlighted-line] {
-  background: rgba(16, 185, 129, 0.1);
-  border-left: 2px solid var(--accent);
+.dark .prose [data-highlighted-line] {
+  background: rgba(52, 211, 153, 0.1);
 }
 
 /* Code block title/caption */
 .prose [data-rehype-pretty-code-title] {
-  background: var(--border-light);
+  background: #f0f2f5;
   color: var(--foreground-secondary);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1.25rem;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.prose [data-rehype-pretty-code-title]::before {
+  content: '';
+  display: inline-flex;
+  gap: 0.375rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+  box-shadow:
+    0.875rem 0 0 var(--foreground-muted),
+    1.75rem 0 0 var(--foreground-muted);
 }
 
 .dark .prose [data-rehype-pretty-code-title] {
   background: #161b22;
-  border-color: #30363d;
+  border-color: #2d333b;
+}
+
+/* Language indicator for code blocks without title */
+.prose [data-rehype-pretty-code-figure] > pre:first-child {
+  position: relative;
+}
+
+.prose [data-rehype-pretty-code-figure] > pre:first-child > code[data-language]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--foreground-muted);
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 /* Dark mode prose adjustments */
