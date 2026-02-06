@@ -146,6 +146,8 @@ body {
 .prose blockquote {
   border-left-color: var(--accent);
   font-style: italic;
+  font-weight: 400;
+  color: var(--foreground-secondary);
 }
 
 /* Inline code */
