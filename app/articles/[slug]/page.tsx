@@ -79,7 +79,7 @@ export default async function ArticlePage({ params }: Props) {
               <>
                 <span>·</span>
                 <Link
-                  href={`/category/${post.category}/`}
+                  href={`/category/${post.category}`}
                   className="text-[var(--accent)] hover:underline"
                 >
                   {post.category}
@@ -92,7 +92,7 @@ export default async function ArticlePage({ params }: Props) {
               {post.tags.map((tag) => (
                 <Link
                   key={tag}
-                  href={`/tag/${encodeURIComponent(tag)}/`}
+                  href={`/tag/${encodeURIComponent(tag)}`}
                   className="tag"
                 >
                   {tag}

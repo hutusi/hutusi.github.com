@@ -13,15 +13,15 @@ export async function GET() {
   ]);
 
   const staticPages = [
-    { url: "/", priority: 1.0 },
-    { url: "/about/", priority: 0.8 },
-    { url: "/articles/", priority: 0.9 },
-    { url: "/weeklies/", priority: 0.9 },
-    { url: "/archive/", priority: 0.7 },
-    { url: "/links/", priority: 0.6 },
-    { url: "/subscription/", priority: 0.6 },
-    { url: "/categories/", priority: 0.6 },
-    { url: "/tags/", priority: 0.6 },
+    { url: "", priority: 1.0 },
+    { url: "/about", priority: 0.8 },
+    { url: "/articles", priority: 0.9 },
+    { url: "/weeklies", priority: 0.9 },
+    { url: "/archive", priority: 0.7 },
+    { url: "/links", priority: 0.6 },
+    { url: "/subscription", priority: 0.6 },
+    { url: "/categories", priority: 0.6 },
+    { url: "/tags", priority: 0.6 },
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -59,7 +59,7 @@ export async function GET() {
     .map(
       (cat) => `
   <url>
-    <loc>${siteConfig.url}/category/${cat.name}/</loc>
+    <loc>${siteConfig.url}/category/${cat.name}</loc>
     <priority>0.5</priority>
   </url>`
     )
@@ -68,7 +68,7 @@ export async function GET() {
     .map(
       (tag) => `
   <url>
-    <loc>${siteConfig.url}/tag/${encodeURIComponent(tag.name)}/</loc>
+    <loc>${siteConfig.url}/tag/${encodeURIComponent(tag.name)}</loc>
     <priority>0.4</priority>
   </url>`
     )
@@ -77,7 +77,7 @@ export async function GET() {
     .map(
       (year) => `
   <url>
-    <loc>${siteConfig.url}/${year}/</loc>
+    <loc>${siteConfig.url}/${year}</loc>
     <priority>0.5</priority>
   </url>`
     )

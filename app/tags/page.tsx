@@ -41,8 +41,7 @@ export default async function TagsPage() {
           {popularTags.map((tag, index) => (
             <Link
               key={tag.name}
-              href={`/tag/${encodeURIComponent(tag.name)}/`}
-              className="group relative p-4 bg-[var(--background-elevated)] rounded-xl border border-[var(--border-light)] hover:border-[var(--accent)] hover:shadow-md transition-all"
+                              href={`/tag/${encodeURIComponent(tag.name)}`}              className="group relative p-4 bg-[var(--background-elevated)] rounded-xl border border-[var(--border-light)] hover:border-[var(--accent)] hover:shadow-md transition-all"
             >
               <span className="font-medium text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors truncate">
                 {tag.name}
@@ -71,8 +70,7 @@ export default async function TagsPage() {
           {sortedAlphabetically.map((tag) => (
             <Link
               key={tag.name}
-              href={`/tag/${encodeURIComponent(tag.name)}/`}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--background-elevated)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--foreground-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
+                              href={`/tag/${encodeURIComponent(tag.name)}`}              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--background-elevated)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--foreground-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
             >
               <span>{tag.name}</span>
               <span className="text-xs text-[var(--foreground-muted)]">

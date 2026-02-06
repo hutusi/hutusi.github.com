@@ -115,7 +115,7 @@ export default function FeaturedCard({ post, variant = "default" }: FeaturedCard
               {post.tags.slice(0, 4).map((tag) => (
                 <Link
                   key={tag}
-                  href={`/tag/${encodeURIComponent(tag)}/`}
+                  href={`/tag/${encodeURIComponent(tag)}`}
                   className="tag"
                 >
                   {tag}

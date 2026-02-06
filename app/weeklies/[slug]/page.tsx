@@ -74,14 +74,13 @@ export default async function WeeklyPage({ params }: Props) {
         {weekly.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-4">
             {weekly.tags.map((tag) => (
-              <Link
-                key={tag}
-                href={`/tag/${encodeURIComponent(tag)}/`}
-                className="tag"
-              >
-                {tag}
-              </Link>
-            ))}
+                              <Link
+                                key={tag}
+                                href={`/tag/${encodeURIComponent(tag)}`}
+                                className="tag"
+                              >
+                                {tag}
+                              </Link>            ))}
           </div>
         )}
       </header>

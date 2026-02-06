@@ -62,7 +62,7 @@ export async function getAllPosts(): Promise<Post[]> {
       ...frontmatter,
       content,
       excerpt: getExcerpt(content),
-      url: `/articles/${slug}/`,
+      url: `/articles/${slug}`,
       readingTime: Math.ceil(stats.minutes),
       type: "post" as const,
     };
@@ -107,7 +107,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     ...frontmatter,
     content,
     excerpt: getExcerpt(content),
-    url: `/articles/${slug}/`,
+    url: `/articles/${slug}`,
     readingTime: Math.ceil(stats.minutes),
     type: "post" as const,
   };
@@ -151,7 +151,7 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
       ...frontmatter,
       content,
       excerpt: getExcerpt(content),
-      url: `/weeklies/${slug}/`,
+      url: `/weeklies/${slug}`,
       readingTime: Math.ceil(stats.minutes),
       type: "weekly" as const,
     };
@@ -196,7 +196,7 @@ export async function getWeeklyBySlug(slug: string): Promise<Weekly | null> {
     ...frontmatter,
     content,
     excerpt: getExcerpt(content),
-    url: `/weeklies/${slug}/`,
+    url: `/weeklies/${slug}`,
     readingTime: Math.ceil(stats.minutes),
     type: "weekly" as const,
   };
