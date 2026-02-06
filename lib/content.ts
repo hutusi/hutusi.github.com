@@ -35,7 +35,8 @@ export async function getAllPosts(): Promise<Post[]> {
     .filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
 
   const posts = files.map((file) => {
-    const slug = file.replace(/\.mdx?$/, "");
+    const rawSlug = file.replace(/\.mdx?$/, "");
+    const cleanSlug = rawSlug.replace(/^\d{4}-\d{2}-\d{2}-/, "");
     const fullPath = path.join(postsDirectory, file);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
@@ -43,7 +44,7 @@ export async function getAllPosts(): Promise<Post[]> {
 
     // Extract date from filename if missing
     if (!frontmatter.date) {
-      const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+      const dateMatch = rawSlug.match(/^(\d{4}-\d{2}-\d{2})/);
       if (dateMatch) {
         frontmatter.date = dateMatch[1];
       }
@@ -58,11 +59,11 @@ export async function getAllPosts(): Promise<Post[]> {
     
         const stats = readingTime(content);
     return {
-      slug,
+      slug: cleanSlug,
       ...frontmatter,
       content,
       excerpt: getExcerpt(content),
-      url: `/articles/${slug}`,
+      url: `/articles/${cleanSlug}`,
       readingTime: Math.ceil(stats.minutes),
       type: "post" as const,
     };
@@ -75,19 +76,25 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  let fullPath = path.join(postsDirectory, `${slug}.mdx`);
-  if (!fs.existsSync(fullPath)) {
-    fullPath = path.join(postsDirectory, `${slug}.md`);
-  }
-  if (!fs.existsSync(fullPath)) return null;
+  // Find file matching the slug (with or without date prefix)
+  const files = fs.readdirSync(postsDirectory).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
+  const foundFile = files.find(file => {
+    const name = file.replace(/\.mdx?$/, "");
+    const cleanName = name.replace(/^\d{4}-\d{2}-\d{2}-/, "");
+    return cleanName === slug;
+  });
 
+  if (!foundFile) return null;
+
+  const fullPath = path.join(postsDirectory, foundFile);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
   const frontmatter = data as PostFrontmatter;
 
   // Extract date from filename if missing
   if (!frontmatter.date) {
-    const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+    const rawSlug = foundFile.replace(/\.mdx?$/, "");
+    const dateMatch = rawSlug.match(/^(\d{4}-\d{2}-\d{2})/);
     if (dateMatch) {
       frontmatter.date = dateMatch[1];
     }
@@ -123,7 +130,8 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
     .filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
 
   const weeklies = files.map((file) => {
-    const slug = file.replace(/\.mdx?$/, "");
+    const rawSlug = file.replace(/\.mdx?$/, "");
+    const cleanSlug = rawSlug.replace(/^\d{4}-\d{2}-\d{2}-/, "");
     const fullPath = path.join(weekliesDirectory, file);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
@@ -131,7 +139,7 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
 
     // Extract date from filename if missing
     if (!frontmatter.date) {
-      const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+      const dateMatch = rawSlug.match(/^(\d{4}-\d{2}-\d{2})/);
       if (dateMatch) {
         frontmatter.date = dateMatch[1];
       }
@@ -147,11 +155,11 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
     const stats = readingTime(content);
 
     return {
-      slug,
+      slug: cleanSlug,
       ...frontmatter,
       content,
       excerpt: getExcerpt(content),
-      url: `/weeklies/${slug}`,
+      url: `/weeklies/${cleanSlug}`,
       readingTime: Math.ceil(stats.minutes),
       type: "weekly" as const,
     };
@@ -164,19 +172,25 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
 }
 
 export async function getWeeklyBySlug(slug: string): Promise<Weekly | null> {
-  let fullPath = path.join(weekliesDirectory, `${slug}.mdx`);
-  if (!fs.existsSync(fullPath)) {
-    fullPath = path.join(weekliesDirectory, `${slug}.md`);
-  }
-  if (!fs.existsSync(fullPath)) return null;
+  // Find file matching the slug (with or without date prefix)
+  const files = fs.readdirSync(weekliesDirectory).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
+  const foundFile = files.find(file => {
+    const name = file.replace(/\.mdx?$/, "");
+    const cleanName = name.replace(/^\d{4}-\d{2}-\d{2}-/, "");
+    return cleanName === slug;
+  });
 
+  if (!foundFile) return null;
+
+  const fullPath = path.join(weekliesDirectory, foundFile);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
   const frontmatter = data as PostFrontmatter;
 
   // Extract date from filename if missing
   if (!frontmatter.date) {
-    const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+    const rawSlug = foundFile.replace(/\.mdx?$/, "");
+    const dateMatch = rawSlug.match(/^(\d{4}-\d{2}-\d{2})/);
     if (dateMatch) {
       frontmatter.date = dateMatch[1];
     }
