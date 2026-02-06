@@ -23,8 +23,9 @@ export default function MDXImage({ src, alt, ...props }: MDXImageProps) {
     <img
       src={imageUrl}
       alt={alt || ""}
+      loading="lazy"
       {...props}
-      className={`rounded-lg max-w-full h-auto ${props.className || ""}`}
+      className={`rounded-lg max-w-full h-auto shadow-md ${props.className || ""}`}
     />
   );
 }
