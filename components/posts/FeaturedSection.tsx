@@ -30,7 +30,7 @@ export default function FeaturedSection({
     <section className="mb-16">
       <div className="flex items-center justify-between mb-6">
         <h2 className="section-title text-2xl font-bold text-gray-900">
-          精选推荐
+          随机精选
           <button
             onClick={handleRefresh}
             className="ml-3 text-sm font-normal text-[var(--foreground-muted)] hover:text-[var(--accent)] transition-colors"

@@ -11,13 +11,16 @@ export default async function HomePage() {
 
   const recentPosts = posts.slice(0, 6);
   const recentWeeklies = weeklies.slice(0, 3);
+  
+  // Shuffle featured posts
+  const shuffledFeatured = [...featured].sort(() => 0.5 - Math.random());
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      {featured.length >= 2 && (
+      {shuffledFeatured.length >= 2 && (
         <FeaturedSection
-          allFeatured={featured}
-          initialPosts={featured.slice(0, 2)}
+          allFeatured={shuffledFeatured}
+          initialPosts={shuffledFeatured.slice(0, 2)}
         />
       )}
 
