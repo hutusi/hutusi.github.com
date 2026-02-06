@@ -85,17 +85,6 @@ export default async function WeeklyPage({ params }: Props) {
         )}
       </header>
 
-      {/* Featured Image */}
-      {weekly.image && (
-        <div className="mb-8 rounded-lg overflow-hidden">
-          <img
-            src={getImageUrl(weekly.image)}
-            alt={weekly.title}
-            className="w-full"
-          />
-        </div>
-      )}
-
       {/* Content */}
       <div className="prose prose-lg max-w-none">
         <MDXRemote

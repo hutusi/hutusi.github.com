@@ -102,17 +102,6 @@ export default async function ArticlePage({ params }: Props) {
           )}
         </header>
 
-        {/* Featured Image */}
-        {post.image && (
-          <div className="mb-8 rounded-lg overflow-hidden">
-            <img
-              src={getImageUrl(post.image)}
-              alt={post.title}
-              className="w-full"
-            />
-          </div>
-        )}
-
         {/* Content */}
         <div className="prose prose-lg max-w-none">
           <MDXRemote
