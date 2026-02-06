@@ -12,11 +12,19 @@ export default function Footer() {
           {/* Branding */}
           <div className="md:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2 group mb-3">
-              <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-emerald-600 flex items-center justify-center text-white font-bold text-sm">
-                胡
-              </span>
+              {siteConfig.logo?.image ? (
+                <img 
+                  src={siteConfig.logo.image} 
+                  alt={siteConfig.logo.text || siteConfig.title} 
+                  className="w-8 h-8 rounded-lg"
+                />
+              ) : siteConfig.logo?.icon ? (
+                <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-emerald-600 flex items-center justify-center text-white font-bold text-sm">
+                  {siteConfig.logo.icon}
+                </span>
+              ) : null}
               <span className="text-xl font-bold text-gray-900 group-hover:text-[var(--accent)] transition-colors">
-                {siteConfig.title}
+                {siteConfig.logo?.text || siteConfig.title}
               </span>
             </Link>
             <p className="text-sm text-[var(--foreground-secondary)] leading-relaxed max-w-sm mb-4">
