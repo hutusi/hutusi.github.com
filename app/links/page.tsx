@@ -1,6 +1,7 @@
 import { getPageContent } from "@/lib/content";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import MDXImage from "@/components/MDXImage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,6 +27,9 @@ export default async function LinksPage() {
       <div className="prose prose-lg max-w-none">
         <MDXRemote
           source={page.content}
+          components={{
+            img: MDXImage,
+          }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],

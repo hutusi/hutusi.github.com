@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import Comments from "@/components/comments/Comments";
 import ReadingProgress from "@/components/posts/ReadingProgress";
+import MDXImage from "@/components/MDXImage";
 import type { Metadata } from "next";
 
 interface Props {
@@ -116,6 +117,9 @@ export default async function ArticlePage({ params }: Props) {
         <div className="prose prose-lg max-w-none">
           <MDXRemote
             source={post.content}
+            components={{
+              img: MDXImage,
+            }}
             options={{
               mdxOptions: {
                 remarkPlugins: [remarkGfm],

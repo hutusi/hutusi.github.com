@@ -7,6 +7,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import Comments from "@/components/comments/Comments";
+import MDXImage from "@/components/MDXImage";
 import type { Metadata } from "next";
 
 interface Props {
@@ -100,6 +101,9 @@ export default async function WeeklyPage({ params }: Props) {
       <div className="prose prose-lg max-w-none">
         <MDXRemote
           source={weekly.content}
+          components={{
+            img: MDXImage,
+          }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
