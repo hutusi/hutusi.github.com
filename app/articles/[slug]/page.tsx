@@ -10,6 +10,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import Comments from "@/components/comments/Comments";
 import ReadingProgress from "@/components/posts/ReadingProgress";
 import MDXImage from "@/components/MDXImage";
+import MDXLink from "@/components/MDXLink";
 import type { Metadata } from "next";
 
 interface Props {
@@ -108,6 +109,7 @@ export default async function ArticlePage({ params }: Props) {
             source={post.content}
             components={{
               img: MDXImage,
+              a: MDXLink,
             }}
             options={{
               mdxOptions: {

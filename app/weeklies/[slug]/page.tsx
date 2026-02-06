@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import Comments from "@/components/comments/Comments";
 import MDXImage from "@/components/MDXImage";
+import MDXLink from "@/components/MDXLink";
 import type { Metadata } from "next";
 
 interface Props {
@@ -74,13 +75,14 @@ export default async function WeeklyPage({ params }: Props) {
         {weekly.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-4">
             {weekly.tags.map((tag) => (
-                              <Link
-                                key={tag}
-                                href={`/tag/${encodeURIComponent(tag)}`}
-                                className="tag"
-                              >
-                                {tag}
-                              </Link>            ))}
+              <Link
+                key={tag}
+                href={`/tag/${encodeURIComponent(tag)}`}
+                className="tag"
+              >
+                {tag}
+              </Link>
+            ))}
           </div>
         )}
       </header>
@@ -91,6 +93,7 @@ export default async function WeeklyPage({ params }: Props) {
           source={weekly.content}
           components={{
             img: MDXImage,
+            a: MDXLink,
           }}
           options={{
             mdxOptions: {
