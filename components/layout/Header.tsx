@@ -21,11 +21,19 @@ export default function Header() {
       <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           {/* Logo icon */}
-          <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-sm">
-            胡
-          </span>
+          {siteConfig.logo?.image ? (
+            <img 
+              src={siteConfig.logo.image} 
+              alt={siteConfig.logo.text || siteConfig.title} 
+              className="w-8 h-8 rounded-lg"
+            />
+          ) : siteConfig.logo?.icon ? (
+            <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-sm">
+              {siteConfig.logo.icon}
+            </span>
+          ) : null}
           <span className="text-xl font-bold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
-            {siteConfig.title}
+            {siteConfig.logo?.text || siteConfig.title}
           </span>
         </Link>
 

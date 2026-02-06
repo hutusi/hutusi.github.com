@@ -3,12 +3,18 @@ export const siteConfig = {
   name: "胡涂说",
   description: "hutusi.com",
   url: "https://hutusi.com",
+  logo: {
+    text: "胡涂说",
+    image: undefined as string | undefined,
+    // image: "https://cdn.hutusi.com/images/site/logo-256x256.jpg",
+    icon: "胡",
+  },
   author: {
     name: "hutusi",
     fullName: "胡智勇",
     email: "huziyong@gmail.com",
     url: "https://hutusi.com",
-    bio: "软件工程师，读书爱好者",
+    bio: "前软件工程师，现 Vibe Coding Engineer，读书/写作爱好者",
     avatar: "https://cdn.hutusi.com/images/site/avatar.jpg",
   },
   social: {
