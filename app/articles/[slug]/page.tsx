@@ -143,7 +143,7 @@ export default async function ArticlePage({ params }: Props) {
         </div>
 
         {/* Author */}
-        <div className="mt-12 pt-8 border-t border-[var(--border)]">
+        <div className="mt-12 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div className="flex items-center gap-4">
             <img
               src={siteConfig.author.avatar}
@@ -157,6 +157,17 @@ export default async function ArticlePage({ params }: Props) {
               <div className="text-sm text-[var(--foreground-muted)]">{siteConfig.author.bio}</div>
             </div>
           </div>
+
+          {siteConfig.social.wechat && (
+            <div className="flex flex-col items-center gap-2">
+              <img
+                src={siteConfig.social.wechat}
+                alt="WeChat QR Code"
+                className="w-24 h-24 rounded-lg border border-[var(--border-light)] shadow-sm"
+              />
+              <span className="text-xs text-[var(--foreground-muted)]">关注公众号：胡涂说</span>
+            </div>
+          )}
         </div>
 
         {/* Navigation */}

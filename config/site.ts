@@ -11,11 +11,11 @@ export const siteConfig = {
   },
   author: {
     name: "hutusi",
-    fullName: "胡智勇",
+    fullName: "胡涂说",
     email: "huziyong@gmail.com",
     url: "https://hutusi.com",
     bio: "前软件工程师，现 Vibe Coding Engineer，读书/写作爱好者",
-    avatar: "https://cdn.hutusi.com/images/site/avatar.jpg",
+    avatar: "https://cdn.hutusi.com/images/site/logo-256x256.jpg",
   },
   social: {
     twitter: "https://twitter.com/user/hutusi",
