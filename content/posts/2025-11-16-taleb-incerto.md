@@ -17,7 +17,7 @@ featured: true
 
 ## 成功不是因为能力，而仅仅是运气好而已
 
-![fooled-by-randomness]({{site.images_baseurl}}/books/fooled-by-randomness.jpg)
+![fooled-by-randomness](books/fooled-by-randomness.jpg)
 
 > 英文原名：*Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets*  
 > 中文译名：《随机漫步的傻瓜：发现市场和人生中的隐藏机遇》
@@ -32,7 +32,7 @@ featured: true
 
 ## 世界往往由极端的“黑天鹅”事件推动，而这些事件的发生毫无征兆
 
-![the-black-swan]({{site.images_baseurl}}/books/the-black-swan.webp)
+![the-black-swan](books/the-black-swan.webp)
 
 > 英文原名：*The Black Swan: The Impact of the Highly Improbable*  
 > 中文译名：《黑天鹅：如何应对不可预知的未来》
@@ -41,7 +41,7 @@ featured: true
 
 塔勒布在《黑天鹅》一书中提出了两个概念：平均斯坦（Mediocristan）和极端斯坦（Extremistan），可以把它们想象成两个虚拟的国度，分别遵从各自的运行法则。平均斯坦受平均值支配，多数变量服从正态分布（薄尾），单个样本的变化对整体影响极小。典型的例子如身高、体重、寿命等，虽然个体身高有差异，但全世界人类的身高满足正态分布，死去一个特别高或特别矮的人对全世界平均身高的影响可忽略不计，而出生一个人，也可以预测出他长大后的身高范围。在平均斯坦的世界，大数定律与中心极限定律有效，结果可观测统计可预测。这是一个白天鹅的世界。而极端斯坦则受极端值支配，多数变量服从幂律分布（厚尾），处于厚尾中的少数极端事件影响巨大，足以颠覆整体。典型的例子如财富、公司市值、书籍销量、社交媒体传播等。马斯克在2025年财富突破了5000亿美元，比几亿普通人总和还要多。根据联合国统计，收入最低的50%的人口仅拥有全球2%的财富，而1%最富的人则占据了全球38%的财富。极端斯坦的世界无法用统计手段来预测，这是个黑天鹅的世界。
 
-![mediocristan-vs-extremistan]({{site.images_baseurl}}/books/mediocristan-vs-extremistan.jpg)
+![mediocristan-vs-extremistan](books/mediocristan-vs-extremistan.jpg)
 
 我们以为身处的世界是平均斯坦，实际则更接近极端斯坦。塔勒布举了这么一个例子：一只火鸡每天都接受到主人的投喂，在接受了1000天投喂后它预测第二天仍能得到食物，结果没想到第二天迎接它的是宰杀它的屠刀，因为感恩节临近了。不过，黑天鹅也并非都是负向事件，也有正向黑天鹅，比如青霉素的发明、互联网的诞生。对此，塔勒布建议的决策法则是：当可能受到正向黑天鹅事件影响时则勇于冒险，当可能受到负向黑天鹅事件影响时则非常保守。
 
@@ -49,7 +49,7 @@ featured: true
 
 ## 训练“反脆弱”，从“黑天鹅”中受益
 
-![antifragile]({{site.images_baseurl}}/books/antifragile.jpg)
+![antifragile](books/antifragile.jpg)
 
 > 英文原名：*Antifragile: Things That Gain from Disorder*  
 > 中文译名：《反脆弱：从不确定性中获益》
@@ -64,7 +64,7 @@ featured: true
 
 ## 躬身入局，风险共担，遵守银律
 
-![skin-in-the-game]({{site.images_baseurl}}/books/skin-in-the-game.jpg)
+![skin-in-the-game](books/skin-in-the-game.jpg)
 
 > 英文原名：*Skin in the Game: The Hidden Asymmetries in Daily Life*  
 > 中文译名：《非对称风险：风险共担，应对现实世界中的不确定性》
@@ -91,7 +91,7 @@ featured: true
 
 塔勒布全名纳西姆·尼古拉斯·塔勒布，是黎巴嫩移民，其家庭在黎巴嫩属于名门望族，父母两系都出过不少政府高官，其外祖父和曾祖父都担任过黎巴嫩副总理，家族拥有大片土地和资产，但1975年开始的黎巴嫩内战结束了这一切，年少的塔勒布亲眼目睹了由盛转衰的过程。可能是年少时这段经历的关系，塔勒布便将这种认知转化成了他未来人生的指南。后来他到华尔街担任对冲基金经理，凭借其对不确定性的理解在1987年股灾中对冲美元空头而获得财富自由，其后又分别在2000年纳斯纳克互联网泡沫和2008年次贷危机中因反向操作而获利颇丰。2001年他在发表的“不确定性系列”第一本《随机漫步的傻瓜》中开了一个脑洞：设想有一天飞机可能撞进办公室。而后没过几天，911事件发生，两架飞机撞进纽约双子塔的办公楼里。
 
-![nassim-taleb]({{site.images_baseurl}}/people/nassim-taleb.webp)
+![nassim-taleb](people/nassim-taleb.webp)
 
 塔勒布以其独特的视角向人们揭示了一个全新的世界模型，世界充满了不确定性和随机事件，我觉得这一点是非常值得学习和理解的。在这种模型的认知下，那就要考虑随机性下最差的结果会是什么，如果最差的结果是系统性奔溃，那么不管可能的收益多诱人，都要坚决抵制。正如老子所说的“贵大患若身”，首先得惜身，不要动不动就All-in，把全部身家性命都赌上去，那些看上去风光的人物只是在俄罗斯轮盘赌枪口下的幸运儿。在随机性的“黑天鹅事件”里等待机会，同样如老子所说的“祸兮福所倚，福兮祸所伏”，危中有机，只要活得够久，就能等到机会。
 

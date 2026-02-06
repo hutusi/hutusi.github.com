@@ -17,11 +17,11 @@ Nginx 是俄罗斯程序员 Igor Sysoev 于2004年开发的 web 服务器软件�
 
 Nginx 目前已超过 Apache 成为占有率最高的 web 服务器软件，市场占有率超过30%，相对老牌的 IIS 和 Apache 发展速度很快。
 
-![nginx market share]({{site.images_baseurl}}/posts/nginx-apache-market-share.png){:width="600px"}
+![nginx market share](posts/nginx-apache-market-share.png){:width="600px"}
 
 Nginx 可以做静态站点 HTTP/HTTPS 服务、反向代理、负载均衡。关于反向代理(Reverse Proxy)解释如下图示：我们在访问互联网时可以设置代理(Proxy)，这样客户端对互联网的请求和数据接收是通过这个代理转发的。而所谓反向代理则是来转发互联网上用户对服务器的请求，Nginx 则提供了灵活的配置和高效的转发能力。
 
-![proxy-vs-reverse-proxy]({{site.images_baseurl}}/posts/proxy-vs-reverse-proxy.png){:width="600px"}
+![proxy-vs-reverse-proxy](posts/proxy-vs-reverse-proxy.png){:width="600px"}
 
 ## 安装及配置
 

@@ -12,7 +12,7 @@ redirect_from:
 image: articles/2020-david-with-his-books.jpg
 ---
 
-![David with his books]({{site.images_baseurl}}/photos/david-with-his-books-2020.jpg?w=1280){:width="800px"}
+![David with his books](photos/david-with-his-books-2020.jpg?w=1280){:width="800px"}
 
 上周末将大卫的书整理了一下，发现都堆成一座小山了，若按单册算，估计比我到目前的藏书还多。这里总结下大卫这一两年来读过（或陪他阅读）的书，希望能对有同样需求的爸妈有参考帮助。另外，如果你有经验或阅读资源分享，欢迎留言交流。[^1]
 

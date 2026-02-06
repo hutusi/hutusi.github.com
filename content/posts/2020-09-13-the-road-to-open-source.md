@@ -19,7 +19,7 @@ image: articles/2020-the-cathedral-and-the-bazaar.jpg
 
 相对于 RMS 对于自由软件哲学的执着，Linus 本人并不关心自由软件运动，而他管理下的 Linux 社区却日益发展壮大，Linus 本人也成为了新的黑客领袖。老牌黑客 Eric Raymond (以下简称 ESR) 在研究了 Linux 的开发过程后，发现 Linux 的成功并非是所谓的自由软件哲学，而是 Linus 采用了一套与以往软件开发都不同的模式 —— 无论是专有的 Windows 或 Unix, 还是自由的 GNU emacs 或 GCC, 都是由一个人或一个团队控制着整个软件的开发过程，这种模式 ESR 称之为大教堂模式；而 Linux 则是更加开放并借助互联网协作的集市模式。ESR 将此总结成《大教堂与集市》文集并发表，在社区得到了极大的关注，网景公司因此将他们的主要软件代码开放，也就是今天的 Firefox; 而 ESR 又与他的同伴们一道，发起了对计算机行业影响重大的“开源软件运动”。
 
-![the cathedral and the bazaar]({{site.images_baseurl}}/books/the-cathedral-and-the-bazaar_book.jpg?w=1280){:width="800px"}
+![the cathedral and the bazaar](books/the-cathedral-and-the-bazaar_book.jpg?w=1280){:width="800px"}
 
 ## 大教堂与集市
 
