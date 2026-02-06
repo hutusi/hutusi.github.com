@@ -18,7 +18,7 @@ export const siteConfig = {
     avatar: "https://cdn.hutusi.com/images/site/logo-256x256.jpg",
   },
   social: {
-    twitter: "https://twitter.com/user/hutusi",
+    twitter: "https://twitter.com/hutusi",
     github: "https://github.com/hutusi",
     instagram: "https://instagram.com/hutusi",
     facebook: "https://facebook.com/hutusi",
