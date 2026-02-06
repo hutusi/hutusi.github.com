@@ -80,7 +80,7 @@ body {
 /* Prose styles for article content */
 .prose {
   --tw-prose-body: var(--foreground);
-  font-weight: 450;
+  font-weight: 500;
   --tw-prose-headings: var(--foreground);
   --tw-prose-links: var(--accent);
   --tw-prose-bold: var(--foreground);
