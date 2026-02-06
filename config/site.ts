@@ -5,8 +5,8 @@ export const siteConfig = {
   url: "https://hutusi.com",
   logo: {
     text: "胡涂说",
-    image: undefined as string | undefined,
-    // image: "https://cdn.hutusi.com/images/site/logo-256x256.jpg",
+    // image: undefined as string | undefined,
+    image: "https://cdn.hutusi.com/images/site/logo-256x256.jpg",
     icon: "胡",
   },
   author: {
