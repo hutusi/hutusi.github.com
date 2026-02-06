@@ -40,8 +40,23 @@ export async function getAllPosts(): Promise<Post[]> {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
     const frontmatter = data as PostFrontmatter;
-    const stats = readingTime(content);
 
+    // Extract date from filename if missing
+    if (!frontmatter.date) {
+      const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (dateMatch) {
+        frontmatter.date = dateMatch[1];
+      }
+    }
+    
+    // Normalize tags to array
+        if (typeof frontmatter.tags === 'string') {
+          frontmatter.tags = (frontmatter.tags as string).split(' ').filter(Boolean);
+        } else if (!Array.isArray(frontmatter.tags)) {
+          frontmatter.tags = [];
+        }
+    
+        const stats = readingTime(content);
     return {
       slug,
       ...frontmatter,
@@ -69,6 +84,22 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
   const frontmatter = data as PostFrontmatter;
+
+  // Extract date from filename if missing
+  if (!frontmatter.date) {
+    const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+    if (dateMatch) {
+      frontmatter.date = dateMatch[1];
+    }
+  }
+
+  // Normalize tags to array
+  if (typeof frontmatter.tags === 'string') {
+    frontmatter.tags = (frontmatter.tags as string).split(' ').filter(Boolean);
+  } else if (!Array.isArray(frontmatter.tags)) {
+    frontmatter.tags = [];
+  }
+
   const stats = readingTime(content);
 
   return {
@@ -97,6 +128,22 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
     const frontmatter = data as PostFrontmatter;
+
+    // Extract date from filename if missing
+    if (!frontmatter.date) {
+      const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (dateMatch) {
+        frontmatter.date = dateMatch[1];
+      }
+    }
+
+    // Normalize tags to array
+    if (typeof frontmatter.tags === 'string') {
+      frontmatter.tags = (frontmatter.tags as string).split(' ').filter(Boolean);
+    } else if (!Array.isArray(frontmatter.tags)) {
+      frontmatter.tags = [];
+    }
+
     const stats = readingTime(content);
 
     return {
@@ -126,6 +173,22 @@ export async function getWeeklyBySlug(slug: string): Promise<Weekly | null> {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
   const frontmatter = data as PostFrontmatter;
+
+  // Extract date from filename if missing
+  if (!frontmatter.date) {
+    const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+    if (dateMatch) {
+      frontmatter.date = dateMatch[1];
+    }
+  }
+
+  // Normalize tags to array
+  if (typeof frontmatter.tags === 'string') {
+    frontmatter.tags = (frontmatter.tags as string).split(' ').filter(Boolean);
+  } else if (!Array.isArray(frontmatter.tags)) {
+    frontmatter.tags = [];
+  }
+
   const stats = readingTime(content);
 
   return {
