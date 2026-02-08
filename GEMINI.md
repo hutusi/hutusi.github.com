@@ -32,20 +32,30 @@ This is a personal blog and newsletter application built with **Next.js 16** (Ap
     npm run lint
     ```
 
+## Deployment
+
+The project is configured for deployment to a remote Linux server using Nginx.
+
+*   **Script:** `deploy.sh` handles building and syncing files via `rsync`.
+*   **Config:** `server_nginx.conf` provides a production-ready Nginx configuration with HTTPS (SSL placeholders), HTTP redirection, and caching.
+*   **Guide:** See `README_DEPLOY.md` for detailed instructions.
+
 ## Project Structure
 
 *   **`app/`**: Next.js App Router pages and API routes.
-    *   `layout.tsx`: Root layout including `ThemeProvider`, Analytics, Header, and Footer.
+    *   `layout.tsx`: Root layout including `ThemeProvider`, Analytics, Header, and Footer. Uses system fonts (no Google Fonts dependency).
     *   `[year]/`, `articles/`, `weeklies/`: Dynamic routes for content.
 *   **`content/`**: Source of truth for blog content.
-    *   `posts/`: Blog articles (`.mdx`).
-    *   `weeklies/`: Weekly newsletter editions (`.mdx`).
+    *   `posts/`: Blog articles (`.mdx` or `.md`).
+    *   `weeklies/`: Weekly newsletter editions (`.mdx` or `.md`).
     *   `pages/`: Static pages like About, Links (`.mdx`).
-*   **`lib/content.ts`**: Core logic for reading MDX files from the filesystem, parsing frontmatter (with `gray-matter`), and handling sorting/filtering.
+*   **`lib/content.ts`**: Core logic for reading MDX files. Handles **clean slugs** (stripping date prefixes from filenames) and multi-extension support.
 *   **`components/`**: Reusable UI components.
-    *   `theme/`: Dark/Light mode logic (`ThemeProvider.tsx`).
-    *   `analytics/`: Google and Umami analytics components.
-*   **`config/`**: Static configuration (site metadata, navigation links).
+    *   `MDXImage.tsx`: Enhanced image component with CDN support (`imagesBaseUrl`), lazy loading, and shadow styling.
+    *   `MDXLink.tsx`: Smart link component that opens external links in new tabs with security attributes.
+    *   `posts/FeaturedSection.tsx`: Displays a **random selection** of featured posts (shuffled on build and client-side refresh).
+*   **`config/`**: Static configuration.
+    *   `site.ts`: Central config for site metadata, author info, **logo** (text/icon/image), and `imagesBaseUrl`.
 
 ## Development Conventions
 
@@ -53,13 +63,14 @@ This is a personal blog and newsletter application built with **Next.js 16** (Ap
     *   Create new posts in `content/posts/` or `content/weeklies/`.
     *   Files should have `.md` or `.mdx` extensions.
     *   Files must have YAML frontmatter containing `title`, `date`, `category`, `tags`, etc.
-    *   The filename slug is used as the URL path.
+    *   **URLs:** URLs are generated without date prefixes (e.g., `/articles/my-post` instead of `/articles/2024-01-01-my-post`).
+    *   **Images:** Use relative paths in Markdown. They are automatically prefixed with `siteConfig.imagesBaseUrl`.
 
-*   **Theming:**
-    *   The site supports Light, Dark, and System themes.
-    *   It uses a custom `ThemeProvider` that toggles the `dark` class on the `<html>` element.
-    *   A script in `app/layout.tsx` prevents theme flashing on load.
+*   **Theming & Styling:**
+    *   **Fonts:** Relies on a robust system font stack defined in `globals.css` (no external font requests).
+    *   **Typography:** Prose content uses `font-weight: 400`. Blockquotes are styled with a muted color (`--foreground-muted`), weight `500`, and italic style.
+    *   **Dark Mode:** Supported via `ThemeProvider` and Tailwind's `dark:` variant.
 
 *   **Data Fetching:**
     *   Content is fetched at build time using Node.js `fs` module (via `lib/content.ts`).
-    *   Since this is a static export, all data fetching happens during `next build`.
+    *   Featured posts are selected randomly for the homepage to keep content fresh.
