@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Mount your SSL certificates here
+      # Replace ./certs with the path to your certificates on the host machine
+      # The files must be named site.crt and site.key or you must update nginx.conf
+      - ./certs:/etc/nginx/certs:ro
+    restart: always
