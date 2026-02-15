@@ -62,7 +62,7 @@ The project is configured for deployment to a remote Linux server using Nginx.
 *   **Content Creation:**
     *   Create new posts in `content/posts/` or `content/weeklies/`.
     *   Files should have `.md` or `.mdx` extensions.
-    *   Files must have YAML frontmatter containing `title`, `date`, `category`, `tags`, etc.
+    *   Files must have YAML frontmatter containing `title`, `date`, `category`, `tags` (as a list), etc.
     *   **URLs:** URLs are generated without date prefixes (e.g., `/articles/my-post` instead of `/articles/2024-01-01-my-post`).
     *   **Images:** Use relative paths in Markdown. They are automatically prefixed with `siteConfig.imagesBaseUrl`.
 

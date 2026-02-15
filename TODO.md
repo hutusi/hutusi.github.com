@@ -19,6 +19,8 @@ This document tracks the migration progress from Jekyll to Next.js.
 - [x] Migrate static pages (about, links, subscription)
 - [x] Transform frontmatter (tags from space-separated to array)
 - [x] Convert Jekyll image syntax to CDN URLs
+- [x] Implement clean slugs (remove date from URLs)
+- [x] Remove trailing slashes from all URLs
 
 ### Phase 3: Core Components
 - [x] Create site configuration (`config/site.ts`)
@@ -27,13 +29,16 @@ This document tracks the migration progress from Jekyll to Next.js.
 - [x] Build Footer component with social links
 - [x] Create content loading library (`lib/content.ts`)
 - [x] Create utility functions (`lib/utils.ts`)
+- [x] Configurable logo (text/icon/image)
 
 ### Phase 4: Post Components
 - [x] PostCard component
 - [x] FeaturedCard component
-- [x] FeaturedSection with rotation
+- [x] FeaturedSection with random rotation
 - [x] PostList component
 - [x] Pagination component
+- [x] Custom MDXImage with CDN and shadow support
+- [x] Custom MDXLink for external links
 
 ### Phase 5: Page Routes
 - [x] Homepage with featured posts and recent content
@@ -47,6 +52,7 @@ This document tracks the migration progress from Jekyll to Next.js.
 - [x] Year archive pages (2007-2026)
 - [x] Static pages (about, links, subscription)
 - [x] 404 Not Found page
+- [x] Added WeChat QR code to author section
 
 ### Phase 6: Interactive Features
 - [x] Giscus comments integration
@@ -61,6 +67,12 @@ This document tracks the migration progress from Jekyll to Next.js.
 - [x] OpenGraph meta tags
 - [x] Twitter Card meta tags
 
+### Phase 8: Deployment
+- [x] Configure static export (`output: 'export'`)
+- [x] Add Nginx configuration for remote server
+- [x] Create deployment script (`deploy.sh`)
+- [x] Setup HTTPS and HTTP->HTTPS redirect logic
+
 ## In Progress
 
 ### Visual Design Improvements
@@ -72,7 +84,7 @@ This document tracks the migration progress from Jekyll to Next.js.
   - Add accent variations (--accent-light, --accent-lighter)
   - Add shadow variables (--shadow-sm, --shadow-md, --shadow-lg)
 - [x] Optimize typography for Chinese content
-  - Add Chinese fonts (Noto Sans SC, PingFang SC, Microsoft YaHei)
+  - Add system font stack (no Google Fonts dependency)
   - Increase letter-spacing for Chinese text (0.02em)
   - Add text-align: justify for prose paragraphs
 - [x] Add section title accent styling
@@ -130,6 +142,8 @@ This document tracks the migration progress from Jekyll to Next.js.
   - Inline code styling with accent colors
   - Line highlighting and line numbers support
   - Code block title/caption support
+- [x] Refine blockquote styling (muted color, bold weight)
+- [x] Hide cover images on post pages
 
 ## Pending
 
