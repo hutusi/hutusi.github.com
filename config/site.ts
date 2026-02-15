@@ -14,7 +14,7 @@ export const siteConfig = {
     fullName: "胡涂说",
     email: "huziyong@gmail.com",
     url: "https://hutusi.com",
-    bio: "前软件工程师，现 Vibe Coding Engineer，读书/写作爱好者",
+    bio: "前软件工程师，现 Vibe Coder，读书/写作爱好者",
     avatar: "https://cdn.hutusi.com/images/site/logo-256x256.jpg",
   },
   social: {
