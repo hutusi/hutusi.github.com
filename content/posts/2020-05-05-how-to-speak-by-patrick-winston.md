@@ -17,7 +17,7 @@ Patrick Winston[^1] 是 AI 领域的先驱，生前曾一直担任 MIT CSAIL（�
 
 军人上战场前要准备好武器，而学生从学校毕业进入社会时要准备的武器就是沟通能力。人的成功很大程度上取决于依次三种能力：说话的能力、写作的能力、思想的质量。(ability to speak, ability to write, and the quality of your ideas, in that order.) 而沟通(说话、写作)的质量取决于如下图右上角的这个公式，包括你有多少知识(knowledge)，你对该知识的实践(practice)，以及你的内在天分(talent)。(注意 T 很小。)
 
-![How to speak](people/patrick-winston.jpg?w=1280){:width="800px"}
+![How to speak](people/patrick-winston.jpg)
 
 ### 约定条款 (Rules of Engagement)
 
