@@ -223,6 +223,12 @@ export async function getFeaturedPosts(): Promise<(Post | Weekly)[]> {
   return all.filter((p) => p.featured);
 }
 
+export async function getRandomFeaturedPosts(count: number = 3): Promise<(Post | Weekly)[]> {
+  const allFeatured = await getFeaturedPosts();
+  const shuffled = allFeatured.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
+
 export async function getPostsByCategory(
   category: string
 ): Promise<Post[]> {
