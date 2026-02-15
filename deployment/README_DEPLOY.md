@@ -22,10 +22,13 @@ This guide provides instructions for deploying the static site to a remote Linux
     Use the `deploy.sh` script. You can run it via `npm` or directly:
 
     ```bash
-    # Via npm (recommmended)
+    # Basic deployment (sync files only)
     REMOTE_USER=myuser REMOTE_HOST=1.2.3.4 npm run deploy
 
-    # Directly
+    # Deployment with Nginx configuration update
+    npm run deploy -- --setup-nginx
+
+    # Dry run (see what happens without changing anything)
     ./deployment/deploy.sh --dry-run
     ```
 
