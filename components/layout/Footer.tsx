@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-gray-50 to-gray-100 border-t border-[var(--border)]">
+    <footer className="bg-[var(--background-elevated)] border-t border-[var(--border)] transition-colors">
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Top section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -23,7 +23,7 @@ export default function Footer() {
                   {siteConfig.logo.icon}
                 </span>
               ) : null}
-              <span className="text-xl font-bold text-gray-900 group-hover:text-[var(--accent)] transition-colors">
+              <span className="text-xl font-bold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
                 {siteConfig.logo?.text || siteConfig.title}
               </span>
             </Link>
@@ -76,25 +76,25 @@ export default function Footer() {
 
           {/* 探索 Links */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-3">探索</h3>
+            <h3 className="font-semibold text-[var(--foreground)] mb-3">探索</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/articles/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
+                <Link href="/articles" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
                   文章
                 </Link>
               </li>
               <li>
-                <Link href="/weeklies/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
+                <Link href="/weeklies" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
                   周刊
                 </Link>
               </li>
               <li>
-                <Link href="/archive/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
+                <Link href="/archive" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
                   归档
                 </Link>
               </li>
               <li>
-                <Link href="/tags/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
+                <Link href="/tags" className="text-[var(--foreground-secondary)] hover:text(--accent) transition-colors">
                   标签
                 </Link>
               </li>
@@ -103,20 +103,20 @@ export default function Footer() {
 
           {/* 关于 Links */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-3">关于</h3>
+            <h3 className="font-semibold text-[var(--foreground)] mb-3">关于</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
+                <Link href="/about" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
                   关于我
                 </Link>
               </li>
               <li>
-                <Link href="/links/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
+                <Link href="/links" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
                   友情链接
                 </Link>
               </li>
               <li>
-                <Link href="/subscription/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
+                <Link href="/subscription" className="text-[var(--foreground-secondary)] hover:text-[var(--accent)] transition-colors">
                   订阅
                 </Link>
               </li>

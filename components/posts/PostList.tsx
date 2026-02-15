@@ -17,7 +17,7 @@ export default function PostList({ posts, title, showMore }: PostListProps) {
     <section className="mb-12">
       {(title || showMore) && (
         <div className="flex items-center justify-between mb-6">
-          {title && <h2 className="section-title text-2xl font-bold text-gray-900">{title}</h2>}
+          {title && <h2 className="section-title text-2xl font-bold text-[var(--foreground)]">{title}</h2>}
           {showMore && (
             <a
               href={showMore.href}

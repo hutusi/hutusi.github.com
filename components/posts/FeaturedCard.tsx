@@ -62,7 +62,7 @@ export default function FeaturedCard({ post, variant = "default" }: FeaturedCard
             精选
           </div>
           <Link href={post.url}>
-            <h3 className="text-lg font-bold text-gray-900 group-hover:text-[var(--accent)] transition-colors line-clamp-2">
+            <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors line-clamp-2">
               {post.title}
             </h3>
           </Link>
@@ -100,7 +100,7 @@ export default function FeaturedCard({ post, variant = "default" }: FeaturedCard
             精选
           </div>
           <Link href={post.url}>
-            <h3 className="text-xl font-bold text-gray-900 group-hover:text-[var(--accent)] transition-colors">
+            <h3 className="text-xl font-bold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
               {post.title}
             </h3>
           </Link>

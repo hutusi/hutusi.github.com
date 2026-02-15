@@ -35,8 +35,8 @@
   --background: #0a0a0a;
   --background-elevated: #171717;
   --foreground: #fafafa;
-  --foreground-secondary: #a1a1aa;
-  --foreground-muted: #71717a;
+  --foreground-secondary: #d4d4d8;
+  --foreground-muted: #a1a1aa;
   --accent: #34d399;
   --accent-hover: #10b981;
   --accent-light: #064e3b;
@@ -75,6 +75,15 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base text color for common elements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+}
+
+p {
+  color: var(--foreground-secondary);
 }
 
 /* Prose styles for article content */

@@ -20,14 +20,14 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         {/* Category badge */}
         {post.category && (
-          <span className="absolute top-3 left-3 px-2.5 py-1 text-xs font-medium bg-white/90 backdrop-blur-sm rounded-full text-gray-700 shadow-sm">
+          <span className="absolute top-3 left-3 px-2.5 py-1 text-xs font-medium bg-[var(--background-elevated)]/90 backdrop-blur-sm rounded-full text-[var(--foreground-secondary)] shadow-sm">
             {post.category}
           </span>
         )}
       </Link>
       <div className="p-4 flex-1 flex flex-col">
         <Link href={post.url}>
-          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[var(--accent)] transition-colors line-clamp-2">
+          <h3 className="text-lg font-semibold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors line-clamp-2">
             {post.title}
           </h3>
         </Link>

@@ -29,7 +29,7 @@ export default function FeaturedSection({
   return (
     <section className="mb-16">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="section-title text-2xl font-bold text-gray-900">
+        <h2 className="section-title text-2xl font-bold text-[var(--foreground)]">
           随机精选
           <button
             onClick={handleRefresh}
