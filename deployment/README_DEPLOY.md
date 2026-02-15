@@ -1,38 +1,41 @@
 # hutusi.com Deployment Guide
 
-This guide provides instructions for deploying the static site to a remote Linux server.
+This guide provides instructions for deploying the static site to a remote Linux server using Bun.
 
-## Features
+## Prerequisites
 
-- **Canonical Redirects**: Automatically redirects `www.hutusi.com` to `hutusi.com`.
-- **HTTPS & HTTP/2**: Pre-configured for secure, fast delivery.
-- **Security Headers**: Includes HSTS, XSS protection, and CSP.
-- **Optimized Caching**: Long-term caching for Next.js assets.
-- **Robust Deployment**: Script with dry-run support and dependency checks.
+1.  **Local Machine**: `bun`, `rsync`, `ssh`.
+    - If using a password instead of SSH keys, you must install `sshpass`.
+2.  **Remote Server**: Nginx, Certbot.
 
-## Deployment Steps
+## Deployment Command
 
-1.  **Generate SSL Certificates**:
-    If you haven't already, run Certbot on the server:
-    ```bash
-    sudo certbot --nginx -d hutusi.com -d www.hutusi.com
-    ```
+You can run the deployment via `bun run deploy`. It accepts arguments for the host, user, and password.
 
-2.  **Run Deployment**:
-    Use the `deploy.sh` script. You can run it via `npm` or directly:
+### Examples
 
-    ```bash
-    # Basic deployment (sync files only)
-    REMOTE_USER=myuser REMOTE_HOST=1.2.3.4 npm run deploy
+```bash
+# Deploy using SSH keys (recommended)
+bun run deploy -- --host 1.2.3.4 --user myuser
 
-    # Deployment with Nginx configuration update
-    npm run deploy -- --setup-nginx
+# Deploy using a password
+bun run deploy -- --host 1.2.3.4 --user myuser --pass mysecretpassword
 
-    # Dry run (see what happens without changing anything)
-    ./deployment/deploy.sh --dry-run
-    ```
+# Setup Nginx configuration (first time or when config changes)
+bun run deploy -- --host 1.2.3.4 --user myuser --setup-nginx
 
-## Customization
+# Dry run (preview changes)
+bun run deploy -- --host 1.2.3.4 --user myuser --dry-run
+```
 
-- **Domain Name**: Replace `hutusi.com` in `server_nginx.conf`.
-- **Paths**: Default root is `/var/www/hutusi`.
+### Environment Variables
+
+Alternatively, you can set environment variables:
+
+```bash
+REMOTE_HOST=1.2.3.4 REMOTE_USER=myuser REMOTE_PASS=mypass bun run deploy
+```
+
+## Nginx configuration
+
+The configuration is in `deployment/server_nginx.conf`. Update the `server_name` and SSL paths as needed before running with `--setup-nginx`.
