@@ -1,11 +1,13 @@
 ---
 layout: post
 category: tech
-tags: 博客 giscus
+tags:
+  - 博客
+  - giscus
 title: 给博客换了套新评论系统
 subtitle: 用 giscus 替换 gitalk
-date: "2022-04-04 14:20:00 +0800"
-last_modified_at: "2022-04-04 14:20:00 +0800"
+date: '2022-04-04 14:20:00 +0800'
+last_modified_at: '2022-04-04 14:20:00 +0800'
 image: articles/2022-jekyll-comments.jpg
 ---
 

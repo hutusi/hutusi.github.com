@@ -1,11 +1,12 @@
 ---
 layout: post
 category: essay
-tags: 回忆
+tags:
+  - 回忆
 title: 当魔法消失时
 subtitle: 看《乡村巴士带走了王孩儿和神仙》而引发的回忆
-date: "2023-02-28 21:45:00 +0800"
-last_modified_at: "2023-02-28 21:45:00 +0800"
+date: '2023-02-28 21:45:00 +0800'
+last_modified_at: '2023-02-28 21:45:00 +0800'
 image: articles/2023-nostalgia.jpg
 featured: true
 ---

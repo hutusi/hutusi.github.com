@@ -1,11 +1,14 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 传记
+tags:
+  - 读书
+  - 书评
+  - 传记
 title: 学习邓小平的智慧
 subtitle: 重温《邓小平时代》
-date: "2022-04-17 14:05:00 +0800"
-last_modified_at: "2022-04-17 14:05:00 +0800"
+date: '2022-04-17 14:05:00 +0800'
+last_modified_at: '2022-04-17 14:05:00 +0800'
 image: articles/2022-Dengxiaoping-and-the-Transformation-of-China.jpeg
 featured: true
 ---

@@ -1,11 +1,15 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 禅 宗教
+tags:
+  - 读书
+  - 书评
+  - 禅
+  - 宗教
 title: 云门胡饼赵州茶
 subtitle: 比尔·波特的禅宗之旅——《禅的行囊》
-date: "2022-06-19 19:01:00 +0800"
-last_modified_at: "2022-06-19 19:01:00 +0800"
+date: '2022-06-19 19:01:00 +0800'
+last_modified_at: '2022-06-19 19:01:00 +0800'
 image: articles/2022-zen-baggage.jpeg
 featured: true
 ---

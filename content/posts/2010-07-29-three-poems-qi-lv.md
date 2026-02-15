@@ -1,10 +1,12 @@
 ---
 layout: post
 category: essay
-tags: 诗词 格律诗
+tags:
+  - 诗词
+  - 格律诗
 title: 七律三首
 subtitle: 2008年前写的几首诗
-date: 2010-07-29 00:00:00 +0800
+date: '2010-07-29 00:00:00 +0800'
 gh_issue: 63
 redirect_from:
   - /three-poems-qi-lv

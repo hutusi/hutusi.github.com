@@ -1,11 +1,13 @@
 ---
 layout: post
 category: essay
-tags: 城市 上海
+tags:
+  - 城市
+  - 上海
 title: 上海周末骑行：从浦东到外白渡桥
-subtitle: ""
-date: "2022-06-06 23:55:00 +0800"
-last_modified_at: "2022-06-06 23:55:00 +0800"
+subtitle: ''
+date: '2022-06-06 23:55:00 +0800'
+last_modified_at: '2022-06-06 23:55:00 +0800'
 image: photos/the-bund-view.jpeg
 ---
 

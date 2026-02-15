@@ -1,9 +1,14 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 小说 文学 马尔克斯
+tags:
+  - 读书
+  - 书评
+  - 小说
+  - 文学
+  - 马尔克斯
 title: 读《霍乱时期的爱情》
-date: 2013-07-26 00:00:00 +0800
+date: '2013-07-26 00:00:00 +0800'
 gh_issue: 62
 redirect_from:
   - /love-in-the-time-of-cholera

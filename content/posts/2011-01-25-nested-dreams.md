@@ -1,10 +1,12 @@
 ---
 layout: post
 category: essay
-tags: 随笔 梦
+tags:
+  - 随笔
+  - 梦
 title: 嵌套的梦
-subtitle: 
-date: 2011-01-25 14:02:00 +0800
+subtitle: null
+date: '2011-01-25 14:02:00 +0800'
 image: articles/2011-nested-dreams.webp
 ---
 

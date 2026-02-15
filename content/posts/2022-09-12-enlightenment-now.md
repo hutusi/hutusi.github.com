@@ -1,11 +1,13 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 
+tags:
+  - 读书
+  - 书评
 title: 当下我们还需要启蒙吗？
 subtitle: 斯蒂芬·平克《当下的启蒙》读书笔记
-date: "2022-09-12 21:52:00 +0800"
-last_modified_at: "2022-09-12 21:52:00 +0800"
+date: '2022-09-12 21:52:00 +0800'
+last_modified_at: '2022-09-12 21:52:00 +0800'
 image: arts/Les_salons_au_XVIIIe_siècle_-_Histoire_Image.jpeg
 featured: true
 ---

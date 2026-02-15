@@ -1,10 +1,14 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 书摘 加缪
+tags:
+  - 读书
+  - 书评
+  - 书摘
+  - 加缪
 title: “人生在世，永远也不该演戏作假”
-subtitle: "加缪《局外人》《鼠疫》摘抄"
-date: "2020-04-25 22:15:00 +0800"
+subtitle: 加缪《局外人》《鼠疫》摘抄
+date: '2020-04-25 22:15:00 +0800'
 gh_issue: 51
 redirect_from:
   - /the-stranger-and-the-plague

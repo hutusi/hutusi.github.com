@@ -1,11 +1,17 @@
 ---
 layout: post
 category: essay
-tags: 随笔 生活 育儿 大卫
+tags:
+  - 随笔
+  - 生活
+  - 育儿
+  - 大卫
 title: 陪产记
-subtitle: “May God bless and keep you always, May your wishes all come true” —— Bob Dylan, Forever Young
+subtitle: >-
+  “May God bless and keep you always, May your wishes all come true” —— Bob
+  Dylan, Forever Young
 backgrounds:
-    - 500px-119079019-s-l-u-r-p.jpg
+  - 500px-119079019-s-l-u-r-p.jpg
 thumb: instagram-bba8d404900cf732e4477159f304c12c.jpg
 gh_issue: 43
 redirect_from:

@@ -1,11 +1,13 @@
 ---
 layout: post
 category: essay
-tags: 英语 学习
+tags:
+  - 英语
+  - 学习
 title: 谈一谈英语学习
-subtitle: No pains, no gains.
+subtitle: 'No pains, no gains.'
 backgrounds:
-    - 500px-119028985-feel-the-peace-iv-by-day-by-night.jpg
+  - 500px-119028985-feel-the-peace-iv-by-day-by-night.jpg
 thumb: instagram-11351820_1680697895491434_1302120760_n.jpg
 gh_issue: 13
 redirect_from:

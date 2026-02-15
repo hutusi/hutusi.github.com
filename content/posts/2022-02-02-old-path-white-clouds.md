@@ -1,11 +1,15 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 宗教 传记
+tags:
+  - 读书
+  - 书评
+  - 宗教
+  - 传记
 title: 觉悟之道就是活在当下
 subtitle: 《佛陀传》(《故道白云》)读书笔记
-date: "2022-02-02 17:50:00 +0800"
-last_modified_at: "2022-02-02 17:50:00 +0800"
+date: '2022-02-02 17:50:00 +0800'
+last_modified_at: '2022-02-02 17:50:00 +0800'
 gh_issue: 111
 image: articles/2022-old-path-white-clouds.jpg
 ---

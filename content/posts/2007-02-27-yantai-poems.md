@@ -1,11 +1,13 @@
 ---
 layout: post
 category: essay
-tags: 随笔 诗词
+tags:
+  - 随笔
+  - 诗词
 title: 诗歌与烟台
-subtitle: 
+subtitle: null
 backgrounds:
-    - 500px-40228170-colors-of-arctic.jpg
+  - 500px-40228170-colors-of-arctic.jpg
 thumb: instagram-11355032_550488605104961_1339802502_n.jpg
 gh_issue: 47
 redirect_from:

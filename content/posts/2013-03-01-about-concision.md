@@ -1,11 +1,13 @@
 ---
 layout: post
 category: essay
-tags: 随笔 文摘
+tags:
+  - 随笔
+  - 文摘
 title: 简洁
-subtitle: I go, you stay; two autums.
+subtitle: 'I go, you stay; two autums.'
 backgrounds:
-    - 500px-119011929-five-minutes-before.jpg
+  - 500px-119011929-five-minutes-before.jpg
 thumb: instagram-11934847_1652950748251937_1064734705_n.jpg
 gh_issue: 18
 redirect_from:

@@ -1,10 +1,15 @@
 ---
 layout: post
 category: tech
-tags: 软件工程 神经网络 深度学习 大模型 软件开发
+tags:
+  - 软件工程
+  - 神经网络
+  - 深度学习
+  - 大模型
+  - 软件开发
 title: 银弹飞过先锋大厦
 subtitle: 从软件工程发展历史看大模型时代的软件开发
-date: "2024-05-28 21:37:00 +0800"
+date: '2024-05-28 21:37:00 +0800'
 image: people/ada-lovelace.jpg
 featured: true
 ---

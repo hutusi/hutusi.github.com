@@ -1,10 +1,12 @@
 ---
 layout: post
 category: tech
-tags: 黑客 开源
+tags:
+  - 黑客
+  - 开源
 title: 如何成为一名黑客
-subtitle: "How to become a hacker"
-date: "2020-09-20 20:00:00 +0800"
+subtitle: How to become a hacker
+date: '2020-09-20 20:00:00 +0800'
 gh_issue: 58
 redirect_from:
   - /how-to-become-a-hacker

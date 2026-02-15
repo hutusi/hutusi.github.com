@@ -1,11 +1,12 @@
 ---
 layout: post
 category: essay
-tags: 游记
+tags:
+  - 游记
 title: 在大理，听打雷
 subtitle: 跟着旅游巴士游云南
-date: "2024-03-02 10:35:00 +0800"
-last_modified_at: "2024-03-02 10:35:00 +0800"
+date: '2024-03-02 10:35:00 +0800'
+last_modified_at: '2024-03-02 10:35:00 +0800'
 image: photos/dalifornia.jpeg
 ---
 

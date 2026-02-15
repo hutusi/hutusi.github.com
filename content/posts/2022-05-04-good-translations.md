@@ -1,11 +1,14 @@
 ---
 layout: post
 category: essay
-tags: 读书 翻译 诗歌
+tags:
+  - 读书
+  - 翻译
+  - 诗歌
 title: 如何选择图书译本？
 subtitle: 从翻译说起
-date: "2022-05-04 14:05:00 +0800"
-last_modified_at: "2022-05-04 14:05:00 +0800"
+date: '2022-05-04 14:05:00 +0800'
+last_modified_at: '2022-05-04 14:05:00 +0800'
 image: articles/2022-tower-of-babel.jpeg
 ---
 

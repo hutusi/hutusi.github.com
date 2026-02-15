@@ -1,10 +1,13 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 传记
+tags:
+  - 读书
+  - 书评
+  - 传记
 title: 人类伟大的时刻
-subtitle: "《人类群星闪耀时》读书笔记"
-last_modified_at: "2022-06-18 20:50:00 +0800"
+subtitle: 《人类群星闪耀时》读书笔记
+last_modified_at: '2022-06-18 20:50:00 +0800'
 gh_issue: 6
 redirect_from:
   - /blog/2017/05/04/geniuses

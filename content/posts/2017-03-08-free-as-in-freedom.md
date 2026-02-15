@@ -1,9 +1,13 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 传记 开源
+tags:
+  - 读书
+  - 书评
+  - 传记
+  - 开源
 title: 若为自由故
-subtitle: "《若为自由故》——理查德·斯托曼（Richard Stallman）传记"
+subtitle: 《若为自由故》——理查德·斯托曼（Richard Stallman）传记
 gh_issue: 32
 redirect_from:
   - /blog/2017/03/08/free

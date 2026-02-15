@@ -1,10 +1,14 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 俳句 日本
+tags:
+  - 读书
+  - 书评
+  - 俳句
+  - 日本
 title: 行不尽，行不尽，一路青山
 subtitle: 种田山头火和他的俳句人生
-date: "2021-10-01 22:50:00 +0800"
+date: '2021-10-01 22:50:00 +0800'
 gh_issue: 105
 image: articles/2021-santoka-haiku.jpg
 ---

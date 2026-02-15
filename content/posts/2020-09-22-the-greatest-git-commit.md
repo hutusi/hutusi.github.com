@@ -1,10 +1,13 @@
 ---
 layout: post
 category: tech
-tags: 开源 Git 编程
+tags:
+  - 开源
+  - Git
+  - 编程
 title: 改变世界的一次代码提交
 subtitle: Git 第一次提交的源代码分析及带来的启示
-date: 2020-09-22 00:00:00 +0800
+date: '2020-09-22 00:00:00 +0800'
 gh_issue: 59
 redirect_from:
   - /the-greatest-git-commit

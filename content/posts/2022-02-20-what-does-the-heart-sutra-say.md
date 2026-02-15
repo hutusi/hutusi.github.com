@@ -1,11 +1,14 @@
 ---
 layout: post
 category: essay
-tags: 读书 书评 宗教
+tags:
+  - 读书
+  - 书评
+  - 宗教
 title: 心经说了什么
 subtitle: 比尔·波特《心经解读》读书笔记
-date: "2022-02-20 20:35:00 +0800"
-last_modified_at: "2022-02-20 20:35:00 +0800"
+date: '2022-02-20 20:35:00 +0800'
+last_modified_at: '2022-02-20 20:35:00 +0800'
 gh_issue: 113
 image: articles/2022-the-heart-sutra.jpg
 ---
