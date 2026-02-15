@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # hutusi.com Deployment Script
-# Refactored for Bun and password support
+# Refactored for Bun, password support, and robust permissions
 
 set -e # Exit on error
 
@@ -84,17 +84,28 @@ check_dep bun
 check_dep rsync
 check_dep ssh
 
+# Setup SSH and Rsync commands
 if [ -n "$PASS" ]; then
     check_dep sshpass
-    SSH_CMD="sshpass -p '$PASS' ssh -o StrictHostKeyChecking=no"
-    RSYNC_CMD="rsync -avz --delete -e \"sshpass -p '$PASS' ssh -o StrictHostKeyChecking=no\""
-    SCP_CMD="sshpass -p '$PASS' scp -o StrictHostKeyChecking=no"
+    export SSHPASS="$PASS"
+    SSH_OPTS="-o StrictHostKeyChecking=no -o PreferredAuthentications=password,publickey"
+    SSH_BASE="sshpass -e ssh $SSH_OPTS"
+    SCP_BASE="sshpass -e scp $SSH_OPTS"
+    RSYNC_SSH="sshpass -e ssh $SSH_OPTS"
     warn "Using password for authentication. Using SSH keys is highly recommended for security."
 else
-    SSH_CMD="ssh"
-    RSYNC_CMD="rsync -avz --delete"
-    SCP_CMD="scp"
+    SSH_OPTS="-o StrictHostKeyChecking=no"
+    SSH_BASE="ssh $SSH_OPTS"
+    SCP_BASE="scp $SSH_OPTS"
+    RSYNC_SSH="ssh $SSH_OPTS"
 fi
+
+# Check connectivity before building
+log "Checking SSH connectivity..."
+if ! $SSH_BASE -o ConnectTimeout=10 $USER@$HOST "exit" 2>/dev/null; then
+    error "Could not connect to $USER@$HOST. Please check your credentials and server status."
+fi
+success "Connected successfully."
 
 # 1. Build
 if [ "$SKIP_BUILD" = false ]; then
@@ -109,14 +120,27 @@ else
     log "Skipping build step."
 fi
 
+# Determine if we need sudo
+REMOTE_SUDO="sudo"
+if [ "$USER" = "root" ]; then
+    REMOTE_SUDO=""
+fi
+
 # 2. Sync files
 log "Deploying files to $USER@$HOST:$DIR..."
 if [ "$DRY_RUN" = true ]; then
-    log "[DRY-RUN] $RSYNC_CMD $PROJECT_ROOT/out/ $USER@$HOST:$DIR"
+    log "[DRY-RUN] Syncing $PROJECT_ROOT/out/ to $USER@$HOST:$DIR"
 else
-    # Create directory if it doesn't exist
-    $SSH_CMD $USER@$HOST "sudo mkdir -p $DIR && sudo chown -R $USER:$USER $DIR"
-    eval "$RSYNC_CMD \"$PROJECT_ROOT/out/\" $USER@$HOST:$DIR"
+    # Ensure the remote directory exists
+    $SSH_BASE $USER@$HOST "$REMOTE_SUDO mkdir -p $DIR && $REMOTE_SUDO chown -R $USER:$USER $DIR"
+    
+    # Sync files
+    if [ -n "$PASS" ]; then
+        # Use sshpass to wrap the whole rsync command for better reliability with special chars
+        sshpass -e rsync -avz --delete -e "ssh $SSH_OPTS" "$PROJECT_ROOT/out/" "$USER@$HOST:$DIR/"
+    else
+        rsync -avz --delete -e "ssh $SSH_OPTS" "$PROJECT_ROOT/out/" "$USER@$HOST:$DIR/"
+    fi
 fi
 success "Files synced."
 
@@ -126,21 +150,21 @@ if [ "$SETUP_NGINX" = true ]; then
     if [ "$DRY_RUN" = true ]; then
         log "[DRY-RUN] Update Nginx config at $NGINX_DEST"
     else
-        $SCP_CMD "$NGINX_SRC" $USER@$HOST:/tmp/hutusi.nginx.conf
-        $SSH_CMD $USER@$HOST << EOF
-            sudo mv /tmp/hutusi.nginx.conf $NGINX_DEST
-            sudo ln -sf $NGINX_DEST /etc/nginx/sites-enabled/
+        $SCP_BASE "$NGINX_SRC" $USER@$HOST:/tmp/hutusi.nginx.conf
+        $SSH_BASE $USER@$HOST << EOF
+            $REMOTE_SUDO mv /tmp/hutusi.nginx.conf $NGINX_DEST
+            $REMOTE_SUDO ln -sf $NGINX_DEST /etc/nginx/sites-enabled/
             
             # Check SSL certificates
             if [ ! -f /etc/letsencrypt/live/hutusi.com/fullchain.pem ]; then
-                echo "WARNING: SSL certificates not found at expected path."
+                echo -e "${RED}[WARN]${NC} SSL certificates not found at expected path."
             fi
 
-            if sudo nginx -t; then
-                sudo systemctl reload nginx
+            if $REMOTE_SUDO nginx -t; then
+                $REMOTE_SUDO systemctl reload nginx
                 echo "Nginx reloaded successfully."
             else
-                echo "ERROR: Nginx configuration test failed. Not reloaded."
+                echo -e "${RED}[ERROR]${NC} Nginx configuration test failed. Not reloaded."
                 exit 1
             fi
 EOF
