@@ -2,6 +2,7 @@
 
 import { siteConfig } from "@/config/site";
 import { SiX, SiFacebook, SiLinkedin, SiSinaweibo, SiDouban, SiZhihu } from "react-icons/si";
+import { TbMessageCircle } from "react-icons/tb";
 import type { ReactNode } from "react";
 
 interface SocialShareProps {
@@ -68,6 +69,27 @@ function ShareButton({ link, title, fullUrl }: { link: ShareLink; title: string;
   );
 }
 
+function CommentButton() {
+  const scrollToComments = () => {
+    const el = document.getElementById("comments");
+    if (el) {
+      const yOffset = -80;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <button
+      onClick={scrollToComments}
+      title="跳转到评论"
+      className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--border)] text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
+    >
+      <TbMessageCircle className="w-5 h-5" />
+    </button>
+  );
+}
+
 /**
  * Sticky sidebar version - shown on xl screens, positioned to the left of the article.
  */
@@ -80,6 +102,8 @@ export function SocialShareSidebar({ title, url }: SocialShareProps) {
       {shareLinks.map((link) => (
         <ShareButton key={link.name} link={link} title={title} fullUrl={fullUrl} />
       ))}
+      <div className="w-5 border-t border-[var(--border)]" />
+      <CommentButton />
     </div>
   );
 }
@@ -96,6 +120,8 @@ export function SocialShareInline({ title, url }: SocialShareProps) {
       {shareLinks.map((link) => (
         <ShareButton key={link.name} link={link} title={title} fullUrl={fullUrl} />
       ))}
+      <div className="w-px h-6 bg-[var(--border)] mx-1" />
+      <CommentButton />
     </div>
   );
 }
