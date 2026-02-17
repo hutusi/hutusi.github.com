@@ -52,24 +52,31 @@ async function fetchDiscussions(token: string): Promise<Map<string, number>> {
   let cursor: string | null = null;
   let hasNextPage = true;
 
-  while (hasNextPage) {
-    const afterClause = cursor ? `, after: "${cursor}"` : "";
-    const query = `{
-      repository(owner: "${REPO_OWNER}", name: "${REPO_NAME}") {
-        discussions(first: 100, categoryId: "${CATEGORY_ID}"${afterClause}) {
-          nodes {
-            title
-            comments {
-              totalCount
-            }
-          }
-          pageInfo {
-            hasNextPage
-            endCursor
+  const query = `query($owner: String!, $name: String!, $categoryId: ID!, $first: Int!, $after: String) {
+    repository(owner: $owner, name: $name) {
+      discussions(first: $first, categoryId: $categoryId, after: $after) {
+        nodes {
+          title
+          comments {
+            totalCount
           }
         }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
       }
-    }`;
+    }
+  }`;
+
+  while (hasNextPage) {
+    const variables = {
+      owner: REPO_OWNER,
+      name: REPO_NAME,
+      categoryId: CATEGORY_ID,
+      first: 100,
+      after: cursor,
+    };
 
     const response = await fetch("https://api.github.com/graphql", {
       method: "POST",
@@ -77,7 +84,7 @@ async function fetchDiscussions(token: string): Promise<Map<string, number>> {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({ query, variables }),
     });
 
     if (!response.ok) {
