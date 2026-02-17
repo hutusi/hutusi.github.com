@@ -7,6 +7,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import Comments from "@/components/comments/Comments";
+import { SocialShareSidebar, SocialShareInline } from "@/components/posts/SocialShare";
 import MDXImage from "@/components/MDXImage";
 import MDXLink from "@/components/MDXLink";
 import type { Metadata } from "next";
@@ -53,6 +54,8 @@ export default async function WeeklyPage({ params }: Props) {
   const { prev, next } = await getAdjacentPosts(slug, "weekly");
 
   return (
+    <>
+    <SocialShareSidebar title={weekly.title} url={weekly.url} />
     <article className="max-w-4xl mx-auto px-4 py-8">
       {/* Header */}
       <header className="mb-8">
@@ -148,6 +151,11 @@ export default async function WeeklyPage({ params }: Props) {
         </div>
       </nav>
 
+      {/* Share (inline for smaller screens) */}
+      <div className="mt-12 pt-8 border-t border-[var(--border)]">
+        <SocialShareInline title={weekly.title} url={weekly.url} />
+      </div>
+
       {/* Comments */}
       <Comments url={weekly.url} identifier={weekly.slug} title={weekly.title} />
 
@@ -179,5 +187,6 @@ export default async function WeeklyPage({ params }: Props) {
         )}
       </div>
     </article>
+    </>
   );
 }

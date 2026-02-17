@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import Comments from "@/components/comments/Comments";
 import ReadingProgress from "@/components/posts/ReadingProgress";
+import { SocialShareSidebar, SocialShareInline } from "@/components/posts/SocialShare";
 import MDXImage from "@/components/MDXImage";
 import MDXLink from "@/components/MDXLink";
 import type { Metadata } from "next";
@@ -63,6 +64,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <>
       <ReadingProgress />
+      <SocialShareSidebar title={post.title} url={post.url} />
       <article className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <header className="mb-8">
@@ -133,8 +135,12 @@ export default async function ArticlePage({ params }: Props) {
           />
         </div>
 
-        {/* Author */}
-        <div className="mt-12 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        {/* Share (inline for smaller screens) & Author */}
+        <div className="mt-12 pt-8 border-t border-[var(--border)]">
+          <SocialShareInline title={post.title} url={post.url} />
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div className="flex items-center gap-4">
             <img
               src={siteConfig.author.avatar}
