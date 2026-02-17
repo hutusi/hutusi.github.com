@@ -1,7 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
-import { TbBrandX, TbBrandFacebook, TbBrandLinkedin, TbBrandWeibo, TbBrandDouban, TbBrandZhihu } from "react-icons/tb";
+import { SiX, SiFacebook, SiLinkedin, SiSinaweibo, SiDouban, SiZhihu } from "react-icons/si";
 import type { ReactNode } from "react";
 
 interface SocialShareProps {
@@ -18,37 +18,37 @@ interface ShareLink {
 const shareLinks: ShareLink[] = [
   {
     name: "X",
-    icon: <TbBrandX className="w-4 h-4" />,
+    icon: <SiX className="w-4 h-4" />,
     getUrl: (title, url) =>
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
   },
   {
     name: "Facebook",
-    icon: <TbBrandFacebook className="w-4 h-4" />,
+    icon: <SiFacebook className="w-4 h-4" />,
     getUrl: (_, url) =>
       `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
   },
   {
     name: "LinkedIn",
-    icon: <TbBrandLinkedin className="w-4 h-4" />,
+    icon: <SiLinkedin className="w-4 h-4" />,
     getUrl: (_, url) =>
       `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
   },
   {
     name: "微博",
-    icon: <TbBrandWeibo className="w-4 h-4" />,
+    icon: <SiSinaweibo className="w-4 h-4" />,
     getUrl: (title, url) =>
       `https://service.weibo.com/share/share.php?title=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
   },
   {
     name: "豆瓣",
-    icon: <TbBrandDouban className="w-4 h-4" />,
+    icon: <SiDouban className="w-4 h-4" />,
     getUrl: (title, url) =>
       `https://www.douban.com/share/service?name=${encodeURIComponent(title)}&href=${encodeURIComponent(url)}`,
   },
   {
     name: "知乎",
-    icon: <TbBrandZhihu className="w-4 h-4" />,
+    icon: <SiZhihu className="w-4 h-4" />,
     getUrl: (title, url) =>
       `https://www.zhihu.com/qrcode?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
   },
@@ -61,7 +61,7 @@ function ShareButton({ link, title, fullUrl }: { link: ShareLink; title: string;
       target="_blank"
       rel="noopener noreferrer"
       title={`分享到 ${link.name}`}
-      className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--border)] text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
+      className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--border)] text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
     >
       {link.icon}
     </a>
