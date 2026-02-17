@@ -77,7 +77,7 @@ export async function GET() {
     .map(
       (year) => `
   <url>
-    <loc>${siteConfig.url}/${year}</loc>
+    <loc>${siteConfig.url}/archive/${year}</loc>
     <priority>0.5</priority>
   </url>`
     )

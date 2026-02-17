@@ -154,7 +154,7 @@ This document tracks the migration progress from Jekyll to Next.js.
 - [ ] Add preconnect hints for CDN
 
 ### Additional Features
-- [ ] Social sharing buttons (Twitter, Facebook, LinkedIn, Weibo, Douban, Zhihu)
+- [x] Social sharing buttons (Twitter, Facebook, LinkedIn, Weibo, Douban, Zhihu)
 - [ ] Search functionality (consider Pagefind or Algolia)
 
 ### Content Enhancements

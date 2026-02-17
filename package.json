@@ -7,36 +7,38 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "chmod +x ./deployment/deploy.sh && ./deployment/deploy.sh"
+    "deploy": "chmod +x ./deployment/deploy.sh && ./deployment/deploy.sh",
+    "fetch-comments": "bun run scripts/fetch-comment-counts.ts"
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.1.1",
+    "@next/mdx": "^16.1.6",
     "gray-matter": "^4.0.3",
-    "next": "16.1.1",
-    "next-mdx-remote": "^5.0.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "next": "16.1.6",
+    "next-mdx-remote": "^6.0.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-icons": "^5.5.0",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.14.1",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
-    "shiki": "^3.21.0"
+    "shiki": "^3.22.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^24.10.13",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "eslint": "^10.0.0",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
   },
   "ignoreScripts": [
     "sharp",
