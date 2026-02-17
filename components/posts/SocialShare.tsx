@@ -1,7 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
-import { SiX, SiFacebook, SiLinkedin, SiSinaweibo, SiDouban, SiZhihu } from "react-icons/si";
+import { SiX, SiFacebook, SiLinkedin, SiSinaweibo, SiDouban } from "react-icons/si";
 import { TbMessageCircle } from "react-icons/tb";
 import type { ReactNode } from "react";
 
@@ -47,12 +47,6 @@ const shareLinks: ShareLink[] = [
     icon: <SiDouban className="w-4 h-4" />,
     getUrl: (title, url) =>
       `https://www.douban.com/share/service?name=${encodeURIComponent(title)}&href=${encodeURIComponent(url)}`,
-  },
-  {
-    name: "知乎",
-    icon: <SiZhihu className="w-4 h-4" />,
-    getUrl: (title, url) =>
-      `https://www.zhihu.com/qrcode?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
   },
 ];
 
@@ -109,6 +103,7 @@ export function SocialShareSidebar({ title, url, commentCount }: SocialShareProp
         <ShareButton key={link.name} link={link} title={title} fullUrl={fullUrl} />
       ))}
       <div className="w-5 border-t border-[var(--border)]" />
+      <span className="text-xs text-[var(--foreground-muted)] mb-1">评论</span>
       <CommentButton count={commentCount} />
     </div>
   );
