@@ -8,6 +8,7 @@ import type { ReactNode } from "react";
 interface SocialShareProps {
   title: string;
   url: string;
+  commentCount?: number;
 }
 
 interface ShareLink {
@@ -69,7 +70,7 @@ function ShareButton({ link, title, fullUrl }: { link: ShareLink; title: string;
   );
 }
 
-function CommentButton() {
+function CommentButton({ count }: { count?: number }) {
   const scrollToComments = () => {
     const el = document.getElementById("comments");
     if (el) {
@@ -83,9 +84,14 @@ function CommentButton() {
     <button
       onClick={scrollToComments}
       title="跳转到评论"
-      className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--border)] text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
+      className="inline-flex items-center justify-center gap-1 w-9 h-9 rounded-full border border-[var(--border)] text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors relative"
     >
       <TbMessageCircle className="w-5 h-5" />
+      {count != null && count > 0 && (
+        <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 flex items-center justify-center rounded-full bg-[var(--accent)] text-white text-[10px] font-medium leading-none">
+          {count > 99 ? "99+" : count}
+        </span>
+      )}
     </button>
   );
 }
@@ -93,7 +99,7 @@ function CommentButton() {
 /**
  * Sticky sidebar version - shown on xl screens, positioned to the left of the article.
  */
-export function SocialShareSidebar({ title, url }: SocialShareProps) {
+export function SocialShareSidebar({ title, url, commentCount }: SocialShareProps) {
   const fullUrl = `${siteConfig.url}${url}`;
 
   return (
@@ -103,7 +109,7 @@ export function SocialShareSidebar({ title, url }: SocialShareProps) {
         <ShareButton key={link.name} link={link} title={title} fullUrl={fullUrl} />
       ))}
       <div className="w-5 border-t border-[var(--border)]" />
-      <CommentButton />
+      <CommentButton count={commentCount} />
     </div>
   );
 }
@@ -111,7 +117,7 @@ export function SocialShareSidebar({ title, url }: SocialShareProps) {
 /**
  * Inline version - shown below article content on smaller screens.
  */
-export function SocialShareInline({ title, url }: SocialShareProps) {
+export function SocialShareInline({ title, url, commentCount }: SocialShareProps) {
   const fullUrl = `${siteConfig.url}${url}`;
 
   return (
@@ -121,16 +127,16 @@ export function SocialShareInline({ title, url }: SocialShareProps) {
         <ShareButton key={link.name} link={link} title={title} fullUrl={fullUrl} />
       ))}
       <div className="w-px h-6 bg-[var(--border)] mx-1" />
-      <CommentButton />
+      <CommentButton count={commentCount} />
     </div>
   );
 }
 
-export default function SocialShare({ title, url }: SocialShareProps) {
+export default function SocialShare({ title, url, commentCount }: SocialShareProps) {
   return (
     <>
-      <SocialShareSidebar title={title} url={url} />
-      <SocialShareInline title={title} url={url} />
+      <SocialShareSidebar title={title} url={url} commentCount={commentCount} />
+      <SocialShareInline title={title} url={url} commentCount={commentCount} />
     </>
   );
 }

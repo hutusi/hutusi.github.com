@@ -1,5 +1,6 @@
 import { getAllPosts, getPostBySlug, getAdjacentPosts } from "@/lib/content";
 import { formatDate, getImageUrl } from "@/lib/utils";
+import { getCommentCount } from "@/lib/comments";
 import { siteConfig } from "@/config/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -60,11 +61,12 @@ export default async function ArticlePage({ params }: Props) {
   }
 
   const { prev, next } = await getAdjacentPosts(slug, "post");
+  const commentCount = getCommentCount(post.url);
 
   return (
     <>
       <ReadingProgress />
-      <SocialShareSidebar title={post.title} url={post.url} />
+      <SocialShareSidebar title={post.title} url={post.url} commentCount={commentCount} />
       <article className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <header className="mb-8">
@@ -137,7 +139,7 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* Share (inline for smaller screens) & Author */}
         <div className="mt-12 pt-8 border-t border-[var(--border)]">
-          <SocialShareInline title={post.title} url={post.url} />
+          <SocialShareInline title={post.title} url={post.url} commentCount={commentCount} />
         </div>
 
         <div className="mt-8 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-start md:items-center gap-8">

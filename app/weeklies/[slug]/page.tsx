@@ -1,5 +1,6 @@
 import { getAllWeeklies, getWeeklyBySlug, getAdjacentPosts } from "@/lib/content";
 import { formatDate, getImageUrl } from "@/lib/utils";
+import { getCommentCount } from "@/lib/comments";
 import { siteConfig } from "@/config/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -52,10 +53,11 @@ export default async function WeeklyPage({ params }: Props) {
   }
 
   const { prev, next } = await getAdjacentPosts(slug, "weekly");
+  const commentCount = getCommentCount(weekly.url);
 
   return (
     <>
-    <SocialShareSidebar title={weekly.title} url={weekly.url} />
+    <SocialShareSidebar title={weekly.title} url={weekly.url} commentCount={commentCount} />
     <article className="max-w-4xl mx-auto px-4 py-8">
       {/* Header */}
       <header className="mb-8">
@@ -153,7 +155,7 @@ export default async function WeeklyPage({ params }: Props) {
 
       {/* Share (inline for smaller screens) */}
       <div className="mt-12 pt-8 border-t border-[var(--border)]">
-        <SocialShareInline title={weekly.title} url={weekly.url} />
+        <SocialShareInline title={weekly.title} url={weekly.url} commentCount={commentCount} />
       </div>
 
       {/* Comments */}

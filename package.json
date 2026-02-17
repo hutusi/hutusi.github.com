@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "chmod +x ./deployment/deploy.sh && ./deployment/deploy.sh"
+    "deploy": "chmod +x ./deployment/deploy.sh && ./deployment/deploy.sh",
+    "fetch-comments": "bun run scripts/fetch-comment-counts.ts"
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
