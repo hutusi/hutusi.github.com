@@ -8,6 +8,16 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 const weekliesDirectory = path.join(process.cwd(), "content/weeklies");
 const pagesDirectory = path.join(process.cwd(), "content/pages");
 
+// Normalize non-standard date format from Jekyll: 'YYYY-MM-DD HH:mm:ss +0800' -> 'YYYY-MM-DDTHH:mm:ss+08:00'
+// Safari/iOS cannot parse the space-separated format with uncoloned timezone offset
+function normalizeDate(date: string | undefined): string | undefined {
+  if (!date) return date;
+  return date.replace(
+    /^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2}) ([+-])(\d{2})(\d{2})$/,
+    "$1T$2$3$4:$5"
+  );
+}
+
 function getExcerpt(content: string, length = 200): string {
   // Remove markdown syntax and get plain text
   const plainText = content
@@ -49,14 +59,17 @@ export async function getAllPosts(): Promise<Post[]> {
         frontmatter.date = dateMatch[1];
       }
     }
-    
+
+    // Normalize date to ISO 8601 for cross-browser compatibility (Safari)
+    frontmatter.date = normalizeDate(frontmatter.date) ?? frontmatter.date;
+
     // Normalize tags to array
         if (typeof frontmatter.tags === 'string') {
           frontmatter.tags = (frontmatter.tags as string).split(' ').filter(Boolean);
         } else if (!Array.isArray(frontmatter.tags)) {
           frontmatter.tags = [];
         }
-    
+
         const stats = readingTime(content);
     return {
       slug: cleanSlug,
@@ -99,6 +112,9 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       frontmatter.date = dateMatch[1];
     }
   }
+
+  // Normalize date to ISO 8601 for cross-browser compatibility (Safari)
+  frontmatter.date = normalizeDate(frontmatter.date) ?? frontmatter.date;
 
   // Normalize tags to array
   if (typeof frontmatter.tags === 'string') {
@@ -144,6 +160,9 @@ export async function getAllWeeklies(): Promise<Weekly[]> {
         frontmatter.date = dateMatch[1];
       }
     }
+
+    // Normalize date to ISO 8601 for cross-browser compatibility (Safari)
+    frontmatter.date = normalizeDate(frontmatter.date) ?? frontmatter.date;
 
     // Normalize tags to array
     if (typeof frontmatter.tags === 'string') {
@@ -195,6 +214,9 @@ export async function getWeeklyBySlug(slug: string): Promise<Weekly | null> {
       frontmatter.date = dateMatch[1];
     }
   }
+
+  // Normalize date to ISO 8601 for cross-browser compatibility (Safari)
+  frontmatter.date = normalizeDate(frontmatter.date) ?? frontmatter.date;
 
   // Normalize tags to array
   if (typeof frontmatter.tags === 'string') {
