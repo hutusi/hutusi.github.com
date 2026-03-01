@@ -7,7 +7,7 @@ title: 凡所有相，皆是虚妄
 subtitle: 虽迟但到的2023年总结
 date: '2024-01-14 20:05:00 +0800'
 last_modified_at: '2024-01-14 20:05:00 +0800'
-image: posts/life_path.jpeg
+coverImage: /posts/life_path.jpeg
 featured: true
 ---
 
@@ -51,7 +51,7 @@ featured: true
 
 今年步入不惑之年，但依然对这个世界和人生充满了困惑。曾经我也以为人到中年，会像佛陀那样顿悟，或是如孔子说的“四十不惑”，会找到一条明确的道路前行。这种一劳永逸的想法被证明是错误的，我现在更加认为：人生更像是在一个黑暗的森林里寻路，摆在面前的永远是多种未知的道路选择，而随着阅历和经验的增加，我们会形成自己的判断逻辑，未来永远是未知和不确定的，我们对世界的认识永远是困惑的。而对于不确定的未来，我希望在认知和方法论、AI技术、人文三个方向持续学习，去探知这个世界。
 
-![Life path](posts/life_path.jpeg)
+![Life path](/posts/life_path.jpeg)
 
 > 图片来源： [Tim Urban's tweet](https://twitter.com/waitbutwhy/status/1367871165319049221)
 

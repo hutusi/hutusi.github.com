@@ -10,7 +10,7 @@ date: '2010-07-29 00:00:00 +0800'
 gh_issue: 63
 redirect_from:
   - /three-poems-qi-lv
-image: articles/2010-qilv.jpg
+coverImage: /articles/2010-qilv.jpg
 featured: true
 ---
 

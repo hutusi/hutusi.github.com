@@ -11,7 +11,7 @@ date: '2016-10-13 00:00:00 +0800'
 gh_issue: 61
 redirect_from:
   - /blowing-in-the-wind
-image: articles/2016-bob-dylan.jpg
+coverImage: /articles/2016-bob-dylan.jpg
 featured: true
 ---
 

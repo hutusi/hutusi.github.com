@@ -10,7 +10,7 @@ title: 影响人类命运的是什么？
 subtitle: 《枪炮、病菌与钢铁》读书笔记
 date: '2020-11-29 11:20:00 +0800'
 gh_issue: 93
-image: articles/2020-guns-germs-steel.jpg
+coverImage: /articles/2020-guns-germs-steel.jpg
 featured: true
 ---
 

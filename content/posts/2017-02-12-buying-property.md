@@ -11,7 +11,7 @@ gh_issue: 9
 redirect_from:
   - /blog/2017/02/12/property
   - /buying-property
-image: articles/2017-neighbourhood.jpg
+coverImage: /articles/2017-neighbourhood.jpg
 featured: true
 ---
 

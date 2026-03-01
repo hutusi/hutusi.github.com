@@ -8,7 +8,7 @@ tags:
 title: 悉达多
 date: '2021-03-13 17:00:00 +0800'
 gh_issue: 97
-image: articles/2021-siddhartha.jpeg
+coverImage: /articles/2021-siddhartha.jpeg
 featured: true
 ---
 

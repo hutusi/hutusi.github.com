@@ -12,7 +12,7 @@ gh_issue: 6
 redirect_from:
   - /blog/2017/05/04/geniuses
   - /decisive-moments-in-history
-image: articles/2017-decisive-moments-in-history.jpg
+coverImage: /articles/2017-decisive-moments-in-history.jpg
 featured: true
 ---
 

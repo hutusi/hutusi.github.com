@@ -6,7 +6,7 @@ tags:
 title: 爸爸是最聪明的
 date: '2021-02-08 23:36:00 +0800'
 gh_issue: 96
-image: articles/2021-david.jpg
+coverImage: /articles/2021-david.jpg
 featured: true
 ---
 

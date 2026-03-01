@@ -12,7 +12,7 @@ date: '2013-07-26 00:00:00 +0800'
 gh_issue: 62
 redirect_from:
   - /love-in-the-time-of-cholera
-image: articles/2013-love-in-the-time-of-cholera.jpg
+coverImage: /articles/2013-love-in-the-time-of-cholera.jpg
 featured: true
 ---
 

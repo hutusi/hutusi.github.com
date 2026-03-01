@@ -24,15 +24,15 @@ const social = {
 export const siteConfig = {
 
   // ── Site identity ─────────────────────────────────────────────────────────
-  title: { en: "Amytis", zh: "Amytis" },
-  description: { en: "Amytis — an elegant open-source framework for building your personal digital garden.", zh: "Amytis — 优雅的开源数字花园框架。" },
-  baseUrl: "https://example.com", // Replace with your actual domain
+  title: { en: "hutusi.com", zh: "胡涂说" },
+  description: { en: "hutusi.com — a personal digital garden.", zh: "胡涂说博客/好奇心周刊" },
+  baseUrl: "https://hutusi.com", // Replace with your actual domain
   ogImage: "/og-image.png", // Default OG/social preview image — place a 1200×630 PNG at public/og-image.png
-  footerText: { en: `© ${new Date().getFullYear()} Amytis. All rights reserved.`, zh: `© ${new Date().getFullYear()} Amytis. 保留所有权利。` },
+  footerText: { en: `© ${new Date().getFullYear()} hutusi.com All rights reserved.`, zh: `© ${new Date().getFullYear()} hutusi.com 保留所有权利。` },
 
   // ── i18n ──────────────────────────────────────────────────────────────────
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: 'zh',
     locales: ['en', 'zh'],
   },
 
@@ -98,23 +98,23 @@ export const siteConfig = {
     },
     series: {
       enabled: true,
-      name: { en: "Series", zh: "系列" },
+      name: { en: "Series", zh: "辑录" },
     },
     books: {
-      enabled: true,
+      enabled: false,
       name: { en: "Books", zh: "书籍" },
     },
     flow: {
       enabled: true,
-      name: { en: "Flow", zh: "随笔" },
+      name: { en: "Flow", zh: "语丝" },
     },
   },
 
   // ── Homepage ──────────────────────────────────────────────────────────────
   hero: {
-    tagline: { en: "Open Source Digital Garden", zh: "开源数字花园框架" },
-    title: { en: "A home for ideas to grow, link, and evolve.", zh: "让想法生长、关联、演化的地方。" },
-    subtitle: { en: "An elegant, open-source framework for cultivating personal knowledge — from raw daily flows to refined articles, curated series, and structured books.", zh: "优雅的开源知识培育框架——从每日随笔到精炼文章，从系列合集到结构化书籍，层层深化。" },
+    tagline: { en: "hutusi.com", zh: "胡涂说" },
+    title: { en: "A home for ideas to grow, link, and evolve.", zh: "胡涂说博客/好奇心周刊" },
+    subtitle: { en: "任抛星汉归园圃，留取乾坤盛酒囊", zh: "任抛星汉归园圃，留取乾坤盛酒囊" },
   },
   homepage: {
     sections: [
@@ -129,7 +129,7 @@ export const siteConfig = {
 
   // ── Content ───────────────────────────────────────────────────────────────
   pagination: {
-    posts: 5,
+    posts: 10,
     series: 5,
     flows: 20,
     notes: 20,
@@ -147,6 +147,15 @@ export const siteConfig = {
     recentCount: 5,
   },
 
+  // ── Images ────────────────────────────────────────────────────────────────
+  images: {
+    // CDN base URL for serving images (leave empty to serve locally)
+    // e.g., "https://cdn.example.com" or "https://your-bucket.r2.dev"
+    // When set, local image paths like /posts/slug/images/cover.jpg are rewritten
+    // to https://cdn.example.com/posts/slug/images/cover.jpg at render time.
+    cdnBaseUrl: "https://cdn.hutusi.com/images",
+  },
+
   // ── Appearance ────────────────────────────────────────────────────────────
   themeColor: 'default', // 'default' | 'blue' | 'rose' | 'amber'
 
@@ -161,15 +170,15 @@ export const siteConfig = {
   analytics: {
     provider: 'umami', // 'umami' | 'plausible' | 'google' | null
     umami: {
-      websiteId: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || '', // Your Umami Website ID
-      src: process.env.NEXT_PUBLIC_UMAMI_URL || 'https://us.umami.is/script.js', // Default or self-hosted URL
+      websiteId: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || 'b1ffb0b8-732a-4655-a850-ec5e0b5c2b1b', // Your Umami Website ID
+      src: process.env.NEXT_PUBLIC_UMAMI_URL || 'https://umami-pied-delta-28.vercel.app/script.js', // Default or self-hosted URL
     },
     plausible: {
       domain: '', // Your domain
       src: 'https://plausible.io/js/script.js',
     },
     google: {
-      measurementId: '', // G-XXXXXXXXXX
+      measurementId: 'G-MCBGNJDDPS', // G-XXXXXXXXXX
     },
   },
 
@@ -177,13 +186,13 @@ export const siteConfig = {
   comments: {
     provider: 'giscus', // 'giscus' | 'disqus' | null
     giscus: {
-      repo: 'hutusi/amytis', // username/repo
-      repoId: 'R_kgDOQ1YSwA',
-      category: 'Announcements',
-      categoryId: 'DIC_kwDOQ1YSwM4C2NmL',
+      repo: 'hutusi/hutusi.github.com', // username/repo
+      repoId: 'MDEwOlJlcG9zaXRvcnkzNjc5MDgy',
+      category: 'Comments',
+      categoryId: 'DIC_kwDOADgjas4COYln',
     },
     disqus: {
-      shortname: '',
+      shortname: 'hutusi',
     },
   },
 

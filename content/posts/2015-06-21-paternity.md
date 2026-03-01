@@ -17,7 +17,7 @@ gh_issue: 43
 redirect_from:
   - /blog/2015/06/21/paternity
   - /paternity
-image: articles/2015-david-born.jpg
+coverImage: /articles/2015-david-born.jpg
 featured: true
 ---
 
