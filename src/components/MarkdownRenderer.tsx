@@ -126,9 +126,11 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
       // eslint-disable-next-line @next/next/no-img-element
       return <img src={imageSrc} alt={alt || ''} {...rest} className="max-w-full h-auto rounded-lg my-4" />;
     },
-    // Custom element: <rss-feed></rss-feed> — renders the site RSS URL with a copy button
-    'rss-feed': () => <RssFeedWidget />,
   };
+
+  // Merge custom HTML elements not in the Components type (e.g. web components used in MDX)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const allComponents = { ...components, 'rss-feed': () => <RssFeedWidget /> } as any;
 
   return (
     <div className="prose prose-lg max-w-none text-foreground
@@ -143,7 +145,7 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
       <ReactMarkdown
         remarkPlugins={remarkPlugins}
         rehypePlugins={rehypePlugins}
-        components={components}
+        components={allComponents}
       >
         {content}
       </ReactMarkdown>

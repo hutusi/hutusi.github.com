@@ -105,7 +105,7 @@ export const siteConfig = {
     },
     series: {
       enabled: true,
-      name: { en: "Series", zh: "辑录" },
+      name: { en: "Series", zh: "合辑" },
     },
     books: {
       enabled: false,
@@ -137,7 +137,7 @@ export const siteConfig = {
   // ── Content ───────────────────────────────────────────────────────────────
   pagination: {
     posts: 10,
-    series: 5,
+    series: 10,
     flows: 20,
     notes: 20,
   },
