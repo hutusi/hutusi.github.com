@@ -1,4 +1,4 @@
-import { getAllPosts, getSeriesData, getSeriesPosts, getSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
+import { getListingPosts, getSeriesData, getSeriesPosts, getSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
 import PostList from '@/components/PostList';
 import SeriesCatalog from '@/components/SeriesCatalog';
 import Pagination from '@/components/Pagination';
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
   // Custom posts basePath — paginated listing pages (page 2+)
   const basePath = getPostsBasePath();
   if (basePath !== 'posts') {
-    const allPosts = getAllPosts();
+    const allPosts = getListingPosts();
     const totalPages = Math.ceil(allPosts.length / POST_PAGE_SIZE);
     for (let i = 2; i <= totalPages; i++) {
       params.push({ slug: basePath, page: i.toString() });
@@ -86,7 +86,7 @@ export default async function PrefixPageRoute({
 
   // Custom posts basePath listing
   if (prefix === basePath && basePath !== 'posts') {
-    const allPosts = getAllPosts();
+    const allPosts = getListingPosts();
     const totalPages = Math.ceil(allPosts.length / POST_PAGE_SIZE);
 
     if (page > totalPages) notFound();

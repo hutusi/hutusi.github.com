@@ -1,4 +1,4 @@
-import { getAllPosts } from '@/lib/markdown';
+import { getListingPosts } from '@/lib/markdown';
 import PostList from '@/components/PostList';
 import Pagination from '@/components/Pagination';
 import { siteConfig } from '../../../site.config';
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function AllPostsPage() {
   if (getPostsBasePath() !== 'posts') notFound();
-  const allPosts = getAllPosts();
+  const allPosts = getListingPosts();
   const page = 1;
   const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
   const posts = allPosts.slice(0, PAGE_SIZE);

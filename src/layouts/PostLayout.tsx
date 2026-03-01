@@ -82,22 +82,24 @@ export default function PostLayout({ post, relatedPosts, seriesPosts, seriesTitl
               </p>
             )}
 
-            <div className="flex items-center gap-2 mb-8 text-sm font-serif italic text-muted">
-              <span>{t('written_by')}</span>
-              <div className="flex items-center gap-1">
-                {post.authors.map((author, index) => (
-                  <span key={author} className="flex items-center">
-                    <Link
-                      href={`/authors/${getAuthorSlug(author)}`}
-                      className="text-foreground hover:text-accent no-underline transition-colors duration-200"
-                    >
-                      {author}
-                    </Link>
-                    {index < post.authors.length - 1 && <span className="mr-1">,</span>}
-                  </span>
-                ))}
+            {siteConfig.posts?.authors?.showInHeader !== false && post.authors.length > 0 && (
+              <div className="flex items-center gap-2 mb-8 text-sm font-serif italic text-muted">
+                <span>{t('written_by')}</span>
+                <div className="flex items-center gap-1">
+                  {post.authors.map((author, index) => (
+                    <span key={author} className="flex items-center">
+                      <Link
+                        href={`/authors/${getAuthorSlug(author)}`}
+                        className="text-foreground hover:text-accent no-underline transition-colors duration-200"
+                      >
+                        {author}
+                      </Link>
+                      {index < post.authors.length - 1 && <span className="mr-1">,</span>}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {post.excerpt && (
               <p className="text-xl text-foreground font-serif italic leading-relaxed mb-8">
@@ -143,7 +145,9 @@ export default function PostLayout({ post, relatedPosts, seriesPosts, seriesTitl
             className={showSidebar ? 'mt-8 lg:hidden' : 'mt-8'}
           />
 
-          <AuthorCard authors={post.authors} />
+          {siteConfig.posts?.authors?.showAuthorCard !== false && (
+            <AuthorCard authors={post.authors} />
+          )}
 
           <PostNavigation prev={prevPost ?? null} next={nextPost ?? null} />
 

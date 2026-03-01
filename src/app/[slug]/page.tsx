@@ -1,4 +1,4 @@
-import { getPageBySlug, getAllPages, getAllPosts, getSeriesData, getSeriesPosts, getSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
+import { getPageBySlug, getAllPages, getAllPosts, getListingPosts, getSeriesData, getSeriesPosts, getSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 import PostLayout from '@/layouts/PostLayout';
 import SimpleLayout from '@/layouts/SimpleLayout';
@@ -88,7 +88,7 @@ export default async function Page({
   // Check if slug matches custom posts basePath
   const basePath = getPostsBasePath();
   if (slug === basePath && basePath !== 'posts') {
-    const allPosts = getAllPosts();
+    const allPosts = getListingPosts();
     const totalPages = Math.ceil(allPosts.length / POST_PAGE_SIZE);
     const posts = allPosts.slice(0, POST_PAGE_SIZE);
 

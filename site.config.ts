@@ -47,7 +47,7 @@ export const siteConfig = {
   nav: [
     { name: "Flow", url: "/flows", weight: 1 },
     { name: "Posts", url: "/articles", weight: 2 },
-    { name: "Series", url: "/series", weight: 3, dropdown: ["digital-garden", "markdown-showcase", "ai-nexus-weekly"] },
+    { name: "周刊", url: "/series/weeklies", weight: 3, dropdown: ["digital-garden", "markdown-showcase", "ai-nexus-weekly"] },
     { name: "Books", url: "/books", weight: 4, dropdown: [] },
     { name: "About", url: "/about", weight: 5 },
     { name: "More", url: "", weight: 6, children: [
@@ -112,8 +112,8 @@ export const siteConfig = {
       name: { en: "Books", zh: "书籍" },
     },
     flow: {
-      enabled: true,
-      name: { en: "Flow", zh: "语丝" },
+      enabled: false,
+      name: { en: "Flow", zh: "随笔" },
     },
   },
 
@@ -147,8 +147,18 @@ export const siteConfig = {
     showFuturePosts: false,
     includeDateInUrl: false,
     // trailingSlash is configured in next.config.ts (Next.js handles URL normalization)
+    authors: {
+      // Default author names applied when a post has no author in its frontmatter.
+      // Falls back to series authors first, then to this list.
+      default: ["胡涂说"] as string[],
+      showInHeader: false,   // Show author byline below the post title
+      showAuthorCard: true, // Show author bio card at the end of the post
+    },
+    // Series slugs whose posts are hidden from the main posts listing.
+    // Posts remain accessible via their series page and direct URLs.
+    excludeFromListing: [ "weeklies" ] as string[],
     archive: {
-      showAuthors: true,
+      showAuthors: false,
     },
   },
   series: {
@@ -213,8 +223,29 @@ export const siteConfig = {
 
   // ── Authors ───────────────────────────────────────────────────────────────
   authors: {
-    // Map display name (as used in post frontmatter) to author profile
-    // "Author Name": { bio: "Short bio shown in author card below each post." },
-  } as Record<string, { bio?: string }>,
+    // Map display name (as used in post frontmatter) to author profile.
+    // Example:
+    // "Author Name": {
+    //   bio: "Short bio shown in author card below each post.",
+    //   avatar: "/images/authors/author-name.jpg", // path under public/
+    //   social: [
+    //     { image: "/images/authors/wechat-qr.jpg", description: "WeChat Official Account" },
+    //   ],
+    // },
+    "胡涂说": {
+      bio: "前软件工程师，现 Vibe Coder，读书/写作爱好者",
+      avatar: "/logo-256x256.jpg",
+      social: [
+        { image: "/images/qrcode-hututalk-8cm.jpg", description: "文章在微信公众号同步发布" },
+      ],
+    },
+  } as Record<string, {
+    bio?: string;
+    avatar?: string;  // Avatar image path served from public/
+    social?: Array<{
+      image: string;       // Social image (e.g. QR code) path served from public/
+      description: string; // Label shown below the image
+    }>;
+  }>,
 
 };

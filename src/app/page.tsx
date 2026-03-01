@@ -111,6 +111,7 @@ export default function Home() {
         readingTime: p.readingTime,
         coverImage: p.coverImage,
         series: p.series,
+        pinned: p.pinned,
       }))
     : [];
 

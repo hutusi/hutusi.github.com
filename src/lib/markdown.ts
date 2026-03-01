@@ -33,6 +33,7 @@ const PostSchema = z.object({
   sort: z.enum(['date-desc', 'date-asc', 'manual']).optional().default('date-desc'),
   posts: z.array(z.string()).optional(),
   featured: z.boolean().optional().default(false),
+  pinned: z.boolean().optional().default(false),
   draft: z.boolean().optional().default(false),
   latex: z.boolean().optional().default(false),
   toc: z.boolean().optional().default(true),
@@ -65,6 +66,7 @@ export interface PostData {
   sort?: 'date-desc' | 'date-asc' | 'manual';
   posts?: string[];
   featured?: boolean;
+  pinned?: boolean;
   draft?: boolean;
   latex?: boolean;
   toc?: boolean;
@@ -180,7 +182,10 @@ function parseMarkdownFile(fullPath: string, slug: string, dateFromFileName?: st
       }
     }
     if (authors.length === 0) {
-      authors = ['Amytis'];
+      const defaultAuthors = siteConfig.posts?.authors?.default;
+      if (defaultAuthors && defaultAuthors.length > 0) {
+        authors = defaultAuthors;
+      }
     }
   }
 
@@ -214,6 +219,7 @@ function parseMarkdownFile(fullPath: string, slug: string, dateFromFileName?: st
     sort: data.sort,
     posts: data.posts,
     featured: data.featured,
+    pinned: data.pinned,
     draft: data.draft,
     latex: data.latex,
     toc: data.toc,
@@ -352,6 +358,17 @@ export function getAllPosts(): PostData[] {
       return true;
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+/**
+ * Returns posts for the main listing pages, honouring posts.excludeFromListing.
+ * Use this instead of getAllPosts() on any listing/pagination page.
+ * Individual post routes and series pages still use getAllPosts() directly.
+ */
+export function getListingPosts(): PostData[] {
+  const excluded = new Set(siteConfig.posts?.excludeFromListing ?? []);
+  if (excluded.size === 0) return getAllPosts();
+  return getAllPosts().filter(p => !p.series || !excluded.has(p.series));
 }
 
 function findPostFile(name: string, targetSlug: string): PostData | null {
