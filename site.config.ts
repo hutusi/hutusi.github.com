@@ -46,7 +46,7 @@ export const siteConfig = {
   // ── Navigation ────────────────────────────────────────────────────────────
   nav: [
     { name: "Flow", url: "/flows", weight: 1 },
-    { name: "Posts", url: "/posts", weight: 2 },
+    { name: "Posts", url: "/articles", weight: 2 },
     { name: "Series", url: "/series", weight: 3, dropdown: ["digital-garden", "markdown-showcase", "ai-nexus-weekly"] },
     { name: "Books", url: "/books", weight: 4, dropdown: [] },
     { name: "About", url: "/about", weight: 5 },
@@ -142,7 +142,7 @@ export const siteConfig = {
     notes: 20,
   },
   posts: {
-    basePath: 'posts', // Change to e.g. 'articles' to serve all posts at /articles/[slug]
+    basePath: 'articles', // Change to e.g. 'articles' to serve all posts at /articles/[slug]
     toc: true,
     showFuturePosts: false,
     includeDateInUrl: false,
