@@ -110,6 +110,7 @@ export default function Home() {
         category: p.category,
         readingTime: p.readingTime,
         coverImage: p.coverImage,
+        series: p.series,
       }))
     : [];
 

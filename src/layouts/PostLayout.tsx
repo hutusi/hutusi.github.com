@@ -14,6 +14,7 @@ import AuthorCard from '@/components/AuthorCard';
 import ShareBar from '@/components/ShareBar';
 import { siteConfig } from '../../site.config';
 import { t } from '@/lib/i18n';
+import { getPostUrl } from '@/lib/urls';
 
 interface PostLayoutProps {
   post: PostData;
@@ -30,7 +31,7 @@ export default function PostLayout({ post, relatedPosts, seriesPosts, seriesTitl
   const showToc = siteConfig.posts?.toc !== false && post.toc !== false && post.headings && post.headings.length > 0;
   const hasSeries = !!(post.series && seriesPosts && seriesPosts.length > 0);
   const showSidebar = showToc || hasSeries;
-  const postUrl = `${siteConfig.baseUrl}/posts/${post.slug}`;
+  const postUrl = `${siteConfig.baseUrl}${getPostUrl(post)}`;
 
   return (
     <div className="layout-container">
@@ -146,7 +147,7 @@ export default function PostLayout({ post, relatedPosts, seriesPosts, seriesTitl
 
           <PostNavigation prev={prevPost ?? null} next={nextPost ?? null} />
 
-          <Comments slug={post.slug} />
+          <Comments slug={post.slug} postUrl={postUrl} />
 
           <RelatedPosts posts={relatedPosts || []} />
         </article>

@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   // Set to true so pages export as slug/index.html, which coexists with
   // asset directories (slug/images/) and avoids 403 errors on trailing slash
-  trailingSlash: true,
+  trailingSlash: false,
   output: "export",
   images: {
     loader: "custom",

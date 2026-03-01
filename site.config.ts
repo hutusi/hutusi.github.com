@@ -142,6 +142,7 @@ export const siteConfig = {
     notes: 20,
   },
   posts: {
+    basePath: 'posts', // Change to e.g. 'articles' to serve all posts at /articles/[slug]
     toc: true,
     showFuturePosts: false,
     includeDateInUrl: false,
@@ -149,6 +150,13 @@ export const siteConfig = {
     archive: {
       showAuthors: true,
     },
+  },
+  series: {
+    // Per-series custom URL prefix for posts within that series
+    // e.g., { 'weeklies': 'weeklies' } → posts served at /weeklies/[slug]
+    customPaths: {
+      weeklies: 'weeklies',
+    } as Record<string, string>,
   },
   flows: {
     recentCount: 5,

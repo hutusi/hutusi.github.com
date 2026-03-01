@@ -6,10 +6,12 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { t, resolveLocale } from '@/lib/i18n';
 import PageHeader from '@/components/PageHeader';
+import { getPostsBasePath } from '@/lib/urls';
 
 const PAGE_SIZE = siteConfig.pagination.posts;
 
 export function generateStaticParams() {
+  if (getPostsBasePath() !== 'posts') return []; // Route disabled; custom path handles this
   const allPosts = getAllPosts();
   const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
 

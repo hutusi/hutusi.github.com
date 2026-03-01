@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { siteConfig } from '../../site.config';
 import GithubSlugger from 'github-slugger';
 import { z } from 'zod';
+import { getPostUrl } from './urls';
 
 const contentDirectory = path.join(process.cwd(), 'content', 'posts');
 const pagesDirectory = path.join(process.cwd(), 'content');
@@ -1307,7 +1308,7 @@ export function buildSlugRegistry(): Map<string, SlugRegistryEntry> {
   const map = new Map<string, SlugRegistryEntry>();
 
   getAllPosts().forEach(p =>
-    map.set(p.slug, { url: `/posts/${p.slug}`, type: 'post', title: p.title })
+    map.set(p.slug, { url: getPostUrl(p), type: 'post', title: p.title })
   );
 
   getAllFlows().forEach(f =>
@@ -1398,7 +1399,7 @@ function buildBacklinkIndex(): Map<string, BacklinkSource[]> {
     }
   };
 
-  getAllPosts().forEach(p => addBacklinks(p.content, p.slug, p.title, 'post', `/posts/${p.slug}`));
+  getAllPosts().forEach(p => addBacklinks(p.content, p.slug, p.title, 'post', getPostUrl(p)));
   getAllNotes().forEach(n => addBacklinks(n.content, n.slug, n.title, 'note', `/notes/${n.slug}`));
   getAllFlows().forEach(f => addBacklinks(f.content, f.slug, f.title, 'flow', `/flows/${f.slug}`));
 
