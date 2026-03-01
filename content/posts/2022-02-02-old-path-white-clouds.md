@@ -90,7 +90,7 @@ coverImage: /articles/2022-old-path-white-clouds.jpg
 
 ### 参考
 
-1. [豆瓣: 《佛陀传》](https://book.douban.com/subject/25819842/){:target="_blank"}
-2. [维基百科: 四圣谛](https://zh.wikipedia.org/wiki/四谛){:target="_blank"}
-3. [百度百科: 四念处](https://baike.baidu.com/item/四念处){:target="_blank"}
-4. [维基百科: 八正道](https://zh.wikipedia.org/wiki/八聖道分){:target="_blank"}
+1. [豆瓣: 《佛陀传》](https://book.douban.com/subject/25819842/)
+2. [维基百科: 四圣谛](https://zh.wikipedia.org/wiki/四谛)
+3. [百度百科: 四念处](https://baike.baidu.com/item/四念处)
+4. [维基百科: 八正道](https://zh.wikipedia.org/wiki/八聖道分)

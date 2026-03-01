@@ -80,7 +80,7 @@ Winston 教授在这一个多小时的课程演讲里都用到了他说所的原
 > 有一次，我早上六点就到了 MIT 实验室，我看见 Winston 教授也来到实验室在画板书。我问教授：“教授，您怎么来的这么早？”但他没有注意到我，继续板书...过了一个小时，他叫我的名字：“Ernie, 怎么了？” 我再次问他：“这是您早上课程的板书吗？您教了这么多次为什么还要练习准备呢？” 他笑着看着我说：“运动员每次比赛前都要去排练演习以提升自己的成绩，我也一样！我已经这么做了几十年了，这是我对学生的承诺！”...
 
 
-[^1]: [Patrick Winston 个人主页](http://people.csail.mit.edu/phw/index.html){:target="_blank"}
-[^2]: [MIT 公开课 *How To Speak*](https://ocw.mit.edu/resources/res-tll-005-how-to-speak-january-iap-2018/){:target="_blank"}
-[^3]: 公开课视频: [youtube 链接](https://www.youtube.com/watch?v=Unzc731iCUY){:target="_blank"}, [哔哩哔哩 bilibili](https://www.bilibili.com/video/av94888157){:target="_blank"}
-[^4]: [*How to Speak* 文字记录](https://ocw.mit.edu/resources/res-tll-005-how-to-speak-january-iap-2018/how-to-speak/how-to-speak-1/Unzc731iCUY.pdf){:target="_blank"}
+[^1]: [Patrick Winston 个人主页](http://people.csail.mit.edu/phw/index.html)
+[^2]: [MIT 公开课 *How To Speak*](https://ocw.mit.edu/resources/res-tll-005-how-to-speak-january-iap-2018/)
+[^3]: 公开课视频: [youtube 链接](https://www.youtube.com/watch?v=Unzc731iCUY), [哔哩哔哩 bilibili](https://www.bilibili.com/video/av94888157)
+[^4]: [*How to Speak* 文字记录](https://ocw.mit.edu/resources/res-tll-005-how-to-speak-january-iap-2018/how-to-speak/how-to-speak-1/Unzc731iCUY.pdf)

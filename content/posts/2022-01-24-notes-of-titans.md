@@ -103,6 +103,6 @@ coverImage: /articles/2022-notes-of-titans.avif
 
 ### 参考
 
-1. [Naval: 如何靠实力致富](https://qishiya.com/?p=1342){:target="_blank"}
-2. [Naval tweets “How to Get Rich (without getting lucky)”](https://twitter.com/naval/status/1002103360646823936){:target="_blank"}
-3. [知乎：如何评价Naval Ravikant（纳瓦尔.拉维康特）？](https://www.zhihu.com/question/382938415){:target="_blank"}
+1. [Naval: 如何靠实力致富](https://qishiya.com/?p=1342)
+2. [Naval tweets “How to Get Rich (without getting lucky)”](https://twitter.com/naval/status/1002103360646823936)
+3. [知乎：如何评价Naval Ravikant（纳瓦尔.拉维康特）？](https://www.zhihu.com/question/382938415)
