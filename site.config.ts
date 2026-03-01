@@ -25,6 +25,13 @@ export const siteConfig = {
 
   // ── Site identity ─────────────────────────────────────────────────────────
   title: { en: "hutusi.com", zh: "胡涂说" },
+  logo: {
+    // Path to navbar logo image served from public/ (leave empty for the default built-in icon)
+    // Accepts SVG, PNG, etc. — e.g. "/logo.svg" or "/images/my-logo.png"
+    src: "/logo-256x256.jpg",
+    // Path to favicon served from public/ (defaults to /icon.svg)
+    favicon: "/favicon.ico",
+  },
   description: { en: "hutusi.com — a personal digital garden.", zh: "胡涂说博客/好奇心周刊" },
   baseUrl: "https://hutusi.com", // Replace with your actual domain
   ogImage: "/og-image.png", // Default OG/social preview image — place a 1200×630 PNG at public/og-image.png
