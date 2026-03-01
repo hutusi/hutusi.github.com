@@ -36,9 +36,30 @@ yarn-error.log*
 # vercel
 .vercel
 
-# claude code
-.claude/
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# copied assets
+/public/posts/
+/public/books/
+/public/series/
+/public/flows/
+/public/notes/
+
+# pagefind index (generated after build)
+/public/pagefind/
+
+# knowledge graph (generated at build time)
+/public/knowledge-graph.json
+
+# image optimization
+/public/**/nextImageExportOptimizer/
+!/public/next-image-export-optimizer-hashes.json
+
+# claude
+/.claude/
+
+# raw import files (chat exports, PDFs, etc.) — not published content
+/imports/*
+!/imports/README.md

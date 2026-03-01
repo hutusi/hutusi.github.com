@@ -1,0 +1,211 @@
+import fs from 'fs';
+import path from 'path';
+import { siteConfig } from '../site.config';
+
+const srcDir = path.join(process.cwd(), 'content', 'posts');
+const seriesSrcDir = path.join(process.cwd(), 'content', 'series');
+const booksSrcDir = path.join(process.cwd(), 'content', 'books');
+const flowsSrcDir = path.join(process.cwd(), 'content', 'flows');
+const destDir = path.join(process.cwd(), 'public', 'posts');
+const booksDestDir = path.join(process.cwd(), 'public', 'books');
+const flowsDestDir = path.join(process.cwd(), 'public', 'flows');
+
+function copyRecursive(src: string, dest: string) {
+  if (!fs.existsSync(src)) return;
+  
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest, { recursive: true });
+  }
+
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (entry.isDirectory()) {
+      copyRecursive(srcPath, destPath);
+    } else {
+      // Copy all files except markdown source
+      if (!entry.name.endsWith('.md') && !entry.name.endsWith('.mdx')) {
+        let shouldCopy = true;
+        if (fs.existsSync(destPath)) {
+          const srcStat = fs.statSync(srcPath);
+          const destStat = fs.statSync(destPath);
+          if (srcStat.mtimeMs <= destStat.mtimeMs) {
+            shouldCopy = false;
+          }
+        }
+
+        if (shouldCopy) {
+          fs.copyFileSync(srcPath, destPath);
+          // console.log(`Copied: ${entry.name} -> ${destPath}`);
+        }
+      }
+    }
+  }
+}
+
+function getSlugFromFilename(filename: string): string {
+  const nameWithoutExt = filename.replace(/\.mdx?$/, '');
+  const dateRegex = /^(\d{4}-\d{2}-\d{2})-(.*)$/;
+  const match = nameWithoutExt.match(dateRegex);
+
+  if (match && !siteConfig.posts?.includeDateInUrl) {
+    return match[2];
+  }
+  return nameWithoutExt;
+}
+
+function processPosts() {
+  if (fs.existsSync(srcDir)) {
+    const entries = fs.readdirSync(srcDir, { withFileTypes: true });
+
+    entries.forEach((entry) => {
+      if (entry.isDirectory()) {
+        const targetName = getSlugFromFilename(entry.name);
+        const srcPostDir = path.join(srcDir, entry.name);
+        const destPostDir = path.join(destDir, targetName);
+
+        console.log(`Processing Post: ${entry.name} -> ${targetName}`);
+        copyRecursive(srcPostDir, destPostDir);
+      }
+    });
+  }
+}
+
+// Check if a directory is a post folder (contains index.md or index.mdx)
+function isPostFolder(dirPath: string): boolean {
+  return fs.existsSync(path.join(dirPath, 'index.md')) ||
+         fs.existsSync(path.join(dirPath, 'index.mdx'));
+}
+
+// Check if a directory is an asset folder (not a post folder)
+function isAssetFolder(dirPath: string): boolean {
+  return !isPostFolder(dirPath);
+}
+
+function processSeries() {
+  if (!fs.existsSync(seriesSrcDir)) return;
+
+  const seriesEntries = fs.readdirSync(seriesSrcDir, { withFileTypes: true });
+
+  seriesEntries.forEach((seriesEntry) => {
+    if (seriesEntry.isDirectory()) {
+      const seriesPath = path.join(seriesSrcDir, seriesEntry.name);
+      const items = fs.readdirSync(seriesPath, { withFileTypes: true });
+
+      // First pass: identify shared asset folders at series level (folders that are NOT posts)
+      const sharedAssetFolders = items
+        .filter(item => item.isDirectory() && isAssetFolder(path.join(seriesPath, item.name)))
+        .map(item => item.name);
+
+      // Process items in series folder
+      items.forEach(item => {
+        if (item.isFile() && (item.name.endsWith('.md') || item.name.endsWith('.mdx'))) {
+          // File-based post or series index
+          const targetSlug = item.name.startsWith('index.') ? seriesEntry.name : getSlugFromFilename(item.name);
+          const destPostDir = path.join(destDir, targetSlug);
+
+          console.log(`Processing Series File: ${item.name} -> ${targetSlug}`);
+
+          // Only copy shared asset folders (like images/, assets/), not sibling post folders
+          sharedAssetFolders.forEach(folderName => {
+            const srcPath = path.join(seriesPath, folderName);
+            const destPath = path.join(destPostDir, folderName);
+            copyRecursive(srcPath, destPath);
+          });
+
+          // Copy any non-markdown files at the series root level
+          items.filter(sub => sub.isFile() && !sub.name.endsWith('.md') && !sub.name.endsWith('.mdx'))
+            .forEach(sub => {
+              const srcPath = path.join(seriesPath, sub.name);
+              const destPath = path.join(destPostDir, sub.name);
+              if (!fs.existsSync(destPostDir)) {
+                fs.mkdirSync(destPostDir, { recursive: true });
+              }
+              fs.copyFileSync(srcPath, destPath);
+            });
+
+        } else if (item.isDirectory() && isPostFolder(path.join(seriesPath, item.name))) {
+          // Folder-based post: copy only its own assets
+          const targetSlug = getSlugFromFilename(item.name);
+          const itemSrcPath = path.join(seriesPath, item.name);
+          const destPostDir = path.join(destDir, targetSlug);
+
+          console.log(`Processing Series Post Folder: ${item.name} -> ${targetSlug}`);
+
+          // Copy everything from the post folder EXCEPT markdown files
+          const subItems = fs.readdirSync(itemSrcPath, { withFileTypes: true });
+          subItems.forEach(sub => {
+            const srcPath = path.join(itemSrcPath, sub.name);
+            const destPath = path.join(destPostDir, sub.name);
+
+            if (sub.isDirectory()) {
+              copyRecursive(srcPath, destPath);
+            } else if (!sub.name.endsWith('.md') && !sub.name.endsWith('.mdx')) {
+              if (!fs.existsSync(destPostDir)) {
+                fs.mkdirSync(destPostDir, { recursive: true });
+              }
+              fs.copyFileSync(srcPath, destPath);
+            }
+          });
+        }
+      });
+    }
+  });
+}
+
+function processBooks() {
+  if (!fs.existsSync(booksSrcDir)) return;
+
+  const entries = fs.readdirSync(booksSrcDir, { withFileTypes: true });
+
+  entries.forEach((entry) => {
+    if (entry.isDirectory()) {
+      const srcBookDir = path.join(booksSrcDir, entry.name);
+      const destBookDir = path.join(booksDestDir, entry.name);
+
+      console.log(`Processing Book: ${entry.name}`);
+      copyRecursive(srcBookDir, destBookDir);
+    }
+  });
+}
+
+function processFlows() {
+  if (!fs.existsSync(flowsSrcDir)) return;
+
+  // Walk content/flows/YYYY/MM/ structure for folder-based flows with co-located assets
+  const yearDirs = fs.readdirSync(flowsSrcDir, { withFileTypes: true });
+  for (const yearEntry of yearDirs) {
+    if (!yearEntry.isDirectory() || !/^\d{4}$/.test(yearEntry.name)) continue;
+    const yearPath = path.join(flowsSrcDir, yearEntry.name);
+
+    const monthDirs = fs.readdirSync(yearPath, { withFileTypes: true });
+    for (const monthEntry of monthDirs) {
+      if (!monthEntry.isDirectory() || !/^\d{2}$/.test(monthEntry.name)) continue;
+      const monthPath = path.join(yearPath, monthEntry.name);
+
+      const dayItems = fs.readdirSync(monthPath, { withFileTypes: true });
+      for (const dayItem of dayItems) {
+        // Only process folder-based flows (DD/ directories with index.mdx)
+        if (!dayItem.isDirectory()) continue;
+        const rawName = dayItem.name;
+        if (!/^\d{2}$/.test(rawName)) continue;
+
+        const srcFlowDir = path.join(monthPath, rawName);
+        const destFlowDir = path.join(flowsDestDir, yearEntry.name, monthEntry.name, rawName);
+
+        console.log(`Processing Flow: ${yearEntry.name}/${monthEntry.name}/${rawName}`);
+        copyRecursive(srcFlowDir, destFlowDir);
+      }
+    }
+  }
+}
+
+console.log('Copying assets...');
+processPosts();
+processSeries();
+processBooks();
+processFlows();
+console.log('Assets copied successfully.');

@@ -1,0 +1,89 @@
+{
+  "name": "@hutusi/amytis",
+  "version": "1.9.0",
+  "description": "A high-performance digital garden and blog engine with Next.js 16 and Tailwind CSS v4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hutusi/amytis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hutusi/amytis/issues"
+  },
+  "homepage": "https://github.com/hutusi/amytis#readme",
+  "private": false,
+  "packageManager": "bun@1.3.4",
+  "scripts": {
+    "dev": "next dev",
+    "build": "bun scripts/copy-assets.ts && bun run build:graph && next build && next-image-export-optimizer && pagefind --site out",
+    "build:dev": "bun scripts/copy-assets.ts && bun run build:graph && next build && pagefind --site out --output-path public/pagefind",
+    "build:graph": "NODE_ENV=production bun scripts/generate-knowledge-graph.ts",
+    "validate": "bun run lint && bun run test && bun run build:dev",
+    "clean": "rm -rf .next out public/posts public/books public/flows",
+    "new": "bun scripts/new-post.ts",
+    "new-weekly": "bun scripts/new-post.ts --series ai-nexus-weekly --md --folder --prefix weekly",
+    "new-series": "bun scripts/new-series.ts",
+    "new-from-pdf": "bun scripts/new-from-pdf.ts",
+    "new-from-images": "bun scripts/new-from-images.ts",
+    "new-flow": "bun scripts/new-flow.ts",
+    "new-flow-from-chat": "bun scripts/new-flow-from-chat.ts",
+    "new-note": "bun scripts/new-note.ts",
+    "import-book": "bun scripts/import-book.ts",
+    "sync-book": "bun scripts/sync-book-chapters.ts",
+    "series-draft": "bun scripts/series-draft.ts",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "bun test src tests/unit tests/tooling && bun run test:int",
+    "test:unit": "bun test src tests/unit",
+    "test:int": "bun test tests/integration",
+    "test:e2e": "bun test tests/e2e"
+  },
+  "dependencies": {
+    "@giscus/react": "^3.1.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "d3": "^7.9.0",
+    "github-slugger": "^2.0.0",
+    "gray-matter": "^4.0.3",
+    "image-size": "^2.0.2",
+    "mermaid": "^11.12.3",
+    "next": "16.1.6",
+    "next-image-export-optimizer": "^1.20.1",
+    "next-themes": "^0.4.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-icons": "^5.5.0",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^16.1.0",
+    "rehype-katex": "^7.0.1",
+    "rehype-raw": "^7.0.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "unist-util-visit": "^5.1.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/bun": "^1.3.9",
+    "@types/d3": "^7.4.3",
+    "@types/image-size": "^0.8.0",
+    "@types/node": "^24.10.13",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.1.6",
+    "pagefind": "^1.4.0",
+    "pdf-to-img": "^5.0.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  },
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
+}
