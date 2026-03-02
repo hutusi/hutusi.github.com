@@ -71,7 +71,7 @@ export default function CuratedSeriesSection({ allSeries, maxItems, scrollThresh
               className={`card-base group flex flex-col p-0 overflow-hidden snap-start ${
                 displayed.length > scrollThreshold
                   ? 'w-[85vw] md:w-[calc(50%-1rem)] flex-shrink-0'
-                  : 'flex-1'
+                  : 'flex-1 md:max-w-[calc(50%-1rem)]'
               }`}
             >
               <Link href={series.url} className="relative h-44 w-full overflow-hidden bg-muted/10 block focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-inset">

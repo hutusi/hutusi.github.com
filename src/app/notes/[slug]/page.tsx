@@ -98,7 +98,7 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
             )}
           </header>
 
-          <MarkdownRenderer content={note.content} slug={note.slug} slugRegistry={slugRegistry} />
+          <MarkdownRenderer content={note.content} slug={`notes/${note.slug}`} slugRegistry={slugRegistry} />
 
           {/* Prev/Next navigation */}
           <nav aria-label="Note navigation" className="mt-12 pt-12 border-t border-muted/20 grid grid-cols-2 gap-4">

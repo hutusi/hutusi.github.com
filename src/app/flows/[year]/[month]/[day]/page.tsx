@@ -89,7 +89,7 @@ export default async function FlowPage({ params }: { params: Promise<{ year: str
 
           {/* Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <MarkdownRenderer content={flow.content} slugRegistry={slugRegistry} />
+            <MarkdownRenderer content={flow.content} slug={`flows/${year}/${month}/${day}`} slugRegistry={slugRegistry} />
           </div>
 
           <Backlinks backlinks={backlinks} />

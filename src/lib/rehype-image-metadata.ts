@@ -22,11 +22,11 @@ export default function rehypeImageMetadata(options: Options) {
         let publicPath = '';
 
         if (src.startsWith('./') && options.slug) {
-          // Relative path in post
+          // Relative path: slug is the full public-relative base path (e.g. posts/my-post, books/my-book, flows/2026/01/15)
           const relative = src.substring(2);
           // Use path.resolve to create absolute path without explicitly invoking process.cwd() in a way that triggers broad matching warnings
-          imagePath = path.resolve('public', 'posts', options.slug, relative);
-          publicPath = `/posts/${options.slug}/${relative}`;
+          imagePath = path.resolve('public', options.slug, relative);
+          publicPath = `/${options.slug}/${relative}`;
         } else if (src.startsWith('/')) {
           // Absolute path from public
           // Remove leading slash for path.resolve

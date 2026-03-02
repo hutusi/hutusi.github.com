@@ -122,7 +122,7 @@ export default function PostLayout({ post, relatedPosts, seriesPosts, seriesTitl
             </div>
           )}
 
-          <MarkdownRenderer content={post.content} latex={post.latex} slug={post.slug} slugRegistry={slugRegistry} />
+          <MarkdownRenderer content={post.content} latex={post.latex} slug={`posts/${post.slug}`} slugRegistry={slugRegistry} />
 
           {post.tags && post.tags.length > 0 && (
             <div className="mt-12 pt-12 border-t border-muted/20 flex flex-wrap items-center gap-2">
