@@ -11,7 +11,7 @@ import { getPostsBasePath } from '@/lib/urls';
 const PAGE_SIZE = siteConfig.pagination.posts;
 
 export function generateStaticParams() {
-  if (getPostsBasePath() !== 'posts') return []; // Route disabled; custom path handles this
+  if (getPostsBasePath() !== 'posts') return [{ page: '_' }]; // Route disabled; custom path handles this
   const allPosts = getListingPosts();
   const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
 

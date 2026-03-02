@@ -12,11 +12,18 @@ export async function generateStaticParams() {
 
   for (const book of books) {
     for (const ch of book.chapters) {
-      params.push({ slug: book.slug, chapter: ch.id });
+      // Only include chapters whose files exist and parse successfully.
+      // A chapter listed in index.mdx but not yet written (or with invalid
+      // frontmatter) would cause notFound() at render time, which in
+      // output:export dev mode surfaces as a confusing "missing param" 500.
+      if (getBookChapter(book.slug, ch.id) !== null) {
+        params.push({ slug: book.slug, chapter: ch.id });
+      }
     }
   }
 
-  return params;
+  // Ensure we never return an empty array with output: export
+  return params.length > 0 ? params : [{ slug: '_', chapter: '_' }];
 }
 
 export const dynamicParams = false;

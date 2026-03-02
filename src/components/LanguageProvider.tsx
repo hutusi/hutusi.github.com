@@ -15,15 +15,19 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const isI18nEnabled = siteConfig.i18n.enabled !== false && siteConfig.i18n.locales.length >= 2;
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // Always initialize with site default to match server-side rendering
   const [language, setLanguageState] = useState<Language>(siteConfig.i18n.defaultLocale as Language);
-  const [isHydrated, setIsHydrated] = useState(false);
+  // When i18n is disabled there is nothing to hydrate — mark as ready immediately
+  const [isHydrated, setIsHydrated] = useState(!isI18nEnabled);
 
   useEffect(() => {
+    if (!isI18nEnabled) return;
     // Only access localStorage and browser language after component is mounted (client-side)
     const savedLang = localStorage.getItem('amytis-language') as Language;
-    
+
     // Use requestAnimationFrame to avoid cascading render lint error
     const rafId = requestAnimationFrame(() => {
       if (savedLang && translations[savedLang]) {
@@ -35,6 +39,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setLanguage = (lang: Language) => {
+    if (!isI18nEnabled) return;
     setLanguageState(lang);
     localStorage.setItem('amytis-language', lang);
   };

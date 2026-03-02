@@ -25,7 +25,7 @@ export default function LanguageSwitch({ variant = 'pill' }: LanguageSwitchProps
   const { language, setLanguage, isHydrated } = useLanguage();
   const locales = siteConfig.i18n.locales;
 
-  if (locales.length < 2) return null;
+  if (siteConfig.i18n.enabled === false || locales.length < 2) return null;
 
   // SSR placeholder — reserve space to avoid layout shift
   if (!isHydrated) {

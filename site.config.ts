@@ -39,8 +39,13 @@ export const siteConfig = {
 
   // ── i18n ──────────────────────────────────────────────────────────────────
   i18n: {
+    // Set enabled: false to disable multi-language support entirely.
+    // The language switcher will be hidden and the defaultLocale is always used.
+    // When disabled, all locale-aware fields (title, description, hero, etc.)
+    // accept plain strings instead of { en: '...', zh: '...' } objects.
+    enabled: false,
     defaultLocale: 'zh',
-    locales: ['en', 'zh'],
+    locales: ['zh'],
   },
 
   // ── Navigation ────────────────────────────────────────────────────────────

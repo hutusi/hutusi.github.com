@@ -30,7 +30,7 @@ function resolvePostFromParam(rawSlug: string) {
  * This ensures fast page loads and SEO optimization.
  */
 export async function generateStaticParams() {
-  if (getPostsBasePath() !== 'posts') return []; // Route disabled; custom path handles this
+  if (getPostsBasePath() !== 'posts') return [{ slug: '_' }]; // Route disabled; custom path handles this
   const posts = getAllPosts();
   if (posts.length === 0) return [{ slug: '_' }];
   return posts.map((post) => ({ slug: post.slug }));
