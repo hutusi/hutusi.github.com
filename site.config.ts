@@ -24,7 +24,7 @@ const social = {
 export const siteConfig = {
 
   // ── Site identity ─────────────────────────────────────────────────────────
-  title: { en: "hutusi.com", zh: "胡涂说" },
+  title: "胡涂说",
   logo: {
     // Path to navbar logo image served from public/ (leave empty for the default built-in icon)
     // Accepts SVG, PNG, etc. — e.g. "/logo.svg" or "/images/my-logo.png"
@@ -32,10 +32,10 @@ export const siteConfig = {
     // Path to favicon served from public/ (defaults to /icon.svg)
     favicon: "/favicon.ico",
   },
-  description: { en: "hutusi.com — a personal digital garden.", zh: "胡涂说博客/好奇心周刊" },
+  description: "胡涂说博客/好奇心周刊",
   baseUrl: "https://hutusi.com", // Replace with your actual domain
   ogImage: "/og-image.png", // Default OG/social preview image — place a 1200×630 PNG at public/og-image.png
-  footerText: { en: `© ${new Date().getFullYear()} hutusi.com All rights reserved.`, zh: `© ${new Date().getFullYear()} hutusi.com 保留所有权利。` },
+  footerText: `© ${new Date().getFullYear()} 胡涂说 hutusi.com 保留所有权利` ,
 
   // ── i18n ──────────────────────────────────────────────────────────────────
   i18n: {
@@ -80,7 +80,7 @@ export const siteConfig = {
     builtWith: {
       show: true,
       url: "https://github.com/hutusi/amytis",
-      text: { en: "Built with Amytis", zh: "基于 Amytis 构建" },
+      text: "基于 Amytis 构建",
     },
   },
 
@@ -106,27 +106,27 @@ export const siteConfig = {
   features: {
     posts: {
       enabled: true,
-      name: { en: "Articles", zh: "文章" },
+      name: "文章",
     },
     series: {
       enabled: true,
-      name: { en: "Series", zh: "合辑" },
+      name: "合辑",
     },
     books: {
       enabled: false,
-      name: { en: "Books", zh: "书籍" },
+      name: "书籍",
     },
     flow: {
       enabled: false,
-      name: { en: "Flow", zh: "随笔" },
+      name: "随笔",
     },
   },
 
   // ── Homepage ──────────────────────────────────────────────────────────────
   hero: {
-    tagline: { en: "hutusi.com", zh: "胡涂说" },
-    title: { en: "A home for ideas to grow, link, and evolve.", zh: "胡涂说博客/好奇心周刊" },
-    subtitle: { en: "任抛星汉归园圃，留取乾坤盛酒囊", zh: "任抛星汉归园圃，留取乾坤盛酒囊" },
+    tagline: "胡涂说 hutusi.com",
+    title: "胡涂说博客/好奇心周刊",
+    subtitle: "任抛星汉归园圃，留取乾坤盛酒囊",
   },
   homepage: {
     sections: [
