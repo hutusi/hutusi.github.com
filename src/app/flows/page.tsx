@@ -20,12 +20,16 @@ export default function FlowsPage() {
   const flows = allFlows.slice(0, PAGE_SIZE);
   const entryDates = allFlows.map(f => f.date);
   const tags = getFlowTags();
+  const allFlowItems = totalPages > 1
+    ? allFlows.map(({ slug, date, title, excerpt, tags }) => ({ slug, date, title, excerpt, tags }))
+    : undefined;
 
   return (
     <div className="layout-main">
       <FlowHubTabs subtitle={tWith('flow_subtitle', { count: allFlows.length })} />
       <FlowContent
         flows={flows}
+        allFlows={allFlowItems}
         entryDates={entryDates}
         tags={tags}
         pagination={totalPages > 1 ? { currentPage: 1, totalPages, basePath: '/flows' } : undefined}

@@ -89,9 +89,15 @@ describe('rehype-image-metadata', () => {
   });
 
   describe('bare relative paths (no prefix)', () => {
-    test('leaves bare relative paths unmodified', () => {
+    test('resolves bare relative paths against slug', () => {
       const tree = makeTree('images/photo.png');
       rehypeImageMetadata({ slug: 'posts/my-post' })(tree);
+      expect(imgSrc(tree)).toBe('/posts/my-post/images/photo.png');
+    });
+
+    test('keeps bare relative paths when no slug is provided', () => {
+      const tree = makeTree('images/photo.png');
+      rehypeImageMetadata({})(tree);
       expect(imgSrc(tree)).toBe('images/photo.png');
     });
   });

@@ -1,4 +1,4 @@
-import { getSeriesData, getSeriesPosts, getAllSeries, getSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
+import { getSeriesData, getSeriesPosts, getAllSeries, resolveSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 import SeriesCatalog from '@/components/SeriesCatalog';
 import Pagination from '@/components/Pagination';
@@ -7,6 +7,7 @@ import { siteConfig } from '../../../../site.config';
 import CoverImage from '@/components/CoverImage';
 import Link from 'next/link';
 import { t, resolveLocale } from '@/lib/i18n';
+import { getPostUrl } from '@/lib/urls';
 
 const PAGE_SIZE = siteConfig.pagination.series;
 
@@ -78,24 +79,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
   const title = seriesData?.title || slug.charAt(0).toUpperCase() + slug.slice(1);
   const description = seriesData?.excerpt;
   const coverImage = seriesData?.coverImage;
-  // Use explicitly configured series authors, or aggregate top authors from posts
-  const explicitAuthors = getSeriesAuthors(slug);
-  let authors: string[];
-  if (explicitAuthors) {
-    authors = explicitAuthors;
-  } else if (allPosts.length > 0) {
-    const counts = new Map<string, number>();
-    for (const post of allPosts) {
-      for (const author of post.authors) {
-        counts.set(author, (counts.get(author) || 0) + 1);
-      }
-    }
-    authors = [...counts.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .map(([name]) => name);
-  } else {
-    authors = [];
-  }
+  const authors = resolveSeriesAuthors(slug, allPosts);
 
   return (
     <div className="layout-main">
@@ -125,6 +109,24 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
               {description}
             </p>
           )}
+          {allPosts.length > 0 && (() => {
+            // Pick the first installment respecting sort order:
+            // date-desc (default) → oldest is last; date-asc/manual → oldest/first is [0]
+            const firstPost = (seriesData?.sort === 'date-asc' || seriesData?.sort === 'manual')
+              ? allPosts[0]
+              : allPosts[allPosts.length - 1];
+            return (
+            <Link
+              href={getPostUrl(firstPost)}
+              className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-medium hover:bg-accent/90 transition-colors no-underline"
+            >
+              {t('start_reading')}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </Link>
+            );
+          })()}
           {authors.length > 0 && (
             <p className="mt-4 text-sm text-muted">
               <span className="mr-1">{t('written_by')}</span>

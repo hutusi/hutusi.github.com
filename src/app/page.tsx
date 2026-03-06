@@ -8,7 +8,8 @@ import SelectedBooksSection, { BookItem } from '@/components/SelectedBooksSectio
 import LatestWritingSection from '@/components/LatestWritingSection';
 import RecentNotesSection, { RecentNoteItem } from '@/components/RecentNotesSection';
 import { Metadata } from 'next';
-import { resolveLocale } from '@/lib/i18n';
+import { t, resolveLocale } from '@/lib/i18n';
+import { buildWebsiteJsonLd, serializeJsonLd } from '@/lib/json-ld';
 
 export const metadata: Metadata = {
   title: resolveLocale(siteConfig.title),
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: resolveLocale(siteConfig.title),
     description: resolveLocale(siteConfig.description),
   },
@@ -71,7 +72,7 @@ export default function Home() {
         return {
           name,
           title: seriesData?.title || name,
-          excerpt: seriesData?.excerpt || "A growing collection of related thoughts.",
+          excerpt: seriesData?.excerpt || t('series_default_excerpt'),
           coverImage: seriesData?.coverImage,
           url: `/series/${slug}`,
           postCount: seriesPosts.length,
@@ -116,7 +117,9 @@ export default function Home() {
     : [];
 
   // Stats for hero navigation chips
-  const heroPostCount = allPosts.length;
+  const heroPostCount = has('hero') && features?.posts?.enabled !== false
+    ? (needsPosts ? allPosts : getAllPosts()).length
+    : undefined;
   const heroSeriesCount = has('hero') && features?.series?.enabled !== false ? Object.keys(getAllSeries()).length : undefined;
   const heroBookCount = has('hero') && features?.books?.enabled !== false ? getAllBooks().length : undefined;
   const heroFlowCount = has('hero') && features?.flow?.enabled !== false ? getAllFlows().length : undefined;
@@ -210,7 +213,15 @@ export default function Home() {
     }
   }
 
+  const websiteJsonLd = buildWebsiteJsonLd({
+    siteTitle: resolveLocale(siteConfig.title),
+    siteUrl: siteConfig.baseUrl,
+    description: resolveLocale(siteConfig.description),
+  });
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteJsonLd) }} />
     <div>
       {has('hero') && (
         <Hero
@@ -234,5 +245,6 @@ export default function Home() {
         {renderList}
       </div>
     </div>
+    </>
   );
 }

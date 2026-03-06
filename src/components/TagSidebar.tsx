@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { t, tWith } from '@/lib/i18n';
+import { useLanguage } from './LanguageProvider';
 import { LuTag, LuX, LuSearch } from 'react-icons/lu';
 
 const INITIAL_SHOW = 12;
@@ -13,6 +13,7 @@ interface TagSidebarProps {
 }
 
 export default function TagSidebar({ tags, activeTag }: TagSidebarProps) {
+  const { t, tWith } = useLanguage();
   const [filter, setFilter] = useState('');
   const [expanded, setExpanded] = useState(false);
 
@@ -67,7 +68,7 @@ export default function TagSidebar({ tags, activeTag }: TagSidebarProps) {
             type="text"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            placeholder="Filter…"
+            placeholder={t('filter_tags')}
             aria-label={t('filter_tags')}
             className="w-full pl-8 pr-7 py-1.5 text-xs bg-muted/5 border border-muted/15 rounded-lg outline-none focus:border-accent/40 text-foreground placeholder:text-muted/40 transition-colors"
           />

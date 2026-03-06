@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import HorizontalScroll from './HorizontalScroll';
 import CoverImage from './CoverImage';
 import { useLanguage } from './LanguageProvider';
-import { shuffle } from '@/lib/shuffle';
+import { shuffle, shuffleSeeded } from '@/lib/shuffle';
 import { getPostUrl } from '@/lib/urls';
 
 export interface SeriesItem {
@@ -26,11 +26,12 @@ interface CuratedSeriesSectionProps {
 
 export default function CuratedSeriesSection({ allSeries, maxItems, scrollThreshold }: CuratedSeriesSectionProps) {
   const { t } = useLanguage();
-  const [displayed, setDisplayed] = useState(() => allSeries.slice(0, maxItems));
-
-  useEffect(() => {
-    setDisplayed(shuffle(allSeries).slice(0, maxItems));
-  }, [allSeries, maxItems]);
+  // Use a daily seed so SSR and client hydration agree on the initial order,
+  // preventing a visible reshuffle flash on page load.
+  const [displayed, setDisplayed] = useState(() => {
+    const dailySeed = Math.floor(Date.now() / 86400000);
+    return shuffleSeeded(allSeries, dailySeed).slice(0, maxItems);
+  });
 
   const handleShuffle = useCallback(() => {
     setDisplayed(shuffle(allSeries).slice(0, maxItems));
@@ -47,8 +48,8 @@ export default function CuratedSeriesSection({ allSeries, maxItems, scrollThresh
             <button
               onClick={handleShuffle}
               className="text-sm text-muted hover:text-accent transition-colors focus:outline-none"
-              aria-label="Shuffle series"
-              title="Show different series"
+              aria-label={t('shuffle_series')}
+              title={t('shuffle_series')}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />

@@ -1,4 +1,4 @@
-import { getSeriesData, getSeriesPosts, getAllSeries, getSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
+import { getSeriesData, getSeriesPosts, getAllSeries, resolveSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 import SeriesCatalog from '@/components/SeriesCatalog';
 import Pagination from '@/components/Pagination';
@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import { siteConfig } from '../../../../../../site.config';
 import CoverImage from '@/components/CoverImage';
 import Link from 'next/link';
-import { t, resolveLocale } from '@/lib/i18n';
+import { t, resolveLocale, tWith } from '@/lib/i18n';
 
 const PAGE_SIZE = siteConfig.pagination.series;
 
@@ -34,8 +34,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const slug = decodeURIComponent(rawSlug);
   const seriesData = getSeriesData(slug);
   const title = seriesData?.title || slug;
+  const allPosts = getSeriesPosts(slug);
+  const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
   return {
-    title: `${title} - ${page} | ${resolveLocale(siteConfig.title)}`,
+    title: `${title} - ${tWith('page_of_total', { page, total: totalPages })} | ${resolveLocale(siteConfig.title)}`,
   };
 }
 
@@ -61,24 +63,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
   const description = seriesData?.excerpt;
   const coverImage = seriesData?.coverImage;
 
-  // Use explicitly configured series authors, or aggregate top authors from posts
-  const explicitAuthors = getSeriesAuthors(slug);
-  let authors: string[];
-  if (explicitAuthors) {
-    authors = explicitAuthors;
-  } else if (allPosts.length > 0) {
-    const counts = new Map<string, number>();
-    for (const post of allPosts) {
-      for (const author of post.authors) {
-        counts.set(author, (counts.get(author) || 0) + 1);
-      }
-    }
-    authors = [...counts.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .map(([name]) => name);
-  } else {
-    authors = [];
-  }
+  const authors = resolveSeriesAuthors(slug, allPosts);
 
   // Calculate the starting index for this page
   const startIndex = (page - 1) * PAGE_SIZE;
@@ -103,10 +88,8 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
           <span className="badge-accent mb-4">
             {t('series')} • {allPosts.length} {t('parts')}
           </span>
-          <h1 className="page-title mb-4">
-            {title}
-            <span className="block text-lg text-muted font-sans font-normal mt-2">{page} / {totalPages}</span>
-          </h1>
+          <h1 className="page-title mb-2">{title}</h1>
+          <p className="text-base text-muted font-sans mt-1 mb-4">{tWith('page_of_total', { page, total: totalPages })}</p>
           {description && (
             <p className="text-lg text-muted font-serif italic leading-relaxed">
               {description}

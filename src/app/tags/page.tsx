@@ -7,7 +7,7 @@ import TagsIndexClient from '@/components/TagsIndexClient';
 
 export const metadata: Metadata = {
   title: `${t('tags')} | ${resolveLocale(siteConfig.title)}`,
-  description: 'Explore topics in the garden.',
+  description: t('tags_description'),
 };
 
 export default function TagsPage() {

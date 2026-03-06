@@ -84,7 +84,7 @@ export default async function FlowsYearPage({ params }: { params: Promise<{ year
         flows={flows}
         entryDates={entryDates}
         tags={tags}
-        currentDate={`${year}-01-01`}
+        currentDate={flows[0]?.date}
         breadcrumb={breadcrumb}
       />
     </div>

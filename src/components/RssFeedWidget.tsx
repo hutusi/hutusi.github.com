@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { siteConfig } from '../../site.config';
+import { useLanguage } from '@/components/LanguageProvider';
 import { LuCopy, LuCheck } from 'react-icons/lu';
 
 function FeedRow({ url, label }: { url: string; label?: string }) {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -24,11 +26,11 @@ function FeedRow({ url, label }: { url: string; label?: string }) {
       <button
         onClick={handleCopy}
         className="flex-shrink-0 flex items-center gap-1.5 text-xs text-muted/60 hover:text-accent transition-colors"
-        aria-label="Copy feed URL"
+        aria-label={t('copy_feed_url')}
       >
         {copied
-          ? <><LuCheck className="w-3.5 h-3.5 text-accent" /><span className="text-accent">Copied!</span></>
-          : <><LuCopy className="w-3.5 h-3.5" /><span>Copy</span></>
+          ? <><LuCheck className="w-3.5 h-3.5 text-accent" /><span className="text-accent">{t('feed_url_copied')}</span></>
+          : <><LuCopy className="w-3.5 h-3.5" /><span>{t('copy_feed_url')}</span></>
         }
       </button>
     </div>

@@ -64,7 +64,7 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
       );
     },
     // Render 'pre' as a 'div' to allow block-level children
-    pre: ({ children }) => <div className="not-prose">{children}</div>,
+    pre: ({ children }) => <div className="not-prose w-full min-w-0 max-w-full">{children}</div>,
     // Style links individually to avoid hover-all issue
     a: (props) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -136,16 +136,17 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
       const imageSrc = src as string;
       const isExternal = imageSrc?.startsWith('http') || imageSrc?.startsWith('//');
 
-      if (width && height) {
+      if (!isExternal) {
         return (
           <ExportedImage
             src={imageSrc || ''}
             alt={alt || ''}
-            width={Number(width)}
-            height={Number(height)}
+            width={width ? Number(width) : 1200}
+            height={height ? Number(height) : 900}
             className="max-w-full h-auto rounded-lg my-4"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-            unoptimized={isDev || isExternal}
+            unoptimized={isDev}
+            style={(!width || !height) ? { width: '100%', height: 'auto' } : undefined}
           />
         );
       }
@@ -159,7 +160,7 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
   const allComponents = { ...components, 'rss-feed': () => <RssFeedWidget /> } as any;
 
   return (
-    <div className="prose prose-lg max-w-none text-foreground
+    <div className="prose prose-lg max-w-none min-w-0 overflow-x-hidden text-foreground
           prose-headings:font-serif prose-headings:text-heading 
           prose-p:text-foreground prose-p:leading-loose
           prose-strong:text-heading prose-strong:font-semibold

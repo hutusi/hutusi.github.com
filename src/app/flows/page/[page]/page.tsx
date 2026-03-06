@@ -44,12 +44,14 @@ export default async function FlowsPaginatedPage({ params }: { params: Promise<{
   const start = (page - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
   const flows = allFlows.slice(start, end);
+  const allFlowItems = allFlows.map(({ slug, date, title, excerpt, tags }) => ({ slug, date, title, excerpt, tags }));
 
   return (
     <div className="layout-main">
       <FlowHubTabs subtitle={tWith('page_of_total', { page, total: totalPages })} />
       <FlowContent
         flows={flows}
+        allFlows={allFlowItems}
         entryDates={entryDates}
         tags={tags}
         pagination={{ currentPage: page, totalPages, basePath: '/flows' }}

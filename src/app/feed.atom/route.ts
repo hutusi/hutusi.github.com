@@ -19,11 +19,12 @@ export async function GET() {
   const baseUrl = siteConfig.baseUrl.replace(/\/+$/, '');
   const items = getFeedItems();
   const useFullContent = contentMode === 'full';
+  const feedUpdated = items[0]?.date.toISOString() ?? new Date().toISOString();
 
   const entriesXml = items
     .map((item) => {
       const contentXml = useFullContent
-        ? `<content type="html"><![CDATA[${escapeCdata(item.content)}]]></content>`
+        ? `<content type="html"><![CDATA[${escapeCdata(item.content)}]]></content>\n    <summary><![CDATA[${escapeCdata(item.excerpt)}]]></summary>`
         : `<summary><![CDATA[${escapeCdata(item.excerpt)}]]></summary>`;
       const authorsXml = item.authors?.map((a) => `<author><name>${escapeXml(a)}</name></author>`).join('') ?? '';
       const categoriesXml = item.tags.map((tag) => `<category term="${escapeXml(tag)}" />`).join('');
@@ -32,6 +33,7 @@ export async function GET() {
     <title><![CDATA[${escapeCdata(item.title)}]]></title>
     <link href="${escapeXml(item.url)}" />
     <id>${escapeXml(item.url)}</id>
+    <published>${item.date.toISOString()}</published>
     <updated>${item.date.toISOString()}</updated>
     ${contentXml}
     ${authorsXml}
@@ -46,7 +48,7 @@ export async function GET() {
   <link href="${escapeXml(baseUrl)}" />
   <link href="${escapeXml(baseUrl)}/feed.atom" rel="self" type="application/atom+xml" />
   <id>${escapeXml(baseUrl)}/feed.atom</id>
-  <updated>${new Date().toISOString()}</updated>
+  <updated>${feedUpdated}</updated>
   <subtitle><![CDATA[${escapeCdata(resolveLocale(siteConfig.description))}]]></subtitle>
 ${entriesXml}
 </feed>`;
@@ -54,6 +56,7 @@ ${entriesXml}
   return new Response(atomXml, {
     headers: {
       'Content-Type': 'application/atom+xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
     },
   });
 }

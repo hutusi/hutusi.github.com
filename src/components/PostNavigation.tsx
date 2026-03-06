@@ -16,7 +16,7 @@ export default function PostNavigation({ prev, next }: PostNavigationProps) {
       className="mt-12 pt-12 border-t border-muted/20 grid grid-cols-1 sm:grid-cols-2 gap-3"
       aria-label={t('post_navigation')}
     >
-      {prev ? (
+      {prev && (
         <Link
           href={getPostUrl(prev)}
           className="group flex flex-col gap-1.5 p-4 rounded-xl border border-muted/15 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline"
@@ -32,12 +32,12 @@ export default function PostNavigation({ prev, next }: PostNavigationProps) {
           </span>
           <span className="text-xs font-mono text-muted/60">{prev.date}</span>
         </Link>
-      ) : <div />}
+      )}
 
-      {next ? (
+      {next && (
         <Link
           href={getPostUrl(next)}
-          className="group flex flex-col gap-1.5 p-4 rounded-xl border border-muted/15 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline sm:items-end sm:text-right"
+          className={`group flex flex-col gap-1.5 p-4 rounded-xl border border-muted/15 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline sm:items-end sm:text-right${!prev ? ' sm:col-start-2' : ''}`}
         >
           <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted flex items-center gap-1.5">
             {t('next')}
@@ -50,7 +50,7 @@ export default function PostNavigation({ prev, next }: PostNavigationProps) {
           </span>
           <span className="text-xs font-mono text-muted/60">{next.date}</span>
         </Link>
-      ) : <div />}
+      )}
     </nav>
   );
 }

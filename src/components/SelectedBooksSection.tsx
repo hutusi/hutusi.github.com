@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import CoverImage from './CoverImage';
 import { useLanguage } from './LanguageProvider';
+import { getBookUrl } from '@/lib/urls';
 
 export interface BookItem {
   slug: string;
@@ -35,7 +36,7 @@ export default function SelectedBooksSection({ books, maxItems = 4 }: SelectedBo
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {displayed.map(book => (
-          <Link key={book.slug} href={`/books/${book.slug}`} className="group block no-underline">
+          <Link key={book.slug} href={getBookUrl(book.slug)} className="group block no-underline">
             <div className="card-base h-full group flex flex-col p-0 overflow-hidden">
               <div className="relative h-48 w-full overflow-hidden bg-muted/10">
                 <CoverImage

@@ -10,6 +10,7 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import { getAllSeries, getAllBooks, getSeriesData } from "@/lib/markdown";
 import { resolveLocale } from "@/lib/i18n";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 
 const inter = localFont({
   src: [
@@ -65,6 +66,14 @@ const faviconMeta =
   ext === 'svg' ? [{ url: faviconSrc, type: 'image/svg+xml' }] :
   faviconSrc;
 
+const feedAlternates = (() => {
+  const { format } = siteConfig.feed;
+  const types: Record<string, string> = {};
+  if (format === 'rss' || format === 'both') types['application/rss+xml'] = '/feed.xml';
+  if (format === 'atom' || format === 'both') types['application/atom+xml'] = '/feed.atom';
+  return Object.keys(types).length > 0 ? { types } : undefined;
+})();
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
   title: resolveLocale(siteConfig.title),
@@ -72,6 +81,7 @@ export const metadata: Metadata = {
   icons: {
     icon: faviconMeta,
   },
+  ...(feedAlternates && { alternates: feedAlternates }),
   openGraph: {
     siteName: resolveLocale(siteConfig.title),
     locale: siteConfig.i18n.defaultLocale,

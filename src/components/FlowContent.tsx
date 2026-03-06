@@ -16,6 +16,7 @@ interface FlowItem {
 
 interface FlowContentProps {
   flows: FlowItem[];
+  allFlows?: FlowItem[];
   entryDates: string[];
   tags: Record<string, number>;
   currentDate?: string;
@@ -27,18 +28,21 @@ interface FlowContentProps {
   breadcrumb?: ReactNode;
 }
 
-export default function FlowContent({ flows, entryDates, tags, currentDate, pagination, breadcrumb }: FlowContentProps) {
+export default function FlowContent({ flows, allFlows, entryDates, tags, currentDate, pagination, breadcrumb }: FlowContentProps) {
   const { t } = useLanguage();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   const filteredFlows = useMemo(() => {
     if (!selectedTag) return flows;
-    return flows.filter(f => f.tags.includes(selectedTag));
-  }, [flows, selectedTag]);
+    const source = allFlows ?? flows;
+    return source.filter(f => f.tags.includes(selectedTag));
+  }, [flows, allFlows, selectedTag]);
 
   function handleTagSelect(tag: string) {
     setSelectedTag(prev => (prev === tag ? null : tag));
   }
+
+  const hasTags = tags && Object.keys(tags).length > 0;
 
   return (
     <div className="flex gap-10">
@@ -52,10 +56,34 @@ export default function FlowContent({ flows, entryDates, tags, currentDate, pagi
       />
 
       <div className="flex-1 min-w-0">
+        {/* Mobile tag filter strip */}
+        {hasTags && (
+          <div className="lg:hidden mb-4">
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
+              {Object.entries(tags)
+                .sort((a, b) => b[1] - a[1])
+                .map(([tag, count]) => (
+                  <button
+                    key={tag}
+                    onClick={() => handleTagSelect(tag)}
+                    className={`shrink-0 inline-flex items-center gap-1 px-2.5 py-1 text-xs rounded-full border transition-colors ${
+                      selectedTag === tag
+                        ? 'bg-accent text-white border-accent'
+                        : 'border-muted/20 text-muted hover:border-accent hover:text-accent'
+                    }`}
+                  >
+                    {tag}
+                    <span className={`text-[10px] ${selectedTag === tag ? 'opacity-80' : 'opacity-60'}`}>{count}</span>
+                  </button>
+                ))}
+            </div>
+          </div>
+        )}
+
         {selectedTag && (
           <div className="flex items-center gap-2 mb-4 text-sm text-muted">
             <span>
-              {filteredFlows.length} / {flows.length}
+              {filteredFlows.length} / {(allFlows ?? flows).length}
             </span>
             <button
               onClick={() => setSelectedTag(null)}
@@ -82,7 +110,7 @@ export default function FlowContent({ flows, entryDates, tags, currentDate, pagi
           </div>
         )}
 
-        {pagination && pagination.totalPages > 1 && (
+        {!selectedTag && pagination && pagination.totalPages > 1 && (
           <div className="mt-12">
             <Pagination
               currentPage={pagination.currentPage}

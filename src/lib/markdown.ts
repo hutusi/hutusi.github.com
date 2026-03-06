@@ -62,6 +62,7 @@ export interface PostData {
   authors: string[];
   layout?: string;
   series?: string;
+  seriesTitle?: string;
   coverImage?: string;
   sort?: 'date-desc' | 'date-asc' | 'manual';
   posts?: string[];
@@ -154,6 +155,38 @@ export function getSeriesAuthors(seriesSlug: string): string[] | null {
   return null;
 }
 
+/**
+ * Resolve display authors for a series: explicit series authors first,
+ * then top contributors aggregated from the series' posts.
+ */
+export function resolveSeriesAuthors(slug: string, posts: PostData[]): string[] {
+  const explicit = getSeriesAuthors(slug);
+  if (explicit) return explicit;
+  if (posts.length === 0) return [];
+  const counts = new Map<string, number>();
+  for (const post of posts) {
+    for (const author of post.authors) {
+      counts.set(author, (counts.get(author) || 0) + 1);
+    }
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([name]) => name);
+}
+
+function getSeriesTitle(slug: string): string | undefined {
+  if (!fs.existsSync(seriesDirectory)) return undefined;
+  const indexPathMdx = path.join(seriesDirectory, slug, 'index.mdx');
+  const indexPathMd = path.join(seriesDirectory, slug, 'index.md');
+  let fullPath = '';
+  if (fs.existsSync(indexPathMdx)) fullPath = indexPathMdx;
+  else if (fs.existsSync(indexPathMd)) fullPath = indexPathMd;
+  else return undefined;
+  const { data } = matter(fs.readFileSync(fullPath, 'utf8'));
+  if (data.draft === true) return undefined;
+  return typeof data.title === 'string' ? data.title : undefined;
+}
+
 function parseMarkdownFile(fullPath: string, slug: string, dateFromFileName?: string, seriesName?: string): PostData {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data: rawData, content } = matter(fileContents);
@@ -167,6 +200,7 @@ function parseMarkdownFile(fullPath: string, slug: string, dateFromFileName?: st
 
   const contentWithoutH1 = content.replace(/^\s*#\s+[^\n]+/, '').trim();
 
+  const effectiveSeriesSlug = data.series || seriesName;
   let authors: string[] = [];
   if (data.authors && Array.isArray(data.authors)) {
     authors = data.authors;
@@ -174,9 +208,8 @@ function parseMarkdownFile(fullPath: string, slug: string, dateFromFileName?: st
     authors = [data.author];
   } else {
     // Inherit from series if this post belongs to one
-    const seriesSlug = data.series || seriesName;
-    if (seriesSlug) {
-      const seriesAuthors = getSeriesAuthors(seriesSlug);
+    if (effectiveSeriesSlug) {
+      const seriesAuthors = getSeriesAuthors(effectiveSeriesSlug);
       if (seriesAuthors) {
         authors = seriesAuthors;
       }
@@ -214,7 +247,8 @@ function parseMarkdownFile(fullPath: string, slug: string, dateFromFileName?: st
     tags: data.tags,
     authors,
     layout: data.layout,
-    series: data.series || seriesName,
+    series: effectiveSeriesSlug,
+    seriesTitle: effectiveSeriesSlug ? getSeriesTitle(effectiveSeriesSlug) : undefined,
     coverImage,
     sort: data.sort,
     posts: data.posts,

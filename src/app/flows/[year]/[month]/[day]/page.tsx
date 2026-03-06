@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { t, resolveLocale } from '@/lib/i18n';
 import FlowCalendarSidebar from '@/components/FlowCalendarSidebar';
+import Tag from '@/components/Tag';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import Backlinks from '@/components/Backlinks';
 import ShareBar from '@/components/ShareBar';
@@ -85,6 +86,13 @@ export default async function FlowPage({ params }: { params: Promise<{ year: str
           {/* Header */}
           <header className="mb-8">
             <time className="text-base font-mono text-accent" data-pagefind-meta="date[content]">{flow.date}</time>
+            {flow.tags.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {flow.tags.map(tag => (
+                  <Tag key={tag} tag={tag} variant="compact" />
+                ))}
+              </div>
+            )}
           </header>
 
           {/* Content */}

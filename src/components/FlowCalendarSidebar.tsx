@@ -3,6 +3,7 @@
 import { useState, useMemo, type ReactNode } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
+import { padNumber } from '@/lib/format-utils';
 
 interface FlowCalendarSidebarProps {
   entryDates: string[];
@@ -14,6 +15,7 @@ interface FlowCalendarSidebarProps {
 }
 
 const WEEKDAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export default function FlowCalendarSidebar({ entryDates, currentDate, tags, selectedTag, onTagSelect, breadcrumb }: FlowCalendarSidebarProps) {
   const { t } = useLanguage();
@@ -111,7 +113,7 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
           {days.map((day, i) => {
             if (day === null) return <div key={`empty-${i}`} />;
 
-            const dateStr = `${viewYear}-${String(viewMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const dateStr = `${viewYear}-${padNumber(viewMonth + 1)}-${padNumber(day)}`;
             const hasEntry = entrySet.has(dateStr);
             const isToday = dateStr === todayStr;
             const isCurrent = dateStr === currentDate;
@@ -122,7 +124,7 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
               return (
                 <Link
                   key={dateStr}
-                  href={`/flows/${viewYear}/${String(viewMonth + 1).padStart(2, '0')}/${String(day).padStart(2, '0')}`}
+                  href={`/flows/${viewYear}/${padNumber(viewMonth + 1)}/${padNumber(day)}`}
                   className={`${baseClasses} bg-accent text-white font-bold no-underline`}
                 >
                   {day}
@@ -134,7 +136,7 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
               return (
                 <Link
                   key={dateStr}
-                  href={`/flows/${viewYear}/${String(viewMonth + 1).padStart(2, '0')}/${String(day).padStart(2, '0')}`}
+                  href={`/flows/${viewYear}/${padNumber(viewMonth + 1)}/${padNumber(day)}`}
                   className={`${baseClasses} text-foreground hover:bg-accent/10 font-medium no-underline ${isToday ? 'ring-1 ring-accent' : ''}`}
                 >
                   {day}
@@ -203,12 +205,12 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
                           return (
                             <Link
                               key={m}
-                              href={`/flows/${year}/${String(m).padStart(2, '0')}`}
+                              href={`/flows/${year}/${padNumber(m)}`}
                               className={`flex items-center justify-between text-xs no-underline px-1 py-0.5 rounded hover:bg-accent/10 ${
                                 isCurrentMonth ? 'text-accent font-medium' : 'text-muted'
                               }`}
                             >
-                              <span>{String(m).padStart(2, '0')}</span>
+                              <span>{MONTH_NAMES[m - 1]}</span>
                               <span className="text-[10px]">{months[m]}</span>
                             </Link>
                           );
@@ -230,17 +232,18 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
           <div className="flex flex-wrap gap-1.5">
             {Object.entries(tags)
               .sort((a, b) => b[1] - a[1])
-              .map(([tag]) => (
+              .map(([tag, count]) => (
                 <button
                   key={tag}
                   onClick={() => onTagSelect?.(tag)}
-                  className={`inline-flex items-center px-2 py-0.5 text-xs rounded-full border transition-colors ${
+                  className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded-full border transition-colors ${
                     selectedTag === tag
                       ? 'bg-accent text-white border-accent'
                       : 'border-muted/20 text-muted hover:border-accent hover:text-accent'
                   }`}
                 >
                   {tag}
+                  <span className={`text-[10px] ${selectedTag === tag ? 'opacity-80' : 'opacity-60'}`}>{count}</span>
                 </button>
               ))}
           </div>

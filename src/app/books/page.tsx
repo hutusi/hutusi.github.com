@@ -1,15 +1,19 @@
 import { getAllBooks } from '@/lib/markdown';
+import { getBookUrl } from '@/lib/urls';
 import Link from 'next/link';
 import { siteConfig } from '../../../site.config';
 import { Metadata } from 'next';
 import CoverImage from '@/components/CoverImage';
-import { t, resolveLocale } from '@/lib/i18n';
+import { t, resolveLocale, tWith } from '@/lib/i18n';
 import PageHeader from '@/components/PageHeader';
 
-export const metadata: Metadata = {
-  title: `${t('books')} | ${resolveLocale(siteConfig.title)}`,
-  description: 'Structured long-form books and guides.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const books = getAllBooks();
+  return {
+    title: `${t('books')} | ${resolveLocale(siteConfig.title)}`,
+    description: books.length === 1 ? t('books_subtitle_one') : tWith('books_subtitle', { count: books.length }),
+  };
+}
 
 export default function BooksPage() {
   const books = getAllBooks();
@@ -18,15 +22,15 @@ export default function BooksPage() {
     <div className="layout-main">
       <PageHeader
         titleKey="books"
-        subtitleKey="series_subtitle"
-        subtitleOneKey="series_subtitle_one"
+        subtitleKey="books_subtitle"
+        subtitleOneKey="books_subtitle_one"
         count={books.length}
         subtitleParams={{ count: books.length }}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {books.map(book => (
-          <Link key={book.slug} href={`/books/${book.slug}`} className="group block no-underline">
+          <Link key={book.slug} href={getBookUrl(book.slug)} className="group block no-underline">
             <div className="card-base h-full group flex flex-col p-0 overflow-hidden">
               <div className="relative h-48 w-full overflow-hidden bg-muted/10">
                 <CoverImage

@@ -7,7 +7,7 @@ import { getPostUrl } from '@/lib/urls';
 
 export const metadata = {
   title: `Archive | ${resolveLocale(siteConfig.title)}`,
-  description: 'A complete list of all notes and thoughts.',
+  description: t('archive_description'),
 };
 
 // Use month number as key for reliable sorting across all locales
@@ -23,9 +23,7 @@ function groupPostsByDate(posts: PostData[]): GroupedPosts {
   const groups: GroupedPosts = {};
 
   posts.forEach((post) => {
-    const date = new Date(post.date);
-    const year = date.getFullYear().toString();
-    const month = (date.getMonth() + 1).toString();
+    const [year, month] = post.date.split('-');
 
     if (!groups[year]) {
       groups[year] = {};
@@ -125,9 +123,7 @@ export default function ArchivePage() {
                         
                         <ul className="space-y-6">
                           {monthPosts.map((post) => {
-                            const dateObj = new Date(post.date);
-                            const day = dateObj.getDate().toString().padStart(2, '0');
-                            
+                            const day = post.date.split('-')[2];
                             return (
                               <li key={post.slug} className="group">
                                 <Link href={getPostUrl(post)} className="block no-underline">

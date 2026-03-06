@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (slug === basePath && basePath !== 'posts') {
     return {
       title: `${t('posts')} | ${resolveLocale(siteConfig.title)}`,
-      description: 'Browse the complete archive of articles.',
+      description: t('posts_description'),
     };
   }
 

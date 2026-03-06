@@ -27,6 +27,16 @@ export default function rehypeImageMetadata(options: Options) {
           // Use path.resolve to create absolute path without explicitly invoking process.cwd() in a way that triggers broad matching warnings
           imagePath = path.resolve('public', options.slug, relative);
           publicPath = `/${options.slug}/${relative}`;
+        } else if (
+          options.slug &&
+          !src.startsWith('/') &&
+          !src.startsWith('../') &&
+          !src.startsWith('data:') &&
+          !src.startsWith('#')
+        ) {
+          // Bare relative path (e.g. assets/image.png): resolve against the content slug root.
+          imagePath = path.resolve('public', options.slug, src);
+          publicPath = `/${options.slug}/${src}`;
         } else if (src.startsWith('/')) {
           // Absolute path from public
           // Remove leading slash for path.resolve

@@ -25,6 +25,7 @@ export default function TagContentTabs({ posts, flows }: TagContentTabsProps) {
   const { t } = useLanguage();
   const hasBoth = posts.length > 0 && flows.length > 0;
   const [activeTab, setActiveTab] = useState<Tab>('all');
+  const showSectionHeaders = hasBoth && activeTab === 'all';
 
   const showPosts = activeTab === 'all' || activeTab === 'posts';
   const showFlows = activeTab === 'all' || activeTab === 'flows';
@@ -65,12 +66,14 @@ export default function TagContentTabs({ posts, flows }: TagContentTabsProps) {
       {/* Posts section */}
       {showPosts && posts.length > 0 && (
         <div>
-          <h2 className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted mb-6">
-            {t('posts')}
-            <span className="ml-1.5 font-mono font-normal normal-case tracking-normal text-muted/50">
-              {posts.length}
-            </span>
-          </h2>
+          {showSectionHeaders && (
+            <h2 className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted mb-6">
+              {t('posts')}
+              <span className="ml-1.5 font-mono font-normal normal-case tracking-normal text-muted/50">
+                {posts.length}
+              </span>
+            </h2>
+          )}
           <PostList posts={posts} />
         </div>
       )}
@@ -78,12 +81,14 @@ export default function TagContentTabs({ posts, flows }: TagContentTabsProps) {
       {/* Flows section */}
       {showFlows && flows.length > 0 && (
         <div className={showPosts && posts.length > 0 ? 'mt-12' : ''}>
-          <h2 className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted mb-4">
-            {t('flow_notes')}
-            <span className="ml-1.5 font-mono font-normal normal-case tracking-normal text-muted/50">
-              {flows.length}
-            </span>
-          </h2>
+          {showSectionHeaders && (
+            <h2 className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted mb-4">
+              {t('flow_notes')}
+              <span className="ml-1.5 font-mono font-normal normal-case tracking-normal text-muted/50">
+                {flows.length}
+              </span>
+            </h2>
+          )}
           <div>
             {flows.map(flow => (
               <FlowTimelineEntry

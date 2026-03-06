@@ -50,7 +50,7 @@ export default async function TagPage({
         <TagSidebar key={decodedTag} tags={allTags} activeTag={decodedTag} />
 
         <div className="flex-1 min-w-0">
-          <TagPageHeader tag={decodedTag} />
+          <TagPageHeader tag={decodedTag} postCount={posts.length} flowCount={flows.length} />
           <TagContentTabs posts={posts} flows={flows} />
         </div>
       </div>
