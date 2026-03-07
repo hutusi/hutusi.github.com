@@ -63,7 +63,7 @@ export default function Footer() {
             <h4 className="font-sans font-bold text-xs uppercase tracking-widest text-muted/80 mb-6">{t('connect')}</h4>
             <ul className="space-y-3 text-sm">
               {[...(siteConfig.footer?.connect ?? [])].sort((a, b) => a.weight - b.weight).map((item) => {
-                const isExternal = item.url.startsWith('http');
+                const isExternal = item.external || item.url.startsWith('http');
                 const key = item.name.toLowerCase() as TranslationKey;
                 const translated = t(key);
                 const label = translated !== key ? translated : item.name;

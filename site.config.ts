@@ -74,7 +74,7 @@ export const siteConfig = {
     connect: [
       { name: "GitHub", url: social.github, weight: 1 },
       { name: "X (Twitter)", url: social.twitter, weight: 2 },
-      { name: "RSS Feed", url: "/feed.xml", weight: 3 },
+      { name: "RSS Feed", url: "/feed.xml", weight: 3, external: true },
       { name: "Subscribe", url: "/subscribe", weight: 4 },
     ],
     builtWith: {
