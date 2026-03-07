@@ -10,7 +10,6 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import { getAllSeries, getAllBooks, getSeriesData } from "@/lib/markdown";
 import { resolveLocale } from "@/lib/i18n";
 import "./globals.css";
-import "katex/dist/katex.min.css";
 
 const inter = localFont({
   src: [

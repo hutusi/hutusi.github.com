@@ -1,7 +1,8 @@
 import ReactMarkdown, { Components, ExtraProps } from 'react-markdown';
+import RssFeedWidget from '@/components/RssFeedWidget';
 import Mermaid from '@/components/Mermaid';
 import CodeBlock from '@/components/CodeBlock';
-import RssFeedWidget from '@/components/RssFeedWidget';
+import KatexStyles from '@/components/KatexStyles';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import remarkMath from 'remark-math';
@@ -13,6 +14,7 @@ import remarkWikilinks from '@/lib/remark-wikilinks';
 import ExportedImage from 'next-image-export-optimizer';
 import { PluggableList } from 'unified';
 import type { SlugRegistryEntry } from '@/lib/markdown';
+
 
 interface MarkdownRendererProps {
   content: string;
@@ -160,6 +162,8 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
   const allComponents = { ...components, 'rss-feed': () => <RssFeedWidget /> } as any;
 
   return (
+    <>
+    {latex && <KatexStyles />}
     <div className="prose prose-lg max-w-none min-w-0 overflow-x-hidden text-foreground
           prose-headings:font-serif prose-headings:text-heading 
           prose-p:text-foreground prose-p:leading-loose
@@ -177,5 +181,6 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
         {content}
       </ReactMarkdown>
     </div>
+    </>
   );
 }
