@@ -1,4 +1,4 @@
-import { getPageBySlug, getAllPages, getListingPosts, getSeriesData, getSeriesPosts, getSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
+import { getPageBySlug, getAllPages, getAllPosts, getListingPosts, getSeriesData, getSeriesPosts, getSeriesAuthors, getAuthorSlug } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 import PostLayout from '@/layouts/PostLayout';
 import SimpleLayout from '@/layouts/SimpleLayout';
@@ -11,7 +11,8 @@ import { Metadata } from 'next';
 import { siteConfig } from '../../../site.config';
 import { resolveLocale, t } from '@/lib/i18n';
 import PageHeader from '@/components/PageHeader';
-import { getPostsBasePath, getSeriesCustomPaths } from '@/lib/urls';
+import { getPostsBasePath, getSeriesCustomPaths, getPostUrl } from '@/lib/urls';
+import RedirectPage from '@/components/RedirectPage';
 
 const POST_PAGE_SIZE = siteConfig.pagination.posts;
 const SERIES_PAGE_SIZE = siteConfig.pagination.series;
@@ -33,6 +34,32 @@ export async function generateStaticParams() {
   // Add series custom path listings (e.g. /weeklies)
   for (const customPath of Object.values(getSeriesCustomPaths())) {
     params.push({ slug: customPath });
+  }
+
+  // Add single-segment redirectFrom paths (e.g. /old-slug).
+  // Throws on any alias that collides with a reserved top-level slug or a
+  // duplicate alias across posts — strict build catches misconfiguration early.
+  const reservedSlugs = new Set([
+    ...pages.map(p => p.slug),
+    basePath,
+    ...Object.values(getSeriesCustomPaths()),
+    // Hardcoded top-level routes that have their own app/ directories
+    'posts', 'series', 'tags', 'authors', 'archive', 'books', 'flows', 'notes', 'search', 'page',
+  ]);
+  for (const post of getAllPosts()) {
+    for (const from of post.redirectFrom ?? []) {
+      const segments = from.split('/').filter(Boolean);
+      if (segments.length !== 1) continue;
+      if (from === getPostUrl(post)) continue;
+      const alias = segments[0];
+      if (reservedSlugs.has(alias)) {
+        throw new Error(
+          `[amytis] redirectFrom "${from}" in post "${post.slug}" conflicts with an existing top-level route or redirect alias.`
+        );
+      }
+      reservedSlugs.add(alias);
+      params.push({ slug: alias });
+    }
   }
 
   return params;
@@ -67,14 +94,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const page = getPageBySlug(slug);
-  if (!page) {
-    return { title: 'Page Not Found' };
+  if (page) {
+    return {
+      title: `${page.title} | ${resolveLocale(siteConfig.title)}`,
+      description: page.excerpt,
+    };
   }
 
-  return {
-    title: `${page.title} | ${resolveLocale(siteConfig.title)}`,
-    description: page.excerpt,
-  };
+  // Single-segment redirectFrom — only if no real page exists for this slug
+  const redirectPost = getAllPosts().find(p => p.redirectFrom?.includes(`/${slug}`));
+  if (redirectPost) {
+    return { title: redirectPost.title };
+  }
+
+  return { title: 'Page Not Found' };
 }
 
 export default async function Page({
@@ -194,10 +227,15 @@ export default async function Page({
     );
   }
 
-  // Default: static page
+  // Default: static page — check this before redirectFrom to prevent aliased slugs from hijacking real pages
   const page = getPageBySlug(slug);
 
   if (!page) {
+    // Single-segment redirectFrom — only if no real page exists for this slug
+    const redirectPost = getAllPosts().find(p => p.redirectFrom?.includes(`/${slug}`));
+    if (redirectPost) {
+      return <RedirectPage to={getPostUrl(redirectPost)} />;
+    }
     notFound();
   }
 
