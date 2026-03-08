@@ -126,7 +126,7 @@ export const siteConfig = {
     },
     flow: {
       enabled: true,
-      name: { en: "Flow", zh: "灵感" },
+      name: { en: "Flow", zh: "语丝" },
     },
   },
 
@@ -140,7 +140,7 @@ export const siteConfig = {
     sections: [
       { id: 'hero',            enabled: true, weight: 1 },
       { id: 'featured-posts',  enabled: true, weight: 2, maxItems: 4 },
-      { id: 'latest-posts',    enabled: true, weight: 3, maxItems: 3 },
+      { id: 'latest-posts',    enabled: true, weight: 3, maxItems: 4 },
       { id: 'recent-flows',    enabled: true, weight: 4, maxItems: 8 },
       { id: 'featured-series', enabled: true, weight: 5, maxItems: 6, scrollThreshold: 2 },
       { id: 'featured-books',  enabled: true, weight: 6, maxItems: 4 },
@@ -236,7 +236,7 @@ export const siteConfig = {
       flows: true,
       notes: true,
       bookChapters: true,
-      staticPages: false,
+      staticPages: true,
     },
     giscus: {
       repo: 'hutusi/hutusi.github.com', // username/repo
