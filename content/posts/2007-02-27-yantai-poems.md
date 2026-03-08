@@ -5,13 +5,8 @@ tags:
   - 随笔
   - 诗词
 title: 诗歌与烟台
-subtitle: ''
-backgrounds:
-  - 500px-40228170-colors-of-arctic.jpg
-thumb: instagram-11355032_550488605104961_1339802502_n.jpg
-gh_issue: 47
-redirect_from:
-  - /blog/2007/02/27/yantai
+excerpt: '在烟台的一些记录'
+redirectFrom:
   - /yantai-poems
 coverImage: /articles/2007-yantai.jpeg
 featured: true

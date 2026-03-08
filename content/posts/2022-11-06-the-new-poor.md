@@ -6,9 +6,8 @@ tags:
   - 书评
   - 社科
 title: 我们都是新穷人
-subtitle: 《工作、消费主义和新穷人》读书笔记
+excerpt: 《工作、消费主义和新穷人》读书笔记
 date: '2022-11-06 21:21:00 +0800'
-last_modified_at: '2022-11-06 21:21:00 +0800'
 coverImage: /articles/2022-the-new-poor.jpg
 featured: true
 ---

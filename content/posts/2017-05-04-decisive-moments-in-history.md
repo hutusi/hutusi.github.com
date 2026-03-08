@@ -6,11 +6,9 @@ tags:
   - 书评
   - 传记
 title: 人类伟大的时刻
-subtitle: 《人类群星闪耀时》读书笔记
+excerpt: 《人类群星闪耀时》读书笔记
 last_modified_at: '2022-06-18 20:50:00 +0800'
-gh_issue: 6
-redirect_from:
-  - /blog/2017/05/04/geniuses
+redirectFrom:
   - /decisive-moments-in-history
 coverImage: /articles/2017-decisive-moments-in-history.jpg
 featured: true

@@ -5,7 +5,7 @@ tags:
   - 读书
   - 书评
 title: 读《毛泽东传》对个人的启发
-subtitle: ''
+excerpt: '活到老，学到老'
 date: '2025-07-13 18:12:00 +0800'
 coverImage: /books/maozedong.jpg
 featured: true

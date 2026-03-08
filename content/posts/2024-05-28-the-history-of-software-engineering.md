@@ -8,7 +8,7 @@ tags:
   - 大模型
   - 软件开发
 title: 银弹飞过先锋大厦
-subtitle: 从软件工程发展历史看大模型时代的软件开发
+excerpt: 从软件工程发展历史看大模型时代的软件开发
 date: '2024-05-28 21:37:00 +0800'
 coverImage: /people/ada-lovelace.jpg
 featured: true

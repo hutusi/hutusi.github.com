@@ -7,10 +7,8 @@ tags:
   - 开源
   - 工具
 title: 阅读开源代码小技巧
-subtitle: Git历史记录快速翻页式签出
-gh_issue: 41
-redirect_from:
-  - /blog/2019/08/18/git-paging
+excerpt: Git历史记录快速翻页式签出
+redirectFrom:
   - /git-paging
 coverImage: /articles/2019-git-tips.jpg
 ---
@@ -45,8 +43,8 @@ first
 # git-next
 
 next() {
-	branch=refs/heads/master
-	git log --reverse --pretty=%H $branch | grep -A 1 $(git rev-parse HEAD) | tail -1 | xargs git checkout
+  branch=refs/heads/master
+  git log --reverse --pretty=%H $branch | grep -A 1 $(git rev-parse HEAD) | tail -1 | xargs git checkout
 }
 next
 ```

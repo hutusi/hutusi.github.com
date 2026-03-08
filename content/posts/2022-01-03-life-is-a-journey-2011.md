@@ -4,10 +4,8 @@ category: essay
 tags:
   - 总结
 title: 人生如逆旅，我亦是行人
-subtitle: 2021年小结
+excerpt: 2021年小结
 date: '2022-01-03 17:15:00 +0800'
-last_modified_at: '2022-01-03 17:15:00 +0800'
-gh_issue: 108
 coverImage: /articles/2022-the-great-wall.jpg
 ---
 

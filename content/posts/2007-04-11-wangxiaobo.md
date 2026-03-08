@@ -5,13 +5,8 @@ tags:
   - 随笔
   - 王小波
 title: 一只特立独行的猪
-subtitle: ''
-backgrounds:
-  - 500px-35187698-san-francisco-golden-gate-bridge-at-dusk.jpg
-thumb: instagram-11363677_1625152674417377_563900794_n.jpg
-gh_issue: 46
-redirect_from:
-  - /blog/2007/04/11/wangxiaobo
+excerpt: '纪念王小波'
+redirectFrom:
   - /wangxiaobo
 coverImage: /articles/2007-wangxiaobo.jpg
 ---

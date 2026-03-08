@@ -4,9 +4,8 @@ category: essay
 tags:
   - 总结
 title: 心猿意马
-subtitle: 2024年总结
+excerpt: 2024年总结
 date: '2025-01-12 16:30:00 +0800'
-last_modified_at: '2025-01-12 16:30:00 +0800'
 coverImage: /photos/shenzhen-road.jpg
 featured: true
 ---

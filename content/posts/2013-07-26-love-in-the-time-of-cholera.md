@@ -8,9 +8,9 @@ tags:
   - 文学
   - 马尔克斯
 title: 读《霍乱时期的爱情》
+excerpt: '马尔克斯说他要写一本情侣事事顺遂的书…'
 date: '2013-07-26 00:00:00 +0800'
-gh_issue: 62
-redirect_from:
+redirectFrom:
   - /love-in-the-time-of-cholera
 coverImage: /articles/2013-love-in-the-time-of-cholera.jpg
 featured: true

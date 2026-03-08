@@ -5,10 +5,9 @@ tags:
   - 黑客
   - 开源
 title: 如何成为一名黑客
-subtitle: How to become a hacker
+excerpt: How to become a hacker
 date: '2020-09-20 20:00:00 +0800'
-gh_issue: 58
-redirect_from:
+redirectFrom:
   - /how-to-become-a-hacker
 coverImage: /articles/2020-hackers.jpeg
 ---

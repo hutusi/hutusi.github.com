@@ -5,13 +5,8 @@ tags:
   - 随笔
   - 梦
 title: 爱美丽、黑暗王子和豌豆公主
-subtitle: ''
-backgrounds:
-  - 500px-94488705-lofoten-palette.jpg
-thumb: instagram-11325089_1479650595684009_1078413344_n.jpg
-gh_issue: 33
-redirect_from:
-  - /blog/2007/03/04/dream
+excerpt: '记一个奇怪的梦'
+redirectFrom:
   - /a-strange-dream
 coverImage: /articles/2007-dream.jpg
 ---

@@ -5,12 +5,10 @@ tags:
   - 城市
   - 上海
 title: 上海周末骑行：从浦东到外白渡桥
-subtitle: ''
+excerpt: '上海解封后'
 date: '2022-06-06 23:55:00 +0800'
-last_modified_at: '2022-06-06 23:55:00 +0800'
 coverImage: /photos/the-bund-view.jpeg
 ---
-
 
 上海解封后，端午放假第一天，我带着七岁的儿子大卫早早起来去骑行。
 

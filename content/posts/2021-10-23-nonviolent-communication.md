@@ -6,9 +6,8 @@ tags:
   - 书评
   - 心理学
 title: 和自己非暴力沟通
-subtitle: 重读《非暴力沟通》
+excerpt: 重读《非暴力沟通》
 date: '2021-10-23 21:55:00 +0800'
-gh_issue: 107
 coverImage: /articles/2021-nonviolent-communication.jpg
 ---
 

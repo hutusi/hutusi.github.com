@@ -4,9 +4,8 @@ category: essay
 tags:
   - 总结
 title: 凡所有相，皆是虚妄
-subtitle: 虽迟但到的2023年总结
+excerpt: 虽迟但到的2023年总结
 date: '2024-01-14 20:05:00 +0800'
-last_modified_at: '2024-01-14 20:05:00 +0800'
 coverImage: /posts/life_path.jpeg
 featured: true
 ---

@@ -7,10 +7,8 @@ tags:
   - 传记
   - 开源
 title: 最著名的黑客
-subtitle: 《只是为了好玩》——林纳斯·托瓦兹（Linus Torvalds）传记
-gh_issue: 35
-redirect_from:
-  - /blog/2017/04/24/hacker
+excerpt: 《只是为了好玩》——林纳斯·托瓦兹（Linus Torvalds）传记
+redirectFrom:
   - /just-for-fun
 coverImage: /articles/2017-just-for-fun.jpg
 ---

@@ -7,7 +7,7 @@ tags:
   - 深度学习
   - Huggingface
 title: 从神经网络到 Hugging Face
-subtitle: 神经网络和深度学习简史
+excerpt: 神经网络和深度学习简史
 date: '2024-03-17 18:43:00 +0800'
 coverImage: /people/geoffery-hinton.jpg
 featured: true

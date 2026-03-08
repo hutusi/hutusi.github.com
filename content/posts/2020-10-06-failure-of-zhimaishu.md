@@ -5,9 +5,9 @@ tags:
   - 产品
   - 微信小程序
 title: 只买书：一个失败的微信小程序产品
+excerpt: 微信小程序项目经历记录
 date: '2020-10-06 22:00:00 +0800'
-gh_issue: 86
-redirect_from:
+redirectFrom:
   - /failure-of-zhimaishu
 coverImage: /articles/2020-guangfulin.jpg
 ---

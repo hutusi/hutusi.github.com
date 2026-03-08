@@ -6,10 +6,8 @@ tags:
   - 书评
   - 访谈
 title: 巨人的笔记
-subtitle: 《巨人的工具》和《巨人的方法》的读书笔记
+excerpt: 《巨人的工具》和《巨人的方法》的读书笔记
 date: '2022-01-24 22:45:00 +0800'
-last_modified_at: '2022-01-24 22:45:00 +0800'
-gh_issue: 110
 coverImage: /articles/2022-notes-of-titans.avif
 ---
 

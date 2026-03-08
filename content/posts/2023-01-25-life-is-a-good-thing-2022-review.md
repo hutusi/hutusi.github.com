@@ -4,9 +4,8 @@ category: essay
 tags:
   - 总结
 title: 人生无论怎么度过都像是浪费
-subtitle: 迟到的且不像总结的2022年度非工作总结回顾
+excerpt: 迟到的且不像总结的2022年度非工作总结回顾
 date: '2023-01-25 19:45:00 +0800'
-last_modified_at: '2023-01-25 19:45:00 +0800'
 coverImage: /articles/2023-horse-on-the-moon.jpg
 featured: true
 ---

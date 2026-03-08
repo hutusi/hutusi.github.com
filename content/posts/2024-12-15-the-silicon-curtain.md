@@ -7,7 +7,7 @@ tags:
   - 神经网络
   - 人工智能
 title: 从铁幕到硅幕
-subtitle: 《智人之上》读书笔记及延伸
+excerpt: 《智人之上》读书笔记及延伸
 date: '2024-12-15 18:00:00 +0800'
 coverImage: /books/nexus.jpg
 featured: true

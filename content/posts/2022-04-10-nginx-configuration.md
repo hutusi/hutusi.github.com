@@ -5,9 +5,8 @@ tags:
   - 博客
   - nginx
 title: 自建博客 Nginx 基本配置
-subtitle: 从一个 Nginx 配置问题学到的
+excerpt: 从一个 Nginx 配置问题学到的
 date: '2022-04-10 11:11:00 +0800'
-last_modified_at: '2022-04-10 11:11:00 +0800'
 coverImage: /articles/2022-nginx-config.jpg
 ---
 

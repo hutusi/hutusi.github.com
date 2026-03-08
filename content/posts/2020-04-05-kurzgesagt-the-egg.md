@@ -6,11 +6,9 @@ tags:
   - youtube
   - 大卫
 title: 宇宙就是一个蛋
-subtitle: 'Kurzgesagt: The Egg'
+excerpt: 'Kurzgesagt: The Egg'
 date: '2020-04-05 09:00:05 +0800'
-last_modified_at: '2020-04-05 09:03:11 +0800'
-gh_issue: 45
-redirect_from:
+redirectFrom:
   - /kurzgesagt-the-egg
 coverImage: /articles/2020-the-egg.jpg
 ---

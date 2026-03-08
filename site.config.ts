@@ -52,10 +52,10 @@ export const siteConfig = {
   nav: [
     { name: "Flow", url: "/flows", weight: 1 },
     { name: "Posts", url: "/articles", weight: 2 },
-    { name: "周刊", url: "/series/weeklies", weight: 3, dropdown: ["digital-garden", "markdown-showcase", "ai-nexus-weekly"] },
-    { name: "Books", url: "/books", weight: 4, dropdown: [] },
-    { name: "About", url: "/about", weight: 5 },
-    { name: "More", url: "", weight: 6, children: [
+    { name: "Series", url: "/series", weight: 4, dropdown: ["weeklies"] },
+    { name: "Books", url: "/books", weight: 6, dropdown: [] },
+    { name: "About", url: "/about", weight: 7 },
+    { name: "More", url: "", weight: 8, children: [
       { name: "Archive", url: "/archive" },
       { name: "Tags", url: "/tags" },
       { name: "Links", url: "/links" },
@@ -138,7 +138,7 @@ export const siteConfig = {
   },
   homepage: {
     sections: [
-      { id: 'hero',            enabled: true, weight: 1 },
+      { id: 'hero',            enabled: false, weight: 1 },
       { id: 'featured-posts',  enabled: true, weight: 2, maxItems: 4 },
       { id: 'latest-posts',    enabled: true, weight: 3, maxItems: 4 },
       { id: 'recent-flows',    enabled: true, weight: 4, maxItems: 8 },

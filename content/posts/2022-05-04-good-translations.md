@@ -6,9 +6,8 @@ tags:
   - 翻译
   - 诗歌
 title: 如何选择图书译本？
-subtitle: 从翻译说起
+excerpt: 从翻译说起
 date: '2022-05-04 14:05:00 +0800'
-last_modified_at: '2022-05-04 14:05:00 +0800'
 coverImage: /articles/2022-tower-of-babel.jpeg
 ---
 

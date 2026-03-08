@@ -8,10 +8,8 @@ tags:
   - GitLab
   - Git
 title: 从零到百亿美金之路
-subtitle: GitHub 和 GitLab 的故事
+excerpt: GitHub 和 GitLab 的故事
 date: '2022-01-11 23:30:00 +0800'
-last_modified_at: '2022-01-11 23:30:00 +0800'
-gh_issue: 109
 coverImage: /posts/github-founders-and-first-employee.jpeg
 featured: true
 ---
