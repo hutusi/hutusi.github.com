@@ -96,22 +96,22 @@ export default function Navbar({ seriesList = [], booksList = [] }: NavbarProps)
         ? 'border-muted/10 bg-background/90 backdrop-blur-md shadow-sm'
         : 'border-transparent bg-transparent'
     }`}>
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-3 text-xl font-serif font-bold text-heading hover:text-accent transition-colors duration-200"
+          className="flex items-center gap-3 min-w-0 text-xl font-serif font-bold text-heading hover:text-accent transition-colors duration-200"
         >
           {siteConfig.logo?.src ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={siteConfig.logo.src}
               alt=""
-              className="h-8 w-auto"
+              className="h-8 w-auto shrink-0"
             />
           ) : (
             <svg
               viewBox="0 0 32 32"
-              className="w-8 h-8 text-accent"
+              className="w-8 h-8 shrink-0 text-accent"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -125,11 +125,11 @@ export default function Navbar({ seriesList = [], booksList = [] }: NavbarProps)
               <path d="M20.5 18 Q 26 14 26 8 Q 23 12 20.5 18" fill="currentColor" stroke="none" />
             </svg>
           )}
-          <span>{resolveLocaleValue(siteConfig.title, language)}</span>
+          <span className="truncate">{resolveLocaleValue(siteConfig.title, language)}</span>
         </Link>
 
-        <div className="flex items-center gap-4 md:gap-6">
-          <div className="hidden md:flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-6 shrink-0">
+          <div className="hidden md:flex items-center gap-6" data-testid="desktop-nav">
             {navItems.map((item) => {
               const isExternal = !!('external' in item && item.external);
               const Component = isExternal ? 'a' : Link;
@@ -284,7 +284,7 @@ export default function Navbar({ seriesList = [], booksList = [] }: NavbarProps)
           <div className="w-px h-4 bg-muted/20 mx-1 hidden md:block"></div>
           {/* Hamburger button - mobile only */}
           <button
-            className="md:hidden p-2 -mr-2 text-foreground/80 hover:text-heading transition-colors"
+            className="md:hidden p-3 -mr-3 text-foreground/80 hover:text-heading transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
@@ -305,7 +305,7 @@ export default function Navbar({ seriesList = [], booksList = [] }: NavbarProps)
             </svg>
           </button>
           <Search />
-          <LanguageSwitch />
+          <span className="hidden sm:block"><LanguageSwitch /></span>
           <ThemeToggle />
         </div>
       </div>
@@ -319,7 +319,7 @@ export default function Navbar({ seriesList = [], booksList = [] }: NavbarProps)
             onClick={() => closeMenu()}
           />
           {/* Menu */}
-          <div className="md:hidden absolute top-16 left-0 w-full bg-background/95 backdrop-blur-md border-b border-muted/10 shadow-lg animate-slide-down">
+          <div className="md:hidden absolute top-16 left-0 w-full bg-background/95 backdrop-blur-md border-b border-muted/10 shadow-lg animate-slide-down" data-testid="mobile-nav-panel">
             <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
               {navItems.map((item) => {
                 const isExternal = !!('external' in item && item.external);

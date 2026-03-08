@@ -26,7 +26,7 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, currentSlug
   const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
 
   return (
-    <div className="p-5 bg-muted/5 rounded-xl border border-muted/20">
+    <div data-testid="series-list" className="p-5 bg-muted/5 rounded-xl border border-muted/20">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <Link

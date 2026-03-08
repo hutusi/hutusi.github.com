@@ -27,6 +27,7 @@
     "new-flow": "bun scripts/new-flow.ts",
     "new-flow-from-chat": "bun scripts/new-flow-from-chat.ts",
     "new-note": "bun scripts/new-note.ts",
+    "import-obsidian": "bun scripts/import-obsidian.ts",
     "import-book": "bun scripts/import-book.ts",
     "sync-book": "bun scripts/sync-book-chapters.ts",
     "series-draft": "bun scripts/series-draft.ts",
@@ -36,7 +37,8 @@
     "test": "bun test src tests/unit tests/tooling packages/create-amytis/src && bun run test:int",
     "test:unit": "bun test src tests/unit packages/create-amytis/src",
     "test:int": "bun test tests/integration",
-    "test:e2e": "bun test tests/e2e"
+    "test:e2e": "bun test tests/e2e",
+    "test:mobile": "playwright test"
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
@@ -68,6 +70,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/bun": "^1.3.9",
     "@types/d3": "^7.4.3",

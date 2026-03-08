@@ -125,8 +125,8 @@ export const siteConfig = {
       name: { en: "Books", zh: "书籍" },
     },
     flow: {
-      enabled: false,
-      name: { en: "Flow", zh: "随笔" },
+      enabled: true,
+      name: { en: "Flow", zh: "灵感" },
     },
   },
 
@@ -229,6 +229,15 @@ export const siteConfig = {
   // ── Comments ──────────────────────────────────────────────────────────────
   comments: {
     provider: 'giscus', // 'giscus' | 'disqus' | null
+    // Per-category defaults. Set false to disable comments for an entire content type.
+    // Individual pages can override with `commentable: true/false` in their frontmatter.
+    commentable: {
+      posts: true,
+      flows: true,
+      notes: true,
+      bookChapters: true,
+      staticPages: false,
+    },
     giscus: {
       repo: 'hutusi/hutusi.github.com', // username/repo
       repoId: 'MDEwOlJlcG9zaXRvcnkzNjc5MDgy',

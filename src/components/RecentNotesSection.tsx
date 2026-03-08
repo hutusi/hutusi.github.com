@@ -21,15 +21,12 @@ export default function RecentNotesSection({ notes }: RecentNotesSectionProps) {
   return (
     <section id="recent-flows">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-3xl font-serif font-bold text-heading">{t('recent_notes')}</h2>
+        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-heading">{t('recent_notes')}</h2>
         <Link
           href="/flows"
-          className="text-sm text-muted hover:text-accent transition-colors no-underline inline-flex items-center gap-1"
+          className="text-sm text-muted hover:text-accent transition-colors no-underline"
         >
-          {t('all_flows')}
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          {t('all_flows')} →
         </Link>
       </div>
 

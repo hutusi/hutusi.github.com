@@ -40,9 +40,9 @@ export default function CuratedSeriesSection({ allSeries, maxItems, scrollThresh
   if (allSeries.length === 0) return null;
 
   return (
-    <section id="featured-series" className="mb-24">
+    <section id="featured-series" className="mb-12 sm:mb-24">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-3xl font-serif font-bold text-heading">{t('curated_series')}</h2>
+        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-heading">{t('curated_series')}</h2>
         <div className="flex items-center gap-4">
           {allSeries.length > maxItems && (
             <button
@@ -56,7 +56,7 @@ export default function CuratedSeriesSection({ allSeries, maxItems, scrollThresh
               </svg>
             </button>
           )}
-          <Link href="/series" className="text-sm font-sans font-bold uppercase tracking-widest text-muted hover:text-accent transition-colors no-underline hover:underline focus:outline-none focus:text-accent">
+          <Link href="/series" className="text-sm text-muted hover:text-accent transition-colors no-underline">
             {t('all_series')} →
           </Link>
         </div>

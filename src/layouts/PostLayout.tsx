@@ -5,6 +5,7 @@ import RelatedPosts from '@/components/RelatedPosts';
 import SeriesList from '@/components/SeriesList';
 import PostSidebar from '@/components/PostSidebar';
 import Comments from '@/components/Comments';
+import { resolveCommentable } from '@/lib/comments';
 import ExternalLinks from '@/components/ExternalLinks';
 import Backlinks from '@/components/Backlinks';
 import Tag from '@/components/Tag';
@@ -14,7 +15,7 @@ import AuthorCard from '@/components/AuthorCard';
 import ShareBar from '@/components/ShareBar';
 import { siteConfig } from '../../site.config';
 import { t } from '@/lib/i18n';
-import { getPostUrl } from '@/lib/urls';
+import { getPostUrl, getStaticPageUrl } from '@/lib/urls';
 
 interface PostLayoutProps {
   post: PostData;
@@ -25,13 +26,18 @@ interface PostLayoutProps {
   nextPost?: PostData | null;
   backlinks?: BacklinkSource[];
   slugRegistry?: Map<string, SlugRegistryEntry>;
+  commentCategory?: 'posts' | 'staticPages';
 }
 
-export default function PostLayout({ post, relatedPosts, seriesPosts, seriesTitle, prevPost, nextPost, backlinks, slugRegistry }: PostLayoutProps) {
+export default function PostLayout({ post, relatedPosts, seriesPosts, seriesTitle, prevPost, nextPost, backlinks, slugRegistry, commentCategory = 'posts' }: PostLayoutProps) {
   const showToc = siteConfig.posts?.toc !== false && post.toc !== false && post.headings && post.headings.length > 0;
   const hasSeries = !!(post.series && seriesPosts && seriesPosts.length > 0);
   const showSidebar = showToc || hasSeries;
-  const postUrl = `${siteConfig.baseUrl}${getPostUrl(post)}`;
+  const isStaticPage = commentCategory === 'staticPages';
+  const postUrl = isStaticPage
+    ? `${siteConfig.baseUrl.replace(/\/+$/, '')}${getStaticPageUrl(post.slug)}`
+    : `${siteConfig.baseUrl}${getPostUrl(post)}`;
+  const commentSlug = isStaticPage ? `pages/${post.slug}` : post.slug;
 
   return (
     <div className="layout-container">
@@ -145,7 +151,9 @@ export default function PostLayout({ post, relatedPosts, seriesPosts, seriesTitl
             className={showSidebar ? 'mt-8 lg:hidden' : 'mt-8'}
           />
 
-          <Comments slug={post.slug} postUrl={postUrl} />
+          {resolveCommentable(post.commentable, commentCategory) && (
+            <Comments slug={commentSlug} postUrl={postUrl} />
+          )}
 
           {post.externalLinks && post.externalLinks.length > 0 && (
             <ExternalLinks links={post.externalLinks} />

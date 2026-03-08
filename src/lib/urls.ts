@@ -35,6 +35,11 @@ export function getPostsPageUrl(page: number): string {
   return `/${getPostsBasePath()}/page/${page}`;
 }
 
+/** Returns the books listing URL. */
+export function getBooksListUrl(): string {
+  return '/books';
+}
+
 /** Returns the canonical URL path for a book landing page. */
 export function getBookUrl(slug: string): string {
   return `/books/${slug}`;
@@ -48,4 +53,9 @@ export function getBookChapterUrl(bookSlug: string, chapterSlug: string): string
 /** Returns the canonical URL path for a flow note. */
 export function getFlowUrl(slug: string): string {
   return `/flows/${slug}`;
+}
+
+/** Returns the canonical URL path for a static page (e.g. /about, /subscribe). */
+export function getStaticPageUrl(slug: string): string {
+  return `/${slug}`;
 }
