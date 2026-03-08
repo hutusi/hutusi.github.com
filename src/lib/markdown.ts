@@ -18,6 +18,28 @@ const ExternalLinkSchema = z.object({
   url: z.string().url(),
 });
 
+const CollectionItemSchema = z.union([
+  z.object({
+    series: z.string(),
+    exclude: z.array(z.string()).optional(),
+    label: z.string().optional(),
+  }).strict(),
+  z.object({
+    post: z.string(),
+    label: z.string().optional(),
+  }).strict(),
+]);
+
+export type CollectionItem =
+  | { series: string; exclude?: string[]; label?: string }
+  | { post: string; label?: string };
+
+export interface CollectionContext {
+  slug: string;
+  title: string;
+  posts: PostData[];
+}
+
 const PostSchema = z.object({
   title: z.string(),
   date: z.union([z.string(), z.date()]).transform(val => new Date(val).toISOString().split('T')[0]).optional(),
@@ -32,6 +54,8 @@ const PostSchema = z.object({
   coverImage: z.string().optional(),
   sort: z.enum(['date-desc', 'date-asc', 'manual']).optional().default('date-desc'),
   posts: z.array(z.string()).optional(),
+  type: z.literal('collection').optional(),
+  items: z.array(CollectionItemSchema).optional(),
   featured: z.boolean().optional().default(false),
   pinned: z.boolean().optional().default(false),
   draft: z.boolean().optional().default(false),
@@ -39,6 +63,22 @@ const PostSchema = z.object({
   toc: z.boolean().optional().default(true),
   commentable: z.boolean().optional(),
   externalLinks: z.array(ExternalLinkSchema).optional().default([]),
+  redirectFrom: z.array(z.string()).optional().default([]),
+}).superRefine((data, ctx) => {
+  if (data.type === 'collection' && (!data.items || data.items.length === 0)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['items'],
+      message: 'Collections require at least one item.',
+    });
+  }
+  if (data.type !== 'collection' && data.items) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['items'],
+      message: '`items` is only valid when `type` is "collection".',
+    });
+  }
 });
 
 export interface Heading {
@@ -67,6 +107,8 @@ export interface PostData {
   coverImage?: string;
   sort?: 'date-desc' | 'date-asc' | 'manual';
   posts?: string[];
+  type?: 'collection';
+  items?: CollectionItem[];
   featured?: boolean;
   pinned?: boolean;
   draft?: boolean;
@@ -74,6 +116,7 @@ export interface PostData {
   toc?: boolean;
   commentable?: boolean;
   externalLinks?: ExternalLink[];
+  redirectFrom?: string[];
   readingTime: string;
   content: string;
   headings: Heading[];
@@ -260,7 +303,10 @@ function parseMarkdownFile(fullPath: string, slug: string, dateFromFileName?: st
     latex: data.latex,
     toc: data.toc,
     commentable: data.commentable,
+    type: data.type,
+    items: data.items as CollectionItem[] | undefined,
     externalLinks: data.externalLinks,
+    redirectFrom: data.redirectFrom,
     readingTime,
     content: contentWithoutH1,
     headings,
@@ -774,7 +820,9 @@ export function getAllSeries(): Record<string, PostData[]> {
     if (process.env.NODE_ENV === 'production' && seriesData?.draft) {
       return; // Skip draft series in production
     }
-    series[slug] = getSeriesPosts(slug);
+    series[slug] = seriesData?.type === 'collection'
+      ? getCollectionPosts(slug).slice().sort((a, b) => (a.date < b.date ? 1 : -1))
+      : getSeriesPosts(slug);
   });
 
   return series;
@@ -813,13 +861,53 @@ export function getSeriesData(slug: string): PostData | null {
   if (!fs.existsSync(seriesDirectory)) return null;
   const indexPathMdx = path.join(seriesDirectory, slug, 'index.mdx');
   const indexPathMd = path.join(seriesDirectory, slug, 'index.md');
-  
+
   let fullPath = '';
   if (fs.existsSync(indexPathMdx)) fullPath = indexPathMdx;
   else if (fs.existsSync(indexPathMd)) fullPath = indexPathMd;
   else return null;
 
   return parseMarkdownFile(fullPath, slug, undefined, slug);
+}
+
+export function getCollectionPosts(collectionSlug: string): PostData[] {
+  const data = getSeriesData(collectionSlug);
+  if (data?.type !== 'collection' || !data.items) return [];
+
+  const seen = new Set<string>();
+  return data.items
+    .flatMap(item => {
+      if ('series' in item) {
+        const posts = getSeriesPosts(item.series);
+        return item.exclude ? posts.filter(p => !item.exclude!.includes(p.slug)) : posts;
+      }
+      const post = getPostBySlug(item.post);
+      return post ? [post] : [];
+    })
+    .filter(post => {
+      if (seen.has(post.slug)) return false;
+      seen.add(post.slug);
+      return true;
+    });
+}
+
+export function getCollectionsForPost(postSlug: string): CollectionContext[] {
+  if (!fs.existsSync(seriesDirectory)) return [];
+  const seriesFolders = fs.readdirSync(seriesDirectory, { withFileTypes: true });
+  const results: CollectionContext[] = [];
+
+  for (const folder of seriesFolders) {
+    if (!folder.isDirectory()) continue;
+    const data = getSeriesData(folder.name);
+    if (data?.type !== 'collection') continue;
+    if (process.env.NODE_ENV === 'production' && data.draft) continue;
+    const posts = getCollectionPosts(folder.name);
+    if (posts.some(p => p.slug === postSlug)) {
+      results.push({ slug: folder.name, title: data.title, posts });
+    }
+  }
+
+  return results;
 }
 
 // ─── Books ──────────────────────────────────────────────────────────────────

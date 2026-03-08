@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { PostData } from '@/lib/markdown';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import SimpleLayoutHeader from '@/components/SimpleLayoutHeader';
@@ -61,7 +62,9 @@ export default function SimpleLayout({ post, titleKey, subtitleKey }: SimpleLayo
     <div className="layout-main">
       {showToc ? (
         <div className="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8 items-start">
-          <PostSidebar currentSlug={post.slug} headings={post.headings} localeHeadings={localeHeadings} />
+          <Suspense fallback={null}>
+            <PostSidebar currentSlug={post.slug} headings={post.headings} localeHeadings={localeHeadings} />
+          </Suspense>
           <article className="min-w-0 w-full max-w-3xl overflow-x-hidden">
             {articleContent}
             {showComments && <Comments slug={commentSlug} postUrl={pageUrl} />}
