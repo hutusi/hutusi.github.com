@@ -7,7 +7,7 @@ tags:
 title: 当下我们还需要启蒙吗？
 excerpt: 斯蒂芬·平克《当下的启蒙》读书笔记
 date: '2022-09-12 21:52:00 +0800'
-coverImage: /arts/Les_salons_au_XVIIIe_siècle_-_Histoire_Image.jpeg
+coverImage: /arts/Les_salons_au_XVIIIe_siecle_-_Histoire_Image.jpeg
 featured: true
 ---
 
