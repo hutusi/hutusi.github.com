@@ -5,15 +5,10 @@ tags:
   - 随笔
   - 梦
 title: 爱美丽、黑暗王子和豌豆公主
-subtitle: null
-backgrounds:
-  - 500px-94488705-lofoten-palette.jpg
-thumb: instagram-11325089_1479650595684009_1078413344_n.jpg
-gh_issue: 33
-redirect_from:
-  - /blog/2007/03/04/dream
+excerpt: '记一个奇怪的梦'
+redirectFrom:
   - /a-strange-dream
-image: articles/2007-dream.jpg
+coverImage: /articles/2007-dream.jpg
 ---
 
 早上的时候做了个奇怪的梦，或者说是几个连续的梦，大致记录如下：

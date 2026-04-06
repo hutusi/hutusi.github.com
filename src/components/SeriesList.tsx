@@ -1,0 +1,158 @@
+'use client';
+
+import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { PostData, CollectionContext } from '@/lib/markdown';
+import { useLanguage } from './LanguageProvider';
+import { getPostUrl, getPostUrlInCollection } from '@/lib/urls';
+import PrevNextNav from './PrevNextNav';
+import { padNumber } from '@/lib/format-utils';
+
+interface SeriesListProps {
+  seriesSlug?: string;
+  seriesTitle?: string;
+  posts?: PostData[];
+  collectionContexts?: CollectionContext[];
+  currentSlug: string;
+}
+
+export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionContexts, currentSlug }: SeriesListProps) {
+  const { t } = useLanguage();
+  const searchParams = useSearchParams();
+  const collectionParam = searchParams.get('collection');
+  const activeCollection = collectionParam
+    ? (collectionContexts ?? []).find(c => c.slug === collectionParam) ?? null
+    : null;
+
+  const effectiveSlug = activeCollection?.slug ?? seriesSlug;
+  const effectiveTitle = activeCollection?.title ?? seriesTitle;
+  const effectivePosts = activeCollection?.posts ?? posts;
+  const isCollectionContext = !!activeCollection;
+
+  const postHref = (post: PostData) =>
+    isCollectionContext ? getPostUrlInCollection(post, activeCollection!.slug) : getPostUrl(post);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  if (!effectivePosts || effectivePosts.length === 0) return null;
+
+  const currentIndex = effectivePosts.findIndex(p => p.slug === currentSlug);
+  const prevPost = currentIndex > 0 ? effectivePosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < effectivePosts.length - 1 ? effectivePosts[currentIndex + 1] : null;
+
+  return (
+    <div data-testid="series-list" className="p-5 bg-muted/5 rounded-xl border border-muted/20">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <Link
+          href={`/series/${effectiveSlug}`}
+          className="group flex items-center gap-2 no-underline"
+        >
+          <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-accent">
+            {isCollectionContext ? t('collection') : t('series')}
+          </span>
+          <span className="text-[10px] text-muted">•</span>
+          <span className="text-sm font-serif font-bold text-heading group-hover:text-accent transition-colors">
+            {effectiveTitle}
+          </span>
+        </Link>
+        <span className="text-xs font-mono text-muted bg-muted/10 px-2 py-0.5 rounded-full">
+          {currentIndex + 1}/{effectivePosts.length}
+        </span>
+      </div>
+
+      {/* Progress bar */}
+      <div className="h-1 bg-muted/10 rounded-full overflow-hidden mb-4">
+        <div
+          className="h-full bg-accent/60 rounded-full transition-all duration-500"
+          style={{ width: `${((currentIndex + 1) / effectivePosts.length) * 100}%` }}
+        />
+      </div>
+
+      {/* Prev / Next navigation */}
+      <div className="mb-3">
+        <PrevNextNav
+          prev={prevPost ? { href: postHref(prevPost), title: prevPost.title } : null}
+          next={nextPost ? { href: postHref(nextPost), title: nextPost.title } : null}
+        />
+      </div>
+
+      {/* Toggle to expand full list */}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full flex items-center justify-center gap-2 py-2 text-xs font-sans text-muted hover:text-accent transition-colors"
+      >
+        <span className="h-px flex-1 bg-muted/10" />
+        <span className="flex items-center gap-1">
+          {isExpanded ? t('hide') : t('all_posts')}
+          <svg
+            className={`w-3 h-3 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+        <span className="h-px flex-1 bg-muted/10" />
+      </button>
+
+      {/* Collapsible posts list */}
+      {isExpanded && (
+        <ol className="space-y-2 mt-3 animate-slide-down">
+          {effectivePosts.map((post, index) => {
+            const isCurrent = post.slug === currentSlug;
+            const isPast = index < currentIndex;
+
+            return (
+              <li key={post.slug}>
+                {isCurrent ? (
+                  <div className="flex items-center gap-3 py-1.5 px-2 -mx-2 rounded-lg bg-accent/5">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-accent text-white text-[10px] font-mono font-bold flex items-center justify-center">
+                      {padNumber(index + 1)}
+                    </span>
+                    <span className="text-sm font-semibold text-accent truncate">
+                      {post.title}
+                    </span>
+                  </div>
+                ) : (
+                  <Link
+                    href={postHref(post)}
+                    className="group flex items-center gap-3 py-1.5 px-2 -mx-2 rounded-lg hover:bg-muted/5 no-underline transition-colors"
+                  >
+                    <span className={`flex-shrink-0 w-5 h-5 rounded-full text-[10px] font-mono font-bold flex items-center justify-center transition-colors ${
+                      isPast
+                        ? 'bg-accent/20 text-accent'
+                        : 'bg-muted/10 text-muted group-hover:bg-muted/20'
+                    }`}>
+                      {padNumber(index + 1)}
+                    </span>
+                    <span className={`text-sm truncate transition-colors ${
+                      isPast
+                        ? 'text-foreground/70 group-hover:text-foreground'
+                        : 'text-muted group-hover:text-foreground'
+                    }`}>
+                      {post.title}
+                    </span>
+                  </Link>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      )}
+
+      {/* Footer */}
+      <div className="mt-4 pt-3 border-t border-muted/10">
+        <Link
+          href={`/series/${effectiveSlug}`}
+          className="text-xs font-sans text-muted hover:text-accent transition-colors no-underline flex items-center gap-1"
+        >
+          {isCollectionContext ? t('view_full_collection') : t('view_full_series')}
+          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+      </div>
+    </div>
+  );
+}

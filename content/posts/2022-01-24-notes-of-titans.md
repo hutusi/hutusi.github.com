@@ -6,11 +6,9 @@ tags:
   - 书评
   - 访谈
 title: 巨人的笔记
-subtitle: 《巨人的工具》和《巨人的方法》的读书笔记
+excerpt: 《巨人的工具》和《巨人的方法》的读书笔记
 date: '2022-01-24 22:45:00 +0800'
-last_modified_at: '2022-01-24 22:45:00 +0800'
-gh_issue: 110
-image: articles/2022-notes-of-titans.avif
+coverImage: /articles/2022-notes-of-titans.avif
 ---
 
 知识管理达人采铜推荐了《巨人的工具》，我在微信读书上找来此书看完。作者蒂姆·费里斯是一名播客主播，在他的播客中他采访了美国各业界精英，整理成了《巨人的工具》一书。各位名流根据自己的经验给出一些关于健康、财富和人生智慧方面的建议。说实话，我觉得这本书可以当成闲暇的读物，按照自己的兴趣读几章还是可以的，我就是这么快速看完的，特别是第一部分的健康篇几乎没看，因为我觉得所谓健康方面的建议还是要根据个人实际情况来定，不要盲目仿效为好。不过有些人物的访谈也挺有意思，给我印象最深刻的是对凯文·凯利和纳瓦尔·拉维康特的采访。
@@ -103,6 +101,6 @@ image: articles/2022-notes-of-titans.avif
 
 ### 参考
 
-1. [Naval: 如何靠实力致富](https://qishiya.com/?p=1342){:target="_blank"}
-2. [Naval tweets “How to Get Rich (without getting lucky)”](https://twitter.com/naval/status/1002103360646823936){:target="_blank"}
-3. [知乎：如何评价Naval Ravikant（纳瓦尔.拉维康特）？](https://www.zhihu.com/question/382938415){:target="_blank"}
+1. [Naval: 如何靠实力致富](https://qishiya.com/?p=1342)
+2. [Naval tweets “How to Get Rich (without getting lucky)”](https://twitter.com/naval/status/1002103360646823936)
+3. [知乎：如何评价Naval Ravikant（纳瓦尔.拉维康特）？](https://www.zhihu.com/question/382938415)

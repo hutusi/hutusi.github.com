@@ -5,9 +5,9 @@ tags:
   - Ruby
   - 编程
 title: Ruby 编程语言入门
+excerpt: 太长不看
 date: '2021-01-24 23:59:00 +0800'
-gh_issue: 95
-image: articles/2021-ruby.jpg
+coverImage: /articles/2021-ruby.jpg
 ---
 
 > Ruby is designed to make programmers happy.

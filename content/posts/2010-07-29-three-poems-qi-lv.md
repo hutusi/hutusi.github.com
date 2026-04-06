@@ -5,12 +5,11 @@ tags:
   - 诗词
   - 格律诗
 title: 七律三首
-subtitle: 2008年前写的几首诗
+excerpt: 2008年前写的几首诗
 date: '2010-07-29 00:00:00 +0800'
-gh_issue: 63
-redirect_from:
+redirectFrom:
   - /three-poems-qi-lv
-image: articles/2010-qilv.jpg
+coverImage: /articles/2010-qilv.jpg
 featured: true
 ---
 

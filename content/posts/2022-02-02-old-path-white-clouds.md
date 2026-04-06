@@ -7,11 +7,9 @@ tags:
   - 宗教
   - 传记
 title: 觉悟之道就是活在当下
-subtitle: 《佛陀传》(《故道白云》)读书笔记
+excerpt: 《佛陀传》(《故道白云》)读书笔记
 date: '2022-02-02 17:50:00 +0800'
-last_modified_at: '2022-02-02 17:50:00 +0800'
-gh_issue: 111
-image: articles/2022-old-path-white-clouds.jpg
+coverImage: /articles/2022-old-path-white-clouds.jpg
 ---
 
 首先澄清，我非佛教徒，也不信仰任何宗教。读《佛陀传》缘起是在一本书上看到一行禅师的名句“没有通向幸福的路，幸福本身就是路”。上月一行禅师去世，有网友组织了读一行禅师的读书会活动，因此选择了他的《佛陀传》来阅读。本文第一部分“佛陀的经历”和“佛教讲了什么”并非完全遵照该书内容，而是通过网上资料补充而来。
@@ -90,7 +88,7 @@ image: articles/2022-old-path-white-clouds.jpg
 
 ### 参考
 
-1. [豆瓣: 《佛陀传》](https://book.douban.com/subject/25819842/){:target="_blank"}
-2. [维基百科: 四圣谛](https://zh.wikipedia.org/wiki/四谛){:target="_blank"}
-3. [百度百科: 四念处](https://baike.baidu.com/item/四念处){:target="_blank"}
-4. [维基百科: 八正道](https://zh.wikipedia.org/wiki/八聖道分){:target="_blank"}
+1. [豆瓣: 《佛陀传》](https://book.douban.com/subject/25819842/)
+2. [维基百科: 四圣谛](https://zh.wikipedia.org/wiki/四谛)
+3. [百度百科: 四念处](https://baike.baidu.com/item/四念处)
+4. [维基百科: 八正道](https://zh.wikipedia.org/wiki/八聖道分)

@@ -6,12 +6,10 @@ tags:
   - 生活
   - 总结
 title: 买房记
-subtitle: 上海十年打拼买房史
-gh_issue: 9
-redirect_from:
-  - /blog/2017/02/12/property
+excerpt: 上海十年打拼买房史
+redirectFrom:
   - /buying-property
-image: articles/2017-neighbourhood.jpg
+coverImage: /articles/2017-neighbourhood.jpg
 featured: true
 ---
 
@@ -19,8 +17,9 @@ featured: true
 > 当你一路南下，却找不到一件差事   
 > 你就决定去芝加哥    
 > 哭泣和祈祷都帮不了你    
-> 
->  —— Led Zeppelin 《When the levee breaks》
+>
+> —— Led Zeppelin *When the levee breaks*
+>
 
 第一次听这首歌的时候，我还在大学准备写毕业设计。没想打的是，跟歌中描述的一样，我一路南下，最后来到魔都这座大都市，工作，生活，成家，生子。
 

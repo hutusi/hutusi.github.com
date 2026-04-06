@@ -4,11 +4,9 @@ category: essay
 tags:
   - 总结
 title: 人生如逆旅，我亦是行人
-subtitle: 2021年小结
+excerpt: 2021年小结
 date: '2022-01-03 17:15:00 +0800'
-last_modified_at: '2022-01-03 17:15:00 +0800'
-gh_issue: 108
-image: articles/2022-the-great-wall.jpg
+coverImage: /articles/2022-the-great-wall.jpg
 ---
 
 昨天的日历上，记录的是一首苏轼的词《临江仙·送钱穆父》：

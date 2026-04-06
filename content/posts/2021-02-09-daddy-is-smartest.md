@@ -4,9 +4,9 @@ category: life
 tags:
   - 大卫
 title: 爸爸是最聪明的
+excerpt: 五岁的大卫
 date: '2021-02-08 23:36:00 +0800'
-gh_issue: 96
-image: articles/2021-david.jpg
+coverImage: /articles/2021-david.jpg
 featured: true
 ---
 
@@ -14,7 +14,7 @@ featured: true
 
 妈妈不屑一顾，说：“魔术都是假的。”
 
-大卫立刻不高兴了，说：“Life is pointless.” 
+大卫立刻不高兴了，说：“Life is pointless.”
 
 我心里一惊，心想一个五岁的小孩怎么讲出来这种话来的，为了确信他说的意思，一边去手机词典上查“pointless”。妈妈说：“你爸都不知道你说的英语是什么意思，你还说他聪明。”
 

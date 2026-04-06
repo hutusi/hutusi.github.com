@@ -6,12 +6,11 @@ tags:
   - 摇滚
   - 随笔
 title: 答案在风中飘
-subtitle: Bob Dylan 之获诺贝尔文学奖
+excerpt: Bob Dylan 之获诺贝尔文学奖
 date: '2016-10-13 00:00:00 +0800'
-gh_issue: 61
-redirect_from:
+redirectFrom:
   - /blowing-in-the-wind
-image: articles/2016-bob-dylan.jpg
+coverImage: /articles/2016-bob-dylan.jpg
 featured: true
 ---
 

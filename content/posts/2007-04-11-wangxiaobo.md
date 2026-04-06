@@ -5,15 +5,10 @@ tags:
   - 随笔
   - 王小波
 title: 一只特立独行的猪
-subtitle: null
-backgrounds:
-  - 500px-35187698-san-francisco-golden-gate-bridge-at-dusk.jpg
-thumb: instagram-11363677_1625152674417377_563900794_n.jpg
-gh_issue: 46
-redirect_from:
-  - /blog/2007/04/11/wangxiaobo
+excerpt: '纪念王小波'
+redirectFrom:
   - /wangxiaobo
-image: articles/2007-wangxiaobo.jpg
+coverImage: /articles/2007-wangxiaobo.jpg
 ---
 
 4月11日，中午的时候突然觉得这是个特殊的日子，想了半天没想出来有什么意义。晚上突然想到可能是王小波的忌日，上网一查果如其然。十年前的今天，天也是这么黑，风也是这么大，干燥而阴冷的空气中弥漫着一中不详的预兆，一个伟大而智慧的头脑停止思考了。（不过王小波死是在11日凌晨）古希腊哲学家泰利斯有一次因为仰头观察天象，却掉进了个坑里。哲人总是太关心伟大的思想而忘记了自身，所以他们也成了这浩瀚宇宙中闪亮的流星。

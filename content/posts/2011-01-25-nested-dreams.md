@@ -5,9 +5,9 @@ tags:
   - 随笔
   - 梦
 title: 嵌套的梦
-subtitle: null
+excerpt: '午睡做了一个奇怪的梦'
 date: '2011-01-25 14:02:00 +0800'
-image: articles/2011-nested-dreams.webp
+coverImage: /articles/2011-nested-dreams.webp
 ---
 
 在公司午睡，做了一个奇怪的嵌套梦，醒来后记录如下：

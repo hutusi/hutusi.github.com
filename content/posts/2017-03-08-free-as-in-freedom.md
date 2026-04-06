@@ -7,12 +7,10 @@ tags:
   - 传记
   - 开源
 title: 若为自由故
-subtitle: 《若为自由故》——理查德·斯托曼（Richard Stallman）传记
-gh_issue: 32
-redirect_from:
-  - /blog/2017/03/08/free
+excerpt: 《若为自由故》——理查德·斯托曼（Richard Stallman）传记
+redirectFrom:
   - /free-as-in-freedom
-image: articles/2017-rms-book.jpg
+coverImage: /articles/2017-rms-book.jpg
 ---
 
 这是一篇读书笔记。
