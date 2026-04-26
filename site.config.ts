@@ -176,8 +176,7 @@ export const siteConfig = {
   },
   series: {
     // When true, posts in a series are served at /[series-slug]/[post-slug]
-    // instead of the default posts basePath. Defaults to false to avoid breaking
-    // existing deployments — enable explicitly and run `add-series-redirects` first.
+    // instead of the default posts basePath. Defaults to true.
     // customPaths entries always take precedence over autoPaths.
     autoPaths: false,
     // Per-series custom URL prefix for posts within that series.
