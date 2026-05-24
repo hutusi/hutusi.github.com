@@ -141,7 +141,7 @@ export const siteConfig = {
       { id: 'hero',            enabled: false, weight: 1 },
       { id: 'featured-posts',  enabled: true, weight: 2, maxItems: 4 },
       { id: 'latest-posts',    enabled: true, weight: 3, maxItems: 4 },
-      { id: 'recent-flows',    enabled: true, weight: 4, maxItems: 8 },
+      { id: 'recent-flows',    enabled: true, weight: 4, maxItems: 6 },
       { id: 'featured-series', enabled: true, weight: 5, maxItems: 6 },
       { id: 'featured-books',  enabled: true, weight: 6, maxItems: 4 },
     ],
