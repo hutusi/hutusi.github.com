@@ -1,8 +1,11 @@
 import Link from 'next/link';
-import { PostData } from '@/lib/markdown';
+import type { PostData } from '@/lib/content/types';
 import CoverImage from './CoverImage';
+import Tag from './Tag';
 import { getPostUrl } from '@/lib/urls';
 import { t } from '@/lib/i18n';
+import { cn } from '@/lib/cn';
+import { CARD_HOVER, COVER_ZOOM } from '@/lib/ui-classes';
 
 interface PostListProps {
   posts: PostData[];
@@ -37,16 +40,16 @@ export default function PostList({
           />
 
           {/* Content card */}
-          <div className="rounded-2xl border border-muted/20 bg-muted/5 overflow-hidden transition-all duration-300 group-hover:border-accent/30 group-hover:bg-muted/10 group-hover:shadow-lg group-hover:shadow-accent/5 h-32 sm:h-auto">
+          <div className={cn('ink-card overflow-hidden transition-all duration-300', CARD_HOVER, 'h-32 sm:h-auto')}>
             <div className="flex flex-row h-full">
               {/* Thumbnail */}
-              <div className="relative w-32 sm:w-48 flex-shrink-0 overflow-hidden bg-muted/10">
+              <div className="relative w-32 sm:w-48 flex-shrink-0 overflow-hidden bg-ink/[0.04]">
                 <Link href={getPostUrl(post)} className="relative z-10 block h-full w-full" tabIndex={-1} aria-hidden>
                   <CoverImage
                     src={post.coverImage}
                     title={post.title}
                     slug={post.slug}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={COVER_ZOOM}
                   />
                 </Link>
               </div>
@@ -61,7 +64,7 @@ export default function PostList({
                       <span className="shrink-0">·</span>
                     </>
                   )}
-                  <span className="shrink-0 hidden sm:inline">{post.readingTime}</span>
+                  <span className="shrink-0 hidden sm:inline">{post.readingMinutes} {t('reading_time')}</span>
                   <span className="shrink-0 hidden sm:inline">·</span>
                   <span className="shrink-0 whitespace-nowrap">{post.date}</span>
                   {post.draft && (
@@ -87,13 +90,7 @@ export default function PostList({
                 {showTags && post.tags && post.tags.length > 0 && (
                   <div className="mt-auto flex flex-wrap gap-2">
                     {post.tags.slice(0, 3).map(tag => (
-                      <Link
-                        key={tag}
-                        href={`/tags/${encodeURIComponent(tag.toLowerCase())}`}
-                        className="relative z-10 text-xs px-2 py-0.5 rounded-full bg-muted/10 text-muted/70 hover:bg-accent/10 hover:text-accent transition-colors no-underline"
-                      >
-                        {tag}
-                      </Link>
+                      <Tag key={tag} tag={tag} variant="pill" className="relative z-10" />
                     ))}
                   </div>
                 )}

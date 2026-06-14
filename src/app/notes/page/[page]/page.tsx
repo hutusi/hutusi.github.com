@@ -1,45 +1,38 @@
-import { getAllNotes, getNoteTags } from '@/lib/markdown';
+import { getAllNotes, getNoteTags } from '@/lib/content/notes';
+import { isFeatureEnabled } from '@/lib/features';
+import { paginate, paginationStaticParams } from '@/lib/pagination';
 import { siteConfig } from '../../../../../site.config';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { t, resolveLocale } from '@/lib/i18n';
+import { createListingMetadata } from '@/lib/metadata';
 import PageHeader from '@/components/PageHeader';
 import NoteContent from '@/components/NoteContent';
-import FlowHubTabs from '@/components/FlowHubTabs';
 
 const PAGE_SIZE = siteConfig.pagination.notes ?? 20;
 
 export function generateStaticParams() {
-  if (siteConfig.features?.flow?.enabled === false) return [{ page: '2' }];
-  const allNotes = getAllNotes();
-  const totalPages = Math.ceil(allNotes.length / PAGE_SIZE);
-  const pageCount = Math.max(1, totalPages - 1);
-  return Array.from({ length: pageCount }, (_, i) => ({
-    page: (i + 2).toString(),
-  }));
+  return paginationStaticParams(getAllNotes().length, PAGE_SIZE, {
+    enabled: isFeatureEnabled('flow'),
+  });
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: { params: Promise<{ page: string }> }): Promise<Metadata> {
   const { page } = await params;
-  return {
-    title: `${t('notes')} - ${page} | ${resolveLocale(siteConfig.title)}`,
-  };
+  const totalPages = Math.ceil(getAllNotes().length / PAGE_SIZE);
+  return createListingMetadata({ titleKey: 'notes', page: parseInt(page, 10), totalPages });
 }
 
 export default async function NotesPaginatedPage({ params }: { params: Promise<{ page: string }> }) {
-  if (siteConfig.features?.flow?.enabled === false) notFound();
+  if (!isFeatureEnabled('flow')) notFound();
   const { page: pageStr } = await params;
   const page = parseInt(pageStr, 10);
-  const allNotes = getAllNotes();
-  const totalPages = Math.ceil(allNotes.length / PAGE_SIZE);
-
-  if (page > totalPages) notFound();
+  const slice = paginate(getAllNotes(), page, PAGE_SIZE);
+  if (!slice || page < 2) notFound();
+  const { items: notes, totalPages } = slice;
 
   const tags = getNoteTags();
-  const start = (page - 1) * PAGE_SIZE;
-  const notes = allNotes.slice(start, start + PAGE_SIZE);
 
   return (
     <div className="layout-main">
@@ -49,7 +42,6 @@ export default async function NotesPaginatedPage({ params }: { params: Promise<{
         subtitleParams={{ page, total: totalPages }}
         className="mb-12"
       />
-      <FlowHubTabs />
       <NoteContent
         notes={notes}
         tags={tags}

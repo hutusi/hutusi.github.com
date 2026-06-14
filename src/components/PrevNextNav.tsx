@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from './LanguageProvider';
+import MetaLabel from './ui/MetaLabel';
 
 interface NavItem {
   href: string;
@@ -29,13 +30,13 @@ export default function PrevNextNav({ prev, next, size = 'sm' }: PrevNextNavProp
       {prev ? (
         <Link
           href={prev.href}
-          className={`flex-1 flex items-center ${gap} ${padding} ${rounding} bg-muted/5 hover:bg-muted/10 no-underline transition-colors group`}
+          className={`flex-1 flex items-center ${gap} ${padding} ${rounding} bg-ink/[0.02] hover:bg-ink/[0.05] no-underline transition-colors group`}
         >
           <svg className={`${iconSize} flex-shrink-0 text-muted group-hover:text-accent transition-colors`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
           <div className="min-w-0">
-            <span className={`block text-[10px] font-sans font-bold uppercase tracking-widest text-muted ${labelMargin}`}>{t('prev')}</span>
+            <MetaLabel className={`block ${labelMargin}`}>{t('prev')}</MetaLabel>
             <span className={`block ${titleClass}`}>{prev.title}</span>
           </div>
         </Link>
@@ -45,10 +46,10 @@ export default function PrevNextNav({ prev, next, size = 'sm' }: PrevNextNavProp
       {next ? (
         <Link
           href={next.href}
-          className={`flex-1 flex items-center justify-end ${gap} ${padding} ${rounding} bg-muted/5 hover:bg-muted/10 no-underline transition-colors group text-right`}
+          className={`flex-1 flex items-center justify-end ${gap} ${padding} ${rounding} bg-ink/[0.02] hover:bg-ink/[0.05] no-underline transition-colors group text-right`}
         >
           <div className="min-w-0">
-            <span className={`block text-[10px] font-sans font-bold uppercase tracking-widest text-muted ${labelMargin}`}>{t('next')}</span>
+            <MetaLabel className={`block ${labelMargin}`}>{t('next')}</MetaLabel>
             <span className={`block ${titleClass}`}>{next.title}</span>
           </div>
           <svg className={`${iconSize} flex-shrink-0 text-muted group-hover:text-accent transition-colors`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

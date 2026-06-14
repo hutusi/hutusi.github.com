@@ -1,11 +1,15 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import CoverImage from './CoverImage';
+import SectionHeading from './ui/SectionHeading';
 import { useLanguage } from './LanguageProvider';
-import { shuffle, shuffleSeeded } from '@/lib/shuffle';
+import { shuffle } from '@/lib/shuffle';
+import { byDateAsc, byDateDesc } from '@/lib/sort';
 import { getPostUrl } from '@/lib/urls';
+import { cn } from '@/lib/cn';
+import { COVER_ZOOM } from '@/lib/ui-classes';
 
 export interface FeaturedPost {
   slug: string;
@@ -14,69 +18,89 @@ export interface FeaturedPost {
   excerpt: string;
   date: string;
   category: string;
-  readingTime: string;
+  readingMinutes: number;
   coverImage?: string;
   series?: string;
   pinned?: boolean;
 }
 
+type PostOrder = 'shuffle' | 'date-desc' | 'date-asc';
+
 interface FeaturedStoriesSectionProps {
   allFeatured: FeaturedPost[];
   maxItems: number;
+  order?: PostOrder;
 }
 
-function buildDisplayed(allFeatured: FeaturedPost[], maxItems: number, shuffledNonPinned: FeaturedPost[]): FeaturedPost[] {
-  const pinned = allFeatured.filter(p => p.pinned);
-  const nonPinned = allFeatured.filter(p => !p.pinned);
+function canonicalOrder(posts: FeaturedPost[], order: PostOrder): FeaturedPost[] {
+  if (order === 'date-desc') return [...posts].sort(byDateDesc);
+  if (order === 'date-asc')  return [...posts].sort(byDateAsc);
+  return posts;
+}
 
-  const hero = pinned[0] ?? nonPinned[0];
+function buildDisplayed(allFeatured: FeaturedPost[], maxItems: number, orderedNonPinned: FeaturedPost[]): FeaturedPost[] {
+  const pinned = allFeatured.filter(p => p.pinned);
+
+  const hero = pinned[0] ?? orderedNonPinned[0];
   if (!hero) return [];
 
   const maxSecondaries = maxItems - 1;
   const fixedSecondaries = pinned.slice(1, maxSecondaries + 1); // cap to available secondary slots
-  const shuffleSlots = Math.max(0, maxSecondaries - fixedSecondaries.length);
+  const fillSlots = Math.max(0, maxSecondaries - fixedSecondaries.length);
 
   // Non-pinned pool excludes the hero if the hero is non-pinned
   const heroIsNonPinned = !hero.pinned;
-  const shufflePool = heroIsNonPinned ? nonPinned.filter(p => p.slug !== hero.slug) : nonPinned;
-  const shuffledSlice = shuffledNonPinned.filter(p => shufflePool.some(q => q.slug === p.slug)).slice(0, shuffleSlots);
+  const fillPool = heroIsNonPinned ? orderedNonPinned.filter(p => p.slug !== hero.slug) : orderedNonPinned;
+  const fillSlice = fillPool.slice(0, fillSlots);
 
-  return [hero, ...fixedSecondaries, ...shuffledSlice];
+  return [hero, ...fixedSecondaries, ...fillSlice];
 }
 
-export default function FeaturedStoriesSection({ allFeatured, maxItems }: FeaturedStoriesSectionProps) {
+export default function FeaturedStoriesSection({ allFeatured, maxItems, order = 'shuffle' }: FeaturedStoriesSectionProps) {
   const { t } = useLanguage();
 
   const nonPinned = allFeatured.filter(p => !p.pinned);
 
-  // Use a daily seed so SSR and client hydration agree on the initial order,
-  // preventing a visible reshuffle flash on page load.
-  const [shuffledNonPinned, setShuffledNonPinned] = useState<FeaturedPost[]>(() => {
-    const dailySeed = Math.floor(Date.now() / 86400000);
-    return shuffleSeeded(nonPinned, dailySeed);
-  });
+  // SSR renders the canonical input order so server and client agree on first paint.
+  // For 'shuffle', the post-mount useEffect swaps to a fresh random permutation,
+  // so every reload re-rolls without any hydration mismatch.
+  const [orderedNonPinned, setOrderedNonPinned] = useState<FeaturedPost[]>(() => canonicalOrder(nonPinned, order));
+
+  // Shuffle on mount so every reload re-rolls. SSR's canonical render is stable; the
+  // post-hydration swap is the intentional client-only behaviour, not a sync issue.
+  useEffect(() => {
+    if (order === 'shuffle') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setOrderedNonPinned(shuffle(nonPinned));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allFeatured, order]);
 
   const handleShuffle = useCallback(() => {
-    setShuffledNonPinned(shuffle(nonPinned));
+    setOrderedNonPinned(shuffle(nonPinned));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allFeatured]);
 
-  const displayed = buildDisplayed(allFeatured, maxItems, shuffledNonPinned);
+  const displayed = buildDisplayed(allFeatured, maxItems, orderedNonPinned);
 
   if (displayed.length === 0) return null;
 
-  // Show shuffle button only when there are more non-pinned posts than available shuffle slots
+  // Show shuffle button only when shuffling AND there's at least one non-pinned slot
+  // AND there are more non-pinned posts than available slots
   const pinned = allFeatured.filter(p => p.pinned);
   const fixedCount = 1 + Math.min(pinned.slice(1).length, maxItems - 1);
   const shuffleSlots = Math.max(0, maxItems - fixedCount);
-  const canShuffle = nonPinned.length > shuffleSlots + (pinned.length === 0 ? 1 : 0);
+  const canShuffle =
+    order === 'shuffle'
+    && shuffleSlots > 0
+    && nonPinned.length > shuffleSlots + (pinned.length === 0 ? 1 : 0);
 
   const [hero, ...secondary] = displayed;
 
   return (
     <section id="featured-posts" className="mb-12 sm:mb-24">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-heading">{t('featured_articles')}</h2>
+        <SectionHeading>{t('featured_articles')}</SectionHeading>
         {canShuffle && (
           <button
             onClick={handleShuffle}
@@ -95,12 +119,12 @@ export default function FeaturedStoriesSection({ allFeatured, maxItems }: Featur
         {/* Hero card — full image with obi (belly band) text overlay */}
         <div className={secondary.length > 0 ? 'lg:col-span-7' : 'lg:col-span-12'}>
           <Link href={getPostUrl(hero)} className={`group block no-underline${secondary.length > 0 ? ' h-full' : ''}`}>
-            <div className={`relative overflow-hidden rounded-2xl bg-muted/10 ${secondary.length > 0 ? 'aspect-[16/9] lg:aspect-auto lg:h-full' : 'aspect-[16/9]'}`}>
+            <div className={`relative overflow-hidden rounded-2xl bg-ink/[0.04] ${secondary.length > 0 ? 'aspect-[16/9] lg:aspect-auto lg:h-full' : 'aspect-[16/9]'}`}>
               <CoverImage
                 src={hero.coverImage}
                 title={hero.title}
                 slug={hero.slug}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className={cn(COVER_ZOOM, 'duration-700')}
                 loading="eager"
               />
               {/* Gradient overlay */}
@@ -110,7 +134,7 @@ export default function FeaturedStoriesSection({ allFeatured, maxItems }: Featur
                 <div className="flex items-center gap-2 text-xs font-mono text-white/60 mb-3 overflow-hidden">
                   <span className="text-accent uppercase tracking-wider truncate min-w-0">{hero.category}</span>
                   <span className="shrink-0">·</span>
-                  <span className="shrink-0 whitespace-nowrap">{hero.readingTime}</span>
+                  <span className="shrink-0 whitespace-nowrap">{hero.readingMinutes} {t('reading_time')}</span>
                   <span className="shrink-0">·</span>
                   <span className="shrink-0 whitespace-nowrap">{hero.date}</span>
                 </div>
@@ -134,14 +158,14 @@ export default function FeaturedStoriesSection({ allFeatured, maxItems }: Featur
               <Link
                 key={post.slug}
                 href={getPostUrl(post)}
-                className="group flex no-underline rounded-2xl border border-muted/20 bg-muted/5 overflow-hidden hover:border-accent/30 hover:bg-muted/10 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 h-32"
+                className="group flex no-underline ink-card overflow-hidden hover:border-accent/30 hover:bg-ink/[0.04] hover:shadow-md hover:shadow-accent/5 transition-all duration-300 h-32"
               >
                 {/* Text content */}
                 <div className="flex-1 p-4 flex flex-col min-w-0">
                   <div className="flex items-center gap-2 text-xs font-mono text-muted mb-2">
                     <span className="text-accent uppercase tracking-wider truncate max-w-[4rem]">{post.category}</span>
                     <span className="shrink-0 hidden sm:inline">·</span>
-                    <span className="shrink-0 hidden sm:inline">{post.readingTime}</span>
+                    <span className="shrink-0 hidden sm:inline">{post.readingMinutes} {t('reading_time')}</span>
                     <span className="shrink-0">·</span>
                     <span className="shrink-0">{post.date}</span>
                   </div>
@@ -155,12 +179,12 @@ export default function FeaturedStoriesSection({ allFeatured, maxItems }: Featur
                   )}
                 </div>
                 {/* Cover image — flush to right edge, full card height */}
-                <div className="relative w-32 flex-shrink-0 overflow-hidden bg-muted/10">
+                <div className="relative w-32 flex-shrink-0 overflow-hidden bg-ink/[0.04]">
                   <CoverImage
                     src={post.coverImage}
                     title={post.title}
                     slug={post.slug}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={COVER_ZOOM}
                   />
                 </div>
               </Link>

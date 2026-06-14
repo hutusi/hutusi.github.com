@@ -81,6 +81,11 @@ export function getBooksListUrl(): string {
   return '/books';
 }
 
+/** Returns the canonical URL path for a series landing page. */
+export function getSeriesUrl(slug: string): string {
+  return `/series/${slug}`;
+}
+
 /** Returns the canonical URL path for a book landing page. */
 export function getBookUrl(slug: string): string {
   return `/books/${slug}`;
@@ -96,6 +101,11 @@ export function getFlowUrl(slug: string): string {
   return `/flows/${slug}`;
 }
 
+/** Returns the canonical URL path for a knowledge-base note. */
+export function getNoteUrl(slug: string): string {
+  return `/notes/${slug}`;
+}
+
 /** Returns the canonical URL path for a static page (e.g. /about, /subscribe). */
 export function getStaticPageUrl(slug: string): string {
   return `/${slug}`;
@@ -104,4 +114,61 @@ export function getStaticPageUrl(slug: string): string {
 /** Returns the post URL with a ?collection= query param to preserve collection navigation context. */
 export function getPostUrlInCollection(post: { slug: string; series?: string }, collectionSlug: string): string {
   return `${getPostUrl(post)}?${new URLSearchParams({ collection: collectionSlug }).toString()}`;
+}
+
+let cachedSiteHost: string | null | undefined;
+
+function getSiteHost(): string | null {
+  if (cachedSiteHost !== undefined) return cachedSiteHost;
+  try {
+    cachedSiteHost = new URL(siteConfig.baseUrl).host;
+  } catch {
+    cachedSiteHost = null;
+  }
+  return cachedSiteHost;
+}
+
+/**
+ * True when `href` points to a different host than `siteConfig.baseUrl`.
+ *
+ * - `http://` / `https://` absolute URLs and protocol-relative `//host/...`
+ *   are tested by host comparison.
+ * - `mailto:`, `tel:`, `sms:`, `ftp:`, `javascript:` and other non-http
+ *   schemes return false — they're "external" in spirit but have different
+ *   click semantics and don't warrant an outward-arrow indicator.
+ * - Hash-only (`#foo`), query-only (`?foo`), relative paths (`/foo`,
+ *   `foo.md`), empty strings → false.
+ * - Malformed URLs → false (defensive — don't decorate something we can't parse).
+ */
+export function isExternalUrl(href: string | undefined | null): boolean {
+  if (!href) return false;
+  if (href.startsWith('#') || href.startsWith('?')) return false;
+  if (/^(mailto|tel|sms|ftp|javascript):/i.test(href)) return false;
+
+  const siteHost = getSiteHost();
+  if (!siteHost) return false;
+
+  if (href.startsWith('//')) {
+    // Prefix a dummy scheme so the URL parser handles auth (`//user:pass@host`),
+    // port-only (`//:80`), and IPv6 forms correctly — substring splitting on
+    // `/` is too coarse for any of those.
+    try {
+      return new URL(`https:${href}`).host !== siteHost;
+    } catch {
+      return false;
+    }
+  }
+  if (/^https?:\/\//i.test(href)) {
+    try {
+      return new URL(href).host !== siteHost;
+    } catch {
+      return false;
+    }
+  }
+  return false;
+}
+
+/** Test-only: drop the cached site host so a test can re-read `siteConfig.baseUrl`. */
+export function resetSiteHostCacheForTests(): void {
+  cachedSiteHost = undefined;
 }

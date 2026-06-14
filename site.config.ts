@@ -56,7 +56,9 @@ export const siteConfig = {
     { name: "Books", url: "/books", weight: 6, dropdown: [] },
     { name: "About", url: "/about", weight: 7 },
     { name: "More", url: "", weight: 8, children: [
-      { name: "Archive", url: "/archive" },
+      { name: "Notes", url: "/notes" },
+      { name: "Graph", url: "/graph" },
+      { name: "Archive", url: "/archive", dividerBefore: true },
       { name: "Tags", url: "/tags" },
       { name: "Links", url: "/links" },
       { name: "Subscribe", url: "/subscribe", dividerBefore: true },
@@ -139,11 +141,11 @@ export const siteConfig = {
   homepage: {
     sections: [
       { id: 'hero',            enabled: false, weight: 1 },
-      { id: 'featured-posts',  enabled: true, weight: 2, maxItems: 4 },
+      { id: 'featured-posts',  enabled: true, weight: 2, maxItems: 4, order: 'shuffle' as 'shuffle' | 'date-desc' | 'date-asc' },
       { id: 'latest-posts',    enabled: true, weight: 3, maxItems: 4 },
       { id: 'recent-flows',    enabled: true, weight: 4, maxItems: 6 },
-      { id: 'featured-series', enabled: true, weight: 5, maxItems: 6 },
-      { id: 'featured-books',  enabled: true, weight: 6, maxItems: 4 },
+      { id: 'featured-series', enabled: true, weight: 5, maxItems: 6, order: 'shuffle' as 'shuffle' | 'date-desc' | 'date-asc' },
+      { id: 'featured-books',  enabled: true, weight: 6, maxItems: 4, order: 'shuffle' as 'shuffle' | 'date-desc' | 'date-asc' },
     ],
   },
 

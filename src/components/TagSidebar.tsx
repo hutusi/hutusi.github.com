@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useLanguage } from './LanguageProvider';
 import { LuTag, LuX, LuSearch } from 'react-icons/lu';
+import { cn } from '@/lib/cn';
+import { metaLabel } from '@/lib/ui-classes';
 
 const INITIAL_SHOW = 12;
 
@@ -52,7 +54,7 @@ export default function TagSidebar({ tags, activeTag }: TagSidebarProps) {
         {/* Section heading → links to all tags, shows total count */}
         <Link
           href="/tags"
-          className="flex items-center gap-1.5 text-[10px] font-sans font-bold uppercase tracking-widest text-muted hover:text-accent transition-colors no-underline mb-3"
+          className={cn(metaLabel(), 'flex items-center gap-1.5 hover:text-accent transition-colors no-underline mb-3')}
         >
           <LuTag className="w-3 h-3" />
           <span>{t('tags')}</span>
@@ -70,7 +72,7 @@ export default function TagSidebar({ tags, activeTag }: TagSidebarProps) {
             onChange={(e) => setFilter(e.target.value)}
             placeholder={t('filter_tags')}
             aria-label={t('filter_tags')}
-            className="w-full pl-8 pr-7 py-1.5 text-xs bg-muted/5 border border-muted/15 rounded-lg outline-none focus:border-accent/40 text-foreground placeholder:text-muted/40 transition-colors"
+            className="w-full pl-8 pr-7 py-1.5 text-xs bg-ink/[0.02] border border-ink/[0.06] rounded-lg outline-none focus:border-accent/40 text-foreground placeholder:text-muted/40 transition-colors"
           />
           {filter && (
             <button
@@ -91,13 +93,13 @@ export default function TagSidebar({ tags, activeTag }: TagSidebarProps) {
             const showSeparator = appendedAt !== null && index === appendedAt;
             return (
               <div key={tag}>
-                {showSeparator && <div className="my-1.5 h-px bg-muted/10" />}
+                {showSeparator && <div className="my-1.5 h-px bg-ink/[0.05]" />}
                 <Link
                   href={`/tags/${encodeURIComponent(tag.toLowerCase())}`}
                   className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg text-sm no-underline transition-colors ${
                     isActive
                       ? 'bg-accent/10 text-accent font-medium'
-                      : 'text-foreground/70 hover:text-foreground hover:bg-muted/10'
+                      : 'text-foreground/70 hover:text-foreground hover:bg-ink/[0.05]'
                   }`}
                 >
                   <span className="truncate">{tag}</span>

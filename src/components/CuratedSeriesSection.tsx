@@ -1,12 +1,16 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import HorizontalScroll from './HorizontalScroll';
 import CoverImage from './CoverImage';
+import SectionHeading from './ui/SectionHeading';
 import { useLanguage } from './LanguageProvider';
-import { shuffle, shuffleSeeded } from '@/lib/shuffle';
+import { shuffle } from '@/lib/shuffle';
+import { byDateAsc, byDateDesc } from '@/lib/sort';
 import { getPostUrl, getSeriesListUrl } from '@/lib/urls';
+import { cn } from '@/lib/cn';
+import { COVER_ZOOM } from '@/lib/ui-classes';
 
 export interface SeriesItem {
   name: string;
@@ -16,21 +20,38 @@ export interface SeriesItem {
   url: string;
   postCount: number;
   topPosts: { slug: string; title: string }[];
+  date: string;
 }
+
+type SeriesOrder = 'shuffle' | 'date-desc' | 'date-asc';
 
 interface CuratedSeriesSectionProps {
   allSeries: SeriesItem[];
   maxItems: number;
+  order?: SeriesOrder;
 }
 
-export default function CuratedSeriesSection({ allSeries, maxItems }: CuratedSeriesSectionProps) {
+function canonicalOrder(series: SeriesItem[], order: SeriesOrder): SeriesItem[] {
+  if (order === 'date-desc') return [...series].sort(byDateDesc);
+  if (order === 'date-asc')  return [...series].sort(byDateAsc);
+  return series;
+}
+
+export default function CuratedSeriesSection({ allSeries, maxItems, order = 'shuffle' }: CuratedSeriesSectionProps) {
   const { t } = useLanguage();
-  // Use a daily seed so SSR and client hydration agree on the initial order,
-  // preventing a visible reshuffle flash on page load.
-  const [displayed, setDisplayed] = useState(() => {
-    const dailySeed = Math.floor(Date.now() / 86400000);
-    return shuffleSeeded(allSeries, dailySeed).slice(0, maxItems);
-  });
+  // SSR renders the canonical input order so server and client agree on first paint.
+  // For 'shuffle', the post-mount useEffect swaps to a fresh random permutation,
+  // so every reload re-rolls without any hydration mismatch.
+  const [displayed, setDisplayed] = useState(() => canonicalOrder(allSeries, order).slice(0, maxItems));
+
+  // Shuffle on mount so every reload re-rolls. SSR's canonical render is stable; the
+  // post-hydration swap is the intentional client-only behaviour, not a sync issue.
+  useEffect(() => {
+    if (order === 'shuffle') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setDisplayed(shuffle(allSeries).slice(0, maxItems));
+    }
+  }, [allSeries, maxItems, order]);
 
   const handleShuffle = useCallback(() => {
     setDisplayed(shuffle(allSeries).slice(0, maxItems));
@@ -41,9 +62,9 @@ export default function CuratedSeriesSection({ allSeries, maxItems }: CuratedSer
   return (
     <section id="featured-series" className="mb-12 sm:mb-24">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-heading">{t('curated_series')}</h2>
+        <SectionHeading>{t('curated_series')}</SectionHeading>
         <div className="flex items-center gap-4">
-          {allSeries.length > maxItems && (
+          {order === 'shuffle' && allSeries.length > maxItems && (
             <button
               onClick={handleShuffle}
               className="rounded-sm text-sm text-muted transition-colors hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2"
@@ -71,12 +92,12 @@ export default function CuratedSeriesSection({ allSeries, maxItems }: CuratedSer
                   : 'flex-1 md:max-w-[calc(50%-1rem)]'
               }`}
             >
-              <Link href={series.url} className="relative h-44 w-full overflow-hidden bg-muted/10 block focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-inset">
+              <Link href={series.url} className="relative h-44 w-full overflow-hidden bg-ink/[0.04] block focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-inset">
                 <CoverImage
                   src={series.coverImage}
                   title={series.title}
                   slug={series.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className={cn(COVER_ZOOM, 'duration-700')}
                   loading={idx === 0 ? 'eager' : undefined}
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
@@ -95,7 +116,7 @@ export default function CuratedSeriesSection({ allSeries, maxItems }: CuratedSer
                 <p className="mb-6 text-muted font-serif italic line-clamp-2 text-base">
                   {series.excerpt}
                 </p>
-                <div className="mt-auto pt-6 border-t border-muted/10">
+                <div className="mt-auto pt-6 border-t border-ink/[0.05]">
                   <div className="flex flex-col gap-2">
                     {series.topPosts.map((p, idx) => (
                       <Link
@@ -103,7 +124,7 @@ export default function CuratedSeriesSection({ allSeries, maxItems }: CuratedSer
                         href={getPostUrl({ slug: p.slug, series: series.name })}
                         className="flex items-center gap-3 group/link no-underline"
                       >
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-muted/10 text-[10px] flex items-center justify-center font-mono text-muted group-hover/link:bg-accent/10 group-hover/link:text-accent transition-colors">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-ink/[0.05] text-[10px] flex items-center justify-center font-mono text-muted group-hover/link:bg-accent/10 group-hover/link:text-accent transition-colors">
                           {idx + 1}
                         </span>
                         <span className="text-sm text-foreground/80 group-hover/link:text-accent transition-colors truncate">

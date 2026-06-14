@@ -4,6 +4,26 @@ import React, { useEffect, useRef, useState } from "react";
 import mermaid from "mermaid";
 import { useTheme } from "next-themes";
 
+// Mermaid bundles its own KaTeX and invokes it with `{throwOnError: true,
+// displayMode: true, output: 'mathml'}` — no `strict` option, so KaTeX
+// defaults to `'warn'` and floods the console with one warning per CJK
+// character in math labels (e.g. `S["$$解码器状态：s_{t-1}$$"]`). There is
+// no `mermaid.initialize()` setting to override this. Filter the very
+// specific KaTeX warning template at the console layer; everything else
+// passes through. Idempotent under HMR.
+let consoleWarnFilterInstalled = false;
+function installConsoleWarnFilter(): void {
+  if (consoleWarnFilterInstalled || typeof window === "undefined") return;
+  consoleWarnFilterInstalled = true;
+  const originalWarn = console.warn.bind(console);
+  console.warn = (...args: unknown[]) => {
+    if (typeof args[0] === "string" && args[0].includes("[unicodeTextInMathMode]")) {
+      return;
+    }
+    originalWarn(...args);
+  };
+}
+
 interface MermaidProps {
   chart: string;
 }
@@ -28,6 +48,7 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
 
   useEffect(() => {
     if (ref.current && chart && mounted) {
+      installConsoleWarnFilter();
       const currentTheme = theme === 'system' ? systemTheme : theme;
       const isDark = currentTheme === 'dark';
 
@@ -76,11 +97,21 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
   }, [chart, theme, systemTheme, mounted]);
 
   return (
-    <div className="my-8 p-4 md:p-8 rounded-lg border border-muted/20 bg-muted/5 overflow-x-auto shadow-sm">
+    <div className="my-6 overflow-x-auto">
+      {/*
+        suppressHydrationWarning is intentional: Mermaid runs client-side
+        in `useEffect`, injects its SVG via `dangerouslySetInnerHTML`, and
+        then mutates the DOM further (adding `data-processed="true"` on
+        this wrapper). React's virtual DOM has no record of those
+        mutations, so any HMR-triggered re-render in dev flags the drift
+        as a hydration mismatch. Telling React this div is
+        intentionally-mutated terrain is the blessed escape hatch.
+      */}
       <div
         className="mermaid w-full flex justify-center"
         dangerouslySetInnerHTML={{ __html: svg }}
         ref={ref}
+        suppressHydrationWarning
       />
     </div>
   );

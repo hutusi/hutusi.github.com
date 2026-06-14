@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import MarkdownRenderer from "./MarkdownRenderer";
+import { renderAsync } from "@/test-utils/render";
 
 describe("MarkdownRenderer", () => {
   describe("image rendering", () => {
@@ -12,6 +13,9 @@ describe("MarkdownRenderer", () => {
       expect(html).toContain('height="900"');
       // style override ensures the image renders at its natural size
       expect(html).toContain('width:100%');
+      // fetchpriority="low" prevents React 19 from auto-preloading local
+      // markdown images as LCP candidates (matches the external-image fix)
+      expect(html).toContain('fetchPriority="low"');
     });
 
     test("uses plain img for external images", () => {
@@ -42,7 +46,7 @@ describe("MarkdownRenderer", () => {
     });
   });
 
-  test("adds horizontal overflow containment while preserving code scrolling", () => {
+  test("adds horizontal overflow containment while preserving code scrolling", async () => {
     const content = [
       "## Example",
       "",
@@ -51,16 +55,22 @@ describe("MarkdownRenderer", () => {
       "```",
     ].join("\n");
 
-    const html = renderToStaticMarkup(<MarkdownRenderer content={content} />);
+    const html = await renderAsync(<MarkdownRenderer content={content} />);
 
     expect(html).toContain("overflow-x-hidden");
     expect(html).toContain("not-prose w-full min-w-0 max-w-full");
     expect(html).toContain("overflow-x-auto");
+    // Shiki rendered the block — ensure the highlighted shell pass produced output.
+    expect(html).toContain('class="shiki');
   });
 
-  test("wraps content in a background container for copy-paste fidelity", () => {
+  test("wraps content in ArticleCopyCleaner so paste output is stripped of per-paragraph backgrounds", () => {
     const content = "Hello world";
     const html = renderToStaticMarkup(<MarkdownRenderer content={content} />);
-    expect(html).toMatch(/class="[^"]*\bbg-background\b[^"]*"/);
+    // The cleaner renders a bare wrapper div; the page background lives on body now,
+    // so the article HTML must not paint its own background (which is what caused
+    // Chromium's clipboard serializer to inline `background-color` on every <p>).
+    expect(html).not.toMatch(/class="[^"]*\bbg-background\b[^"]*"/);
+    expect(html).toContain('<p class="mb-4 leading-relaxed text-foreground">Hello world</p>');
   });
 });

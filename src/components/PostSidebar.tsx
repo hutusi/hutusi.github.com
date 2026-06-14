@@ -3,13 +3,14 @@
 import { useState, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { PostData, Heading, CollectionContext } from '@/lib/markdown';
+import type { PostData, Heading, CollectionContext } from '@/lib/content/types';
 import { getPostUrl, getPostUrlInCollection } from '@/lib/urls';
 import { useLanguage } from './LanguageProvider';
 import { useSidebarAutoScroll } from '@/hooks/useSidebarAutoScroll';
 import { padNumber } from '@/lib/format-utils';
 import TocPanel from './TocPanel';
 import ShareBar from './ShareBar';
+import MetaLabel from './ui/MetaLabel';
 import { siteConfig } from '../../site.config';
 
 interface PostSidebarProps {
@@ -70,6 +71,10 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
   useSidebarAutoScroll(sidebarRef, currentItemRef, currentSlug);
 
   return (
+    // suppressHydrationWarning on locale-bound nodes is a band-aid for the
+    // known static-export + client-i18n drift: SSR renders defaultLocale,
+    // `useLanguage()` hook serves the user's saved locale on hydration. The
+    // real fix is per-locale URL routing, tracked as a separate refactor.
     <aside
       ref={sidebarRef}
       data-testid="post-sidebar"
@@ -78,7 +83,7 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
       {/* TOC — always at top */}
       <TocPanel
         headings={activeHeadings}
-        className={`mb-6 ${hasSeries ? 'pb-4 border-b border-muted/10' : ''}`}
+        className={`mb-6 ${hasSeries ? 'pb-4 border-b border-ink/[0.05]' : ''}`}
       />
 
       {/* Series / Collection section — below TOC */}
@@ -87,9 +92,9 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
           {/* Header — always visible */}
           <div className="mb-3">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-accent">
+              <MetaLabel tone="accent" suppressHydrationWarning>
                 {isCollectionContext ? t('collection') : t('series')}
-              </span>
+              </MetaLabel>
               <span className="text-[10px] font-mono text-muted/60">
                 {progressIndex >= 0 ? progressIndex + 1 : '?'} / {effectivePosts!.length}
               </span>
@@ -119,7 +124,7 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
           {!seriesCollapsed && (
             <>
               <nav aria-label="Series navigation" className="mb-4 animate-slide-down">
-                <ul className="space-y-1 relative before:absolute before:left-[11px] before:top-3 before:bottom-3 before:w-px before:bg-muted/15">
+                <ul className="space-y-1 relative before:absolute before:left-[11px] before:top-3 before:bottom-3 before:w-px before:bg-ink/[0.06]">
                   {getVisibleIndices(effectivePosts!.length, currentIndex).map((item, i) => {
                     if (item === 'ellipsis') {
                       return (
@@ -138,7 +143,7 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
                         <Link
                           href={postHref(post)}
                           className={`group flex items-start gap-3 py-2 px-2 -mx-2 rounded-lg no-underline transition-all duration-200 ${
-                            isCurrent ? 'bg-accent/5' : 'hover:bg-muted/5'
+                            isCurrent ? 'bg-accent/5' : 'hover:bg-ink/[0.04]'
                           }`}
                           aria-current={isCurrent ? 'page' : undefined}
                         >
@@ -147,7 +152,7 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
                               ? 'bg-accent text-white shadow-sm shadow-accent/30'
                               : isPast
                                 ? 'bg-accent/20 text-accent'
-                                : 'bg-muted/10 text-muted group-hover:bg-muted/20 group-hover:text-foreground'
+                                : 'bg-ink/[0.05] text-muted group-hover:bg-ink/[0.08] group-hover:text-foreground'
                           }`}>
                             {padNumber(item + 1)}
                           </div>
@@ -172,6 +177,7 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
               <Link
                 href={`/series/${effectiveSlug}`}
                 className="text-xs font-sans text-muted hover:text-accent transition-colors no-underline flex items-center gap-1"
+                suppressHydrationWarning
               >
                 {isCollectionContext ? t('view_full_collection') : t('view_full_series')}
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -184,10 +190,10 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
       )}
 
       {shareUrl && siteConfig.share?.enabled && (
-        <div className="mt-6 pt-6 border-t border-muted/10">
-          <p className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted mb-3">
+        <div className="mt-6 pt-6 border-t border-ink/[0.05]">
+          <MetaLabel as="p" className="mb-3" suppressHydrationWarning>
             {t('share_post')}
-          </p>
+          </MetaLabel>
           <ShareBar url={shareUrl} title={shareTitle ?? ''} />
         </div>
       )}

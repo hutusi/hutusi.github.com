@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ExportedImage from 'next-image-export-optimizer';
-import { getAuthorSlug } from '@/lib/markdown';
+import MetaLabel from './ui/MetaLabel';
+import { getAuthorSlug } from '@/lib/content/authors';
 import { siteConfig } from '../../site.config';
 import { t } from '@/lib/i18n';
 import { shouldBypassImageOptimization } from '@/lib/image-utils';
@@ -24,7 +25,7 @@ export default function AuthorCard({ authors }: { authors: string[] }) {
         return (
           <div
             key={author}
-            className="flex flex-col sm:flex-row sm:items-center gap-5 rounded-2xl border border-muted/15 bg-muted/[0.04] px-6 py-5 transition-colors hover:bg-muted/[0.08]"
+            className="flex flex-col sm:flex-row sm:items-center gap-5 rounded-2xl border border-ink/[0.06] bg-ink/[0.02] px-6 py-5 transition-colors hover:bg-ink/[0.04]"
           >
             {/* Left — avatar + author info */}
             <div className="flex items-start gap-4 flex-1 min-w-0">
@@ -34,7 +35,7 @@ export default function AuthorCard({ authors }: { authors: string[] }) {
                   alt={author}
                   width={56}
                   height={56}
-                  className="w-14 h-14 rounded-full object-cover flex-shrink-0 ring-2 ring-muted/20"
+                  className="w-14 h-14 rounded-full object-cover flex-shrink-0 ring-2 ring-ink/[0.10]"
                   unoptimized={avatarBypassOptimization}
                   placeholder={avatarBypassOptimization ? 'empty' : 'blur'}
                 />
@@ -45,9 +46,9 @@ export default function AuthorCard({ authors }: { authors: string[] }) {
               )}
 
               <div className="min-w-0">
-                <p className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted mb-1">
+                <MetaLabel as="p" className="mb-1">
                   {t('written_by')}
-                </p>
+                </MetaLabel>
                 <Link
                   href={`/authors/${slug}`}
                   className="font-serif font-semibold text-lg text-heading hover:text-accent transition-colors no-underline"
@@ -64,7 +65,7 @@ export default function AuthorCard({ authors }: { authors: string[] }) {
 
             {/* Right — social images (e.g. QR codes) */}
             {hasSocial && (
-              <div className="flex justify-center gap-5 flex-shrink-0 border-t border-muted/15 pt-4 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6 sm:justify-start">
+              <div className="flex justify-center gap-5 flex-shrink-0 border-t border-ink/[0.06] pt-4 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6 sm:justify-start">
                 {profile.social!.map((item, index) => {
                   const socialImageBypassOptimization = isDev || isExternal(item.image) || shouldBypassImageOptimization(item.image);
                   return (

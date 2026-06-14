@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import type { Heading } from '@/lib/markdown';
+import type { Heading } from '@/lib/content/types';
 import { useLanguage } from './LanguageProvider';
 import { useActiveHeading } from '@/hooks/useActiveHeading';
 import { scrollToHeading } from '@/lib/scroll-utils';
@@ -28,7 +28,7 @@ export default function InlineBookToc({ headings }: { headings: Heading[] }) {
         {t('on_this_page')}
       </button>
       {!collapsed && (
-        <ul className="space-y-0.5 border-l border-muted/15 animate-slide-down">
+        <ul className="space-y-0.5 border-l border-ink/[0.06] animate-slide-down">
           {headings.map(h => {
             const isActive = h.id === activeHeadingId;
             return (
