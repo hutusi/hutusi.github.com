@@ -91,7 +91,9 @@ export const siteConfig = {
     //   { text: '京ICP备12345678号', url: 'https://beian.miit.gov.cn/' },
     //   { text: 'Cookie Policy' },     // url is optional — renders as plain text
     // ],
-    bottomLinks: [] as { text: string | Record<string, string>; url?: string }[],
+    bottomLinks: [
+      { text: '沪ICP备19043788号', url: 'https://beian.miit.gov.cn/' },
+    ] as { text: string | Record<string, string>; url?: string }[],
   },
 
   // ── Social & sharing ──────────────────────────────────────────────────────
