@@ -16,8 +16,9 @@ export interface NavItem {
 
 // Defined up-front so footer.connect can reference these URLs without duplication
 const social = {
-  github: "https://github.com/hutusi/amytis",
+  github: "https://github.com/hutusi",
   twitter: "https://twitter.com/hutusi",
+  tela: "https://telaread.com/@hutusi",
   email: "mailto:huziyong@gmail.com",
 };
 
@@ -76,8 +77,9 @@ export const siteConfig = {
     connect: [
       { name: "GitHub", url: social.github, weight: 1 },
       { name: "X (Twitter)", url: social.twitter, weight: 2 },
-      { name: "RSS Feed", url: "/feed.xml", weight: 3, external: true },
-      { name: "Subscribe", url: "/subscribe", weight: 4 },
+      { name: "Tela Read", url: social.tela, weight: 3 },
+      // { name: "RSS Feed", url: "/feed.xml", weight: 4, external: true },
+      { name: "Subscribe", url: "/subscribe", weight: 5 },
     ],
     builtWith: {
       show: true,
