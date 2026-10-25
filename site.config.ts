@@ -75,7 +75,7 @@ export const siteConfig = {
       { name: "About", url: "/about", weight: 4 },
     ],
     connect: [
-      { name: "GitHub", url: social.github, weight: 1 },
+      { name: "GitHub", url: social.github, weight: 1 , external: true },
       { name: "X (Twitter)", url: social.twitter, weight: 2 },
       { name: "Tela Read", url: social.tela, weight: 3 },
       // { name: "RSS Feed", url: "/feed.xml", weight: 4, external: true },
@@ -196,7 +196,7 @@ export const siteConfig = {
     recentCount: 5,
   },
   feed: {
-    maxItems: 20,                                           // Max items per feed (0 = no limit)
+    maxItems: 200,                                           // Max items per feed (0 = no limit)
     format: 'rss' as 'rss' | 'atom' | 'both',              // Format(s) to serve and advertise
     content: 'full' as 'excerpt' | 'full',                  // Full post content or excerpt only
     includeFlows: true,                                    // Include flow notes alongside posts
