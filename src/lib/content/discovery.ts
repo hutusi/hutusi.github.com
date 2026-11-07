@@ -1,11 +1,15 @@
 import fs from 'fs';
-import { getPostUrl, getFlowUrl, getNoteUrl, getSeriesUrl } from '../urls';
-import { seriesDirectory } from './io';
-import { createMemo, createProdMemo } from './cache';
-import { getAllPosts } from './posts';
+import { siteConfig } from '../../../site.config';
+import { getPostUrl, getFlowUrl, getNoteUrl, getSeriesUrl, localizeUrl } from '../urls';
+import { isFeatureEnabled } from '../features';
+import { domainDir } from './io';
+import { createMemo, createProdKeyedMemo } from './cache';
+import { getAllPosts, getPostsWithLocaleOriginals } from './posts';
 import { getAllFlows } from './flows';
-import { getAllNotes } from './notes';
+import { getAllNotes, getNotesWithLocaleOriginals } from './notes';
 import { getSeriesData } from './series';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
 
 /**
  * Cross-content discovery: the tag aggregate, the wikilink slug registry,
@@ -18,9 +22,9 @@ const allTagsMemo = createMemo<Record<string, number>>();
 
 export function getAllTags(): Record<string, number> {
   return allTagsMemo.get(() => {
-    const allPosts = getAllPosts();
+    const allPosts = getPostsWithLocaleOriginals();
     const allFlows = getAllFlows();
-    const allNotes = getAllNotes();
+    const allNotes = getNotesWithLocaleOriginals();
 
     // counts keyed by lowercase for deduplication; display preserves first-seen casing
     const counts: Record<string, number> = {};
@@ -44,8 +48,12 @@ export function getAllTags(): Record<string, number> {
     };
 
     allPosts.forEach((post) => { addTags(post.tags); });
-    allFlows.forEach((flow) => { addTags(flow.tags); });
-    allNotes.forEach((note) => { addTags(note.tags); });
+    // Notes and flows belong to the `flow` feature. When it's disabled their
+    // routes 404, so their tags must not seed tag pages/sitemap entries either.
+    if (isFeatureEnabled('flow')) {
+      allFlows.forEach((flow) => { addTags(flow.tags); });
+      allNotes.forEach((note) => { addTags(note.tags); });
+    }
 
     // Return with original-casing display form as key so consumers can show it correctly.
     // Callers that use the key as a URL slug must call key.toLowerCase().
@@ -65,42 +73,104 @@ export interface SlugRegistryEntry {
   title: string;
 }
 
-const slugRegistryMemo = createProdMemo<Map<string, SlugRegistryEntry>>();
+const slugRegistryMemo = createProdKeyedMemo<string, Map<string, SlugRegistryEntry>>();
 
-export function buildSlugRegistry(): Map<string, SlugRegistryEntry> {
+/**
+ * Wikilink target registry. For a non-default locale, the locale tree is
+ * OVERLAID on the default registry — [[slug]] in zh content resolves
+ * locale-first and falls back to the default tree. Twins legitimately share
+ * slugs, so cross-tree "collisions" are expected and never throw; the
+ * uniqueness throws below apply within one tree.
+ */
+export function buildSlugRegistry(locale: string = DEFAULT_LOCALE): Map<string, SlugRegistryEntry> {
   // Prod-only memo: dev rebuilds per call so HMR sees fresh wikilink targets.
-  return slugRegistryMemo.get(() => {
+  return slugRegistryMemo.get(locale, () => {
+    if (locale === DEFAULT_LOCALE) return computeTreeRegistry(DEFAULT_LOCALE);
+    return new Map([...buildSlugRegistry(DEFAULT_LOCALE), ...computeTreeRegistry(locale)]);
+  });
+}
+
+function computeTreeRegistry(locale: string): Map<string, SlugRegistryEntry> {
     const map = new Map<string, SlugRegistryEntry>();
 
-    getAllPosts().forEach(p =>
-      map.set(p.slug, { url: getPostUrl(p), type: 'post', title: p.title })
-    );
-
-    getAllFlows().forEach(f =>
-      map.set(f.slug, { url: getFlowUrl(f.slug), type: 'flow', title: f.title })
-    );
-
-    getAllNotes().forEach(n => {
-      if (map.has(n.slug)) {
-        console.warn(`[slugRegistry] Note slug "${n.slug}" conflicts with an existing entry.`);
+    // Posts throw on canonical-URL collisions, not bare-slug ones: a
+    // duplicate slug is legal when series prefixes (autoPaths/customPaths)
+    // give the posts distinct URLs — the rST toctree fixtures rely on this.
+    // Two posts resolving to the SAME URL is a bug under every config
+    // (e.g. duplicate slugs with series prefixes disabled). Bare-slug
+    // wikilink targets stay last-wins for same-slug series children — a
+    // known ambiguity, [[slug]] has no qualified form to prefer.
+    const postUrlOwners = new Map<string, string>();
+    getAllPosts(locale).forEach(p => {
+      const url = getPostUrl(p);
+      if (postUrlOwners.has(url)) {
+        throw new Error(
+          `[amytis] Two posts resolve to the same URL "${url}". Rename one of them, ` +
+          `or adjust series.autoPaths/customPaths so every post has a unique canonical URL.`
+        );
       }
-      map.set(n.slug, { url: getNoteUrl(n.slug), type: 'note', title: n.title });
-      n.aliases.forEach(a => {
-        if (map.has(a)) {
-          console.warn(`[slugRegistry] Note alias "${a}" (→ ${n.slug}) conflicts with existing slug; skipping.`);
-        } else {
-          map.set(a, { url: getNoteUrl(n.slug), type: 'note', title: n.title });
+      postUrlOwners.set(url, p.slug);
+      map.set(p.slug, { url, type: 'post', title: p.title });
+    });
+
+    // Flows have no locale trees (deferred) — only the default registry sees them.
+    if (locale === DEFAULT_LOCALE) {
+      getAllFlows().forEach(f => {
+        const existing = map.get(f.slug);
+        if (existing) {
+          // Reachable via a day with both DD.md and DD/index.md — the walk
+          // yields two flows with the same date slug.
+          throw new Error(
+            `[amytis] Flow slug "${f.slug}" collides with an existing ${existing.type} of the same slug. ` +
+            `Slugs must be unique across posts, flows, notes, and series so wikilinks resolve unambiguously.`
+          );
         }
+        map.set(f.slug, { url: getFlowUrl(f.slug), type: 'flow', title: f.title });
+      });
+    }
+
+    getAllNotes(locale).forEach(n => {
+      // Slugs and aliases must be unique across all content so a wikilink
+      // [[target]] resolves unambiguously. A collision is a build-time error,
+      // not a silent overwrite (strict-build invariant).
+      const existing = map.get(n.slug);
+      if (existing) {
+        throw new Error(
+          `[amytis] Note slug "${n.slug}" collides with an existing ${existing.type} of the same slug. ` +
+          `Slugs must be unique across posts, flows, notes, and series so wikilinks resolve unambiguously.`
+        );
+      }
+      map.set(n.slug, { url: localizeUrl(getNoteUrl(n.slug), locale), type: 'note', title: n.title });
+      n.aliases.forEach(a => {
+        const existingAlias = map.get(a);
+        if (existingAlias) {
+          throw new Error(
+            `[amytis] Note alias "${a}" (→ "${n.slug}") collides with an existing ${existingAlias.type}. ` +
+            `Aliases must be unique across all content so wikilinks resolve unambiguously.`
+          );
+        }
+        map.set(a, { url: localizeUrl(getNoteUrl(n.slug), locale), type: 'note', title: n.title });
       });
     });
 
-    if (fs.existsSync(seriesDirectory)) {
-      fs.readdirSync(seriesDirectory, { withFileTypes: true }).forEach(entry => {
+    const localeSeriesDir = domainDir('series', locale);
+    if (fs.existsSync(localeSeriesDir)) {
+      fs.readdirSync(localeSeriesDir, { withFileTypes: true }).forEach(entry => {
         if (!entry.isDirectory()) return;
         const slug = entry.name;
-        const seriesData = getSeriesData(slug);
+        // Same uniqueness contract as notes: a series slug must not collide
+        // with an existing post / flow / note / alias, or wikilinks become
+        // ambiguous (strict-build invariant).
+        const existing = map.get(slug);
+        if (existing) {
+          throw new Error(
+            `[amytis] Series slug "${slug}" collides with an existing ${existing.type} of the same slug. ` +
+            `Slugs must be unique across posts, flows, notes, and series so wikilinks resolve unambiguously.`
+          );
+        }
+        const seriesData = getSeriesData(slug, locale);
         map.set(slug, {
-          url: getSeriesUrl(slug),
+          url: localizeUrl(getSeriesUrl(slug), locale),
           type: 'series',
           title: seriesData?.title || slug,
         });
@@ -108,7 +178,6 @@ export function buildSlugRegistry(): Map<string, SlugRegistryEntry> {
     }
 
     return map;
-  });
 }
 
 // ─── Backlink Index ──────────────────────────────────────────────────────────
@@ -136,7 +205,7 @@ function extractWikilinkContext(text: string, matchStart: number, matchEnd: numb
   return ctx.trim().slice(0, 200);
 }
 
-function buildBacklinkIndex(): Map<string, BacklinkSource[]> {
+function buildBacklinkIndex(locale: string): Map<string, BacklinkSource[]> {
   const index = new Map<string, BacklinkSource[]>();
 
   const addBacklinks = (
@@ -164,16 +233,19 @@ function buildBacklinkIndex(): Map<string, BacklinkSource[]> {
     }
   };
 
-  getAllPosts().forEach(p => addBacklinks(p.content, p.slug, p.title, 'post', getPostUrl(p)));
-  getAllNotes().forEach(n => addBacklinks(n.content, n.slug, n.title, 'note', getNoteUrl(n.slug)));
-  getAllFlows().forEach(f => addBacklinks(f.content, f.slug, f.title, 'flow', getFlowUrl(f.slug)));
+  getAllPosts(locale).forEach(p => addBacklinks(p.content, p.slug, p.title, 'post', getPostUrl(p)));
+  getAllNotes(locale).forEach(n => addBacklinks(n.content, n.slug, n.title, 'note', localizeUrl(getNoteUrl(n.slug), locale)));
+  if (locale === DEFAULT_LOCALE) {
+    getAllFlows().forEach(f => addBacklinks(f.content, f.slug, f.title, 'flow', getFlowUrl(f.slug)));
+  }
 
   return index;
 }
 
-const backlinkIndexMemo = createProdMemo<Map<string, BacklinkSource[]>>();
+const backlinkIndexMemo = createProdKeyedMemo<string, Map<string, BacklinkSource[]>>();
 
-export function getBacklinks(slug: string): BacklinkSource[] {
+/** Backlinks are within-locale: who links to this slug from the same tree. */
+export function getBacklinks(slug: string, locale: string = DEFAULT_LOCALE): BacklinkSource[] {
   // Prod-only memo: dev rebuilds per call so HMR sees fresh wikilinks.
-  return backlinkIndexMemo.get(buildBacklinkIndex).get(slug) ?? [];
+  return backlinkIndexMemo.get(locale, () => buildBacklinkIndex(locale)).get(slug) ?? [];
 }

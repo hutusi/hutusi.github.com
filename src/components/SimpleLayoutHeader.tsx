@@ -8,19 +8,17 @@ interface SimpleLayoutHeaderProps {
   excerpt?: string;
   titleKey?: TranslationKey;
   subtitleKey?: TranslationKey;
-  contentLocales?: Record<string, { content: string; title?: string; excerpt?: string }>;
 }
 
-export default function SimpleLayoutHeader({ title, excerpt, titleKey, subtitleKey, contentLocales }: SimpleLayoutHeaderProps) {
-  const { t, language } = useLanguage();
+export default function SimpleLayoutHeader({ title, excerpt, titleKey, subtitleKey }: SimpleLayoutHeaderProps) {
+  const { t } = useLanguage();
 
-  const localeData = contentLocales?.[language];
-  const displayTitle = localeData?.title ?? (titleKey ? t(titleKey) : title);
-  const displaySubtitle = localeData?.excerpt ?? (subtitleKey ? t(subtitleKey) : excerpt);
+  const displayTitle = titleKey ? t(titleKey) : title;
+  const displaySubtitle = subtitleKey ? t(subtitleKey) : excerpt;
 
   return (
     <header className="page-header">
-      <h1 className="page-title">{displayTitle}</h1>
+      <h1 data-pagefind-meta="title" className="page-title">{displayTitle}</h1>
       {displaySubtitle && (
         <p className="page-subtitle">{displaySubtitle}</p>
       )}

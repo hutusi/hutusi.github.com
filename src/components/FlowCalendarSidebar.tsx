@@ -1,41 +1,85 @@
 'use client';
 
-import { useState, useMemo, type ReactNode } from 'react';
+import { useState, useMemo, useSyncExternalStore, type ReactNode } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
 import { padNumber } from '@/lib/format-utils';
+import { flowStreamLocaleTag } from '@/lib/flow-stream';
 
 interface FlowCalendarSidebarProps {
   entryDates: string[];
+  /** The flow day being viewed (YYYY-MM-DD): highlighted, and opens on its month. */
   currentDate?: string;
+  /** Month to open on (YYYY-MM) when no single day is current: month and year archives. */
+  initialMonth?: string;
   tags?: Record<string, number>;
   selectedTag?: string | null;
   onTagSelect?: (tag: string) => void;
   breadcrumb?: ReactNode;
 }
 
-const WEEKDAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+// "Today" can't be known at build time, so it's read as an external store:
+// null on the server/hydration pass, the viewer's local date after (the ring
+// appears post-hydration instead of mismatching). Local date parts, not
+// toISOString() — that was UTC and rang the wrong day for off-UTC viewers.
+function subscribeNever() {
+  return () => {};
+}
+function getLocalTodayStr(): string | null {
+  const now = new Date();
+  return `${now.getFullYear()}-${padNumber(now.getMonth() + 1)}-${padNumber(now.getDate())}`;
+}
+function getServerTodayStr(): string | null {
+  return null;
+}
 
-export default function FlowCalendarSidebar({ entryDates, currentDate, tags, selectedTag, onTagSelect, breadcrumb }: FlowCalendarSidebarProps) {
-  const { t } = useLanguage();
-  const initialDate = currentDate ? new Date(currentDate + 'T00:00:00') : new Date();
-  const [viewYear, setViewYear] = useState(initialDate.getFullYear());
-  const [viewMonth, setViewMonth] = useState(initialDate.getMonth());
+export default function FlowCalendarSidebar({ entryDates, currentDate, initialMonth, tags, selectedTag, onTagSelect, breadcrumb }: FlowCalendarSidebarProps) {
+  const { t, language } = useLanguage();
+  const todayStr = useSyncExternalStore(subscribeNever, getLocalTodayStr, getServerTodayStr);
+
+  // Locale-aware weekday and short-month labels, derived from the active
+  // language via Intl so they follow the language switch (no hardcoded English).
+  const localeTag = flowStreamLocaleTag(language);
+  const { weekdays, shortMonths } = useMemo(() => {
+    const weekdayFmt = new Intl.DateTimeFormat(localeTag, { weekday: 'short' });
+    const monthFmt = new Intl.DateTimeFormat(localeTag, { month: 'short' });
+    return {
+      // 2023-01-01 was a Sunday, matching the getDay()-based column order.
+      weekdays: Array.from({ length: 7 }, (_, i) => weekdayFmt.format(new Date(2023, 0, 1 + i))),
+      shortMonths: Array.from({ length: 12 }, (_, m) => monthFmt.format(new Date(2023, m, 1))),
+    };
+  }, [localeTag]);
+
+  // Initial month must be derived from content (currentDate, else
+  // initialMonth, else the latest entry) so server HTML and client hydration agree — `new Date()` here
+  // baked the build-time month into the prerender and mismatched once the
+  // viewer's month drifted from it. Only a site with no flows at all falls
+  // through to the viewer's month, which is null during SSR (empty grid,
+  // nothing to mismatch).
+  const latestEntry = entryDates.length > 0 ? entryDates.reduce((a, b) => (a > b ? a : b)) : null;
+  const monthSource = currentDate ?? (initialMonth ? `${initialMonth}-01` : latestEntry);
+  const [view, setView] = useState<{ year: number; month: number } | null>(() => {
+    if (!monthSource) return null;
+    const d = new Date(monthSource + 'T00:00:00');
+    return { year: d.getFullYear(), month: d.getMonth() };
+  });
+  const effectiveView = view
+    ?? (todayStr ? { year: Number(todayStr.slice(0, 4)), month: Number(todayStr.slice(5, 7)) - 1 } : null);
   const [showBrowse, setShowBrowse] = useState(false);
-
-  const today = new Date();
-  const todayStr = today.toISOString().split('T')[0];
 
   const entrySet = useMemo(() => new Set(entryDates), [entryDates]);
 
+  const { year: viewYear, month: viewMonth } = effectiveView ?? { year: 0, month: 0 };
   const firstDay = new Date(viewYear, viewMonth, 1).getDay();
-  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  // daysInMonth 0 while the view is unresolved → empty day grid.
+  const daysInMonth = effectiveView ? new Date(viewYear, viewMonth + 1, 0).getDate() : 0;
 
-  const monthLabel = new Date(viewYear, viewMonth).toLocaleDateString('en-US', {
-    month: 'long',
-    year: 'numeric',
-  });
+  const monthLabel = effectiveView
+    ? new Date(viewYear, viewMonth).toLocaleDateString(localeTag, {
+        month: 'long',
+        year: 'numeric',
+      })
+    : '';
 
   // Build year/month tree from entryDates for browse panel
   const yearMonthTree = useMemo(() => {
@@ -54,21 +98,17 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
   );
 
   function prevMonth() {
-    if (viewMonth === 0) {
-      setViewYear(viewYear - 1);
-      setViewMonth(11);
-    } else {
-      setViewMonth(viewMonth - 1);
-    }
+    if (!effectiveView) return;
+    setView(effectiveView.month === 0
+      ? { year: effectiveView.year - 1, month: 11 }
+      : { year: effectiveView.year, month: effectiveView.month - 1 });
   }
 
   function nextMonth() {
-    if (viewMonth === 11) {
-      setViewYear(viewYear + 1);
-      setViewMonth(0);
-    } else {
-      setViewMonth(viewMonth + 1);
-    }
+    if (!effectiveView) return;
+    setView(effectiveView.month === 11
+      ? { year: effectiveView.year + 1, month: 0 }
+      : { year: effectiveView.year, month: effectiveView.month + 1 });
   }
 
   const days = useMemo(() => {
@@ -79,15 +119,15 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
   }, [firstDay, daysInMonth]);
 
   return (
-    <aside className="hidden lg:block sticky top-20 self-start w-[280px] max-h-[calc(100vh-6rem)] select-none">
+    <aside className="hidden lg:block print:hidden sticky top-20 self-start w-[280px] max-h-[calc(100vh-6rem)] select-none">
       {breadcrumb && <div className="mb-4">{breadcrumb}</div>}
-      <div className="border border-ink/[0.07] bg-ink/[0.015] rounded-lg p-4">
+      <div className="border border-line bg-surface-faint rounded-lg p-4">
         {/* Month navigation */}
         <div className="flex items-center justify-between mb-3">
           <button
             onClick={prevMonth}
             className="p-1 text-muted hover:text-accent transition-colors"
-            aria-label="Previous month"
+            aria-label={t('prev_month')}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
@@ -95,7 +135,7 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
           <button
             onClick={nextMonth}
             className="p-1 text-muted hover:text-accent transition-colors"
-            aria-label="Next month"
+            aria-label={t('next_month')}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
           </button>
@@ -103,8 +143,8 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
 
         {/* Weekday headers */}
         <div className="grid grid-cols-7 gap-0 mb-1">
-          {WEEKDAYS.map(d => (
-            <div key={d} className="text-center text-[10px] font-medium text-muted py-1">{d}</div>
+          {weekdays.map((d, i) => (
+            <div key={i} className="text-center text-[10px] font-medium text-muted py-1">{d}</div>
           ))}
         </div>
 
@@ -120,12 +160,14 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
 
             const baseClasses = 'relative flex flex-col items-center justify-center h-8 text-xs rounded-md transition-colors';
 
-            if (isCurrent) {
+            // Only days with a flow have a page to link to.
+            if (isCurrent && hasEntry) {
               return (
                 <Link
+                  prefetch={false}
                   key={dateStr}
                   href={`/flows/${viewYear}/${padNumber(viewMonth + 1)}/${padNumber(day)}`}
-                  className={`${baseClasses} bg-accent text-white font-bold no-underline`}
+                  className={`${baseClasses} bg-accent text-accent-contrast font-bold no-underline`}
                 >
                   {day}
                 </Link>
@@ -135,6 +177,7 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
             if (hasEntry) {
               return (
                 <Link
+                  prefetch={false}
                   key={dateStr}
                   href={`/flows/${viewYear}/${padNumber(viewMonth + 1)}/${padNumber(day)}`}
                   className={`${baseClasses} text-foreground hover:bg-accent/10 font-medium no-underline ${isToday ? 'ring-1 ring-accent' : ''}`}
@@ -157,7 +200,7 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
         </div>
 
         {/* Browse toggle */}
-        <div className="mt-3 pt-3 border-t border-ink/[0.06]">
+        <div className="mt-3 pt-3 border-t border-line">
           <button
             onClick={() => setShowBrowse(!showBrowse)}
             className="flex items-center gap-1 text-xs text-muted hover:text-accent transition-colors w-full"
@@ -188,6 +231,7 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
                 return (
                   <div key={year}>
                     <Link
+                      prefetch={false}
                       href={`/flows/${year}`}
                       className={`flex items-center justify-between text-xs no-underline px-1 py-0.5 rounded hover:bg-accent/10 ${
                         isCurrentYear ? 'text-accent font-medium' : 'text-foreground'
@@ -204,13 +248,14 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
                           const isCurrentMonth = isCurrentYear && m - 1 === viewMonth;
                           return (
                             <Link
+                              prefetch={false}
                               key={m}
                               href={`/flows/${year}/${padNumber(m)}`}
                               className={`flex items-center justify-between text-xs no-underline px-1 py-0.5 rounded hover:bg-accent/10 ${
                                 isCurrentMonth ? 'text-accent font-medium' : 'text-muted'
                               }`}
                             >
-                              <span>{MONTH_NAMES[m - 1]}</span>
+                              <span>{shortMonths[m - 1]}</span>
                               <span className="text-[10px]">{months[m]}</span>
                             </Link>
                           );
@@ -227,7 +272,7 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
 
       {/* Tags */}
       {tags && Object.keys(tags).length > 0 && (
-        <div className="mt-3 border border-ink/[0.07] bg-ink/[0.015] rounded-lg p-4">
+        <div className="mt-3 border border-line bg-surface-faint rounded-lg p-4">
           <div className="text-xs font-medium text-muted mb-2">{t('tags')}</div>
           <div className="flex flex-wrap gap-1.5">
             {Object.entries(tags)
@@ -238,8 +283,8 @@ export default function FlowCalendarSidebar({ entryDates, currentDate, tags, sel
                   onClick={() => onTagSelect?.(tag)}
                   className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded-full border transition-colors ${
                     selectedTag === tag
-                      ? 'bg-accent text-white border-accent'
-                      : 'border-ink/[0.08] text-muted hover:border-accent hover:text-accent'
+                      ? 'bg-accent text-accent-contrast border-accent'
+                      : 'border-line-strong text-muted hover:border-accent hover:text-accent'
                   }`}
                 >
                   {tag}

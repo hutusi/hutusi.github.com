@@ -2,8 +2,9 @@
 
 import { useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { resolveActiveCollection } from '@/lib/collections';
 import Link from 'next/link';
-import type { PostData, CollectionContext, Heading } from '@/lib/content/types';
+import type { CollectionContext, Heading, PostNavItem } from '@/lib/content/types';
 import { useLanguage } from './LanguageProvider';
 import { useImmersiveReading } from './ImmersiveReadingProvider';
 import { useSidebarAutoScroll } from '@/hooks/useSidebarAutoScroll';
@@ -20,7 +21,7 @@ import { getPostUrl, getPostUrlInCollection, getSeriesListUrl, getSeriesUrl } fr
 interface ImmersiveSeriesSidebarProps {
   seriesSlug: string;
   seriesTitle: string;
-  posts: PostData[];
+  posts: PostNavItem[];
   /** When the post is in a collection, the sidebar can render in that
    *  collection's scope by appending `?collection=<slug>` to the URL. Same
    *  resolution logic as SeriesList. */
@@ -41,11 +42,8 @@ export default function ImmersiveSeriesSidebar({
 }: ImmersiveSeriesSidebarProps) {
   const { t } = useLanguage();
   const { enabled: immersiveEnabled } = useImmersiveReading();
-  const searchParams = useSearchParams();
-  const collectionParam = searchParams.get('collection');
-  const activeCollection = collectionParam
-    ? (collectionContexts ?? []).find(c => c.slug === collectionParam) ?? null
-    : null;
+  const collectionParam = useSearchParams().get('collection');
+  const activeCollection = resolveActiveCollection(collectionContexts, collectionParam);
 
   const effectiveSlug = activeCollection?.slug ?? seriesSlug;
   const effectiveTitle = activeCollection?.title ?? seriesTitle;
@@ -57,7 +55,7 @@ export default function ImmersiveSeriesSidebar({
   // ImmersiveReadingProvider remounts with `enabled=false` and the overlay
   // closes. Appending `?immersive=1` lets the destination layout's
   // ImmersiveReadingFlagHandler re-enter the reader and strip the flag.
-  const postHref = (post: PostData) => {
+  const postHref = (post: PostNavItem) => {
     const base = activeCollection
       ? getPostUrlInCollection(post, activeCollection.slug)
       : getPostUrl(post);
@@ -79,7 +77,7 @@ export default function ImmersiveSeriesSidebar({
       className="block w-full h-full overflow-y-auto px-4 py-6 scrollbar-hide hover:scrollbar-thin"
     >
       {/* Header — series / collection label + post count + title link */}
-      <div className="mb-6 pb-4 border-b border-ink/[0.05]">
+      <div className="mb-6 pb-4 border-b border-line">
         <div className="flex items-center justify-between mb-2">
           <MetaLabel tone="accent">
             {isCollectionContext ? t('collection') : t('series')}
@@ -111,8 +109,8 @@ export default function ImmersiveSeriesSidebar({
                     isCurrent
                       ? 'bg-accent/10 text-accent font-semibold border-l-2 border-accent'
                       : isPast
-                        ? 'text-foreground/70 hover:text-foreground hover:bg-ink/[0.04]'
-                        : 'text-muted hover:text-foreground hover:bg-ink/[0.04]'
+                        ? 'text-foreground/70 hover:text-foreground hover:bg-surface-soft'
+                        : 'text-muted hover:text-foreground hover:bg-surface-soft'
                   }`}
                   aria-current={isCurrent ? 'page' : undefined}
                 >
@@ -128,7 +126,7 @@ export default function ImmersiveSeriesSidebar({
       {/* Footer — points at the series listing (not back to the current
           series detail, which the header already links to). Matches
           BookSidebar's "All Books" footer pattern. */}
-      <div className="mt-6 pt-4 border-t border-ink/[0.05]">
+      <div className="mt-6 pt-4 border-t border-line">
         <Link
           href={getSeriesListUrl()}
           className="text-xs font-sans text-muted hover:text-accent transition-colors no-underline flex items-center gap-1"

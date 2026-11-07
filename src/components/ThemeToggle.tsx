@@ -2,12 +2,14 @@
 
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import { useLanguage } from "./LanguageProvider";
 
 /**
  * Toggles between light and dark themes using next-themes.
  */
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -22,18 +24,18 @@ export default function ThemeToggle() {
     // Render a placeholder to avoid layout shift or hydration errors
     return (
       <button className="w-8 h-8 flex items-center justify-center text-muted/50">
-        <span className="sr-only">Toggle theme</span>
+        <span className="sr-only">{t('toggle_theme')}</span>
       </button>
     );
   }
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       className="w-8 h-8 flex items-center justify-center text-foreground/80 hover:text-heading transition-colors duration-200"
-      aria-label="Toggle theme"
+      aria-label={t('toggle_theme')}
     >
-      {theme === "dark" ? (
+      {resolvedTheme === "dark" ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"

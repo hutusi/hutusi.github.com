@@ -109,6 +109,28 @@ function writeManifest(sitePath: string, outputPath: string, files: Record<strin
   }
 }
 
+/**
+ * Zero-byte files anywhere in a Pagefind output. A complete index never has
+ * any; empty runtime files (pagefind.js, the worker, the UI bundles) mean a
+ * write was cut short, which leaves a search box whose module import yields
+ * no exports and which silently finds nothing.
+ */
+export function findTruncatedOutputs(outputPath: string): string[] {
+  if (!fs.existsSync(outputPath)) return [];
+  const truncated: string[] = [];
+  const visit = (dir: string) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) visit(fullPath);
+      else if (entry.isFile() && fs.statSync(fullPath).size === 0) {
+        truncated.push(path.relative(outputPath, fullPath).replaceAll(path.sep, '/'));
+      }
+    }
+  };
+  visit(outputPath);
+  return truncated.sort();
+}
+
 export function shouldSkipPagefindBuild(sitePath: string, outputPath: string, currentFiles: Record<string, string>): boolean {
   const manifest = loadManifest(sitePath, outputPath);
   if (!manifest) return false;
@@ -116,6 +138,8 @@ export function shouldSkipPagefindBuild(sitePath: string, outputPath: string, cu
   if (manifest.sitePath !== path.resolve(sitePath)) return false;
   if (manifest.outputPath !== path.resolve(outputPath)) return false;
   if (!fs.existsSync(outputPath)) return false;
+  // Never trust a damaged output just because the HTML is unchanged.
+  if (findTruncatedOutputs(outputPath).length > 0) return false;
 
   const previousEntries = Object.entries(manifest.files).sort(([a], [b]) => a.localeCompare(b));
   const currentEntries = Object.entries(currentFiles).sort(([a], [b]) => a.localeCompare(b));
@@ -135,6 +159,26 @@ async function buildPagefind(sitePath: string, outputPath: string): Promise<void
     return;
   }
 
+  await writePagefindIndex(sitePath, outputPath);
+  // A broken index must never ship silently or be cached as up to date.
+  const truncated = findTruncatedOutputs(outputPath);
+  if (truncated.length > 0) {
+    throw new Error(`Pagefind wrote ${truncated.length} empty file(s) to ${outputPath}: ${truncated.slice(0, 5).join(', ')}`);
+  }
+
+  writeManifest(sitePath, outputPath, currentFiles);
+}
+
+/** Writes an in-memory Pagefind bundle (paths relative to outputPath) synchronously. */
+export function writeIndexFiles(outputPath: string, files: { path: string; content: Uint8Array }[]): void {
+  for (const file of files) {
+    const target = path.join(outputPath, file.path);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, file.content);
+  }
+}
+
+async function writePagefindIndex(sitePath: string, outputPath: string): Promise<void> {
   fs.rmSync(outputPath, { recursive: true, force: true });
 
   const { index, errors } = await pagefind.createIndex();
@@ -148,15 +192,20 @@ async function buildPagefind(sitePath: string, outputPath: string): Promise<void
       throw new Error(`Failed to index ${sitePath}: ${addResult.errors.join(', ')}`);
     }
 
-    const writeResult = await index.writeFiles({ outputPath });
-    if (writeResult.errors.length > 0) {
-      throw new Error(`Failed to write Pagefind output: ${writeResult.errors.join(', ')}`);
+    // Not index.writeFiles(): the backend can answer before its writes land.
+    // Files it reported written (pagefind.js, the worker, the UI bundles)
+    // have been seen empty right after, then filled in moments later, or
+    // never, when the close() below killed the backend first. getFiles()
+    // returns the same bundle in memory; writing it here puts every byte on
+    // disk before the backend is gone.
+    const filesResult = await index.getFiles();
+    if (filesResult.errors.length > 0) {
+      throw new Error(`Failed to build Pagefind output: ${filesResult.errors.join(', ')}`);
     }
+    writeIndexFiles(outputPath, filesResult.files);
   } finally {
     await pagefind.close();
   }
-
-  writeManifest(sitePath, outputPath, currentFiles);
 }
 
 async function main() {

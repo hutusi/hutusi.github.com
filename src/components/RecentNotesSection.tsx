@@ -1,8 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 import SectionHeading from './ui/SectionHeading';
-import { useLanguage } from './LanguageProvider';
+import { T } from './T';
 
 export interface RecentNoteItem {
   slug: string;
@@ -16,25 +14,23 @@ interface RecentNotesSectionProps {
 }
 
 export default function RecentNotesSection({ notes }: RecentNotesSectionProps) {
-  const { t } = useLanguage();
-
   if (notes.length === 0) return null;
 
   return (
     <section id="recent-flows">
       <div className="flex items-center justify-between mb-8">
-        <SectionHeading>{t('recent_notes')}</SectionHeading>
+        <SectionHeading><T k="recent_notes" /></SectionHeading>
         <Link
           href="/flows"
           className="text-sm text-muted hover:text-accent transition-colors no-underline"
         >
-          {t('all_flows')} →
+          <T k="all_flows" /> →
         </Link>
       </div>
 
       <div className="space-y-0">
         {notes.map(note => (
-          <div key={note.slug} className="relative pl-6 pb-6 border-l-2 border-ink/[0.08] last:pb-0 last:border-l-transparent">
+          <div key={note.slug} className="relative pl-6 pb-6 border-l-2 border-line-strong last:pb-0 last:border-l-transparent">
             <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent" />
             <Link href={`/flows/${note.slug}`} className="no-underline group">
               <time className="text-sm font-mono text-accent group-hover:text-accent/70 transition-colors">{note.date}</time>

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { siteConfig } from '../site.config';
+import { copyKatexAssets } from './copy-vendor-assets';
 
 const srcDir = path.join(process.cwd(), 'content', 'posts');
 const seriesSrcDir = path.join(process.cwd(), 'content', 'series');
@@ -23,6 +24,53 @@ function copyFileOrThrow(srcPath: string, destPath: string, context: string) {
 
 function markGeneratedDestination(destPath: string) {
   generatedAssetDestinations.add(path.resolve(destPath));
+}
+
+// Duplicate post slugs across series are legal for routing (series prefixes give
+// distinct canonical URLs), but every post's assets land in the same bare-slug
+// directory public/posts/<slug>. If two such posts both carry assets, the second
+// silently overwrites/prunes the first. Fail the build loudly instead. Keyed on
+// "a prior distinct source already wrote assets here", so the asset-less
+// duplicate-slug fixtures (rst-toctree*) never trip it.
+const assetDestClaims = new Map<string, { source: string; hasAssets: boolean }>();
+
+function claimAssetDir(destPostDir: string, sourceLabel: string, hasAssets: boolean) {
+  const key = path.resolve(destPostDir);
+  const existing = assetDestClaims.get(key);
+  if (existing && existing.source !== sourceLabel && existing.hasAssets) {
+    throw new Error(
+      `[copy-assets] Asset directory collision: "${sourceLabel}" and "${existing.source}" ` +
+      `both resolve to ${path.relative(process.cwd(), destPostDir)}. Duplicate post slugs ` +
+      `across series are allowed for routing, but their co-located assets share one ` +
+      `bare-slug directory and would overwrite each other. Rename one post's slug or file.`
+    );
+  }
+  if (!existing || existing.source !== sourceLabel) {
+    assetDestClaims.set(key, { source: sourceLabel, hasAssets });
+  } else if (hasAssets && !existing.hasAssets) {
+    assetDestClaims.set(key, { source: sourceLabel, hasAssets: true });
+  }
+}
+
+/** True when a folder-based post contributes any non-markdown asset. Recurses
+ *  so a markdown-only or empty subdirectory doesn't count as an asset. */
+function folderHasAssets(dir: string): boolean {
+  return fs.readdirSync(dir, { withFileTypes: true }).some((entry) =>
+    entry.isDirectory()
+      ? folderHasAssets(path.join(dir, entry.name))
+      : !shouldSkipSourceFile(entry.name)
+  );
+}
+
+/** True when a file-based post references a real, copyable (non-markdown) asset. */
+function fileReferencesRealAsset(sourceFile: string, rootDir: string): boolean {
+  return extractReferencedAssetPaths(sourceFile).some((reference) => {
+    const absolutePath = path.resolve(path.dirname(sourceFile), reference);
+    const relativeToRoot = path.relative(rootDir, absolutePath);
+    if (relativeToRoot.startsWith('..') || path.isAbsolute(relativeToRoot) || !fs.existsSync(absolutePath)) return false;
+    if (fs.statSync(absolutePath).isDirectory()) return false;
+    return !shouldSkipSourceFile(path.basename(absolutePath));
+  });
 }
 
 function shouldPreserveOptimizerDir(optimizerPath: string): boolean {
@@ -57,6 +105,7 @@ function pruneOrphanedOptimizerDirs(rootDir: string) {
 
 function resetGeneratedAssetDirs() {
   generatedAssetDestinations.clear();
+  assetDestClaims.clear();
   fs.mkdirSync(destDir, { recursive: true });
   fs.mkdirSync(booksDestDir, { recursive: true });
   fs.mkdirSync(flowsDestDir, { recursive: true });
@@ -244,30 +293,32 @@ function syncReferencedAssets(sourceFile: string, rootDir: string, destPostDir: 
   pruneDestDir(destPostDir);
 }
 
-function processPosts() {
-  if (fs.existsSync(srcDir)) {
-    const entries = fs.readdirSync(srcDir, { withFileTypes: true });
+function processPosts(postsSrcDir = srcDir, postsDestDir = destDir, sourceLabelRoot = 'content/posts') {
+  if (fs.existsSync(postsSrcDir)) {
+    const entries = fs.readdirSync(postsSrcDir, { withFileTypes: true });
 
     entries.forEach((entry) => {
       if (entry.isDirectory()) {
         const targetName = getSlugFromFilename(entry.name);
-        const srcPostDir = path.join(srcDir, entry.name);
-        const destPostDir = path.join(destDir, targetName);
+        const srcPostDir = path.join(postsSrcDir, entry.name);
+        const destPostDir = path.join(postsDestDir, targetName);
 
         console.log(`Processing Post: ${entry.name} -> ${targetName}`);
+        claimAssetDir(destPostDir, `${sourceLabelRoot}/${entry.name}`, folderHasAssets(srcPostDir));
         markGeneratedDestination(destPostDir);
         syncRecursive(srcPostDir, destPostDir);
       } else if (entry.isFile() && (entry.name.endsWith('.md') || entry.name.endsWith('.mdx') || entry.name.endsWith('.rst'))) {
         const targetName = getSlugFromFilename(entry.name);
-        const sourceFile = path.join(srcDir, entry.name);
-        const destPostDir = path.join(destDir, targetName);
+        const sourceFile = path.join(postsSrcDir, entry.name);
+        const destPostDir = path.join(postsDestDir, targetName);
 
         console.log(`Processing Flat Post: ${entry.name} -> ${targetName}`);
+        claimAssetDir(destPostDir, `${sourceLabelRoot}/${entry.name}`, fileReferencesRealAsset(sourceFile, postsSrcDir));
         markGeneratedDestination(destPostDir);
         if (!fs.existsSync(destPostDir)) {
           fs.mkdirSync(destPostDir, { recursive: true });
         }
-        syncReferencedAssets(sourceFile, srcDir, destPostDir);
+        syncReferencedAssets(sourceFile, postsSrcDir, destPostDir);
       }
     });
   }
@@ -280,14 +331,14 @@ function isPostFolder(dirPath: string): boolean {
          fs.existsSync(path.join(dirPath, 'index.rst'));
 }
 
-function processSeries() {
-  if (!fs.existsSync(seriesSrcDir)) return;
+function processSeries(seriesRootDir = seriesSrcDir, postsDestDir = destDir, sourceLabelRoot = 'content/series') {
+  if (!fs.existsSync(seriesRootDir)) return;
 
-  const seriesEntries = fs.readdirSync(seriesSrcDir, { withFileTypes: true });
+  const seriesEntries = fs.readdirSync(seriesRootDir, { withFileTypes: true });
 
   seriesEntries.forEach((seriesEntry) => {
     if (seriesEntry.isDirectory()) {
-      const seriesPath = path.join(seriesSrcDir, seriesEntry.name);
+      const seriesPath = path.join(seriesRootDir, seriesEntry.name);
       const items = fs.readdirSync(seriesPath, { withFileTypes: true });
 
       // Process items in series folder
@@ -297,9 +348,12 @@ function processSeries() {
           const isSeriesIndex = item.name.startsWith('index.') || item.name.startsWith('README.');
           const targetSlug = isSeriesIndex ? seriesEntry.name : getSlugFromFilename(item.name);
           const sourceFile = path.join(seriesPath, item.name);
-          const destPostDir = path.join(destDir, targetSlug);
+          const destPostDir = path.join(postsDestDir, targetSlug);
 
           console.log(`Processing Series File: ${item.name} -> ${targetSlug}`);
+          if (!isSeriesIndex) {
+            claimAssetDir(destPostDir, `${sourceLabelRoot}/${seriesEntry.name}/${item.name}`, fileReferencesRealAsset(sourceFile, seriesPath));
+          }
           markGeneratedDestination(destPostDir);
 
           if (!fs.existsSync(destPostDir)) {
@@ -312,9 +366,10 @@ function processSeries() {
           // Folder-based post: copy only its own assets
           const targetSlug = getSlugFromFilename(item.name);
           const itemSrcPath = path.join(seriesPath, item.name);
-          const destPostDir = path.join(destDir, targetSlug);
+          const destPostDir = path.join(postsDestDir, targetSlug);
 
           console.log(`Processing Series Post Folder: ${item.name} -> ${targetSlug}`);
+          claimAssetDir(destPostDir, `${sourceLabelRoot}/${seriesEntry.name}/${item.name}`, folderHasAssets(itemSrcPath));
           markGeneratedDestination(destPostDir);
 
           // Copy everything from the post folder EXCEPT markdown files
@@ -340,15 +395,15 @@ function processSeries() {
   });
 }
 
-function processBooks() {
-  if (!fs.existsSync(booksSrcDir)) return;
+function processBooks(booksRootDir = booksSrcDir, booksDestRootDir = booksDestDir) {
+  if (!fs.existsSync(booksRootDir)) return;
 
-  const entries = fs.readdirSync(booksSrcDir, { withFileTypes: true });
+  const entries = fs.readdirSync(booksRootDir, { withFileTypes: true });
 
   entries.forEach((entry) => {
     if (entry.isDirectory()) {
-      const srcBookDir = path.join(booksSrcDir, entry.name);
-      const destBookDir = path.join(booksDestDir, entry.name);
+      const srcBookDir = path.join(booksRootDir, entry.name);
+      const destBookDir = path.join(booksDestRootDir, entry.name);
 
       console.log(`Processing Book: ${entry.name}`);
       markGeneratedDestination(destBookDir);
@@ -389,13 +444,84 @@ function processFlows() {
   }
 }
 
-console.log('Copying assets...');
-resetGeneratedAssetDirs();
-processPosts();
-processSeries();
-processBooks();
-processFlows();
-pruneOrphanedOptimizerDirs(destDir);
-pruneOrphanedOptimizerDirs(booksDestDir);
-pruneOrphanedOptimizerDirs(flowsDestDir);
-console.log('Assets copied successfully.');
+interface SiteAssetConfig {
+  ogImage?: string;
+  logo?: { src?: string; favicon?: string };
+}
+
+/**
+ * Site-level assets that site.config.ts references by path — the default
+ * social image, the navbar logo, the favicon — must exist, or every share
+ * card (og:image, twitter:image, JSON-LD, the RSS <image>) or the tab icon
+ * breaks on every page without any build error. copy-assets runs first in
+ * every build script, so the check fails the build up front. Absolute and
+ * protocol-relative URLs are hosted elsewhere and not checked. A favicon may
+ * also be one of Next's app-directory icon files (src/app/favicon.ico).
+ */
+export function assertSiteAssetsExist(
+  config: SiteAssetConfig,
+  root: string = process.cwd(),
+): void {
+  const refs: Array<[field: string, value: string | undefined, appDirFallback: boolean]> = [
+    ['ogImage', config.ogImage, false],
+    ['logo.src', config.logo?.src, false],
+    ['logo.favicon', config.logo?.favicon, true],
+  ];
+  const missing: string[] = [];
+  for (const [field, value, appDirFallback] of refs) {
+    if (!value || !value.startsWith('/') || value.startsWith('//')) continue;
+    const relative = value.slice(1).split(/[?#]/)[0];
+    const candidates = [path.join(root, 'public', relative)];
+    if (appDirFallback) candidates.push(path.join(root, 'src', 'app', relative));
+    if (!candidates.some((candidate) => fs.existsSync(candidate))) {
+      missing.push(`  ${field}: "${value}" → expected public/${relative}`);
+    }
+  }
+  if (missing.length > 0) {
+    throw new Error(
+      `[copy-assets] site.config.ts references site assets that do not exist:\n${missing.join('\n')}\n` +
+      `Add the file(s), point the field at an existing file, or use an absolute URL.`
+    );
+  }
+}
+
+// Exported for unit tests (the collision guard is pure). Clears the claim map
+// so tests start from a known state.
+export function resetAssetClaims() {
+  assetDestClaims.clear();
+}
+export { claimAssetDir };
+
+// Only run the copy when invoked as a script — importing the module (e.g. from
+// a test) must not touch the filesystem.
+if (import.meta.main) {
+  assertSiteAssetsExist(siteConfig);
+  copyKatexAssets();
+  console.log('Copying assets...');
+  resetGeneratedAssetDirs();
+  processPosts();
+  processSeries();
+  processBooks();
+  processFlows();
+  pruneOrphanedOptimizerDirs(destDir);
+  pruneOrphanedOptimizerDirs(booksDestDir);
+  pruneOrphanedOptimizerDirs(flowsDestDir);
+
+  // Locale content trees mirror into public/<locale>/… so co-located assets
+  // resolve under the locale-prefixed image base slugs (zh/posts/<slug>).
+  const { enabled, defaultLocale, locales } = siteConfig.i18n;
+  const localeTrees = enabled ? locales.filter((l) => l !== defaultLocale) : [];
+  for (const locale of localeTrees) {
+    const contentRoot = path.join(process.cwd(), 'content', locale);
+    if (!fs.existsSync(contentRoot)) continue;
+    const publicRoot = path.join(process.cwd(), 'public', locale);
+    const localePostsDest = path.join(publicRoot, 'posts');
+    const localeBooksDest = path.join(publicRoot, 'books');
+    fs.mkdirSync(localePostsDest, { recursive: true });
+    processPosts(path.join(contentRoot, 'posts'), localePostsDest, `content/${locale}/posts`);
+    processSeries(path.join(contentRoot, 'series'), localePostsDest, `content/${locale}/series`);
+    processBooks(path.join(contentRoot, 'books'), localeBooksDest);
+    pruneOrphanedOptimizerDirs(publicRoot);
+  }
+  console.log('Assets copied successfully.');
+}

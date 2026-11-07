@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { resolveActiveCollection } from '@/lib/collections';
 import Link from 'next/link';
-import type { PostData, CollectionContext } from '@/lib/content/types';
+import type { CollectionContext, PostNavItem } from '@/lib/content/types';
 import { useLanguage } from './LanguageProvider';
-import { getPostUrl, getPostUrlInCollection } from '@/lib/urls';
+import { getPostUrl, getPostUrlInCollection, localizeUrl } from '@/lib/urls';
 import PrevNextNav from './PrevNextNav';
 import MetaLabel from './ui/MetaLabel';
 import { padNumber } from '@/lib/format-utils';
@@ -13,28 +14,26 @@ import { padNumber } from '@/lib/format-utils';
 interface SeriesListProps {
   seriesSlug?: string;
   seriesTitle?: string;
-  posts?: PostData[];
+  posts?: PostNavItem[];
   collectionContexts?: CollectionContext[];
   currentSlug: string;
 }
 
-export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionContexts, currentSlug }: SeriesListProps) {
-  const { t } = useLanguage();
-  const searchParams = useSearchParams();
-  const collectionParam = searchParams.get('collection');
-  const activeCollection = collectionParam
-    ? (collectionContexts ?? []).find(c => c.slug === collectionParam) ?? null
-    : null;
+/** Mobile series/collection list shown above the article body. */
+export function SeriesListView({ seriesSlug, seriesTitle, posts, collectionContexts, currentSlug, collectionParam }: SeriesListProps & { collectionParam: string | null }) {
+  const { t, language } = useLanguage();
+  const activeCollection = resolveActiveCollection(collectionContexts, collectionParam);
 
   const effectiveSlug = activeCollection?.slug ?? seriesSlug;
   const effectiveTitle = activeCollection?.title ?? seriesTitle;
   const effectivePosts = activeCollection?.posts ?? posts;
   const isCollectionContext = !!activeCollection;
 
-  const postHref = (post: PostData) =>
+  const postHref = (post: PostNavItem) =>
     isCollectionContext ? getPostUrlInCollection(post, activeCollection!.slug) : getPostUrl(post);
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const listId = useId();
 
   if (!effectivePosts || effectivePosts.length === 0) return null;
 
@@ -47,7 +46,7 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionC
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <Link
-          href={`/series/${effectiveSlug}`}
+          href={localizeUrl(`/series/${effectiveSlug}`, language)}
           className="group flex items-center gap-2 no-underline"
         >
           <MetaLabel tone="accent">
@@ -58,13 +57,13 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionC
             {effectiveTitle}
           </span>
         </Link>
-        <span className="text-xs font-mono text-muted bg-ink/[0.05] px-2 py-0.5 rounded-full">
+        <span className="text-xs font-mono text-muted bg-surface-soft px-2 py-0.5 rounded-full">
           {currentIndex + 1}/{effectivePosts.length}
         </span>
       </div>
 
       {/* Progress bar */}
-      <div className="h-1 bg-ink/[0.05] rounded-full overflow-hidden mb-4">
+      <div className="h-1 bg-surface-soft rounded-full overflow-hidden mb-4">
         <div
           className="h-full bg-accent/60 rounded-full transition-all duration-500"
           style={{ width: `${((currentIndex + 1) / effectivePosts.length) * 100}%` }}
@@ -81,7 +80,10 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionC
 
       {/* Toggle to expand full list */}
       <button
+        type="button"
         onClick={() => setIsExpanded(!isExpanded)}
+        aria-expanded={isExpanded}
+        aria-controls={listId}
         className="w-full flex items-center justify-center gap-2 py-2 text-xs font-sans text-muted hover:text-accent transition-colors"
       >
         <span className="divider-hairline" />
@@ -99,7 +101,7 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionC
 
       {/* Collapsible posts list */}
       {isExpanded && (
-        <ol className="space-y-2 mt-3 animate-slide-down">
+        <ol id={listId} className="space-y-2 mt-3 animate-slide-down">
           {effectivePosts.map((post, index) => {
             const isCurrent = post.slug === currentSlug;
             const isPast = index < currentIndex;
@@ -107,8 +109,8 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionC
             return (
               <li key={post.slug}>
                 {isCurrent ? (
-                  <div className="flex items-center gap-3 py-1.5 px-2 -mx-2 rounded-lg bg-accent/5">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-accent text-white text-[10px] font-mono font-bold flex items-center justify-center">
+                  <div aria-current="page" className="flex items-center gap-3 py-1.5 px-2 -mx-2 rounded-lg bg-accent/5">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-accent text-accent-contrast text-[10px] font-mono font-bold flex items-center justify-center">
                       {padNumber(index + 1)}
                     </span>
                     <span className="text-sm font-semibold text-accent truncate">
@@ -118,12 +120,12 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionC
                 ) : (
                   <Link
                     href={postHref(post)}
-                    className="group flex items-center gap-3 py-1.5 px-2 -mx-2 rounded-lg hover:bg-ink/[0.04] no-underline transition-colors"
+                    className="group flex items-center gap-3 py-1.5 px-2 -mx-2 rounded-lg hover:bg-surface-soft no-underline transition-colors"
                   >
                     <span className={`flex-shrink-0 w-5 h-5 rounded-full text-[10px] font-mono font-bold flex items-center justify-center transition-colors ${
                       isPast
                         ? 'bg-accent/20 text-accent'
-                        : 'bg-ink/[0.05] text-muted group-hover:bg-ink/[0.08]'
+                        : 'bg-surface-soft text-muted group-hover:bg-surface-raised'
                     }`}>
                       {padNumber(index + 1)}
                     </span>
@@ -143,9 +145,9 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionC
       )}
 
       {/* Footer */}
-      <div className="mt-4 pt-3 border-t border-ink/[0.05]">
+      <div className="mt-4 pt-3 border-t border-line">
         <Link
-          href={`/series/${effectiveSlug}`}
+          href={localizeUrl(`/series/${effectiveSlug}`, language)}
           className="text-xs font-sans text-muted hover:text-accent transition-colors no-underline flex items-center gap-1"
         >
           {isCollectionContext ? t('view_full_collection') : t('view_full_series')}
@@ -156,4 +158,16 @@ export default function SeriesList({ seriesSlug, seriesTitle, posts, collectionC
       </div>
     </div>
   );
+}
+
+/**
+ * Reads `?collection=` and renders the view. `useSearchParams` bails the
+ * surrounding Suspense boundary out of static prerendering, so layouts pass
+ * `<SeriesListView collectionParam={null} … />` as the boundary's fallback: the
+ * exported HTML then carries the default (series-context) rendering instead
+ * of an empty hole that pops in after hydration.
+ */
+export default function SeriesList(props: SeriesListProps) {
+  const collectionParam = useSearchParams().get('collection');
+  return <SeriesListView {...props} collectionParam={collectionParam} />;
 }

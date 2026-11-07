@@ -36,6 +36,10 @@ export const siteConfig = {
   description: { en: "hutusi.com — a personal digital garden.", zh: "胡涂说博客/好奇心周刊" },
   baseUrl: "https://hutusi.com", // Replace with your actual domain
   ogImage: "/og-image.png", // Default OG/social preview image — place a 1200×630 PNG at public/og-image.png
+  // Render a 1200×630 share card (title, series or book, date) for every post, note and book chapter without a cover image of its own; pages with a cover keep sharing it. See docs/ARCHITECTURE.md "Share Cards".
+  generateOgImages: true,
+  // After each build, report broken internal links, missing images and broken wikilinks in the export. 'error' fails the build on broken links and images; 'off' skips the check. See docs/ARCHITECTURE.md "Build Pipeline".
+  linkCheck: 'warn' as 'warn' | 'error' | 'off',
   footerText: { en: `© ${new Date().getFullYear()} hutusi.com All rights reserved.`, zh: `© ${new Date().getFullYear()} hutusi.com 保留所有权利。` },
 
   // ── i18n ──────────────────────────────────────────────────────────────────

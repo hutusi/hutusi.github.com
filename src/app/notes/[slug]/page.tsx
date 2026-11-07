@@ -1,18 +1,16 @@
-import { buildSlugRegistry, getBacklinks } from '@/lib/content/discovery';
 import { safeDecodeParam } from '@/lib/route-params';
+import { getNoteUrl, localizeUrl } from '@/lib/urls';
 import { isFeatureEnabled } from '@/lib/features';
-import { getAllNotes, getNoteBySlug, getAdjacentNotes } from '@/lib/content/notes';
+import { getAllNotes, getNoteBySlug, getNoteContentLocales } from '@/lib/content/notes';
+import { contentSeoUrls } from '@/lib/locale-routes';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { siteConfig } from '../../../../site.config';
-import { t, resolveLocale } from '@/lib/i18n';
-import MarkdownRenderer from '@/components/MarkdownRenderer';
-import NoteSidebar from '@/components/NoteSidebar';
-import Tag from '@/components/Tag';
-import ShareBar from '@/components/ShareBar';
-import Comments from '@/components/Comments';
-import { resolveCommentable } from '@/lib/comments';
-import Link from 'next/link';
+import { buildArticleMetadata } from '@/lib/metadata';
+import { getShareImage } from '@/lib/og-images';
+import NoteDetailBody from '@/components/page-bodies/NoteDetailBody';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
 
 export function generateStaticParams() {
   if (!isFeatureEnabled('flow')) return [{ slug: '_' }];
@@ -36,17 +34,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug: rawSlug } = await params;
   const note = getNoteBySlug(safeDecodeParam(rawSlug)) ?? getNoteBySlug(rawSlug);
   if (!note) return { title: 'Not Found' };
-  return {
-    title: `${note.title} | ${resolveLocale(siteConfig.title)}`,
+  // Twin notes canonicalize to the unprefixed URL with reciprocal hreflang;
+  // single-locale notes keep their plain self-canonical (byte-identical).
+  const notePath = localizeUrl(getNoteUrl(note.slug), note.locale);
+  const seo = contentSeoUrls(notePath, getNoteContentLocales(note));
+  // Notes have no cover: a generated card, or no image at all.
+  const card = getShareImage({ kind: 'note', pagePath: notePath });
+  return buildArticleMetadata({
+    locale: DEFAULT_LOCALE,
+    title: note.title,
     description: note.excerpt,
-    openGraph: {
-      title: note.title,
-      description: note.excerpt,
-      type: 'article',
-      publishedTime: note.date,
-      siteName: resolveLocale(siteConfig.title),
-    },
-  };
+    publishedTime: note.date,
+    canonicalUrl: seo.canonicalUrl,
+    languageAlternates: seo.languageAlternates,
+    ogImage: card.source === 'card' ? card.url : undefined,
+    twitterCard: card.source === 'card' ? 'summary_large_image' : 'none',
+  });
 }
 
 export default async function NotePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -55,97 +58,5 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
   const slug = safeDecodeParam(rawSlug);
   const note = getNoteBySlug(slug) ?? getNoteBySlug(rawSlug);
   if (!note) notFound();
-
-  const slugRegistry = buildSlugRegistry();
-  const backlinks = getBacklinks(note.slug);
-  const { prev, next } = getAdjacentNotes(note.slug);
-
-  const showToc = note.toc !== false && note.headings.length > 0;
-  const visibleBacklinks = note.backlinks !== false ? backlinks : [];
-  const showSidebar = showToc || visibleBacklinks.length > 0;
-  const noteUrl = `${siteConfig.baseUrl}/notes/${note.slug}`;
-
-  const breadcrumb = (
-    <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-muted">
-      <Link href="/notes" className="hover:text-accent no-underline">
-        {t('notes')}
-      </Link>
-      <span className="text-muted/40" aria-hidden="true">›</span>
-      <span className="text-foreground truncate">{note.title}</span>
-    </nav>
-  );
-
-  return (
-    <div className="layout-main">
-      {!showSidebar && <div className="mb-6">{breadcrumb}</div>}
-
-      <div className={showSidebar
-        ? 'grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8 items-start'
-        : 'max-w-3xl mx-auto'
-      }>
-        {showSidebar && (
-          <NoteSidebar
-            headings={note.headings}
-            showToc={showToc}
-            backlinks={visibleBacklinks}
-            breadcrumb={breadcrumb}
-          />
-        )}
-        <article className="min-w-0 w-full max-w-3xl mx-auto overflow-x-hidden">
-          <header className="mb-8 border-b border-ink/[0.05] pb-8">
-            {note.draft && (
-              <div className="mb-4">
-                <span className="text-xs font-bold text-red-500 bg-red-100 dark:bg-red-900/30 px-2 py-1 rounded tracking-widest inline-block">
-                  DRAFT
-                </span>
-              </div>
-            )}
-            <time className="text-sm font-mono text-accent" data-pagefind-meta="date[content]">
-              {note.date}
-            </time>
-            <h1 className="mt-2 text-3xl md:text-4xl font-serif font-bold text-heading leading-tight">
-              {note.title}
-            </h1>
-            {note.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {note.tags.map(tag => (
-                  <Tag key={tag} tag={tag} variant="default" />
-                ))}
-              </div>
-            )}
-          </header>
-
-          <MarkdownRenderer content={note.content} slug={`notes/${note.slug}`} slugRegistry={slugRegistry} />
-
-          <ShareBar url={noteUrl} title={note.title} className="mt-8 mb-2" />
-
-          {resolveCommentable(note.commentable, 'notes') && (
-            <Comments slug={`notes/${note.slug}`} postUrl={noteUrl} />
-          )}
-
-          {/* Prev/Next navigation */}
-          <nav aria-label="Note navigation" className="mt-12 pt-12 border-t border-ink/[0.07] grid grid-cols-2 gap-4">
-            {prev ? (
-              <Link href={`/notes/${prev.slug}`} className="group text-left no-underline">
-                <span className="text-xs text-muted">{t('older')}</span>
-                <div className="text-sm font-medium text-heading group-hover:text-accent transition-colors truncate">
-                  {prev.title}
-                </div>
-                <span className="text-xs font-mono text-muted">{prev.date}</span>
-              </Link>
-            ) : <div />}
-            {next ? (
-              <Link href={`/notes/${next.slug}`} className="group text-right no-underline">
-                <span className="text-xs text-muted">{t('newer')}</span>
-                <div className="text-sm font-medium text-heading group-hover:text-accent transition-colors truncate">
-                  {next.title}
-                </div>
-                <span className="text-xs font-mono text-muted">{next.date}</span>
-              </Link>
-            ) : <div />}
-          </nav>
-        </article>
-      </div>
-    </div>
-  );
+  return <NoteDetailBody locale={DEFAULT_LOCALE} noteSlug={note.slug} />;
 }

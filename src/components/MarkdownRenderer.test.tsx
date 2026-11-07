@@ -1,13 +1,14 @@
 import { describe, expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import MarkdownRenderer from "./MarkdownRenderer";
+import { LanguageProvider } from "./LanguageProvider";
 import { renderAsync } from "@/test-utils/render";
 
 describe("MarkdownRenderer", () => {
   describe("image rendering", () => {
     test("uses ExportedImage with fallback dimensions for local images without known dimensions", () => {
       const content = "![alt text](/images/local.jpg)";
-      const html = renderToStaticMarkup(<MarkdownRenderer content={content} />);
+      const html = renderToStaticMarkup(<LanguageProvider><MarkdownRenderer content={content} /></LanguageProvider>);
       // ExportedImage is used with 1200x900 fallback when no dimensions are known
       expect(html).toContain('width="1200"');
       expect(html).toContain('height="900"');
@@ -20,7 +21,7 @@ describe("MarkdownRenderer", () => {
 
     test("uses plain img for external images", () => {
       const content = "![alt text](https://example.com/image.jpg)";
-      const html = renderToStaticMarkup(<MarkdownRenderer content={content} />);
+      const html = renderToStaticMarkup(<LanguageProvider><MarkdownRenderer content={content} /></LanguageProvider>);
       expect(html).toContain('src="https://example.com/image.jpg"');
       // No fallback dimensions — external images are not processed by ExportedImage
       expect(html).not.toContain('width="1200"');
@@ -29,9 +30,17 @@ describe("MarkdownRenderer", () => {
       expect(html).toContain('fetchPriority="low"');
     });
 
+    test("marks content images for the zoom lightbox, but not linked or styled ones", () => {
+      const html = (content: string) => renderToStaticMarkup(<LanguageProvider><MarkdownRenderer content={content} /></LanguageProvider>);
+      expect(html("![local](/images/local.jpg)")).toContain('data-zoomable="true"');
+      expect(html("![external](https://example.com/image.jpg)")).toContain('data-zoomable="true"');
+      expect(html("[![linked](/images/local.jpg)](https://example.com/)")).not.toContain('data-zoomable');
+      expect(html('<img src="/images/badge.svg" style="height:20px" alt="badge">')).not.toContain('data-zoomable');
+    });
+
     test("bypasses optimization for local avif images", () => {
       const content = "![alt text](/images/background-new-wave.avif)";
-      const html = renderToStaticMarkup(<MarkdownRenderer content={content} />);
+      const html = renderToStaticMarkup(<LanguageProvider><MarkdownRenderer content={content} /></LanguageProvider>);
       expect(html).toContain('src="/images/background-new-wave.avif"');
       expect(html).not.toContain('nextImageExportOptimizer');
       expect(html).not.toContain('background-image:url');
@@ -39,7 +48,7 @@ describe("MarkdownRenderer", () => {
 
     test("bypasses optimization for local webp images", () => {
       const content = "![alt text](/images/already-optimized.webp)";
-      const html = renderToStaticMarkup(<MarkdownRenderer content={content} />);
+      const html = renderToStaticMarkup(<LanguageProvider><MarkdownRenderer content={content} /></LanguageProvider>);
       expect(html).toContain('src="/images/already-optimized.webp"');
       expect(html).not.toContain('nextImageExportOptimizer');
       expect(html).not.toContain('background-image:url');
@@ -66,11 +75,20 @@ describe("MarkdownRenderer", () => {
 
   test("wraps content in ArticleCopyCleaner so paste output is stripped of per-paragraph backgrounds", () => {
     const content = "Hello world";
-    const html = renderToStaticMarkup(<MarkdownRenderer content={content} />);
+    const html = renderToStaticMarkup(<LanguageProvider><MarkdownRenderer content={content} /></LanguageProvider>);
     // The cleaner renders a bare wrapper div; the page background lives on body now,
     // so the article HTML must not paint its own background (which is what caused
     // Chromium's clipboard serializer to inline `background-color` on every <p>).
     expect(html).not.toMatch(/class="[^"]*\bbg-background\b[^"]*"/);
-    expect(html).toContain('<p class="mb-4 leading-relaxed text-foreground">Hello world</p>');
+    expect(html).toContain('<p>Hello world</p>');
+  });
+
+  test("list items keep their attributes: footnote ids and task-list classes", () => {
+    const content = "A claim[^1].\n\n- [x] done\n\n[^1]: The source.";
+    const html = renderToStaticMarkup(<LanguageProvider><MarkdownRenderer content={content} /></LanguageProvider>);
+    // The reference links to the footnote's <li id>; without the id the jump goes nowhere.
+    expect(html).toContain('href="#user-content-fn-1"');
+    expect(html).toMatch(/<li[^>]*id="user-content-fn-1"/);
+    expect(html).toMatch(/<li[^>]*class="text-foreground task-list-item"/);
   });
 });

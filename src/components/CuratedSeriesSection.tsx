@@ -1,16 +1,15 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import HorizontalScroll from './HorizontalScroll';
 import CoverImage from './CoverImage';
 import SectionHeading from './ui/SectionHeading';
 import { useLanguage } from './LanguageProvider';
-import { shuffle } from '@/lib/shuffle';
+import { shuffle, shuffleSeeded, seedFromKeys } from '@/lib/shuffle';
 import { byDateAsc, byDateDesc } from '@/lib/sort';
 import { getPostUrl, getSeriesListUrl } from '@/lib/urls';
-import { cn } from '@/lib/cn';
-import { COVER_ZOOM } from '@/lib/ui-classes';
+import { COVER_ZOOM_SLOW } from '@/lib/ui-classes';
 
 export interface SeriesItem {
   name: string;
@@ -31,27 +30,20 @@ interface CuratedSeriesSectionProps {
   order?: SeriesOrder;
 }
 
-function canonicalOrder(series: SeriesItem[], order: SeriesOrder): SeriesItem[] {
+// For 'shuffle', a seeded permutation keyed off the content so server and client
+// render the same order — no post-hydration swap. The user can still re-roll to
+// a fresh random order via the shuffle control.
+function initialOrder(series: SeriesItem[], order: SeriesOrder): SeriesItem[] {
   if (order === 'date-desc') return [...series].sort(byDateDesc);
   if (order === 'date-asc')  return [...series].sort(byDateAsc);
-  return series;
+  return shuffleSeeded(series, seedFromKeys(series.map(s => s.name)));
 }
 
 export default function CuratedSeriesSection({ allSeries, maxItems, order = 'shuffle' }: CuratedSeriesSectionProps) {
   const { t } = useLanguage();
-  // SSR renders the canonical input order so server and client agree on first paint.
-  // For 'shuffle', the post-mount useEffect swaps to a fresh random permutation,
-  // so every reload re-rolls without any hydration mismatch.
-  const [displayed, setDisplayed] = useState(() => canonicalOrder(allSeries, order).slice(0, maxItems));
-
-  // Shuffle on mount so every reload re-rolls. SSR's canonical render is stable; the
-  // post-hydration swap is the intentional client-only behaviour, not a sync issue.
-  useEffect(() => {
-    if (order === 'shuffle') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setDisplayed(shuffle(allSeries).slice(0, maxItems));
-    }
-  }, [allSeries, maxItems, order]);
+  // Seeded shuffle is stable across the SSR/hydration boundary, so the initial
+  // order is computed once and never swapped after mount.
+  const [displayed, setDisplayed] = useState(() => initialOrder(allSeries, order).slice(0, maxItems));
 
   const handleShuffle = useCallback(() => {
     setDisplayed(shuffle(allSeries).slice(0, maxItems));
@@ -83,7 +75,7 @@ export default function CuratedSeriesSection({ allSeries, maxItems, order = 'shu
       </div>
       <HorizontalScroll>
         <div className={`flex gap-8 ${displayed.length > 1 ? 'pb-4' : ''}`}>
-          {displayed.map((series, idx) => (
+          {displayed.map((series) => (
             <div
               key={series.name}
               className={`card-base group flex flex-col p-0 overflow-hidden snap-start ${
@@ -92,13 +84,14 @@ export default function CuratedSeriesSection({ allSeries, maxItems, order = 'shu
                   : 'flex-1 md:max-w-[calc(50%-1rem)]'
               }`}
             >
-              <Link href={series.url} className="relative h-44 w-full overflow-hidden bg-ink/[0.04] block focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-inset">
+              {/* Duplicate of the title link below: kept out of the Tab order and the a11y tree. */}
+              <Link href={series.url} tabIndex={-1} aria-hidden="true" className="relative h-44 w-full overflow-hidden bg-surface-soft block">
                 <CoverImage
                   src={series.coverImage}
                   title={series.title}
                   slug={series.name}
-                  className={cn(COVER_ZOOM, 'duration-700')}
-                  loading={idx === 0 ? 'eager' : undefined}
+                  className={COVER_ZOOM_SLOW}
+                  sizes="(min-width: 1200px) 536px, (min-width: 768px) 50vw, 85vw"
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               </Link>
@@ -109,14 +102,14 @@ export default function CuratedSeriesSection({ allSeries, maxItems, order = 'shu
                   </span>
                 </div>
                 <h3 className="mb-3 font-serif text-2xl font-bold text-heading group-hover:text-accent transition-colors line-clamp-2">
-                  <Link href={series.url} className="no-underline focus:outline-none focus:text-accent">
+                  <Link href={series.url} className="no-underline focus-visible:text-accent">
                     {series.title}
                   </Link>
                 </h3>
                 <p className="mb-6 text-muted font-serif italic line-clamp-2 text-base">
                   {series.excerpt}
                 </p>
-                <div className="mt-auto pt-6 border-t border-ink/[0.05]">
+                <div className="mt-auto pt-6 border-t border-line">
                   <div className="flex flex-col gap-2">
                     {series.topPosts.map((p, idx) => (
                       <Link
@@ -124,7 +117,7 @@ export default function CuratedSeriesSection({ allSeries, maxItems, order = 'shu
                         href={getPostUrl({ slug: p.slug, series: series.name })}
                         className="flex items-center gap-3 group/link no-underline"
                       >
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-ink/[0.05] text-[10px] flex items-center justify-center font-mono text-muted group-hover/link:bg-accent/10 group-hover/link:text-accent transition-colors">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-surface-soft text-[10px] flex items-center justify-center font-mono text-muted group-hover/link:bg-accent/10 group-hover/link:text-accent transition-colors">
                           {idx + 1}
                         </span>
                         <span className="text-sm text-foreground/80 group-hover/link:text-accent transition-colors truncate">

@@ -3,12 +3,13 @@ import type { PostData } from '@/lib/content/types';
 import CoverImage from './CoverImage';
 import Tag from './Tag';
 import { getPostUrl } from '@/lib/urls';
-import { t } from '@/lib/i18n';
+import { getTranslator } from '@/lib/i18n';
 import { cn } from '@/lib/cn';
 import { CARD_HOVER, COVER_ZOOM } from '@/lib/ui-classes';
 
 interface PostListProps {
   posts: PostData[];
+  locale: string;
   showExcerpt?: boolean;
   showTags?: boolean;
   excerptLines?: 1 | 2;
@@ -16,10 +17,12 @@ interface PostListProps {
 
 export default function PostList({
   posts,
+  locale,
   showExcerpt = true,
   showTags = true,
   excerptLines = 2,
 }: PostListProps) {
+  const { t } = getTranslator(locale);
   if (posts.length === 0) {
     return (
       <div className="text-center py-12 text-muted">
@@ -43,13 +46,14 @@ export default function PostList({
           <div className={cn('ink-card overflow-hidden transition-all duration-300', CARD_HOVER, 'h-32 sm:h-auto')}>
             <div className="flex flex-row h-full">
               {/* Thumbnail */}
-              <div className="relative w-32 sm:w-48 flex-shrink-0 overflow-hidden bg-ink/[0.04]">
+              <div className="relative w-32 sm:w-48 flex-shrink-0 overflow-hidden bg-surface-soft">
                 <Link href={getPostUrl(post)} className="relative z-10 block h-full w-full" tabIndex={-1} aria-hidden>
                   <CoverImage
                     src={post.coverImage}
                     title={post.title}
                     slug={post.slug}
                     className={COVER_ZOOM}
+                    sizes="(min-width: 640px) 192px, 128px"
                   />
                 </Link>
               </div>
@@ -68,8 +72,8 @@ export default function PostList({
                   <span className="shrink-0 hidden sm:inline">·</span>
                   <span className="shrink-0 whitespace-nowrap">{post.date}</span>
                   {post.draft && (
-                    <span className="text-[10px] font-bold text-red-500 bg-red-100 dark:bg-red-900/30 px-1.5 py-0.5 rounded tracking-wider">
-                      DRAFT
+                    <span className="text-[10px] font-bold text-red-500 bg-red-100 dark:bg-red-900/30 px-1.5 py-0.5 rounded tracking-wider uppercase">
+                      {t('draft_badge')}
                     </span>
                   )}
                 </div>

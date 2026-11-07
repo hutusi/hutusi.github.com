@@ -1,14 +1,17 @@
 import Link from 'next/link';
 import { getSeriesData } from '@/lib/content/series';
-import { getAllPosts } from '@/lib/content/posts';
+import { getPostsWithLocaleOriginals } from '@/lib/content/posts';
 import type { PostData } from '@/lib/content/types';
 import { siteConfig } from '../../../site.config';
-import { resolveLocale, t } from '@/lib/i18n';
+import { getTranslator, resolveLocaleValue } from '@/lib/i18n';
 import PageHeader from '@/components/PageHeader';
 import { getPostUrl } from '@/lib/urls';
 
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
+const { t } = getTranslator(DEFAULT_LOCALE);
+
 export const metadata = {
-  title: `Archive | ${resolveLocale(siteConfig.title)}`,
+  title: `Archive | ${resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE)}`,
   description: t('archive_description'),
 };
 
@@ -40,7 +43,7 @@ function groupPostsByDate(posts: PostData[]): GroupedPosts {
 }
 
 export default function ArchivePage() {
-  const posts = getAllPosts();
+  const posts = getPostsWithLocaleOriginals();
   const groupedPosts = groupPostsByDate(posts);
   const showAuthors = siteConfig.posts?.archive?.showAuthors;
 
@@ -69,14 +72,14 @@ export default function ArchivePage() {
       <main>
         {/* Year-jump navigation — mirrors content grid to align with timeline column */}
         {years.length > 1 && (
-          <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-8 md:gap-16 mb-16">
             <div />
-            <nav aria-label="Jump to year" className="flex flex-wrap items-center gap-2">
+            <nav aria-label={t('jump_to_year')} className="flex flex-wrap items-center gap-2">
               {years.map(year => (
                 <a
                   key={year}
                   href={`#${year}`}
-                  className="text-xs font-mono text-muted hover:text-accent border border-ink/[0.07] hover:border-accent/40 rounded px-3 py-1 transition-all duration-200 no-underline"
+                  className="text-xs font-mono text-muted hover:text-accent border border-line hover:border-accent/40 rounded px-3 py-1 transition-all duration-200 no-underline"
                 >
                   {year}
                 </a>
@@ -94,11 +97,11 @@ export default function ArchivePage() {
             const yearTotal = months.reduce((total, month) => total + groupedPosts[year][month].length, 0);
 
             return (
-              <section key={year} id={year} className="relative grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
+              <section key={year} id={year} className="relative grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-8 md:gap-16">
                 {/* Year Marker */}
                 <div className="relative">
                   <div className="sticky top-24 lg:top-32 text-left md:text-right">
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-muted/50">
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-muted">
                       {year}
                     </h2>
                     <span className="block text-xs font-bold uppercase tracking-widest text-muted mt-2">
@@ -108,7 +111,7 @@ export default function ArchivePage() {
                 </div>
                 
                 {/* Content Timeline */}
-                <div className="relative border-l-2 border-ink/[0.08] pl-8 md:pl-12 space-y-16">
+                <div className="relative border-l-2 border-line-strong pl-8 md:pl-12 space-y-16">
                   {months.map((month) => {
                     const monthPosts = groupedPosts[year][month];
                     return (
@@ -118,7 +121,7 @@ export default function ArchivePage() {
                         
                         <h3 className="text-base font-sans font-bold uppercase tracking-widest text-accent mb-8">
                           {getMonthName(Number(month))}
-                          <span className="ml-2 inline-flex items-center text-[10px] font-mono text-muted/60 bg-ink/[0.05] rounded px-1.5 py-0.5 align-middle leading-none">
+                          <span className="ml-2 inline-flex items-center text-[10px] font-mono text-muted bg-surface-soft rounded px-1.5 py-0.5 align-middle leading-none">
                             {monthPosts.length}
                           </span>
                         </h3>
@@ -129,8 +132,9 @@ export default function ArchivePage() {
                             return (
                               <li key={post.slug} className="group">
                                 <Link
+                                  prefetch={false}
                                   href={getPostUrl(post)}
-                                  className="block no-underline rounded-lg px-2 -mx-2 py-1 -my-1 hover:bg-ink/[0.03] transition-colors"
+                                  className="block no-underline rounded-lg px-2 -mx-2 py-1 -my-1 hover:bg-surface-faint transition-colors"
                                 >
                                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6">
                                     <div className="flex items-baseline gap-6 min-w-0 flex-1">
@@ -154,7 +158,7 @@ export default function ArchivePage() {
                                     {showAuthors && post.authors.length > 0 && (
                                       <span 
                                         title={post.authors.join(', ')}
-                                        className="text-sm font-sans italic text-muted/60 hidden sm:block max-w-[12rem] md:max-w-[16rem] lg:max-w-[20rem] truncate text-right shrink-0"
+                                        className="text-sm font-sans italic text-muted hidden sm:block max-w-[12rem] md:max-w-[16rem] lg:max-w-[20rem] truncate text-right shrink-0"
                                       >
                                         {post.authors.join(', ')}
                                       </span>

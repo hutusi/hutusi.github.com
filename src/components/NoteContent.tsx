@@ -3,8 +3,10 @@
 import { useState, useMemo } from 'react';
 import { useLanguage } from '@/components/LanguageProvider';
 import Link from 'next/link';
+import { getNoteUrl, localizeUrl } from '@/lib/urls';
 import Tag from '@/components/Tag';
 import Pagination from '@/components/Pagination';
+import { metaLabel } from '@/lib/ui-classes';
 
 interface NoteItem {
   slug: string;
@@ -25,7 +27,7 @@ interface NoteContentProps {
 }
 
 export default function NoteContent({ notes, tags, pagination }: NoteContentProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   const filteredNotes = useMemo(() => {
@@ -43,10 +45,10 @@ export default function NoteContent({ notes, tags, pagination }: NoteContentProp
     <div className="flex gap-10">
       {/* Tag sidebar */}
       <aside className="hidden lg:block sticky top-20 self-start w-[280px] shrink-0">
-        <div className="border border-ink/[0.07] bg-ink/[0.015] rounded-lg p-4 space-y-1">
+        <div className="border border-line bg-surface-faint rounded-lg p-4 space-y-1">
           {sortedTags.length > 0 && (
             <>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-muted mb-3">{t('tags')}</p>
+              <p className={`${metaLabel('muted')} mb-3`}>{t('tags')}</p>
               <button
                 onClick={() => setSelectedTag(null)}
                 className={`block w-full text-left text-sm px-2 py-1 rounded transition-colors ${!selectedTag ? 'text-accent font-medium' : 'text-muted hover:text-foreground'}`}
@@ -75,7 +77,7 @@ export default function NoteContent({ notes, tags, pagination }: NoteContentProp
             <span>{filteredNotes.length} / {notes.length}</span>
             <button
               onClick={() => setSelectedTag(null)}
-              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-ink/[0.08] text-xs hover:border-accent hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-line-strong text-xs hover:border-accent hover:text-accent transition-colors"
             >
               ✕ {t('clear')}
             </button>
@@ -87,11 +89,11 @@ export default function NoteContent({ notes, tags, pagination }: NoteContentProp
         ) : (
           <div className="space-y-0">
             {filteredNotes.map(note => (
-              <article key={note.slug} className="relative pl-6 pb-8 border-l-2 border-ink/[0.08] last:pb-0">
+              <article key={note.slug} className="relative pl-6 pb-8 border-l-2 border-line-strong last:pb-0">
                 <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent" />
                 <time className="text-xs font-mono text-accent">{note.date}</time>
                 <h3 className="mt-1 mb-2 font-serif text-xl font-bold text-heading">
-                  <Link href={`/notes/${note.slug}`} className="no-underline hover:text-accent transition-colors">
+                  <Link href={localizeUrl(getNoteUrl(note.slug), language)} className="no-underline hover:text-accent transition-colors">
                     {note.title}
                   </Link>
                 </h3>

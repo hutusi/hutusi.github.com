@@ -33,7 +33,7 @@ export default function FlowStream({ flows, slugRegistry, pagination }: FlowStre
 
   return (
     <div>
-      <div className="relative border-l-2 border-ink/[0.08] pl-6 sm:pl-10 space-y-12">
+      <div className="relative border-l-2 border-line-strong pl-6 sm:pl-10 space-y-12">
         {groups.map(group => {
           const [groupYear, groupMonth] = group.key.split('-');
           return (
@@ -50,7 +50,7 @@ export default function FlowStream({ flows, slugRegistry, pagination }: FlowStre
                 .filter(seg => seg.text.trim().length > 0)
                 .map((seg, i) => (
                   <Fragment key={i}>
-                    {/* Dot separator (PostCard meta vocabulary) makes the two
+                    {/* Dot separator (card meta vocabulary) makes the two
                         click targets visibly distinct; spacing comes from its
                         margins, so segment texts render trimmed. */}
                     {i > 0 && <MetaDot className="mx-2 inline-block align-middle" />}
@@ -66,7 +66,7 @@ export default function FlowStream({ flows, slugRegistry, pagination }: FlowStre
                     )}
                   </Fragment>
                 ))}
-              <span className="ml-2 inline-flex items-center text-[10px] font-mono text-muted bg-ink/[0.05] rounded px-1.5 py-0.5 align-middle leading-none">
+              <span className="ml-2 inline-flex items-center text-[10px] font-mono text-muted bg-surface-soft rounded px-1.5 py-0.5 align-middle leading-none">
                 {group.flows.length}
               </span>
             </h2>
@@ -83,7 +83,7 @@ export default function FlowStream({ flows, slugRegistry, pagination }: FlowStre
                       >
                         {flow.date}
                       </time>
-                      <span className="ml-2 text-xs text-muted/60">
+                      <span className="ml-2 text-xs text-muted">
                         {weekdayFmt.format(new Date(`${flow.date}T00:00:00Z`))}
                       </span>
                     </Link>
@@ -93,7 +93,7 @@ export default function FlowStream({ flows, slugRegistry, pagination }: FlowStre
                       href={getFlowUrl(flow.slug)}
                       tabIndex={-1}
                       aria-hidden="true"
-                      className="shrink-0 no-underline text-base leading-none text-muted/40 hover:text-accent transition-colors"
+                      className="shrink-0 no-underline text-base leading-none text-muted hover:text-accent transition-colors"
                     >
                       →
                     </Link>
@@ -115,10 +115,11 @@ export default function FlowStream({ flows, slugRegistry, pagination }: FlowStre
                   slug={`flows/${flow.slug}`}
                   slugRegistry={slugRegistry}
                   headingIdPrefix={`f-${flow.slug.replaceAll('/', '-')}-`}
+                  headingAnchors={false}
                 />
 
                 {flow.tags.length > 0 && (
-                  <div className="mt-6 border-t border-ink/[0.05] pt-4 flex flex-wrap gap-2">
+                  <div className="mt-6 border-t border-line pt-4 flex flex-wrap gap-2">
                     {flow.tags.map(tag => (
                       <Tag key={tag} tag={tag} variant="compact" />
                     ))}

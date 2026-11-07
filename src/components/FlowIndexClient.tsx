@@ -20,17 +20,22 @@ interface FlowIndexClientProps {
   /** Breadcrumb node rendered at the top of the calendar sidebar (archives). */
   breadcrumb?: ReactNode;
   /** Initial month shown by the calendar (archives). */
-  currentDate?: string;
+  /** Month the calendar opens on (YYYY-MM). */
+  initialMonth?: string;
 }
 
-export default function FlowIndexClient({ allFlows, entryDates, tags, feed, breadcrumb, currentDate }: FlowIndexClientProps) {
+export default function FlowIndexClient({ allFlows, entryDates, tags, feed, breadcrumb, initialMonth }: FlowIndexClientProps) {
   const { t } = useLanguage();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  const filteredFlows = useMemo(
-    () => (selectedTag ? allFlows.filter(f => f.tags.includes(selectedTag)) : allFlows),
-    [allFlows, selectedTag],
-  );
+  // Sidebar tag keys are lowercased by getFlowTags() while flow items carry
+  // raw-case tags, so the match must be case-insensitive (same semantics as
+  // getFlowsByTag).
+  const filteredFlows = useMemo(() => {
+    if (!selectedTag) return allFlows;
+    const wanted = selectedTag.toLowerCase();
+    return allFlows.filter(f => f.tags.some(t => t.toLowerCase() === wanted));
+  }, [allFlows, selectedTag]);
 
   function handleTagSelect(tag: string) {
     setSelectedTag(prev => (prev === tag ? null : tag));
@@ -42,7 +47,7 @@ export default function FlowIndexClient({ allFlows, entryDates, tags, feed, brea
     <div className="flex gap-10">
       <FlowCalendarSidebar
         entryDates={entryDates}
-        currentDate={currentDate}
+        initialMonth={initialMonth}
         tags={tags}
         selectedTag={selectedTag}
         onTagSelect={handleTagSelect}
@@ -62,8 +67,8 @@ export default function FlowIndexClient({ allFlows, entryDates, tags, feed, brea
                     onClick={() => handleTagSelect(tag)}
                     className={`shrink-0 inline-flex items-center gap-1 px-2.5 py-1 text-xs rounded-full border transition-colors ${
                       selectedTag === tag
-                        ? 'bg-accent text-white border-accent'
-                        : 'border-ink/[0.08] text-muted hover:border-accent hover:text-accent'
+                        ? 'bg-accent text-accent-contrast border-accent'
+                        : 'border-line-strong text-muted hover:border-accent hover:text-accent'
                     }`}
                   >
                     {tag}
@@ -82,7 +87,7 @@ export default function FlowIndexClient({ allFlows, entryDates, tags, feed, brea
               </span>
               <button
                 onClick={() => setSelectedTag(null)}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-ink/[0.08] text-xs hover:border-accent hover:text-accent transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-line-strong text-xs hover:border-accent hover:text-accent transition-colors"
               >
                 ✕ {t('clear')}
               </button>

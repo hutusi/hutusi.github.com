@@ -1,9 +1,23 @@
 import fs from 'fs';
 import path from 'path';
+import { slugifyAscii } from './lib/slug';
+import { ensureDir, exitIfExists, extPair, isoDateStamp, writeContentFile, yamlDoubleQuoted } from './lib/content-file';
 
 const args = process.argv.slice(2);
 const valuedFlags = ['--template', '--prefix', '--series'];
-const title = args.filter(arg => !arg.startsWith('--') && !valuedFlags.includes(args[args.indexOf(arg) - 1]))[0];
+// First positional arg wins; walk the list and skip each valued flag together
+// with its value. (An indexOf-based lookback misfired whenever the title
+// string equaled a flag's value — `bun run new-weekly weekly` rejected the
+// title because indexOf found the `--prefix weekly` occurrence first.)
+let title = '';
+for (let i = 0; i < args.length; i++) {
+  if (args[i].startsWith('--')) {
+    if (valuedFlags.includes(args[i])) i++;
+    continue;
+  }
+  title = args[i];
+  break;
+}
 const templateArgIndex = args.indexOf('--template');
 const templateName = templateArgIndex > -1 ? args[templateArgIndex + 1] : 'default';
 const prefixArgIndex = args.indexOf('--prefix');
@@ -19,13 +33,10 @@ if (!title) {
   process.exit(1);
 }
 
-const slug = title
-  .toLowerCase()
-  .replace(/[^a-z0-9]+/g, '-')
-  .replace(/(^-|-$)+/g, '');
+const slug = slugifyAscii(title);
 
-const date = new Date().toISOString().split('T')[0];
-const ext = useMd ? '.md' : '.mdx';
+const date = isoDateStamp();
+const { ext } = extPair(useMd);
 const prefixedSlug = prefix ? `${prefix}-${slug}` : slug;
 let targetPath = '';
 
@@ -38,9 +49,7 @@ if (series) {
   }
   if (useFolder) {
     const dirPath = path.join(seriesDir, prefixedSlug);
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(dirPath, { recursive: true });
-    }
+    ensureDir(dirPath);
     fs.mkdirSync(path.join(dirPath, 'images'), { recursive: true });
     targetPath = path.join(dirPath, `index${ext}`);
   } else {
@@ -49,9 +58,7 @@ if (series) {
 } else if (useFolder) {
   const dirName = `${date}-${prefixedSlug}`;
   const dirPath = path.join(process.cwd(), 'content', 'posts', dirName);
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
+  ensureDir(dirPath);
   fs.mkdirSync(path.join(dirPath, 'images'), { recursive: true });
   targetPath = path.join(dirPath, `index${ext}`);
 } else {
@@ -87,12 +94,15 @@ Write your content here...
 `;
 }
 
-content = content.replace(/{{title}}/g, title).replace(/{{date}}/g, date);
+// Function replacer: with a plain string, $-patterns in the title ($&, $',
+// $1…) are interpreted as replace() back-references and corrupt the output.
+// Templates wrap {{title}} in a double-quoted YAML scalar, so escape for
+// that context (create-amytis guards the same footgun). NOTE: custom
+// templates must also keep {{title}} inside a double-quoted scalar —
+// yamlDoubleQuoted's backslash escapes are only valid in "…" YAML.
+const safeTitle = yamlDoubleQuoted(title);
+content = content.replace(/{{title}}/g, () => safeTitle).replace(/{{date}}/g, date);
 
-if (fs.existsSync(targetPath)) {
-  console.error(`Error: Post already exists at ${targetPath}`);
-  process.exit(1);
-}
+exitIfExists(targetPath, 'post');
 
-fs.writeFileSync(targetPath, content);
-console.log(`Created new post: ${targetPath}`);
+writeContentFile(targetPath, content, 'post');

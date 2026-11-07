@@ -11,6 +11,8 @@ import FlowIndexClient from '@/components/FlowIndexClient';
 import FlowStream from '@/components/FlowStream';
 import PageHeader from '@/components/PageHeader';
 
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
+
 const PAGE_SIZE = siteConfig.pagination.flows;
 
 export function generateStaticParams() {
@@ -24,7 +26,7 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }: { params: Promise<{ page: string }> }): Promise<Metadata> {
   const { page } = await params;
   const totalPages = Math.ceil(getAllFlows().length / PAGE_SIZE);
-  return createListingMetadata({ titleKey: 'flow', page: parseInt(page, 10), totalPages });
+  return createListingMetadata({ locale: DEFAULT_LOCALE, titleKey: 'flow', page: parseInt(page, 10), totalPages });
 }
 
 export default async function FlowsPaginatedPage({ params }: { params: Promise<{ page: string }> }) {

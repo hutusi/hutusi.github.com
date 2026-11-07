@@ -12,24 +12,29 @@ import SelectedBooksSection, { BookItem } from '@/components/SelectedBooksSectio
 import LatestWritingSection from '@/components/LatestWritingSection';
 import RecentNotesSection, { RecentNoteItem } from '@/components/RecentNotesSection';
 import { Metadata } from 'next';
-import { t, resolveLocale } from '@/lib/i18n';
+import { getTranslator, resolveLocaleValue } from '@/lib/i18n';
 import { buildWebsiteJsonLd, serializeJsonLd } from '@/lib/json-ld';
+import { siteTwitterHandles } from '@/lib/metadata';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
+const { t } = getTranslator(DEFAULT_LOCALE);
 
 export const metadata: Metadata = {
-  title: resolveLocale(siteConfig.title),
-  description: resolveLocale(siteConfig.description),
+  title: resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE),
+  description: resolveLocaleValue(siteConfig.description, DEFAULT_LOCALE),
   openGraph: {
-    title: resolveLocale(siteConfig.title),
-    description: resolveLocale(siteConfig.description),
-    siteName: resolveLocale(siteConfig.title),
+    title: resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE),
+    description: resolveLocaleValue(siteConfig.description, DEFAULT_LOCALE),
+    siteName: resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE),
     url: siteConfig.baseUrl,
     type: 'website',
     images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: resolveLocale(siteConfig.title),
-    description: resolveLocale(siteConfig.description),
+    title: resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE),
+    description: resolveLocaleValue(siteConfig.description, DEFAULT_LOCALE),
+    ...siteTwitterHandles(),
   },
 };
 
@@ -165,7 +170,7 @@ export default function Home() {
         );
       case 'latest-posts':
         if (!isFeatureEnabled('posts')) return null;
-        return <div key="latest-posts" className="mb-12 sm:mb-24"><LatestWritingSection posts={posts} /></div>;
+        return <div key="latest-posts" className="mb-12 sm:mb-24"><LatestWritingSection posts={posts} locale={DEFAULT_LOCALE} /></div>;
       case 'recent-flows':
         if (!isFeatureEnabled('flow')) return null;
         return <div key="recent-flows" className="mb-12 sm:mb-24"><RecentNotesSection notes={recentNoteItems} /></div>;
@@ -201,7 +206,7 @@ export default function Home() {
           <div key="latest-flows-combined" className={`grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 ${divideBeforeSeries ? 'mb-8 sm:mb-16' : 'mb-12 sm:mb-24'}`}>
             {showLatest && (
               <div className="lg:col-span-7">
-                <LatestWritingSection posts={posts} />
+                <LatestWritingSection posts={posts} locale={DEFAULT_LOCALE} />
               </div>
             )}
             {showFlows && (
@@ -213,7 +218,7 @@ export default function Home() {
         );
         if (divideBeforeSeries) {
           renderList.push(
-            <div key="series-divider" className="border-t border-ink/[0.05] mb-8 sm:mb-16" />
+            <div key="series-divider" className="border-t border-line mb-8 sm:mb-16" />
           );
         }
       }
@@ -223,9 +228,10 @@ export default function Home() {
   }
 
   const websiteJsonLd = buildWebsiteJsonLd({
-    siteTitle: resolveLocale(siteConfig.title),
+    siteTitle: resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE),
     siteUrl: siteConfig.baseUrl,
-    description: resolveLocale(siteConfig.description),
+    description: resolveLocaleValue(siteConfig.description, DEFAULT_LOCALE),
+    inLanguage: DEFAULT_LOCALE,
   });
 
   return (

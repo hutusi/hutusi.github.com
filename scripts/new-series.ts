@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import GithubSlugger from 'github-slugger';
+import { slugifyGithub } from './lib/slug';
+import { isoDateStamp, yamlDoubleQuoted } from './lib/content-file';
 
 const args = process.argv.slice(2);
 const title = args[0];
@@ -11,8 +12,7 @@ if (!title) {
   process.exit(1);
 }
 
-const slugger = new GithubSlugger();
-const slug = slugger.slug(title);
+const slug = slugifyGithub(title);
 const seriesDir = path.join(process.cwd(), 'content', 'series', slug);
 
 if (fs.existsSync(seriesDir)) {
@@ -23,11 +23,11 @@ if (fs.existsSync(seriesDir)) {
 fs.mkdirSync(seriesDir, { recursive: true });
 fs.mkdirSync(path.join(seriesDir, 'images'));
 
-const date = new Date().toISOString().split('T')[0];
+const date = isoDateStamp();
 
 const content = `---
-title: "${title}"
-excerpt: "A description for ${title}."
+title: "${yamlDoubleQuoted(title)}"
+excerpt: "A description for ${yamlDoubleQuoted(title)}."
 date: "${date}"
 coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
 ---

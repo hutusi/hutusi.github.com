@@ -1,16 +1,15 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import CoverImage from './CoverImage';
 import HorizontalScroll from './HorizontalScroll';
 import SectionHeading from './ui/SectionHeading';
 import { useLanguage } from './LanguageProvider';
-import { shuffle } from '@/lib/shuffle';
+import { shuffle, shuffleSeeded, seedFromKeys } from '@/lib/shuffle';
 import { byDateAsc, byDateDesc } from '@/lib/sort';
 import { getBooksListUrl, getBookUrl, getBookChapterUrl } from '@/lib/urls';
-import { cn } from '@/lib/cn';
-import { COVER_ZOOM } from '@/lib/ui-classes';
+import { COVER_ZOOM_SLOW } from '@/lib/ui-classes';
 
 export interface BookItem {
   slug: string;
@@ -31,26 +30,20 @@ interface SelectedBooksSectionProps {
   order?: BookOrder;
 }
 
-function canonicalOrder(books: BookItem[], order: BookOrder): BookItem[] {
+// For 'shuffle', a seeded permutation keyed off the content so server and client
+// render the same order — no post-hydration swap. The user re-rolls to a fresh
+// random order via the shuffle control.
+function initialOrder(books: BookItem[], order: BookOrder): BookItem[] {
   if (order === 'date-desc') return [...books].sort(byDateDesc);
   if (order === 'date-asc')  return [...books].sort(byDateAsc);
-  // For 'shuffle': SSR-stable canonical order (input is already date-desc from getAllBooks).
-  // The post-mount useEffect swaps to a random permutation on the client.
-  return books;
+  return shuffleSeeded(books, seedFromKeys(books.map(b => b.slug)));
 }
 
 export default function SelectedBooksSection({ books, maxItems = 4, order = 'shuffle' }: SelectedBooksSectionProps) {
   const { t } = useLanguage();
-  const [displayed, setDisplayed] = useState(() => canonicalOrder(books, order).slice(0, maxItems));
-
-  // Shuffle on mount so every reload re-rolls. SSR's canonical render is stable; the
-  // post-hydration swap is the intentional client-only behaviour, not a sync issue.
-  useEffect(() => {
-    if (order === 'shuffle') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setDisplayed(shuffle(books).slice(0, maxItems));
-    }
-  }, [books, maxItems, order]);
+  // Seeded shuffle is stable across the SSR/hydration boundary, so the initial
+  // order is computed once and never swapped after mount.
+  const [displayed, setDisplayed] = useState(() => initialOrder(books, order).slice(0, maxItems));
 
   const handleShuffle = useCallback(() => {
     setDisplayed(shuffle(books).slice(0, maxItems));
@@ -82,7 +75,7 @@ export default function SelectedBooksSection({ books, maxItems = 4, order = 'shu
       </div>
       <HorizontalScroll>
         <div className={`flex gap-8 ${displayed.length > 1 ? 'pb-4' : ''}`}>
-          {displayed.map((book, idx) => (
+          {displayed.map((book) => (
             <div
               key={book.slug}
               className={`card-base group flex flex-col p-0 overflow-hidden snap-start ${
@@ -91,13 +84,14 @@ export default function SelectedBooksSection({ books, maxItems = 4, order = 'shu
                   : 'flex-1 md:max-w-[calc(50%-1rem)]'
               }`}
             >
-              <Link href={getBookUrl(book.slug)} className="relative h-44 w-full overflow-hidden bg-ink/[0.04] block focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-inset">
+              {/* Duplicate of the title link below: kept out of the Tab order and the a11y tree. */}
+              <Link href={getBookUrl(book.slug)} tabIndex={-1} aria-hidden="true" className="relative h-44 w-full overflow-hidden bg-surface-soft block">
                 <CoverImage
                   src={book.coverImage}
                   title={book.title}
                   slug={book.slug}
-                  className={cn(COVER_ZOOM, 'duration-700')}
-                  loading={idx === 0 ? 'eager' : undefined}
+                  className={COVER_ZOOM_SLOW}
+                  sizes="(min-width: 1200px) 536px, (min-width: 768px) 50vw, 85vw"
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               </Link>
@@ -108,7 +102,7 @@ export default function SelectedBooksSection({ books, maxItems = 4, order = 'shu
                   </span>
                 </div>
                 <h3 className="mb-2 font-serif text-2xl font-bold text-heading group-hover:text-accent transition-colors line-clamp-2">
-                  <Link href={getBookUrl(book.slug)} className="no-underline focus:outline-none focus:text-accent">
+                  <Link href={getBookUrl(book.slug)} className="no-underline focus-visible:text-accent">
                     {book.title}
                   </Link>
                 </h3>
@@ -123,7 +117,7 @@ export default function SelectedBooksSection({ books, maxItems = 4, order = 'shu
                   </p>
                 )}
                 {book.firstChapter && (
-                  <div className="mt-auto pt-6 border-t border-ink/[0.05]">
+                  <div className="mt-auto pt-6 border-t border-line">
                     <Link
                       href={getBookChapterUrl(book.slug, book.firstChapter)}
                       className="text-sm font-sans font-bold text-accent flex items-center gap-1.5 no-underline hover:gap-2.5 transition-all"

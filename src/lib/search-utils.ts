@@ -1,7 +1,20 @@
 export type ContentType = 'All' | 'Post' | 'Flow' | 'Book' | 'Note';
+export type ResultType = Exclude<ContentType, 'All'>;
+
+/**
+ * The Pagefind filter carrying each indexed page's type: every
+ * data-pagefind-body surface marks `data-pagefind-filter="type:<ResultType>"`.
+ */
+export const SEARCH_TYPE_FILTER = 'type';
+
+const RESULT_TYPES: readonly string[] = ['Post', 'Flow', 'Book', 'Note'] satisfies ResultType[];
+
+export function isResultType(value: string): value is ResultType {
+  return RESULT_TYPES.includes(value);
+}
 
 /** Derive content type from a Pagefind result URL. */
-export function getResultType(url: string): Exclude<ContentType, 'All'> {
+export function getResultType(url: string): ResultType {
   if (url.includes('/flows/')) return 'Flow';
   if (url.includes('/books/')) return 'Book';
   if (url.includes('/notes/')) return 'Note';
@@ -18,6 +31,32 @@ export function getDateFromUrl(url: string): string {
 export function cleanTitle(raw: string): string {
   const i = raw.lastIndexOf(' | ');
   return i >= 0 ? raw.slice(0, i) : raw;
+}
+
+/**
+ * Parse and validate the persisted recent-searches list. Malformed or tampered
+ * storage (e.g. '[{}]', '{"a":1}') can still JSON.parse successfully but would
+ * render objects as list children; keep only strings and cap the length.
+ */
+export function parseRecentSearches(raw: string | null, max: number): string[] {
+  try {
+    const parsed = JSON.parse(raw || '[]');
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((s): s is string => typeof s === 'string').slice(0, max);
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Resolve an Alt+digit tab hotkey against the currently visible type tabs.
+ * Every visible tab advertises an ⌥N hint, so every advertised N must resolve
+ * — bounds come from the visible list, never a hardcoded digit set (the tab
+ * count varies with enabled features and per-query result counts).
+ */
+export function resolveTypeHotkey(key: string, visibleTypes: ContentType[]): ContentType | undefined {
+  if (!/^[1-9]$/.test(key)) return undefined;
+  return visibleTypes[parseInt(key, 10) - 1];
 }
 
 /** Strip markdown/MDX syntax to plain text for full-content indexing. */

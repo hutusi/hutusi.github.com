@@ -1,7 +1,7 @@
 import GithubSlugger from 'github-slugger';
 import type { PostData } from './types';
 import { createMemo } from './cache';
-import { getAllPosts } from './posts';
+import { getPostsWithLocaleOriginals } from './posts';
 
 /**
  * Author aggregation and author-slug URLs. Author identity is the display
@@ -19,8 +19,28 @@ export function getAuthorSlug(author: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+/**
+ * The /authors/[author] route params: every author's slug, plus the legacy
+ * name-form URL (/authors/Amytis%20Team) that redirects to it — except a
+ * name that differs from a route already taken only by case ("Amytis" next
+ * to the slug "amytis"). On case-insensitive filesystems (macOS, Windows)
+ * those two export to one directory and the last write wins, so the legacy
+ * redirect could replace the real page with a stub that redirects to itself.
+ */
+export function getAuthorRouteParams(authorNames: string[]): string[] {
+  const params = [...new Set(authorNames.map(getAuthorSlug))];
+  const taken = new Set(params.map((param) => param.toLowerCase()));
+  for (const name of authorNames) {
+    const key = name.toLowerCase();
+    if (taken.has(key)) continue;
+    taken.add(key);
+    params.push(name);
+  }
+  return params;
+}
+
 export function getPostsByAuthor(author: string): PostData[] {
-  const allPosts = getAllPosts();
+  const allPosts = getPostsWithLocaleOriginals();
   return allPosts.filter((post) =>
     post.authors.map(a => a.toLowerCase()).includes(author.toLowerCase())
   );
@@ -30,7 +50,7 @@ const allAuthorsMemo = createMemo<Record<string, number>>();
 
 export function getAllAuthors(): Record<string, number> {
   return allAuthorsMemo.get(() => {
-    const allPosts = getAllPosts();
+    const allPosts = getPostsWithLocaleOriginals();
     const authors: Record<string, number> = {};
 
     allPosts.forEach((post) => {

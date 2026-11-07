@@ -74,39 +74,41 @@ function getOverrides(lang: string): Partial<Record<TranslationKey, string>> {
   return _overridesCache[lang];
 }
 
-/**
- * Server-side translation helper.
- * For client components, use the `useLanguage()` hook instead.
- */
-export const t = (key: TranslationKey): string => {
-  const lang = siteConfig.i18n.defaultLocale;
-  const overrides = getOverrides(lang);
-  if (key in overrides) return overrides[key]!;
-  return translations[lang as Language]?.[key] || translations.en[key];
-};
+export interface Translator {
+  t: (key: TranslationKey) => string;
+  tWith: (key: TranslationKey, params: Record<string, string | number>) => string;
+}
 
-export const tWith = (key: TranslationKey, params: Record<string, string | number>): string => {
-  let result = t(key);
-  for (const [k, v] of Object.entries(params)) {
-    result = result.split(`{${k}}`).join(String(v));
-  }
-  return result;
-};
+const _translatorCache: Record<string, Translator> = {};
+
+/**
+ * Server-side translator for an explicit locale. Route files bind the segment
+ * locale; components receive it as a prop. For client components, use the
+ * `useLanguage()` hook instead.
+ */
+export function getTranslator(locale: string): Translator {
+  if (_translatorCache[locale]) return _translatorCache[locale];
+  const overrides = getOverrides(locale);
+  const t = (key: TranslationKey): string => {
+    if (key in overrides) return overrides[key]!;
+    return translations[locale as Language]?.[key] || translations.en[key];
+  };
+  const tWith = (key: TranslationKey, params: Record<string, string | number>): string => {
+    let result = t(key);
+    for (const [k, v] of Object.entries(params)) {
+      result = result.split(`{${k}}`).join(String(v));
+    }
+    return result;
+  };
+  _translatorCache[locale] = { t, tWith };
+  return _translatorCache[locale];
+}
 
 /**
  * Resolve a locale-aware config value given an explicit language.
- * Shared by both server-side resolveLocale() and client-side components.
+ * Shared by server components (via their `locale` prop) and client components.
  */
 export function resolveLocaleValue(value: string | Record<string, string>, lang: string): string {
   if (typeof value === 'string') return value;
   return value[lang] || value.en || Object.values(value)[0] || '';
-}
-
-/**
- * Resolve a config value that may be a plain string or a locale map.
- * Uses the default locale from site config (server-side / build-time).
- * e.g. "Hello" or { en: "Hello", zh: "你好" }
- */
-export function resolveLocale(value: string | Record<string, string>): string {
-  return resolveLocaleValue(value, siteConfig.i18n.defaultLocale);
 }

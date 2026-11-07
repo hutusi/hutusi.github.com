@@ -1,23 +1,137 @@
-import { buildSlugRegistry, getBacklinks } from '@/lib/content/discovery';
-import { getRelatedPosts, getAdjacentPosts } from '@/lib/content/related';
-import { getSeriesPosts, getSeriesData, getCollectionsForPost } from '@/lib/content/series';
-import type { PostData } from '@/lib/content/types';
 import { notFound } from 'next/navigation';
-import PostLayout from '@/layouts/PostLayout';
-import SimpleLayout from '@/layouts/SimpleLayout';
 import { Metadata } from 'next';
 import { siteConfig } from '../../../../site.config';
-import { resolveLocale } from '@/lib/i18n';
-import { getPostUrl } from '@/lib/urls';
+import { resolveImageUrl } from '@/lib/json-ld';
+import { getPostUrl, getPostsBasePath, getStaticPageUrl, isNonDefaultLocale, localizeUrl, withTrailingSlash } from '@/lib/urls';
+import { buildRedirectMetadata, buildArticleMetadata, createListingMetadata, siteOpenGraph, withSiteAlternates } from '@/lib/metadata';
+import { getShareImage } from '@/lib/og-images';
+import { getTranslator, resolveLocaleValue } from '@/lib/i18n';
+import { getPageContentLocales, getPostContentLocales } from '@/lib/content/posts';
 import RedirectPage from '@/components/RedirectPage';
-import { buildPostJsonLd, serializeJsonLd } from '@/lib/json-ld';
+import RenderPostPage from '@/components/RenderPostPage';
+import PostLayout from '@/layouts/PostLayout';
+import SimpleLayout from '@/layouts/SimpleLayout';
+import PostsListingBody from '@/components/page-bodies/PostsListingBody';
+import SeriesPrefixListingBody from '@/components/page-bodies/SeriesPrefixListingBody';
+import SeriesIndexBody from '@/components/page-bodies/SeriesIndexBody';
+import BooksIndexBody from '@/components/page-bodies/BooksIndexBody';
+import NotesIndexBody from '@/components/page-bodies/NotesIndexBody';
 import { prefixedPostParams, resolvePrefixedPost } from '@/lib/route-aliases';
+import { contentSeoUrls, localeSecondLevelParams, resolveLocalizedPath, type LocalizedResolution } from '@/lib/locale-routes';
+import { safeDecodeParam } from '@/lib/route-params';
+import { getAllSeries, getSeriesData } from '@/lib/content/series';
+import { getAllBooks } from '@/lib/content/books';
+import { getAllNotes } from '@/lib/content/notes';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
 
 export async function generateStaticParams() {
-  return prefixedPostParams();
+  return [...prefixedPostParams(), ...localeSecondLevelParams()];
 }
 
 export const dynamicParams = false;
+
+/** Metadata for the /<locale>/<x> surface — mirrors each unprefixed page kind. */
+function localizedMetadata(locale: string, resolution: LocalizedResolution): Metadata {
+  const { t } = getTranslator(locale);
+  switch (resolution?.kind) {
+    case 'page': {
+      // Twin pages canonicalize to the unprefixed URL; zh-only pages self-canonicalize.
+      const seo = contentSeoUrls(
+        localizeUrl(getStaticPageUrl(resolution.page.slug), resolution.page.locale),
+        getPageContentLocales(resolution.page)
+      );
+      return {
+        title: `${resolution.page.title} | ${resolveLocaleValue(siteConfig.title, locale)}`,
+        description: resolution.page.excerpt,
+        openGraph: siteOpenGraph(locale),
+        alternates: withSiteAlternates({ canonical: seo.canonicalUrl, languages: seo.languageAlternates }),
+      };
+    }
+    case 'postsListing':
+      return {
+        title: `${t('posts')} | ${resolveLocaleValue(siteConfig.title, locale)}`,
+        description: t('posts_description'),
+        openGraph: siteOpenGraph(locale),
+      };
+    case 'seriesIndexListing':
+      return createListingMetadata({
+        locale, titleKey: 'series', descriptionKey: 'series_subtitle',
+        count: Object.keys(getAllSeries(locale)).length,
+      });
+    case 'booksListing':
+      return createListingMetadata({
+        locale, titleKey: 'books', descriptionKey: 'books_subtitle',
+        descriptionOneKey: 'books_subtitle_one', count: getAllBooks(locale).length,
+      });
+    case 'notesListing':
+      return createListingMetadata({
+        locale, titleKey: 'notes', descriptionKey: 'notes_subtitle',
+        descriptionOneKey: 'notes_subtitle_one', count: getAllNotes(locale).length,
+      });
+    case 'seriesPrefixListing': {
+      const seriesData = getSeriesData(resolution.seriesSlug, locale);
+      if (!seriesData) return { title: 'Page Not Found' };
+      // Entity OG like the /zh/series/<slug> landing — same series, same
+      // treatment, just the prefix URL form.
+      const siteUrl = siteConfig.baseUrl.replace(/\/+$/, '');
+      const ogImage = resolveImageUrl(seriesData.coverImage, siteConfig.ogImage, siteUrl);
+      const defaultOgImage = resolveImageUrl(undefined, siteConfig.ogImage, siteUrl);
+      const landingUrl = withTrailingSlash(`${siteUrl}${localizeUrl(`/${resolution.prefix}`, locale)}`);
+      return buildArticleMetadata({
+        locale,
+        title: seriesData.title,
+        titleSuffix: ` - ${t('series')}`,
+        description: seriesData.excerpt,
+        type: 'website',
+        url: landingUrl,
+        canonicalUrl: landingUrl,
+        ogImage,
+        twitterCard: ogImage !== defaultOgImage ? 'summary_large_image' : 'summary',
+      });
+    }
+    default:
+      return { title: 'Page Not Found' };
+  }
+}
+
+/** Body for the /<locale>/<x> surface. */
+function LocalizedSecondLevel({ locale, resolution }: { locale: string; resolution: LocalizedResolution }) {
+  switch (resolution?.kind) {
+    case 'page': {
+      const page = resolution.page;
+      if ((page.layout || 'simple') === 'post') {
+        return <PostLayout post={page} locale={locale} commentCategory="staticPages" />;
+      }
+      return <SimpleLayout post={page} />;
+    }
+    case 'postsListing':
+      return (
+        <PostsListingBody
+          locale={locale}
+          page={resolution.page}
+          paginationBasePath={localizeUrl(`/${getPostsBasePath()}`, locale)}
+        />
+      );
+    case 'seriesIndexListing':
+      return <SeriesIndexBody locale={locale} />;
+    case 'booksListing':
+      return <BooksIndexBody locale={locale} />;
+    case 'notesListing':
+      return <NotesIndexBody locale={locale} page={resolution.page} />;
+    case 'seriesPrefixListing':
+      return (
+        <SeriesPrefixListingBody
+          locale={locale}
+          seriesSlug={resolution.seriesSlug}
+          prefix={resolution.prefix}
+          page={resolution.page}
+        />
+      );
+    default:
+      notFound();
+  }
+}
 
 export async function generateMetadata({
   params,
@@ -25,6 +139,12 @@ export async function generateMetadata({
   params: Promise<{ slug: string; postSlug: string }>;
 }): Promise<Metadata> {
   const { slug: prefix, postSlug: rawPostSlug } = await params;
+
+  const localeSlug = safeDecodeParam(prefix);
+  if (isNonDefaultLocale(localeSlug)) {
+    return localizedMetadata(localeSlug, resolveLocalizedPath(localeSlug, [rawPostSlug]));
+  }
+
   const resolution = resolvePrefixedPost(prefix, rawPostSlug);
 
   if (!resolution) {
@@ -32,47 +152,26 @@ export async function generateMetadata({
   }
 
   const { post } = resolution;
-  const siteUrl = siteConfig.baseUrl.replace(/\/+$/, '');
 
   // For redirect pages, return minimal metadata pointing to the canonical URL
   if (resolution.kind === 'redirect') {
-    return {
-      title: post.title,
-      alternates: { canonical: `${siteUrl}${resolution.to}` },
-    };
+    return buildRedirectMetadata({ title: post.title, to: resolution.to });
   }
 
-  const ogImage =
-    post.coverImage && !post.coverImage.startsWith('text:') && !post.coverImage.startsWith('./')
-      ? post.coverImage
-      : siteConfig.ogImage;
-
-  return {
-    title: `${post.title} | ${resolveLocale(siteConfig.title)}`,
+  // Twins canonicalize to the unprefixed URL with reciprocal hreflang;
+  // single-locale posts keep their plain self-canonical (byte-identical).
+  const seo = contentSeoUrls(getPostUrl(post), getPostContentLocales(post));
+  return buildArticleMetadata({
+    locale: DEFAULT_LOCALE,
+    title: post.title,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: 'article',
-      publishedTime: post.date,
-      authors: post.authors,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-      siteName: resolveLocale(siteConfig.title),
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: [ogImage],
-    },
-  };
+    publishedTime: post.date,
+    authors: post.authors,
+    canonicalUrl: seo.canonicalUrl,
+    languageAlternates: seo.languageAlternates,
+    ogImage: getShareImage({ kind: 'post', pagePath: getPostUrl(post), coverImage: post.coverImage }).url,
+    twitterCard: 'summary_large_image',
+  });
 }
 
 export default async function PrefixPostPage({
@@ -81,6 +180,14 @@ export default async function PrefixPostPage({
   params: Promise<{ slug: string; postSlug: string }>;
 }) {
   const { slug: prefix, postSlug: rawPostSlug } = await params;
+
+  const localeSlug = safeDecodeParam(prefix);
+  if (isNonDefaultLocale(localeSlug)) {
+    const localized = resolveLocalizedPath(localeSlug, [rawPostSlug]);
+    if (!localized) notFound();
+    return <LocalizedSecondLevel locale={localeSlug} resolution={localized} />;
+  }
+
   const resolution = resolvePrefixedPost(prefix, rawPostSlug);
   if (!resolution) {
     notFound();
@@ -91,51 +198,5 @@ export default async function PrefixPostPage({
     return <RedirectPage to={resolution.to} />;
   }
 
-  const post = resolution.post;
-  const layout = post.layout || 'post';
-
-  const siteUrl = siteConfig.baseUrl.replace(/\/+$/, '');
-  const jsonLd = buildPostJsonLd({
-    post,
-    postUrl: `${siteUrl}${getPostUrl(post)}`,
-    siteTitle: resolveLocale(siteConfig.title),
-    siteUrl,
-    defaultOgImage: siteConfig.ogImage,
-  });
-  const jsonLdScript = <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />;
-
-  if (layout === 'simple') {
-    return <>{jsonLdScript}<SimpleLayout post={post} /></>;
-  }
-
-  const relatedPosts = getRelatedPosts(post.slug);
-  const { prev, next } = getAdjacentPosts(post.slug);
-  const slugRegistry = buildSlugRegistry();
-  const backlinks = getBacklinks(post.slug);
-  const collectionContexts = getCollectionsForPost(post.slug);
-  let seriesPosts: PostData[] = [];
-  let seriesTitle: string | undefined;
-
-  if (post.series) {
-    seriesPosts = getSeriesPosts(post.series);
-    const seriesData = getSeriesData(post.series);
-    seriesTitle = seriesData?.title;
-  }
-
-  return (
-    <>
-      {jsonLdScript}
-      <PostLayout
-        post={post}
-        relatedPosts={relatedPosts}
-        seriesPosts={seriesPosts}
-        seriesTitle={seriesTitle}
-        collectionContexts={collectionContexts}
-        prevPost={prev}
-        nextPost={next}
-        backlinks={backlinks}
-        slugRegistry={slugRegistry}
-      />
-    </>
-  );
+  return <RenderPostPage post={resolution.post} locale={DEFAULT_LOCALE} />;
 }

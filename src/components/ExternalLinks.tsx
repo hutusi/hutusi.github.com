@@ -14,7 +14,7 @@ export default function ExternalLinks({ links }: ExternalLinksProps) {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 print:hidden">
       <h3 className="text-sm font-sans font-semibold uppercase tracking-widest text-muted mb-4">
         {t('discuss_post')}
       </h3>
@@ -25,7 +25,7 @@ export default function ExternalLinks({ links }: ExternalLinksProps) {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-ink/[0.07] bg-ink/[0.02] text-foreground hover:border-accent/50 hover:bg-accent/5 hover:text-accent transition-all duration-200 no-underline"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-line bg-surface-faint text-foreground hover:border-accent/50 hover:bg-accent/5 hover:text-accent transition-all duration-200 no-underline"
           >
             <span>{link.name}</span>
             <svg

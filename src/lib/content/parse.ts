@@ -7,9 +7,10 @@ import { extractContentMetrics } from '../text-metrics';
 import { parseRstDocument, RstParseError } from '../rst';
 import { renderRstFile, renderRstFilesBatch, type RenderedRstDocument } from '../rst-renderer';
 import type { PostData, CollectionItem, Heading } from './types';
-import { contentDirectory, readUtf8File } from './io';
+import { domainDir, treePathFor, readUtf8File } from './io';
 import { getSeriesAuthors, getSeriesTitle } from './series-metadata';
-import { dateField, draftField, tagsField } from './schema';
+import { normalizeCoverImage } from './cover-image';
+import { dateField, draftField, tagsField, invalidFrontmatterError } from './schema';
 
 /**
  * Frontmatter validation and file→PostData parsing for Markdown and rST
@@ -76,6 +77,34 @@ export const PostSchema = z.object({
   }
 });
 
+/**
+ * Shared author-resolution chain for posts: an explicit `authors` array wins
+ * (including an explicitly-empty one — `authors: []` means "no byline"),
+ * then a single `author` string, then the series' authors when the post
+ * belongs to one, then the site-wide default
+ * (`siteConfig.posts.authors.default`). Callers whose source format treats a
+ * present-but-empty authors list as "not specified" (rST) must normalize it
+ * to `undefined` before calling.
+ */
+function resolveContentAuthors(
+  frontmatter: { authors?: string[]; author?: string },
+  seriesSlug: string | undefined,
+  locale: string,
+): string[] {
+  if (frontmatter.authors) return frontmatter.authors;
+  if (frontmatter.author) return [frontmatter.author];
+  if (seriesSlug) {
+    const seriesAuthors = getSeriesAuthors(seriesSlug, locale);
+    if (seriesAuthors) return seriesAuthors;
+  }
+  return siteConfig.posts?.authors?.default ?? [];
+}
+
+/** Public-asset prefix for a locale tree: '' for the default, 'zh/' for content/zh/. */
+function localeAssetPrefix(locale: string): string {
+  return locale === siteConfig.i18n.defaultLocale ? '' : `${locale}/`;
+}
+
 let pythonRstRendererAvailable: boolean | null = null;
 
 const PYTHON_RUNTIME_UNAVAILABLE_PATTERN = /docutils|No module named|python(?:3)? .*not found|interpreter not found|ENOENT.*python/i;
@@ -87,10 +116,11 @@ function isPythonRuntimeUnavailable(error: unknown): boolean {
   return PYTHON_RUNTIME_UNAVAILABLE_PATTERN.test(error.message);
 }
 
-function getRstImageBaseSlug(fullPath: string, slug: string): string {
+function getRstImageBaseSlug(fullPath: string, slug: string, locale: string): string {
   const isRootFlatPost = path.basename(fullPath) !== 'index.rst' &&
-    path.dirname(fullPath) === contentDirectory;
-  return isRootFlatPost ? 'posts' : `posts/${slug}`;
+    path.dirname(fullPath) === domainDir('posts', locale);
+  const prefix = localeAssetPrefix(locale);
+  return isRootFlatPost ? `${prefix}posts` : `${prefix}posts/${slug}`;
 }
 
 function isSeriesIndexRst(fullPath: string, slug: string, seriesName?: string): boolean {
@@ -165,20 +195,27 @@ function shouldUsePythonRstRenderer(): boolean {
   return process.env.NODE_ENV !== 'test';
 }
 
-export function parseMarkdownFile(fullPath: string, slug: string, dateFromFileName?: string, seriesName?: string): PostData {
+export function parseMarkdownFile(
+  fullPath: string,
+  slug: string,
+  dateFromFileName?: string,
+  seriesName?: string,
+  locale: string = siteConfig.i18n.defaultLocale,
+): PostData {
   const fileContents = readUtf8File(fullPath);
   const { data: rawData, content } = matter(fileContents);
-  // Flat files directly in content/posts/ share the posts root public directory for images.
-  // Folder-based posts and series posts each have their own public subdirectory.
+  // Flat files directly in the tree's posts/ dir share the posts root public
+  // directory for images. Folder-based posts and series posts each have their
+  // own public subdirectory. Non-default trees prefix their locale (public/zh/…).
   const isRootFlatPost = path.basename(fullPath) !== 'index.mdx' &&
     path.basename(fullPath) !== 'index.md' &&
-    path.dirname(fullPath) === contentDirectory;
-  const imageBaseSlug = isRootFlatPost ? 'posts' : `posts/${slug}`;
+    path.dirname(fullPath) === domainDir('posts', locale);
+  const assetPrefix = localeAssetPrefix(locale);
+  const imageBaseSlug = isRootFlatPost ? `${assetPrefix}posts` : `${assetPrefix}posts/${slug}`;
 
   const parsed = PostSchema.safeParse(rawData);
   if (!parsed.success) {
-    console.error(`Invalid frontmatter in ${fullPath}:`, parsed.error.format());
-    throw new Error(`Invalid frontmatter in ${fullPath}`);
+    throw invalidFrontmatterError('frontmatter', fullPath, parsed.error);
   }
   const data = parsed.data;
 
@@ -186,26 +223,7 @@ export function parseMarkdownFile(fullPath: string, slug: string, dateFromFileNa
     extractContentMetrics(content);
 
   const effectiveSeriesSlug = data.series || seriesName;
-  let authors: string[] = [];
-  if (data.authors && Array.isArray(data.authors)) {
-    authors = data.authors;
-  } else if (data.author) {
-    authors = [data.author];
-  } else {
-    // Inherit from series if this post belongs to one
-    if (effectiveSeriesSlug) {
-      const seriesAuthors = getSeriesAuthors(effectiveSeriesSlug);
-      if (seriesAuthors) {
-        authors = seriesAuthors;
-      }
-    }
-    if (authors.length === 0) {
-      const defaultAuthors = siteConfig.posts?.authors?.default;
-      if (defaultAuthors && defaultAuthors.length > 0) {
-        authors = defaultAuthors;
-      }
-    }
-  }
+  const authors = resolveContentAuthors(data, effectiveSeriesSlug, locale);
 
   const excerpt = data.excerpt || derivedExcerpt;
 
@@ -213,11 +231,7 @@ export function parseMarkdownFile(fullPath: string, slug: string, dateFromFileNa
   if (!date && dateFromFileName) date = dateFromFileName;
   if (!date) date = fs.statSync(fullPath).mtime.toISOString().split('T')[0];
 
-  let coverImage = data.coverImage;
-  if (coverImage && !coverImage.startsWith('http') && !coverImage.startsWith('/') && !coverImage.startsWith('text:')) {
-    const cleanPath = coverImage.replace(/^\.\//, '');
-    coverImage = `/${imageBaseSlug}/${cleanPath}`;
-  }
+  const coverImage = normalizeCoverImage(data.coverImage, `/${imageBaseSlug}`);
 
   return {
     slug,
@@ -230,7 +244,7 @@ export function parseMarkdownFile(fullPath: string, slug: string, dateFromFileNa
     authors,
     layout: data.layout,
     series: effectiveSeriesSlug,
-    seriesTitle: effectiveSeriesSlug ? getSeriesTitle(effectiveSeriesSlug) : undefined,
+    seriesTitle: effectiveSeriesSlug ? getSeriesTitle(effectiveSeriesSlug, locale) : undefined,
     coverImage,
     sort: data.sort,
     posts: data.posts,
@@ -250,6 +264,8 @@ export function parseMarkdownFile(fullPath: string, slug: string, dateFromFileNa
     headings,
     imageBaseSlug,
     sourceFormat: 'markdown',
+    locale,
+    treePath: treePathFor(fullPath, locale),
   };
 }
 
@@ -258,8 +274,9 @@ export function parseMarkdownFileForTests(
   slug: string,
   dateFromFileName?: string,
   seriesName?: string,
+  locale?: string,
 ): PostData {
-  return parseMarkdownFile(fullPath, slug, dateFromFileName, seriesName);
+  return parseMarkdownFile(fullPath, slug, dateFromFileName, seriesName, locale);
 }
 
 export function parseRstFile(
@@ -268,9 +285,10 @@ export function parseRstFile(
   dateFromFileName?: string,
   seriesName?: string,
   preRendered?: RenderedRstDocument,
+  locale: string = siteConfig.i18n.defaultLocale,
 ): PostData {
   try {
-    const imageBaseSlug = getRstImageBaseSlug(fullPath, slug);
+    const imageBaseSlug = getRstImageBaseSlug(fullPath, slug, locale);
     const fileContents = readUtf8File(fullPath);
 
     let parsedTitle: string;
@@ -327,33 +345,23 @@ export function parseRstFile(
     }
 
     const effectiveSeriesSlug = data.series || seriesName;
-    let authors: string[] = [];
-    if (data.authors && data.authors.length > 0) {
-      authors = data.authors;
-    } else if (data.author) {
-      authors = [data.author];
-    } else {
-      if (effectiveSeriesSlug) {
-        const seriesAuthors = getSeriesAuthors(effectiveSeriesSlug);
-        if (seriesAuthors) authors = seriesAuthors;
-      }
-      if (authors.length === 0) {
-        const defaultAuthors = siteConfig.posts?.authors?.default;
-        if (defaultAuthors && defaultAuthors.length > 0) {
-          authors = defaultAuthors;
-        }
-      }
-    }
+    // rST can surface an empty `:authors:` field as []; historically that
+    // means "not specified" here (unlike Markdown), so normalize it away
+    // before resolving.
+    const authors = resolveContentAuthors(
+      {
+        authors: data.authors && data.authors.length > 0 ? data.authors : undefined,
+        author: data.author,
+      },
+      effectiveSeriesSlug,
+      locale,
+    );
 
     let date = data.date;
     if (!date && dateFromFileName) date = dateFromFileName;
     if (!date) date = fs.statSync(fullPath).mtime.toISOString().split('T')[0];
 
-    let coverImage = data.coverImage;
-    if (coverImage && !coverImage.startsWith('http') && !coverImage.startsWith('/') && !coverImage.startsWith('text:')) {
-      const cleanPath = coverImage.replace(/^\.\//, '');
-      coverImage = `/${imageBaseSlug}/${cleanPath}`;
-    }
+    const coverImage = normalizeCoverImage(data.coverImage, `/${imageBaseSlug}`);
     const toctreePosts = isSeriesIndexRst(fullPath, slug, seriesName)
       ? extractRstToctreePosts(fileContents)
       : [];
@@ -373,7 +381,7 @@ export function parseRstFile(
       authors,
       layout: data.layout ?? 'post',
       series: effectiveSeriesSlug,
-      seriesTitle: effectiveSeriesSlug ? getSeriesTitle(effectiveSeriesSlug) : undefined,
+      seriesTitle: effectiveSeriesSlug ? getSeriesTitle(effectiveSeriesSlug, locale) : undefined,
       coverImage,
       sort,
       posts: seriesPosts,
@@ -393,6 +401,8 @@ export function parseRstFile(
       headings: parsedHeadings,
       imageBaseSlug,
       sourceFormat: 'rst',
+      locale,
+      treePath: treePathFor(fullPath, locale),
     };
   } catch (error) {
     if (error instanceof RstParseError) {
@@ -408,8 +418,9 @@ export function parseRstFileForTests(
   dateFromFileName?: string,
   seriesName?: string,
   preRendered?: RenderedRstDocument,
+  locale?: string,
 ): PostData {
-  return parseRstFile(fullPath, slug, dateFromFileName, seriesName, preRendered);
+  return parseRstFile(fullPath, slug, dateFromFileName, seriesName, preRendered, locale);
 }
 
 export interface RstPostEntry {
@@ -417,6 +428,8 @@ export interface RstPostEntry {
   slug: string;
   dateFromFileName?: string;
   seriesSlug?: string;
+  /** Locale tree the entry came from; absent means the default locale. */
+  locale?: string;
 }
 
 /**
@@ -434,7 +447,7 @@ export function parseRstPostEntries(entries: RstPostEntry[]): PostData[] {
       batchRenderedByFile = renderRstFilesBatch(
         entries.map(entry => ({
           file: entry.fullPath,
-          imageBaseSlug: getRstImageBaseSlug(entry.fullPath, entry.slug),
+          imageBaseSlug: getRstImageBaseSlug(entry.fullPath, entry.slug, entry.locale ?? siteConfig.i18n.defaultLocale),
         }))
       );
       pythonRstRendererAvailable = true;
@@ -454,6 +467,7 @@ export function parseRstPostEntries(entries: RstPostEntry[]): PostData[] {
       entry.dateFromFileName,
       entry.seriesSlug,
       batchRenderedByFile?.get(entry.fullPath),
+      entry.locale,
     )
   );
 }

@@ -1,31 +1,29 @@
 import { getSeriesData, getSeriesPosts } from '@/lib/content/series';
-import { getAllAuthors, getAuthorSlug, getPostsByAuthor, resolveAuthorParam } from '@/lib/content/authors';
-import { resolveFromParam } from '@/lib/route-params';
+import { getAllAuthors, getAuthorRouteParams, getAuthorSlug, getPostsByAuthor, resolveAuthorParam } from '@/lib/content/authors';
+import { resolveFromParam, safeDecodeParam } from '@/lib/route-params';
 import { getBooksByAuthor } from '@/lib/content/books';
 import PostList from '@/components/PostList';
 import Tag from '@/components/Tag';
 import ContentCard from '@/components/ContentCard';
-import { getBookUrl, getSeriesUrl } from '@/lib/urls';
+import RedirectPage from '@/components/RedirectPage';
+import { getBookUrl, getSeriesUrl, withTrailingSlash } from '@/lib/urls';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { siteConfig } from '../../../../site.config';
-import { t, resolveLocale } from '@/lib/i18n';
+import { getTranslator, resolveLocaleValue } from '@/lib/i18n';
+import { buildRedirectMetadata, withSiteAlternates } from '@/lib/metadata';
 import AuthorStats from '@/components/AuthorStats';
-import TranslatedText from '@/components/TranslatedText';
+import { T } from '@/components/T';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
+const { t } = getTranslator(DEFAULT_LOCALE);
 
 export async function generateStaticParams() {
-  const authors = getAllAuthors();
-  const authorNames = Object.keys(authors);
+  const authorNames = Object.keys(getAllAuthors());
   if (authorNames.length === 0) return [{ author: '_' }];
-  const params = new Set<string>();
-
-  // Generate slug-based routes and keep legacy name-based routes for compatibility.
-  for (const authorName of authorNames) {
-    params.add(getAuthorSlug(authorName));
-    params.add(authorName);
-  }
-
-  return [...params].map((author) => ({ author }));
+  // Slug routes plus legacy name-form routes for compatibility (see
+  // getAuthorRouteParams for the case-only names it leaves out).
+  return getAuthorRouteParams(authorNames).map((author) => ({ author }));
 }
 
 export const dynamicParams = false;
@@ -36,14 +34,23 @@ export async function generateMetadata({ params }: { params: Promise<{ author: s
 
   if (!resolvedAuthor) {
     return {
-      title: `Author Not Found | ${resolveLocale(siteConfig.title)}`,
+      title: `Author Not Found | ${resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE)}`,
     };
   }
 
+  // Legacy name-form URLs (/authors/Amytis%20Team) render a redirect stub.
+  const canonicalSlug = getAuthorSlug(resolvedAuthor);
+  if (safeDecodeParam(rawAuthor) !== canonicalSlug) {
+    return buildRedirectMetadata({ title: resolvedAuthor, to: `/authors/${canonicalSlug}` });
+  }
+
   const posts = getPostsByAuthor(resolvedAuthor);
+  const siteUrl = siteConfig.baseUrl.replace(/\/+$/, '');
+  const canonicalUrl = withTrailingSlash(`${siteUrl}/authors/${canonicalSlug}`);
   return {
-    title: `${resolvedAuthor} | ${resolveLocale(siteConfig.title)}`,
+    title: `${resolvedAuthor} | ${resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE)}`,
     description: `${posts.length} ${t('posts').toLowerCase()} ${t('written_by').toLowerCase()} ${resolvedAuthor}.`,
+    alternates: withSiteAlternates({ canonical: canonicalUrl }),
   };
 }
 
@@ -57,6 +64,14 @@ export default async function AuthorPage({
 
   if (!resolvedAuthor) {
     notFound();
+  }
+
+  // The route generates both the canonical slug param and a legacy name param
+  // for each author. Redirect the name form to the slug URL so only one URL
+  // serves the content (the other would be duplicate content).
+  const canonicalSlug = getAuthorSlug(resolvedAuthor);
+  if (safeDecodeParam(rawAuthor) !== canonicalSlug) {
+    return <RedirectPage to={`/authors/${canonicalSlug}`} />;
   }
 
   const posts = getPostsByAuthor(resolvedAuthor);
@@ -133,7 +148,7 @@ export default async function AuthorPage({
       {/* Books */}
       {authorBooks.length > 0 && (
         <section className="mb-16">
-          <h2 className="text-2xl font-serif font-bold text-heading mb-8"><TranslatedText translationKey="books" /></h2>
+          <h2 className="text-2xl font-serif font-bold text-heading mb-8"><T k="books" /></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {authorBooks.map(book => (
               <ContentCard
@@ -141,6 +156,7 @@ export default async function AuthorPage({
                 href={getBookUrl(book.slug)}
                 title={book.title}
                 slug={book.slug}
+                locale={DEFAULT_LOCALE}
                 coverImage={book.coverImage}
                 badge={`${book.chapters.length} ${t('chapters_count')}`}
                 excerpt={book.excerpt}
@@ -154,7 +170,7 @@ export default async function AuthorPage({
       {/* Series contributions */}
       {authorSeries.length > 0 && (
         <section className="mb-16">
-          <h2 className="text-2xl font-serif font-bold text-heading mb-8"><TranslatedText translationKey="series" /></h2>
+          <h2 className="text-2xl font-serif font-bold text-heading mb-8"><T k="series" /></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {authorSeries.map(({ slug, data, postCount }) => (
               <ContentCard
@@ -162,6 +178,7 @@ export default async function AuthorPage({
                 href={getSeriesUrl(slug)}
                 title={data.title}
                 slug={slug}
+                locale={DEFAULT_LOCALE}
                 coverImage={data.coverImage}
                 badge={`${postCount} ${t('parts')}`}
                 excerpt={data.excerpt}
@@ -174,9 +191,9 @@ export default async function AuthorPage({
 
       <section>
         {authorSeries.length > 0 && (
-          <h2 className="text-2xl font-serif font-bold text-heading mb-8"><TranslatedText translationKey="posts" /></h2>
+          <h2 className="text-2xl font-serif font-bold text-heading mb-8"><T k="posts" /></h2>
         )}
-        <PostList posts={posts} />
+        <PostList posts={posts} locale={DEFAULT_LOCALE} />
       </section>
     </div>
   );

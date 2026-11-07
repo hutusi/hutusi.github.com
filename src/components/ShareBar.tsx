@@ -56,7 +56,7 @@ function getShareUrl(platform: Platform, url: string, title: string): string {
 }
 
 export default function ShareBar({ url, title, className = '' }: ShareBarProps) {
-  const { t } = useLanguage();
+  const { t, tWith } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   if (!siteConfig.share?.enabled) return null;
@@ -74,14 +74,10 @@ export default function ShareBar({ url, title, className = '' }: ShareBarProps) 
     }
   };
 
-  const btnClass = 'inline-flex items-center justify-center w-8 h-8 rounded text-muted hover:text-accent hover:bg-ink/[0.05] transition-colors';
+  const btnClass = 'inline-flex items-center justify-center w-8 h-8 rounded text-muted hover:text-accent hover:bg-surface-soft transition-colors';
 
   return (
-    // suppressHydrationWarning on locale-bound nodes is a band-aid for the
-    // known static-export + client-i18n drift: SSR renders defaultLocale,
-    // `useLanguage()` hook serves the user's saved locale on hydration. The
-    // real fix is per-locale URL routing, tracked as a separate refactor.
-    <div className={`flex flex-row flex-wrap gap-1 ${className}`}>
+    <div className={`flex flex-row flex-wrap gap-1 print:hidden ${className}`}>
       {platforms.map((platform) => {
         const { label, Icon } = PLATFORM_META[platform];
 
@@ -94,7 +90,6 @@ export default function ShareBar({ url, title, className = '' }: ShareBarProps) 
               title={copyLabel}
               aria-label={copyLabel}
               className={`${btnClass} ${copied ? 'text-accent' : ''}`}
-              suppressHydrationWarning
             >
               {copied ? <LuCheck size={16} /> : <Icon size={16} />}
             </button>
@@ -108,7 +103,7 @@ export default function ShareBar({ url, title, className = '' }: ShareBarProps) 
             target="_blank"
             rel="noopener noreferrer"
             title={label}
-            aria-label={`Share on ${label}`}
+            aria-label={tWith('share_on', { platform: label })}
             className={`${btnClass} no-underline`}
           >
             <Icon size={16} />

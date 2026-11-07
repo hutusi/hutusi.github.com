@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useId, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { resolveActiveCollection } from '@/lib/collections';
 import Link from 'next/link';
-import type { PostData, Heading, CollectionContext } from '@/lib/content/types';
-import { getPostUrl, getPostUrlInCollection } from '@/lib/urls';
+import type { Heading, CollectionContext, PostNavItem } from '@/lib/content/types';
+import { getPostUrl, getPostUrlInCollection, localizeUrl } from '@/lib/urls';
 import { useLanguage } from './LanguageProvider';
 import { useSidebarAutoScroll } from '@/hooks/useSidebarAutoScroll';
 import { padNumber } from '@/lib/format-utils';
@@ -16,11 +17,10 @@ import { siteConfig } from '../../site.config';
 interface PostSidebarProps {
   seriesSlug?: string;
   seriesTitle?: string;
-  posts?: PostData[];
+  posts?: PostNavItem[];
   collectionContexts?: CollectionContext[];
   currentSlug: string;
   headings: Heading[];
-  localeHeadings?: Record<string, Heading[]>;
   shareUrl?: string;
   shareTitle?: string;
 }
@@ -38,52 +38,43 @@ function getVisibleIndices(total: number, current: number): (number | 'ellipsis'
   return result;
 }
 
-export default function PostSidebar({ seriesSlug, seriesTitle, posts, collectionContexts, currentSlug, headings, localeHeadings, shareUrl, shareTitle }: PostSidebarProps) {
+/** Desktop sidebar: series/collection list, page TOC and share links. */
+export function PostSidebarView({ seriesSlug, seriesTitle, posts, collectionContexts, currentSlug, headings, shareUrl, shareTitle, collectionParam }: PostSidebarProps & { collectionParam: string | null }) {
   const { t, language } = useLanguage();
-  const searchParams = useSearchParams();
-  const collectionParam = searchParams.get('collection');
-  const activeCollection = collectionParam
-    ? (collectionContexts ?? []).find(c => c.slug === collectionParam) ?? null
-    : null;
+  const activeCollection = resolveActiveCollection(collectionContexts, collectionParam);
 
   const effectiveSlug = activeCollection?.slug ?? seriesSlug;
   const effectiveTitle = activeCollection?.title ?? seriesTitle;
   const effectivePosts = activeCollection?.posts ?? posts;
   const isCollectionContext = !!activeCollection;
 
-  const postHref = (post: PostData) =>
+  const postHref = (post: PostNavItem) =>
     isCollectionContext ? getPostUrlInCollection(post, activeCollection!.slug) : getPostUrl(post);
 
-  const activeHeadings = localeHeadings?.[language] ?? headings;
+  const activeHeadings = headings;
   const hasSeries = !!(effectiveSlug && effectivePosts && effectivePosts.length > 0);
   const currentIndex = hasSeries ? effectivePosts!.findIndex(p => p.slug === currentSlug) : -1;
-  // Chronological sort (ascending date) — used for progress counter and isPast styling in series mode.
-  // In collection mode, use the collection's defined order directly.
-  const sortedPosts = hasSeries && !isCollectionContext
-    ? [...effectivePosts!].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    : null;
-  const progressIndex = hasSeries
-    ? (sortedPosts ? sortedPosts.findIndex(p => p.slug === currentSlug) : currentIndex)
-    : -1;
+  // Progress, the "X / N" counter, and "past" styling all key off the rendered
+  // order (effectivePosts) so the badge number, counter, and completed styling
+  // always agree. The series' own sort config (date-desc default, date-asc, or
+  // manual/collection order) decides that order — the sidebar just reflects it.
+  const progressIndex = currentIndex;
   const currentItemRef = useRef<HTMLLIElement>(null);
   const sidebarRef = useRef<HTMLElement>(null);
   const [seriesCollapsed, setSeriesCollapsed] = useState(false);
+  const seriesListId = useId();
   useSidebarAutoScroll(sidebarRef, currentItemRef, currentSlug);
 
   return (
-    // suppressHydrationWarning on locale-bound nodes is a band-aid for the
-    // known static-export + client-i18n drift: SSR renders defaultLocale,
-    // `useLanguage()` hook serves the user's saved locale on hydration. The
-    // real fix is per-locale URL routing, tracked as a separate refactor.
     <aside
       ref={sidebarRef}
       data-testid="post-sidebar"
-      className="hidden lg:block sticky top-20 self-start w-[280px] max-h-[calc(100vh-6rem)] overflow-y-auto pr-4 scrollbar-hide hover:scrollbar-thin select-none"
+      className="hidden lg:block print:hidden sticky top-20 self-start w-[280px] max-h-[calc(100vh-6rem)] overflow-y-auto pr-4 scrollbar-hide hover:scrollbar-thin select-none"
     >
       {/* TOC — always at top */}
       <TocPanel
         headings={activeHeadings}
-        className={`mb-6 ${hasSeries ? 'pb-4 border-b border-ink/[0.05]' : ''}`}
+        className={`mb-6 ${hasSeries ? 'pb-4 border-b border-line' : ''}`}
       />
 
       {/* Series / Collection section — below TOC */}
@@ -92,23 +83,26 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
           {/* Header — always visible */}
           <div className="mb-3">
             <div className="flex items-center justify-between mb-1">
-              <MetaLabel tone="accent" suppressHydrationWarning>
+              <MetaLabel tone="accent">
                 {isCollectionContext ? t('collection') : t('series')}
               </MetaLabel>
-              <span className="text-[10px] font-mono text-muted/60">
+              <span className="text-[10px] font-mono text-muted">
                 {progressIndex >= 0 ? progressIndex + 1 : '?'} / {effectivePosts!.length}
               </span>
             </div>
             <div className="flex items-start justify-between gap-2">
-              <Link href={`/series/${effectiveSlug}`} className="group block no-underline flex-1 min-w-0">
+              <Link href={localizeUrl(`/series/${effectiveSlug}`, language)} className="group block no-underline flex-1 min-w-0">
                 <h3 className="font-serif font-bold text-heading text-base leading-snug group-hover:text-accent transition-colors">
                   {effectiveTitle}
                 </h3>
               </Link>
               <button
+                type="button"
                 onClick={() => setSeriesCollapsed(prev => !prev)}
                 className="flex-shrink-0 mt-0.5 text-muted hover:text-foreground transition-colors"
-                aria-label={seriesCollapsed ? 'Expand series' : 'Collapse series'}
+                aria-label={seriesCollapsed ? t('expand_series') : t('collapse_series')}
+                aria-expanded={!seriesCollapsed}
+                aria-controls={seriesListId}
               >
                 <svg
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${seriesCollapsed ? '' : 'rotate-180'}`}
@@ -123,8 +117,8 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
           {/* Collapsible: post list + footer link */}
           {!seriesCollapsed && (
             <>
-              <nav aria-label="Series navigation" className="mb-4 animate-slide-down">
-                <ul className="space-y-1 relative before:absolute before:left-[11px] before:top-3 before:bottom-3 before:w-px before:bg-ink/[0.06]">
+              <nav id={seriesListId} aria-label={t('series_navigation')} className="mb-4 animate-slide-down">
+                <ul className="space-y-1 relative before:absolute before:left-[11px] before:top-3 before:bottom-3 before:w-px before:bg-surface-soft">
                   {getVisibleIndices(effectivePosts!.length, currentIndex).map((item, i) => {
                     if (item === 'ellipsis') {
                       return (
@@ -135,24 +129,23 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
                     }
                     const post = effectivePosts![item];
                     const isCurrent = post.slug === currentSlug;
-                    const chronoIndex = sortedPosts ? sortedPosts.findIndex(p => p.slug === post.slug) : item;
-                    const isPast = chronoIndex < progressIndex;
+                    const isPast = item < progressIndex;
 
                     return (
                       <li key={post.slug} ref={isCurrent ? currentItemRef : undefined} className="relative">
                         <Link
                           href={postHref(post)}
                           className={`group flex items-start gap-3 py-2 px-2 -mx-2 rounded-lg no-underline transition-all duration-200 ${
-                            isCurrent ? 'bg-accent/5' : 'hover:bg-ink/[0.04]'
+                            isCurrent ? 'bg-accent/5' : 'hover:bg-surface-soft'
                           }`}
                           aria-current={isCurrent ? 'page' : undefined}
                         >
                           <div className={`relative z-10 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono font-bold transition-colors ${
                             isCurrent
-                              ? 'bg-accent text-white shadow-sm shadow-accent/30'
+                              ? 'bg-accent text-accent-contrast shadow-sm shadow-accent/30'
                               : isPast
                                 ? 'bg-accent/20 text-accent'
-                                : 'bg-ink/[0.05] text-muted group-hover:bg-ink/[0.08] group-hover:text-foreground'
+                                : 'bg-surface-soft text-muted group-hover:bg-surface-raised group-hover:text-foreground'
                           }`}>
                             {padNumber(item + 1)}
                           </div>
@@ -175,9 +168,8 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
               </nav>
 
               <Link
-                href={`/series/${effectiveSlug}`}
+                href={localizeUrl(`/series/${effectiveSlug}`, language)}
                 className="text-xs font-sans text-muted hover:text-accent transition-colors no-underline flex items-center gap-1"
-                suppressHydrationWarning
               >
                 {isCollectionContext ? t('view_full_collection') : t('view_full_series')}
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -190,8 +182,8 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
       )}
 
       {shareUrl && siteConfig.share?.enabled && (
-        <div className="mt-6 pt-6 border-t border-ink/[0.05]">
-          <MetaLabel as="p" className="mb-3" suppressHydrationWarning>
+        <div className="mt-6 pt-6 border-t border-line">
+          <MetaLabel as="p" className="mb-3">
             {t('share_post')}
           </MetaLabel>
           <ShareBar url={shareUrl} title={shareTitle ?? ''} />
@@ -199,4 +191,16 @@ export default function PostSidebar({ seriesSlug, seriesTitle, posts, collection
       )}
     </aside>
   );
+}
+
+/**
+ * Reads `?collection=` and renders the view. `useSearchParams` bails the
+ * surrounding Suspense boundary out of static prerendering, so layouts pass
+ * `<PostSidebarView collectionParam={null} … />` as the boundary's fallback: the
+ * exported HTML then carries the default (series-context) rendering instead
+ * of an empty hole that pops in after hydration.
+ */
+export default function PostSidebar(props: PostSidebarProps) {
+  const collectionParam = useSearchParams().get('collection');
+  return <PostSidebarView {...props} collectionParam={collectionParam} />;
 }

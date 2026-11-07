@@ -2,17 +2,25 @@ import path from 'path';
 import { getBookDirPath, type BookData, type BookChapterData } from '@/lib/content/books';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import BookReadingShell from '@/components/BookReadingShell';
-import { getBookChapterUrl } from '@/lib/urls';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import type { BreadcrumbItem } from '@/lib/breadcrumbs';
+import { getBookChapterUrl, localizeUrl } from '@/lib/urls';
 import { siteConfig } from '../../site.config';
 import { resolveCommentable } from '@/lib/comments';
 
 interface BookLayoutProps {
   book: BookData;
   chapter: BookChapterData;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
-export default function BookLayout({ book, chapter }: BookLayoutProps) {
-  const bookDir = getBookDirPath(book.slug);
+export default function BookLayout({ book, chapter, breadcrumbs = [] }: BookLayoutProps) {
+  // Everything book-scoped stays in the book's locale tree: source dir for
+  // relative-link resolution, public asset dirs, chapter navigation, and the
+  // comment thread identity.
+  const bookDir = getBookDirPath(book.slug, book.locale);
+  const assetPrefix = book.locale === siteConfig.i18n.defaultLocale ? '' : `${book.locale}/`;
+  const chapterUrl = (id: string) => localizeUrl(getBookChapterUrl(book.slug, id), book.locale);
   const validChapterIds = new Set(book.chapters.map(c => c.id));
 
   // `slug` is the public-relative directory used by rehype-image-metadata to
@@ -22,22 +30,22 @@ export default function BookLayout({ book, chapter }: BookLayoutProps) {
   // at `/books/<slug>/assets/...` instead of `/books/<slug>/<dir>/assets/...`.
   let imageSlug: string;
   if (chapter.isFolder) {
-    imageSlug = `books/${book.slug}/${chapter.slug}`;
+    imageSlug = `${assetPrefix}books/${book.slug}/${chapter.slug}`;
   } else {
     const parentDir = path.posix.dirname(chapter.slug);
-    imageSlug = parentDir === '.' ? `books/${book.slug}` : `books/${book.slug}/${parentDir}`;
+    imageSlug = parentDir === '.' ? `${assetPrefix}books/${book.slug}` : `${assetPrefix}books/${book.slug}/${parentDir}`;
   }
 
   const prev = chapter.prevChapter
-    ? { href: getBookChapterUrl(book.slug, chapter.prevChapter.id), title: chapter.prevChapter.title }
+    ? { href: chapterUrl(chapter.prevChapter.id), title: chapter.prevChapter.title }
     : null;
   const next = chapter.nextChapter
-    ? { href: getBookChapterUrl(book.slug, chapter.nextChapter.id), title: chapter.nextChapter.title }
+    ? { href: chapterUrl(chapter.nextChapter.id), title: chapter.nextChapter.title }
     : null;
   const comments = resolveCommentable(chapter.commentable, 'bookChapters')
     ? {
-        slug: `books/${book.slug}/${chapter.slug}`,
-        postUrl: `${siteConfig.baseUrl.replace(/\/+$/, '')}${getBookChapterUrl(book.slug, chapter.slug)}`,
+        slug: `${assetPrefix}books/${book.slug}/${chapter.slug}`,
+        postUrl: `${siteConfig.baseUrl.replace(/\/+$/, '')}${chapterUrl(chapter.slug)}`,
       }
     : null;
 
@@ -61,9 +69,11 @@ export default function BookLayout({ book, chapter }: BookLayoutProps) {
       prev={prev}
       next={next}
       comments={comments}
+      breadcrumbs={<Breadcrumbs items={breadcrumbs} locale={book.locale} className="mb-6" />}
     >
       <MarkdownRenderer
         content={chapter.content}
+        locale={book.locale}
         latex={chapter.latex}
         slug={imageSlug}
         bookContext={{
@@ -71,6 +81,7 @@ export default function BookLayout({ book, chapter }: BookLayoutProps) {
           bookDir,
           chapterSourcePath: chapter.sourcePath,
           validChapterIds,
+          locale: book.locale,
         }}
       />
     </BookReadingShell>

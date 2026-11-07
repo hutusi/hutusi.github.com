@@ -1,7 +1,7 @@
 import { visit } from 'unist-util-visit';
 import type { Root, Link } from 'mdast';
 import path from 'path';
-import { getBookChapterUrl } from './urls';
+import { getBookChapterUrl, localizeUrl } from './urls';
 
 export interface BookChapterLinksOptions {
   /** Slug of the book being rendered (passed to getBookChapterUrl). */
@@ -12,6 +12,8 @@ export interface BookChapterLinksOptions {
   chapterSourcePath: string;
   /** Set of valid chapter ids for the book — used to validate link targets. */
   validChapterIds: ReadonlySet<string>;
+  /** Locale tree the book belongs to; cross-chapter links stay in it. */
+  locale?: string;
 }
 
 const EXTERNAL_RE = /^(?:https?:|mailto:|tel:|ftp:|\/\/|#)/i;
@@ -98,9 +100,10 @@ export default function remarkBookChapterLinks(options: BookChapterLinksOptions)
         return;
       }
 
-      node.url = fragment
-        ? `${getBookChapterUrl(bookSlug, chapterId)}#${fragment}`
+      const chapterUrl = options.locale
+        ? localizeUrl(getBookChapterUrl(bookSlug, chapterId), options.locale)
         : getBookChapterUrl(bookSlug, chapterId);
+      node.url = fragment ? `${chapterUrl}#${fragment}` : chapterUrl;
     });
   };
 }

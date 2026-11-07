@@ -6,15 +6,18 @@ import { toFlowIndexItems } from '@/lib/flow-stream';
 import { siteConfig } from '../../../site.config';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { t, resolveLocale } from '@/lib/i18n';
+import { getTranslator, resolveLocaleValue } from '@/lib/i18n';
 import FlowIndexClient from '@/components/FlowIndexClient';
 import FlowStream from '@/components/FlowStream';
 import PageHeader from '@/components/PageHeader';
 
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
+const { t } = getTranslator(DEFAULT_LOCALE);
+
 const PAGE_SIZE = siteConfig.pagination.flows;
 
 export const metadata: Metadata = {
-  title: `${t('flow')} | ${resolveLocale(siteConfig.title)}`,
+  title: `${t('flow')} | ${resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE)}`,
   description: 'Daily notes and quick thoughts.',
 };
 

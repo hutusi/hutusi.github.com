@@ -2,11 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { z } from 'zod';
+import { siteConfig } from '../../../site.config';
 import { byDateDesc } from '../sort';
 import { extractContentMetrics } from '../text-metrics';
 import type { Heading } from './types';
-import { booksDirectory, readUtf8File } from './io';
-import { dateField, draftField } from './schema';
+import { domainDir, assertKnownLocale, readUtf8File } from './io';
+import { createProdKeyedMemo } from './cache';
+import { normalizeCoverImage } from './cover-image';
+import { dateField, draftField, invalidFrontmatterError } from './schema';
 
 /**
  * Books: long-form content with an explicit TOC in the book index's
@@ -66,6 +69,15 @@ export interface BookData {
   content: string;
   toc: BookTocItem[];
   chapters: BookChapterEntry[];
+  /** Locale tree this book was loaded from (siteConfig.i18n.defaultLocale for the content/ root tree). */
+  locale: string;
+}
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
+
+/** Composite memo key: locale trees are parallel content sets, so every per-slug memo is per-locale too. */
+function localeKey(locale: string, slug: string): string {
+  return `${locale} ${slug}`;
 }
 
 export interface BookChapterData {
@@ -200,9 +212,24 @@ function resolveChapterFilePath(
   return null;
 }
 
-export function getBookData(slug: string): BookData | null {
-  if (!fs.existsSync(booksDirectory)) return null;
-  const bookDir = path.join(booksDirectory, slug);
+const bookDataMemo = createProdKeyedMemo<string, BookData | null>();
+
+/**
+ * Book data by slug, memoized in production. Static generation asks for the
+ * same book once per chapter (params, metadata, page body) and again from the
+ * search-index route; without the memo each call re-read and re-parsed the
+ * index plus every chapter's frontmatter (isChapterDraft), an O(N^2) reparse
+ * per book. Dev recomputes so HMR sees edited content.
+ */
+export function getBookData(slug: string, locale: string = DEFAULT_LOCALE): BookData | null {
+  return bookDataMemo.get(localeKey(locale, slug), () => computeBookData(slug, locale));
+}
+
+function computeBookData(slug: string, locale: string): BookData | null {
+  assertKnownLocale(locale);
+  const localeBooksDir = domainDir('books', locale);
+  if (!fs.existsSync(localeBooksDir)) return null;
+  const bookDir = path.join(localeBooksDir, slug);
   if (!fs.existsSync(bookDir)) return null;
 
   const indexPathMdx = path.join(bookDir, 'index.mdx');
@@ -217,8 +244,9 @@ export function getBookData(slug: string): BookData | null {
 
   const parsed = BookSchema.safeParse(rawData);
   if (!parsed.success) {
-    console.error(`Invalid book frontmatter in ${fullPath}:`, parsed.error.format());
-    return null;
+    // Invalid frontmatter is a build-time error, not a silent skip — consistent
+    // with the missing-chapter throw below (strict-build invariant).
+    throw invalidFrontmatterError('book frontmatter', fullPath, parsed.error);
   }
   const data = parsed.data;
 
@@ -239,15 +267,30 @@ export function getBookData(slug: string): BookData | null {
     );
   }
 
-  let coverImage = data.coverImage;
-  if (coverImage && !coverImage.startsWith('http') && !coverImage.startsWith('/') && !coverImage.startsWith('text:')) {
-    const cleanPath = coverImage.replace(/^\.\//, '');
-    coverImage = `/books/${slug}/${cleanPath}`;
-  }
+  const assetPrefix = locale === DEFAULT_LOCALE ? '' : `${locale}/`;
+  const coverImage = normalizeCoverImage(data.coverImage, `/${assetPrefix}books/${slug}`);
 
   let authors = data.authors;
   if (authors.length === 0) {
-    authors = ['Amytis'];
+    // Same fallback chain as posts (parse.ts): the site-wide default authors,
+    // not a hardcoded brand string.
+    authors = siteConfig.posts?.authors?.default ?? [];
+  }
+
+  // In production, drop draft chapters from both the flattened list and the
+  // nested TOC. getBookChapter returns null for them (→ 404), so leaving
+  // them in produced dead prev/next and sidebar links from their published
+  // neighbors. Dev keeps drafts visible, same policy as posts/flows.
+  let toc = data.chapters;
+  let visibleChapters = chapters;
+  if (process.env.NODE_ENV === 'production') {
+    const draftIds = new Set(
+      chapters.filter(ch => isChapterDraft(bookDir, ch.id)).map(ch => ch.id)
+    );
+    if (draftIds.size > 0) {
+      visibleChapters = chapters.filter(ch => !draftIds.has(ch.id));
+      toc = filterTocDrafts(data.chapters, draftIds);
+    }
   }
 
   return {
@@ -262,16 +305,67 @@ export function getBookData(slug: string): BookData | null {
     latex: data.latex,
     showChapterExcerpt: data.showChapterExcerpt,
     content: content.trim(),
-    toc: data.chapters,
-    chapters,
+    toc,
+    chapters: visibleChapters,
+    locale,
   };
 }
 
-export function getBookChapter(bookSlug: string, chapterSlug: string): BookChapterData | null {
-  const book = getBookData(bookSlug);
+/**
+ * Light draft probe for TOC filtering: reads only the frontmatter's `draft`
+ * flag. Full schema validation still happens in getBookChapter, so a chapter
+ * with otherwise-broken frontmatter is NOT treated as draft here — it stays
+ * listed and fails the build loudly when rendered (strict-build invariant).
+ */
+function isChapterDraft(bookDir: string, chapterId: string): boolean {
+  const resolved = resolveChapterFilePath(bookDir, chapterId);
+  if (!resolved) return false; // Existence is validated separately above.
+  const { data } = matter(readUtf8File(resolved.path));
+  return data.draft === true;
+}
+
+/** Remove draft chapter refs from the nested TOC; prune emptied parts/sections. */
+function filterTocDrafts(toc: BookTocItem[], draftIds: Set<string>): BookTocItem[] {
+  const filterSectionItems = (
+    items: Array<BookTocSection | BookChapterRef>,
+  ): Array<BookTocSection | BookChapterRef> =>
+    items.flatMap((item): Array<BookTocSection | BookChapterRef> => {
+      if ('section' in item) {
+        const kept = filterSectionItems(item.items);
+        return kept.length > 0 ? [{ ...item, items: kept }] : [];
+      }
+      return draftIds.has(item.id) ? [] : [item];
+    });
+
+  return toc.flatMap((item): BookTocItem[] => {
+    if ('part' in item) {
+      const kept = item.chapters.filter(ch => !draftIds.has(ch.id));
+      return kept.length > 0 ? [{ ...item, chapters: kept }] : [];
+    }
+    if ('section' in item) {
+      return filterSectionItems([item]);
+    }
+    return draftIds.has(item.id) ? [] : [item];
+  });
+}
+
+const bookChapterMemo = createProdKeyedMemo<string, BookChapterData | null>();
+
+/**
+ * Chapter data by book + chapter, memoized in production. Static generation
+ * asks for the same chapter three times (generateStaticParams, generateMetadata,
+ * page body); without the memo each re-read + re-parsed the chapter file and
+ * recomputed its metrics. Dev recomputes so HMR sees edited content.
+ */
+export function getBookChapter(bookSlug: string, chapterSlug: string, locale: string = DEFAULT_LOCALE): BookChapterData | null {
+  return bookChapterMemo.get(`${locale} ${bookSlug}::${chapterSlug}`, () => computeBookChapter(bookSlug, chapterSlug, locale));
+}
+
+function computeBookChapter(bookSlug: string, chapterSlug: string, locale: string): BookChapterData | null {
+  const book = getBookData(bookSlug, locale);
   if (!book) return null;
 
-  const bookDir = path.join(booksDirectory, bookSlug);
+  const bookDir = path.join(domainDir('books', locale), bookSlug);
   const resolved = resolveChapterFilePath(bookDir, chapterSlug);
   if (!resolved) return null;
   const { path: fullPath, isFolder } = resolved;
@@ -281,8 +375,9 @@ export function getBookChapter(bookSlug: string, chapterSlug: string): BookChapt
 
   const parsed = BookChapterSchema.safeParse(rawData);
   if (!parsed.success) {
-    console.error(`Invalid chapter frontmatter in ${fullPath}:`, parsed.error.format());
-    return null;
+    // A chapter listed in the TOC with broken frontmatter must fail the build,
+    // not silently 404 (strict-build invariant; matches getBookData above).
+    throw invalidFrontmatterError('chapter frontmatter', fullPath, parsed.error);
   }
   const data = parsed.data;
 
@@ -329,33 +424,42 @@ export function getBookChapter(bookSlug: string, chapterSlug: string): BookChapt
 
 /** Absolute path of a book's content directory. Useful for plugins that
  *  need to resolve relative paths from chapter source files. */
-export function getBookDirPath(bookSlug: string): string {
-  return path.join(booksDirectory, bookSlug);
+export function getBookDirPath(bookSlug: string, locale: string = DEFAULT_LOCALE): string {
+  return path.join(domainDir('books', locale), bookSlug);
 }
 
-export function getAllBooks(): BookData[] {
-  if (!fs.existsSync(booksDirectory)) return [];
+const allBooksMemo = createProdKeyedMemo<string, BookData[]>();
 
-  const entries = fs.readdirSync(booksDirectory, { withFileTypes: true });
-  const books: BookData[] = [];
+export function getAllBooks(locale: string = DEFAULT_LOCALE): BookData[] {
+  assertKnownLocale(locale);
+  // Prod-only memo: getAllBooks runs from the root layout (books nav), so on a
+  // static export it would otherwise re-read + re-parse every book index on
+  // every page. Dev re-reads each call so HMR sees fresh books.
+  return allBooksMemo.get(locale, () => {
+    const localeBooksDir = domainDir('books', locale);
+    if (!fs.existsSync(localeBooksDir)) return [];
 
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-    const book = getBookData(entry.name);
-    if (!book) continue;
-    if (process.env.NODE_ENV === 'production' && book.draft) continue;
-    books.push(book);
-  }
+    const entries = fs.readdirSync(localeBooksDir, { withFileTypes: true });
+    const books: BookData[] = [];
 
-  return books.sort(byDateDesc);
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      const book = getBookData(entry.name, locale);
+      if (!book) continue;
+      if (process.env.NODE_ENV === 'production' && book.draft) continue;
+      books.push(book);
+    }
+
+    return books.sort(byDateDesc);
+  });
 }
 
-export function getFeaturedBooks(): BookData[] {
-  return getAllBooks().filter(book => book.featured);
+export function getFeaturedBooks(locale: string = DEFAULT_LOCALE): BookData[] {
+  return getAllBooks(locale).filter(book => book.featured);
 }
 
-export function getBooksByAuthor(author: string): BookData[] {
-  return getAllBooks().filter(book =>
+export function getBooksByAuthor(author: string, locale: string = DEFAULT_LOCALE): BookData[] {
+  return getAllBooks(locale).filter(book =>
     book.authors.some(a => a.toLowerCase() === author.toLowerCase())
   );
 }

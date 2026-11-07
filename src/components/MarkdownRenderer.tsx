@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '@/lib/cn';
 import { PROSE_CLASSES } from '@/lib/prose-classes';
 import ReactMarkdown, { Components, ExtraProps } from 'react-markdown';
 import RssFeedWidget from '@/components/RssFeedWidget';
@@ -6,10 +7,12 @@ import Mermaid from '@/components/Mermaid';
 import CodeBlock from '@/components/CodeBlock';
 import CodeGroup from '@/components/CodeGroup';
 import GithubAlert from '@/components/GithubAlert';
-import KatexStyles from '@/components/KatexStyles';
 import ExternalLinkIcon from '@/components/ExternalLinkIcon';
 import ArticleCopyCleaner from '@/components/ArticleCopyCleaner';
 import remarkGfm from 'remark-gfm';
+import { toHtml } from 'hast-util-to-html';
+import { isGeneratedKatexSpan, rehypeKatexAfter, rehypeKatexBefore } from '@/lib/rehype-katex-provenance';
+import KatexStyles from '@/components/KatexStyles';
 import remarkDirective from 'remark-directive';
 import remarkCodeGroup from '@/lib/remark-code-group';
 import remarkGithubAlerts from '@/lib/remark-github-alerts';
@@ -19,11 +22,16 @@ import remarkBookChapterLinks, { type BookChapterLinksOptions } from '@/lib/rema
 import rehypeRaw from 'rehype-raw';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import rehypeSlug from 'rehype-slug';
+import rehypeRawHeadingIds from '@/lib/rehype-heading-ids';
+import rehypeHeadingAnchors, { HEADING_ANCHOR_CLASS } from '@/lib/rehype-heading-anchors';
+import rehypeZoomableImages from '@/lib/rehype-zoomable-images';
+import rehypePrintLinkUrls from '@/lib/print-urls';
 import rehypeImageMetadata from '@/lib/rehype-image-metadata';
 import rehypeFenceMeta from '@/lib/rehype-fence-meta';
 import { siteConfig } from '../../site.config';
+import { getTranslator } from '@/lib/i18n';
 import remarkWikilinks from '@/lib/remark-wikilinks';
+import { remarkHeadingIds } from '@/lib/text-metrics';
 import ExportedImage from 'next-image-export-optimizer';
 import { PluggableList } from 'unified';
 import type { SlugRegistryEntry } from '@/lib/content/discovery';
@@ -50,6 +58,11 @@ function flattenChildrenToText(node: React.ReactNode): string {
 
 interface MarkdownRendererProps {
   content: string;
+  /**
+   * Locale of the content (its tree), for generated text such as the GFM
+   * footnotes heading and back-link labels. Defaults to the site locale.
+   */
+  locale?: string;
   latex?: boolean;
   slug?: string;
   slugRegistry?: Map<string, SlugRegistryEntry>;
@@ -61,17 +74,33 @@ interface MarkdownRendererProps {
   bookContext?: BookChapterLinksOptions;
   /**
    * Set when rendering multiple documents on one page (e.g. the flow stream)
-   * to keep rehype-slug heading ids unique across documents. Note GFM footnote
-   * ids come from remark-rehype, not rehype-slug, and are not prefixed.
+   * to keep heading ids unique across documents. Note GFM footnote ids come
+   * from remark-rehype and are not prefixed.
    */
   headingIdPrefix?: string;
+  /**
+   * Append a "#" link to each h2–h4 (rehype-heading-anchors). Off for the
+   * flow stream, where many documents share one page.
+   */
+  headingAnchors?: boolean;
 }
 
-export default function MarkdownRenderer({ content, latex = false, slug, slugRegistry, bookContext, headingIdPrefix }: MarkdownRendererProps) {
+export default function MarkdownRenderer({ content, latex = false, slug, slugRegistry, bookContext, headingIdPrefix, headingAnchors = true, locale = siteConfig.i18n.defaultLocale }: MarkdownRendererProps) {
+  // remark-rehype generates the footnotes section and back links with
+  // English defaults ("Footnotes", "Back to reference 1"); localize them.
+  const { t, tWith } = getTranslator(locale);
+  const footnoteOptions = {
+    footnoteLabel: t('footnotes_label'),
+    footnoteBackLabel: (referenceIndex: number, rereferenceIndex: number) =>
+      tWith('footnote_back', { n: rereferenceIndex > 1 ? `${referenceIndex + 1}-${rereferenceIndex}` : referenceIndex + 1 }),
+  };
   // remark-directive must precede remark-code-group AND remark-vuepress-containers
   // so they see parsed containerDirective nodes. Order vs remark-gfm doesn't matter
   // — they touch disjoint node types.
   const remarkPlugins: PluggableList = [
+    // First transformer: heading ids come from the same function as the TOC
+    // (getHeadings), before wikilinks/containers change heading text.
+    headingIdPrefix ? [remarkHeadingIds, { prefix: headingIdPrefix }] : remarkHeadingIds,
     remarkGfm,
     remarkGithubAlerts,
     remarkDirective,
@@ -88,7 +117,9 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
   const rehypePlugins: PluggableList = [
     rehypeFenceMeta,
     rehypeRaw,
-    headingIdPrefix ? [rehypeSlug, { prefix: headingIdPrefix }] : rehypeSlug,
+    // Markdown headings already carry ids (remarkHeadingIds); this only fills
+    // in headings that arrive as raw HTML, unique against every existing id.
+    headingIdPrefix ? [rehypeRawHeadingIds, { prefix: headingIdPrefix }] : rehypeRawHeadingIds,
     [rehypeImageMetadata, { slug, cdnBaseUrl }],
   ];
 
@@ -104,23 +135,33 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
     // character per chapter view). A bare `strict: 'ignore'` would silence
     // *every* KaTeX strict check including genuinely broken math, so use a
     // predicate that targets just this transgression.
-    rehypePlugins.push([rehypeKatex, {
+    // The before/after pair records which katex spans rehype-katex generated,
+    // so only those take the serialized-string path in the `span` override.
+    rehypePlugins.push(rehypeKatexBefore, [rehypeKatex, {
       strict: (code: string) => (code === 'unicodeTextInMathMode' ? 'ignore' : 'warn'),
-    }]);
+    }], rehypeKatexAfter);
   }
 
+  // Last, so every heading already has its final id.
+  if (headingAnchors) {
+    rehypePlugins.push([rehypeHeadingAnchors, { label: t('heading_anchor') }]);
+  }
+  // Marks images the ImageZoom lightbox may open (not linked or styled ones),
+  // and external links whose address the print stylesheet appends.
+  rehypePlugins.push(rehypeZoomableImages, rehypePrintLinkUrls);
+
   const components: Components = {
-    // Use 'p' by default, but fallback to 'div' only if children contain block elements
-    // to avoid invalid HTML nesting warnings while preserving semantics.
-    p: ({ children }) => {
-      // Check if any child is a block-level element (like Mermaid or CodeBlock)
-      // Since children is a ReactNode, we can only do a shallow check here.
-      // Simple heuristic: if any child is not a string/number, it *might* be a block.
-      // However, react-markdown usually nests blocks at the top level.
-      return <p className="mb-4 leading-relaxed text-foreground">{children}</p>;
+    // No `p` override: paragraphs take PROSE_CLASSES' styling exactly like
+    // RstRenderer's sanitized HTML, so Markdown and rST posts set paragraphs
+    // identically (line-height via prose-p:leading-loose, prose-lg margins).
+    // Explicitly style lists to ensure contrast, keeping the item's own
+    // attributes: GFM footnote links point at its id (#user-content-fn-1),
+    // and task-list items carry their class.
+    li: (props) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { children, node: _node, className, ...rest } = props as React.LiHTMLAttributes<HTMLLIElement> & ExtraProps;
+      return <li {...rest} className={cn('text-foreground', className)}>{children}</li>;
     },
-    // Explicitly style lists to ensure contrast
-    li: ({ children }) => <li className="text-foreground">{children}</li>,
     // Explicitly style blockquotes
     blockquote: ({ children }) => <blockquote className="text-foreground border-l-accent italic">{children}</blockquote>,
     // Explicitly style bold text
@@ -130,18 +171,41 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { children, node: _node, ...rest } = props as React.TableHTMLAttributes<HTMLTableElement> & ExtraProps;
       return (
-        <div className="overflow-x-auto my-8 border border-ink/[0.07] rounded-lg">
+        <div className="overflow-x-auto my-8 border border-line rounded-lg">
           <table {...rest} className="min-w-full text-left text-sm">
             {children}
           </table>
         </div>
       );
     },
+    // KaTeX output: render each formula's subtree as ONE pre-serialized HTML
+    // string. Left as React elements, every glyph span (plus the MathML twin)
+    // is serialized into the RSC payload as verbose element JSON and then
+    // hydrated node by node — a math-heavy chapter carried ~1 MB of payload
+    // and ~15k hydrated nodes. The markup is identical; only the transport
+    // changes. `.katex-display` wraps `.katex`, so the outer override
+    // swallows the inner one; KaTeX error spans keep the normal path.
+    span: (props) => {
+      const { node, children, className, ...rest } = props as React.HTMLAttributes<HTMLSpanElement> & ExtraProps;
+      const classes = typeof className === 'string' ? className.split(/\s+/) : [];
+      const isFormula = classes.includes('katex-display') || (classes.includes('katex') && !classes.includes('katex-error'));
+      // Only rehype-katex's own output: an authored raw-HTML span with the
+      // same class renders through React, which drops string event handlers.
+      if (isFormula && node && isGeneratedKatexSpan(node)) {
+        return <span {...rest} className={className} dangerouslySetInnerHTML={{ __html: toHtml(node.children) }} />;
+      }
+      return <span {...rest} className={className}>{children}</span>;
+    },
     // Render 'pre' as a 'div' to allow block-level children
     pre: ({ children }) => <div className="not-prose w-full min-w-0 max-w-full">{children}</div>,
     // Style links individually to avoid hover-all issue
     a: (props) => {
       const { node, className, children, href, target, rel, ...rest } = props as React.AnchorHTMLAttributes<HTMLAnchorElement> & ExtraProps;
+      // Heading anchors (rehype-heading-anchors) are styled by their own class
+      // and stay empty: the "#" is drawn by CSS.
+      if (className === HEADING_ANCHOR_CLASS) {
+        return <a {...rest} href={href} className={className} />;
+      }
       // Preserve wikilink classes injected by remark-wikilinks — they have their own CSS styling
       if (className?.includes('wikilink')) {
         return <a {...rest} href={href} target={target} rel={rel} className={className}>{children}</a>;
@@ -226,6 +290,9 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
       return (
         <div className="relative w-full my-6 rounded-lg overflow-hidden aspect-video">
           <iframe
+            // Lazy by default so embeds (YouTube, Vimeo, …) don't block load;
+            // `rest` spreads after so an author's explicit loading= still wins.
+            loading="lazy"
             {...rest}
             className="absolute inset-0 w-full h-full border-0"
           />
@@ -260,6 +327,8 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
             width={width}
             height={height}
             style={style}
+            loading="lazy"
+            decoding="async"
             {...rest}
             fetchPriority="low"
           />
@@ -280,11 +349,13 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
             placeholder={shouldBypassOptimization ? 'empty' : 'blur'}
             style={(!width || !height) ? { width: '100%', height: 'auto' } : undefined}
             fetchPriority="low"
+            // `rest` isn't spread on this branch; forward the zoom marker.
+            data-zoomable={(props as unknown as Record<string, unknown>)['data-zoomable'] as string | undefined}
           />
         );
       }
       // eslint-disable-next-line @next/next/no-img-element
-      return <img src={imageSrc} alt={alt || ''} {...rest} fetchPriority="low" className="max-w-full h-auto rounded-lg my-4" />;
+      return <img src={imageSrc} alt={alt || ''} loading="lazy" decoding="async" {...rest} fetchPriority="low" className="max-w-full h-auto rounded-lg my-4" />;
     },
   };
 
@@ -334,6 +405,7 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
         <ReactMarkdown
           remarkPlugins={remarkPlugins}
           rehypePlugins={rehypePlugins}
+          remarkRehypeOptions={footnoteOptions}
           components={allComponents}
         >
           {latex

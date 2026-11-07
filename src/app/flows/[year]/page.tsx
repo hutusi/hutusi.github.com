@@ -1,15 +1,18 @@
 import { getAllFlows, getFlowsByYear } from '@/lib/content/flows';
 import { buildSlugRegistry } from '@/lib/content/discovery';
 import { isFeatureEnabled } from '@/lib/features';
-import { toFlowIndexItems } from '@/lib/flow-stream';
+import { toFlowIndexItems, flowStreamLocaleTag } from '@/lib/flow-stream';
 import { siteConfig } from '../../../../site.config';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { t, tWith, resolveLocale } from '@/lib/i18n';
+import { getTranslator, resolveLocaleValue } from '@/lib/i18n';
 import PageHeader from '@/components/PageHeader';
 import FlowIndexClient from '@/components/FlowIndexClient';
 import FlowStream from '@/components/FlowStream';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
+const { t, tWith } = getTranslator(DEFAULT_LOCALE);
 
 export function generateStaticParams() {
   if (!isFeatureEnabled('flow')) return [{ year: '_' }];
@@ -24,7 +27,7 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }: { params: Promise<{ year: string }> }): Promise<Metadata> {
   const { year } = await params;
   return {
-    title: `${tWith('flows_in_year', { year })} | ${resolveLocale(siteConfig.title)}`,
+    title: `${tWith('flows_in_year', { year })} | ${resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE)}`,
   };
 }
 
@@ -51,14 +54,13 @@ export default async function FlowsYearPage({ params }: { params: Promise<{ year
   }
   const sortedMonths = Object.keys(monthCounts).sort();
 
-  const monthNames = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-  ];
+  // Localized short month names, matching the month detail page.
+  const monthFmt = new Intl.DateTimeFormat(flowStreamLocaleTag(), { month: 'short' });
+  const monthLabel = (m: string) => monthFmt.format(new Date(2000, parseInt(m, 10) - 1, 1));
 
   const breadcrumb = (
     <div className="space-y-2">
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-muted">
+      <nav aria-label={t('breadcrumb')} className="flex items-center gap-1.5 text-sm text-muted">
         <Link href="/flows" className="hover:text-accent no-underline">
           {t('all_flows')}
         </Link>
@@ -70,9 +72,9 @@ export default async function FlowsYearPage({ params }: { params: Promise<{ year
           <Link
             key={m}
             href={`/flows/${year}/${m}`}
-            className="inline-flex items-center gap-1 px-2.5 py-0.5 text-xs rounded-full border border-ink/[0.08] text-foreground hover:border-accent hover:text-accent no-underline transition-colors"
+            className="inline-flex items-center gap-1 px-2.5 py-0.5 text-xs rounded-full border border-line-strong text-foreground hover:border-accent hover:text-accent no-underline transition-colors"
           >
-            {monthNames[parseInt(m, 10) - 1]}
+            {monthLabel(m)}
             <span className="text-muted text-[10px]">({monthCounts[m]})</span>
           </Link>
         ))}
@@ -93,7 +95,7 @@ export default async function FlowsYearPage({ params }: { params: Promise<{ year
         allFlows={toFlowIndexItems(flows)}
         entryDates={allFlows.map(f => f.date)}
         tags={tags}
-        currentDate={flows[0]?.date}
+        initialMonth={flows[0]?.date.slice(0, 7)}
         breadcrumb={breadcrumb}
         feed={<FlowStream flows={flows} slugRegistry={slugRegistry} />}
       />

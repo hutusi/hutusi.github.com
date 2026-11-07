@@ -23,11 +23,12 @@ function getTagClasses(count: number, min: number, max: number): string {
 function TagLink({ tag, count, min, max }: { tag: string; count: number; min: number; max: number }) {
   return (
     <Link
+      prefetch={false}
       href={`/tags/${encodeURIComponent(tag.toLowerCase())}`}
-      className={`group inline-flex items-baseline gap-1.5 rounded-2xl border border-ink/[0.07] bg-ink/[0.02] hover:bg-background hover:border-accent hover:shadow-md hover:shadow-accent/5 no-underline transition-all duration-200 ${getTagClasses(count, min, max)}`}
+      className={`group inline-flex items-baseline gap-1.5 rounded-2xl border border-line bg-surface-faint hover:bg-background hover:border-accent hover:shadow-md hover:shadow-accent/5 no-underline transition-all duration-200 ${getTagClasses(count, min, max)}`}
     >
       <span className="text-foreground group-hover:text-accent transition-colors">{tag}</span>
-      <span className="font-mono text-muted/50 group-hover:text-accent/50 transition-colors" style={{ fontSize: '0.7em' }}>{count}</span>
+      <span className="font-mono text-muted group-hover:text-accent transition-colors" style={{ fontSize: '0.7em' }}>{count}</span>
     </Link>
   );
 }
@@ -77,25 +78,25 @@ export default function TagsIndexClient({ tags }: TagsIndexClientProps) {
             onChange={(e) => setFilter(e.target.value)}
             placeholder={t('filter_tags')}
             aria-label={t('filter_tags')}
-            className="w-full pl-9 pr-8 py-2 text-sm bg-ink/[0.02] border border-ink/[0.06] rounded-lg outline-none focus:border-accent/40 text-foreground placeholder:text-muted/40 transition-colors"
+            className="w-full pl-9 pr-8 py-2 text-sm bg-surface-faint border border-line rounded-lg outline-none focus:border-accent focus:ring-2 focus:ring-accent/25 text-foreground placeholder:text-muted transition-colors"
           />
           {filter && (
             <button
               onClick={() => setFilter('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted/40 hover:text-muted transition-colors p-0.5 rounded"
-              aria-label="Clear filter"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted hover:text-foreground transition-colors p-0.5 rounded"
+              aria-label={t('clear_filter')}
             >
               <LuX className="w-3.5 h-3.5" />
             </button>
           )}
         </div>
 
-        <div className="flex rounded-lg border border-ink/[0.06] overflow-hidden text-xs font-sans font-semibold self-start">
+        <div className="flex rounded-lg border border-line overflow-hidden text-xs font-sans font-semibold self-start">
           <button
             type="button"
             onClick={() => setSort('popular')}
             aria-pressed={sort === 'popular'}
-            className={`px-4 py-2 transition-colors ${sort === 'popular' ? 'bg-accent/10 text-accent' : 'text-muted hover:text-foreground hover:bg-ink/[0.04]'}`}
+            className={`px-4 py-2 transition-colors ${sort === 'popular' ? 'bg-accent/10 text-accent' : 'text-muted hover:text-foreground hover:bg-surface-soft'}`}
           >
             {t('sort_popular')}
           </button>
@@ -103,7 +104,7 @@ export default function TagsIndexClient({ tags }: TagsIndexClientProps) {
             type="button"
             onClick={() => setSort('alpha')}
             aria-pressed={sort === 'alpha'}
-            className={`px-4 py-2 border-l border-ink/[0.06] transition-colors ${sort === 'alpha' ? 'bg-accent/10 text-accent' : 'text-muted hover:text-foreground hover:bg-ink/[0.04]'}`}
+            className={`px-4 py-2 border-l border-line transition-colors ${sort === 'alpha' ? 'bg-accent/10 text-accent' : 'text-muted hover:text-foreground hover:bg-surface-soft'}`}
           >
             {t('sort_az')}
           </button>
@@ -138,8 +139,8 @@ export default function TagsIndexClient({ tags }: TagsIndexClientProps) {
             sortedLetters.map((letter, i) => (
               <div key={letter} className={i > 0 ? 'mt-10' : ''}>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-xs font-mono font-bold text-muted/40 w-4">{letter}</span>
-                  <div className="flex-1 h-px bg-ink/[0.05]" />
+                  <span className="text-xs font-mono font-bold text-muted w-4">{letter}</span>
+                  <div className="divider-hairline" />
                 </div>
                 <div className="flex flex-wrap gap-3 items-baseline">
                   {letterGroups![letter].map(([tag, count]) => (

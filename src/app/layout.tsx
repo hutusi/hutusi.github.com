@@ -1,17 +1,26 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { isFeatureEnabled } from '@/lib/features';
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import BrowserDetectionBanner from "@/components/BrowserDetectionBanner";
-import { siteConfig } from "../../site.config";
+import ImageZoom from "@/components/ImageZoom";
+import BackToTop from "@/components/BackToTop";
+// Import from config-schema (not site.config directly) so the build-time Zod
+// validation runs: the root layout renders for every page, so a malformed
+// config fails the build with a readable message.
+import { siteConfig } from "@/lib/config-schema";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { getTwinnedPathManifest } from "@/lib/locale-routes";
 import { getAllSeries, getSeriesData } from '@/lib/content/series';
 import { getAllBooks } from '@/lib/content/books';
-import { resolveLocale } from "@/lib/i18n";
+import { resolveLocaleValue } from "@/lib/i18n";
+import { siteTwitterHandles, withSiteAlternates } from "@/lib/metadata";
 import "./globals.css";
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
 
 const inter = localFont({
   src: [
@@ -27,34 +36,33 @@ const inter = localFont({
     },
   ],
   variable: "--font-inter",
+  display: "swap",
 });
 
 const baskerville = localFont({
   src: [
     {
-      path: "../fonts/LibreBaskerville-Regular.ttf",
+      path: "../fonts/LibreBaskerville-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../fonts/LibreBaskerville-Bold.ttf",
+      path: "../fonts/LibreBaskerville-Bold.woff2",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../fonts/LibreBaskerville-Italic.ttf",
+      path: "../fonts/LibreBaskerville-Italic.woff2",
       weight: "400",
       style: "italic",
     },
   ],
   variable: "--font-baskerville",
+  display: "swap",
+  // Size-adjust the fallback against a serif. The default (Arial) gives a
+  // sans fallback whose metrics and look both jump when Baskerville swaps in.
+  adjustFontFallback: "Times New Roman",
 });
-
-const siteTwitterHandle = (() => {
-  const url = siteConfig.social?.twitter ?? '';
-  const m = url.match(/(?:twitter\.com|x\.com)\/([^/?#]+)/);
-  return m ? `@${m[1]}` : undefined;
-})();
 
 // Build icon metadata with explicit MIME type so browsers correctly handle
 // all formats. Without this, .ico files served via the metadata API lack
@@ -67,33 +75,38 @@ const faviconMeta =
   ext === 'svg' ? [{ url: faviconSrc, type: 'image/svg+xml' }] :
   faviconSrc;
 
-const feedAlternates = (() => {
-  const { format } = siteConfig.feed;
-  const types: Record<string, string> = {};
-  if (format === 'rss' || format === 'both') types['application/rss+xml'] = '/feed.xml';
-  if (format === 'atom' || format === 'both') types['application/atom+xml'] = '/feed.atom';
-  return Object.keys(types).length > 0 ? { types } : undefined;
-})();
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
-  title: resolveLocale(siteConfig.title),
-  description: resolveLocale(siteConfig.description),
+  title: resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE),
+  description: resolveLocaleValue(siteConfig.description, DEFAULT_LOCALE),
   icons: {
     icon: faviconMeta,
+    // iOS home-screen icon (also fetched from this conventional path when a
+    // page omits the link).
+    apple: '/apple-touch-icon.png',
   },
-  ...(feedAlternates && { alternates: feedAlternates }),
+  alternates: withSiteAlternates(),
   openGraph: {
-    siteName: resolveLocale(siteConfig.title),
+    siteName: resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE),
     locale: siteConfig.i18n.defaultLocale,
     type: 'website',
     images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary',
-    site: siteTwitterHandle,
-    creator: siteTwitterHandle,
+    ...siteTwitterHandles(),
   },
+};
+
+// Browser chrome (mobile address bar, PWA title bar) matches the paper
+// background in each scheme; colorScheme lets form controls and scrollbars
+// pick the right defaults before next-themes stamps the explicit scheme.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fafaf9' },
+    { media: '(prefers-color-scheme: dark)', color: '#292524' },
+  ],
+  colorScheme: 'light dark',
 };
 
 export default function RootLayout({
@@ -131,21 +144,20 @@ export default function RootLayout({
   }
 
   return (
-    <html lang={siteConfig.i18n.defaultLocale} data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang={siteConfig.i18n.defaultLocale} data-palette={siteConfig.themeColor} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${baskerville.variable} font-sans min-h-screen transition-colors duration-300`}
-        data-palette={siteConfig.themeColor}
         suppressHydrationWarning
       >
         {/* Skip to main content link for accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-accent-contrast focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
         >
           Skip to main content
         </a>
         <ThemeProvider>
-          <LanguageProvider>
+          <LanguageProvider twinnedPaths={getTwinnedPathManifest()}>
             <div className="selection:bg-accent/20 selection:text-accent dark:selection:bg-accent/30 dark:selection:text-accent min-h-screen flex flex-col">
               <Navbar seriesList={seriesList} booksList={booksList} />
               <main id="main-content" className="pt-16 flex-grow">
@@ -154,6 +166,8 @@ export default function RootLayout({
               </main>
               <Footer />
             </div>
+            <BackToTop />
+            <ImageZoom />
             <Analytics />
           </LanguageProvider>
         </ThemeProvider>

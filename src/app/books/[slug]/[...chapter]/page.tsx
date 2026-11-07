@@ -1,12 +1,17 @@
 import { getBookData, getBookChapter, getAllBooks } from '@/lib/content/books';
+import { isFeatureEnabled } from '@/lib/features';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { siteConfig } from '../../../../../site.config';
-import BookLayout from '@/layouts/BookLayout';
-import { resolveLocale } from '@/lib/i18n';
-import { buildBookChapterJsonLd, serializeJsonLd } from '@/lib/json-ld';
-import { getBookUrl, getBookChapterUrl } from '@/lib/urls';
+import BookChapterBody from '@/components/page-bodies/BookChapterBody';
+import { resolveLocaleValue } from '@/lib/i18n';
+import { siteTwitterHandles, withSiteAlternates } from '@/lib/metadata';
+import { getShareImage } from '@/lib/og-images';
+import { getBookChapterUrl } from '@/lib/urls';
+import { chapterContentLocales, contentSeoUrls } from '@/lib/locale-routes';
 import { safeDecodeParam } from '@/lib/route-params';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
 
 /**
  * The chapter route is a catch-all (`[...chapter]`) so that nested chapter ids
@@ -28,6 +33,7 @@ function chapterIdToParamSegments(chapterId: string): string[] {
 }
 
 export async function generateStaticParams() {
+  if (!isFeatureEnabled('books')) return [{ slug: '_', chapter: ['_'] }];
   const books = getAllBooks();
   if (books.length === 0) return [{ slug: '_', chapter: ['_'] }];
   const params: { slug: string; chapter: string[] }[] = [];
@@ -64,56 +70,39 @@ export async function generateMetadata({ params }: { params: ChapterPageParams }
     return { title: 'Chapter Not Found' };
   }
 
-  const ogImage = book.coverImage && !book.coverImage.startsWith('text:') && !book.coverImage.startsWith('./')
-    ? book.coverImage
-    : siteConfig.ogImage;
+  // The book's cover, else the chapter's generated card, else the site image.
+  const share = getShareImage({ kind: 'chapter', pagePath: getBookChapterUrl(slug, chapterSlug), coverImage: book.coverImage });
+
+  // Twinned chapters advertise the reciprocal hreflang set; the canonical
+  // stays this unprefixed URL either way.
+  const seo = contentSeoUrls(getBookChapterUrl(slug, chapterSlug), chapterContentLocales(slug, chapterSlug));
 
   return {
-    title: `${chapter.title} - ${book.title} | ${resolveLocale(siteConfig.title)}`,
+    title: `${chapter.title} - ${book.title} | ${resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE)}`,
     description: chapter.excerpt,
+    alternates: withSiteAlternates({ canonical: seo.canonicalUrl, languages: seo.languageAlternates }),
     openGraph: {
       title: `${chapter.title} - ${book.title}`,
       description: chapter.excerpt,
       type: 'article',
       url: `${siteConfig.baseUrl}${getBookChapterUrl(slug, chapterSlug)}`,
-      siteName: resolveLocale(siteConfig.title),
-      images: [{ url: ogImage, width: 1200, height: 630, alt: chapter.title }],
+      siteName: resolveLocaleValue(siteConfig.title, DEFAULT_LOCALE),
+      images: [{ url: share.url, width: 1200, height: 630, alt: chapter.title }],
     },
     twitter: {
-      card: ogImage !== siteConfig.ogImage ? 'summary_large_image' : 'summary',
+      card: share.source === 'site' ? 'summary' : 'summary_large_image',
       title: `${chapter.title} - ${book.title}`,
       description: chapter.excerpt,
-      images: [ogImage],
+      images: [share.url],
+      ...siteTwitterHandles(),
     },
   };
 }
 
 export default async function BookChapterPage({ params }: { params: ChapterPageParams }) {
+  if (!isFeatureEnabled('books')) notFound();
   const { slug: rawSlug, chapter: rawChapter } = await params;
   const slug = safeDecodeParam(rawSlug);
   const chapterSlug = chapterIdFromParams(rawChapter);
-
-  const book = getBookData(slug);
-  const chapter = getBookChapter(slug, chapterSlug);
-
-  if (!book || !chapter) {
-    notFound();
-  }
-
-  const siteUrl = siteConfig.baseUrl.replace(/\/+$/, '');
-  const jsonLd = buildBookChapterJsonLd({
-    chapter,
-    book,
-    chapterUrl: `${siteUrl}${getBookChapterUrl(slug, chapterSlug)}`,
-    bookUrl: `${siteUrl}${getBookUrl(slug)}`,
-    siteTitle: resolveLocale(siteConfig.title),
-    siteUrl,
-  });
-
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
-      <BookLayout book={book} chapter={chapter} />
-    </>
-  );
+  return <BookChapterBody locale={DEFAULT_LOCALE} bookSlug={slug} chapterId={chapterSlug} />;
 }

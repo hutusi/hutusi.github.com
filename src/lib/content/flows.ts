@@ -7,7 +7,8 @@ import { byDateDesc } from '../sort';
 import { extractContentMetrics } from '../text-metrics';
 import type { Heading } from './types';
 import { flowsDirectory, readUtf8File } from './io';
-import { dateField, draftField, tagsField } from './schema';
+import { createProdMemo } from './cache';
+import { dateField, draftField, tagsField, invalidFrontmatterError } from './schema';
 
 /**
  * Flows: daily notes stored as content/flows/YYYY/MM/DD.{md,mdx}
@@ -51,8 +52,7 @@ function parseFlowFile(fullPath: string, slug: string): FlowData {
 
   const parsed = FlowSchema.safeParse(rawData);
   if (!parsed.success) {
-    console.error(`Invalid flow frontmatter in ${fullPath}:`, parsed.error.format());
-    throw new Error(`Invalid flow frontmatter in ${fullPath}`);
+    throw invalidFrontmatterError('flow frontmatter', fullPath, parsed.error);
   }
   const data = parsed.data;
 
@@ -73,7 +73,14 @@ function parseFlowFile(fullPath: string, slug: string): FlowData {
   };
 }
 
+const allFlowsMemo = createProdMemo<FlowData[]>();
+
 export function getAllFlows(): FlowData[] {
+  // Prod-only memo: dev re-reads every call so HMR sees fresh flows.
+  return allFlowsMemo.get(computeAllFlows);
+}
+
+function computeAllFlows(): FlowData[] {
   if (!fs.existsSync(flowsDirectory)) return [];
 
   const flows: FlowData[] = [];

@@ -3,13 +3,14 @@ import Link from 'next/link';
 import CoverImage from './CoverImage';
 import { cn } from '@/lib/cn';
 import { COVER_ZOOM } from '@/lib/ui-classes';
-import { t } from '@/lib/i18n';
+import { getTranslator } from '@/lib/i18n';
 
 interface ContentCardProps {
   href: string;
   title: string;
   /** Used by CoverImage to resolve co-located cover assets. */
   slug: string;
+  locale: string;
   coverImage?: string;
   /** Accent badge content, e.g. "5 chapters" or "3 parts". */
   badge: ReactNode;
@@ -33,12 +34,14 @@ export default function ContentCard({
   href,
   title,
   slug,
+  locale,
   coverImage,
   badge,
   authors,
   excerpt,
   size = 'index',
 }: ContentCardProps) {
+  const { t } = getTranslator(locale);
   const compact = size === 'compact';
   const Heading = compact ? 'h3' : 'h2';
 
@@ -47,7 +50,7 @@ export default function ContentCard({
       {/* ink-card surface + card-base's chrome minus its built-in p-8, so the
           inner padding below doesn't have to fight a p-0 override. */}
       <div className="ink-card group relative flex h-full flex-col overflow-hidden transition-all hover:border-accent/30">
-        <div className={cn('relative w-full overflow-hidden bg-ink/[0.04]', compact ? 'h-40' : 'h-48')}>
+        <div className={cn('relative w-full overflow-hidden bg-surface-soft', compact ? 'h-40' : 'h-48')}>
           <CoverImage src={coverImage} title={title} slug={slug} className={COVER_ZOOM} />
         </div>
         <div className={compact ? 'p-6' : 'p-8'}>

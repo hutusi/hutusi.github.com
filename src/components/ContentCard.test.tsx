@@ -9,6 +9,7 @@ describe('ContentCard', () => {
         href="/books/my-book"
         title="My Book"
         slug="my-book"
+        locale="en"
         badge="5 chapters"
         excerpt="A fine book."
       />,
@@ -30,6 +31,7 @@ describe('ContentCard', () => {
         href="/series/my-series"
         title="My Series"
         slug="my-series"
+        locale="en"
         badge="3 parts"
         excerpt="A fine series."
         size="compact"
@@ -44,12 +46,12 @@ describe('ContentCard', () => {
 
   test('renders the "written by" line only when authors are provided', () => {
     const withAuthors = renderToStaticMarkup(
-      <ContentCard href="/books/b" title="B" slug="b" badge="1 chapters" authors={['Ada', 'Alan']} />,
+      <ContentCard href="/books/b" title="B" slug="b" locale="en" badge="1 chapters" authors={['Ada', 'Alan']} />,
     );
     expect(withAuthors).toContain('Ada, Alan');
 
     const withoutAuthors = renderToStaticMarkup(
-      <ContentCard href="/books/b" title="B" slug="b" badge="1 chapters" authors={[]} />,
+      <ContentCard href="/books/b" title="B" slug="b" locale="en" badge="1 chapters" authors={[]} />,
     );
     // no stray "written by" line when the list is empty
     expect(withoutAuthors).not.toContain('Ada');

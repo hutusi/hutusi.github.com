@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import Link from 'next/link';
 import type { BookTocItem, BookTocSection, BookChapterRef, BookChapterEntry } from '@/lib/content/books';
 import { useLanguage } from './LanguageProvider';
 import PrevNextNav from './PrevNextNav';
 import MetaLabel from './ui/MetaLabel';
-import { getBookChapterUrl } from '@/lib/urls';
+import { getBookChapterUrl, localizeUrl } from '@/lib/urls';
 
 interface BookMobileNavProps {
   bookSlug: string;
@@ -17,8 +17,9 @@ interface BookMobileNavProps {
 }
 
 export default function BookMobileNav({ bookSlug, bookTitle, toc, chapters, currentChapter }: BookMobileNavProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
+  const listId = useId();
 
   const currentIndex = chapters.findIndex(ch => ch.id === currentChapter);
   const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
@@ -29,14 +30,14 @@ export default function BookMobileNav({ bookSlug, bookTitle, toc, chapters, curr
     const chIdx = chapters.findIndex(c => c.id === ch.id);
     const isPast = chIdx >= 0 && chIdx < currentIndex;
     return isCurrent ? (
-      <div key={key} className="flex items-center gap-3 py-1.5 px-2 rounded-lg bg-accent/5">
+      <div key={key} aria-current="page" className="flex items-center gap-3 py-1.5 px-2 rounded-lg bg-accent/5">
         <span className="text-sm font-semibold text-accent truncate">{ch.title}</span>
       </div>
     ) : (
       <Link
         key={key}
-        href={getBookChapterUrl(bookSlug, ch.id)}
-        className={`block py-1.5 px-2 rounded-lg text-sm no-underline hover:bg-ink/[0.04] transition-colors ${
+        href={localizeUrl(getBookChapterUrl(bookSlug, ch.id), language)}
+        className={`block py-1.5 px-2 rounded-lg text-sm no-underline hover:bg-surface-soft transition-colors ${
           isPast ? 'text-foreground/70 hover:text-foreground' : 'text-muted hover:text-foreground'
         }`}
       >
@@ -64,7 +65,7 @@ export default function BookMobileNav({ bookSlug, bookTitle, toc, chapters, curr
     <div className="ink-card lg:hidden p-5">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <Link href={`/books/${bookSlug}`} className="group flex items-center gap-2 no-underline">
+        <Link href={localizeUrl(`/books/${bookSlug}`, language)} className="group flex items-center gap-2 no-underline">
           <MetaLabel tone="accent">
             {t('book')}
           </MetaLabel>
@@ -73,13 +74,13 @@ export default function BookMobileNav({ bookSlug, bookTitle, toc, chapters, curr
             {bookTitle}
           </span>
         </Link>
-        <span className="text-xs font-mono text-muted bg-ink/[0.05] px-2 py-0.5 rounded-full">
+        <span className="text-xs font-mono text-muted bg-surface-soft px-2 py-0.5 rounded-full">
           {currentIndex + 1}/{chapters.length}
         </span>
       </div>
 
       {/* Progress bar */}
-      <div className="h-1 bg-ink/[0.05] rounded-full overflow-hidden mb-4">
+      <div className="h-1 bg-surface-soft rounded-full overflow-hidden mb-4">
         <div
           className="h-full bg-accent/60 rounded-full transition-all duration-500"
           style={{ width: `${((currentIndex + 1) / chapters.length) * 100}%` }}
@@ -89,14 +90,17 @@ export default function BookMobileNav({ bookSlug, bookTitle, toc, chapters, curr
       {/* Prev / Next */}
       <div className="mb-3">
         <PrevNextNav
-          prev={prevChapter ? { href: getBookChapterUrl(bookSlug, prevChapter.id), title: prevChapter.title } : null}
-          next={nextChapter ? { href: getBookChapterUrl(bookSlug, nextChapter.id), title: nextChapter.title } : null}
+          prev={prevChapter ? { href: localizeUrl(getBookChapterUrl(bookSlug, prevChapter.id), language), title: prevChapter.title } : null}
+          next={nextChapter ? { href: localizeUrl(getBookChapterUrl(bookSlug, nextChapter.id), language), title: nextChapter.title } : null}
         />
       </div>
 
       {/* Toggle to expand full chapter list */}
       <button
+        type="button"
         onClick={() => setIsExpanded(!isExpanded)}
+        aria-expanded={isExpanded}
+        aria-controls={listId}
         className="w-full flex items-center justify-center gap-2 py-2 text-xs font-sans text-muted hover:text-accent transition-colors"
       >
         <span className="divider-hairline" />
@@ -114,7 +118,7 @@ export default function BookMobileNav({ bookSlug, bookTitle, toc, chapters, curr
 
       {/* Collapsible chapter list */}
       {isExpanded && (
-        <div className="mt-3 space-y-2 animate-slide-down">
+        <div id={listId} className="mt-3 space-y-2 animate-slide-down">
           {toc.map((item, tocIdx) => {
             if ('part' in item) {
               return (

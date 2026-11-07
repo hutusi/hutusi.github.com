@@ -1,15 +1,14 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import CoverImage from './CoverImage';
 import SectionHeading from './ui/SectionHeading';
 import { useLanguage } from './LanguageProvider';
-import { shuffle } from '@/lib/shuffle';
+import { shuffle, shuffleSeeded, seedFromKeys } from '@/lib/shuffle';
 import { byDateAsc, byDateDesc } from '@/lib/sort';
 import { getPostUrl } from '@/lib/urls';
-import { cn } from '@/lib/cn';
-import { COVER_ZOOM } from '@/lib/ui-classes';
+import { COVER_ZOOM, COVER_ZOOM_SLOW } from '@/lib/ui-classes';
 
 export interface FeaturedPost {
   slug: string;
@@ -32,10 +31,13 @@ interface FeaturedStoriesSectionProps {
   order?: PostOrder;
 }
 
-function canonicalOrder(posts: FeaturedPost[], order: PostOrder): FeaturedPost[] {
+// For 'shuffle', a seeded permutation keyed off the content so server and client
+// render the same order — no post-hydration swap. The user re-rolls to a fresh
+// random order via the shuffle control.
+function initialOrder(posts: FeaturedPost[], order: PostOrder): FeaturedPost[] {
   if (order === 'date-desc') return [...posts].sort(byDateDesc);
   if (order === 'date-asc')  return [...posts].sort(byDateAsc);
-  return posts;
+  return shuffleSeeded(posts, seedFromKeys(posts.map(p => p.slug)));
 }
 
 function buildDisplayed(allFeatured: FeaturedPost[], maxItems: number, orderedNonPinned: FeaturedPost[]): FeaturedPost[] {
@@ -61,20 +63,9 @@ export default function FeaturedStoriesSection({ allFeatured, maxItems, order = 
 
   const nonPinned = allFeatured.filter(p => !p.pinned);
 
-  // SSR renders the canonical input order so server and client agree on first paint.
-  // For 'shuffle', the post-mount useEffect swaps to a fresh random permutation,
-  // so every reload re-rolls without any hydration mismatch.
-  const [orderedNonPinned, setOrderedNonPinned] = useState<FeaturedPost[]>(() => canonicalOrder(nonPinned, order));
-
-  // Shuffle on mount so every reload re-rolls. SSR's canonical render is stable; the
-  // post-hydration swap is the intentional client-only behaviour, not a sync issue.
-  useEffect(() => {
-    if (order === 'shuffle') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setOrderedNonPinned(shuffle(nonPinned));
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allFeatured, order]);
+  // Seeded shuffle is stable across the SSR/hydration boundary, so the initial
+  // order is computed once and never swapped after mount.
+  const [orderedNonPinned, setOrderedNonPinned] = useState<FeaturedPost[]>(() => initialOrder(nonPinned, order));
 
   const handleShuffle = useCallback(() => {
     setOrderedNonPinned(shuffle(nonPinned));
@@ -119,13 +110,16 @@ export default function FeaturedStoriesSection({ allFeatured, maxItems, order = 
         {/* Hero card — full image with obi (belly band) text overlay */}
         <div className={secondary.length > 0 ? 'lg:col-span-7' : 'lg:col-span-12'}>
           <Link href={getPostUrl(hero)} className={`group block no-underline${secondary.length > 0 ? ' h-full' : ''}`}>
-            <div className={`relative overflow-hidden rounded-2xl bg-ink/[0.04] ${secondary.length > 0 ? 'aspect-[16/9] lg:aspect-auto lg:h-full' : 'aspect-[16/9]'}`}>
+            <div className={`relative overflow-hidden rounded-2xl bg-surface-soft ${secondary.length > 0 ? 'aspect-[16/9] lg:aspect-auto lg:h-full' : 'aspect-[16/9]'}`}>
               <CoverImage
                 src={hero.coverImage}
                 title={hero.title}
                 slug={hero.slug}
-                className={cn(COVER_ZOOM, 'duration-700')}
+                className={COVER_ZOOM_SLOW}
                 loading="eager"
+                // With secondary stories the hero is lg:col-span-7 (~60%);
+                // alone it spans the full 12-column row.
+                sizes={secondary.length > 0 ? '(min-width: 1024px) 60vw, 100vw' : '(min-width: 1200px) 1104px, 100vw'}
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
@@ -158,7 +152,7 @@ export default function FeaturedStoriesSection({ allFeatured, maxItems, order = 
               <Link
                 key={post.slug}
                 href={getPostUrl(post)}
-                className="group flex no-underline ink-card overflow-hidden hover:border-accent/30 hover:bg-ink/[0.04] hover:shadow-md hover:shadow-accent/5 transition-all duration-300 h-32"
+                className="group flex no-underline ink-card overflow-hidden hover:border-accent/30 hover:bg-surface-soft hover:shadow-md hover:shadow-accent/5 transition-all duration-300 h-32"
               >
                 {/* Text content */}
                 <div className="flex-1 p-4 flex flex-col min-w-0">
@@ -179,12 +173,13 @@ export default function FeaturedStoriesSection({ allFeatured, maxItems, order = 
                   )}
                 </div>
                 {/* Cover image — flush to right edge, full card height */}
-                <div className="relative w-32 flex-shrink-0 overflow-hidden bg-ink/[0.04]">
+                <div className="relative w-32 flex-shrink-0 overflow-hidden bg-surface-soft">
                   <CoverImage
                     src={post.coverImage}
                     title={post.title}
                     slug={post.slug}
                     className={COVER_ZOOM}
+                    sizes="128px"
                   />
                 </div>
               </Link>

@@ -2,12 +2,15 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { z } from 'zod';
+import { siteConfig } from '../../../site.config';
 import { byDateDesc } from '../sort';
 import { extractContentMetrics } from '../text-metrics';
 import type { Heading } from './types';
-import { notesDirectory, readUtf8File } from './io';
-import { createProdMemo } from './cache';
-import { dateField, draftField, tagsField } from './schema';
+import { domainDir, treePathFor, getActiveContentLocales, assertKnownLocale, assertNotLegacyLocaleSibling, readUtf8File } from './io';
+import { createProdKeyedMemo } from './cache';
+import { dateField, draftField, tagsField, invalidFrontmatterError } from './schema';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
 
 /**
  * Notes: flat knowledge-base entries in content/notes/. Notes support
@@ -40,16 +43,19 @@ export interface NoteData {
   headings: Heading[];
   readingMinutes: number;
   wordCount: number;
+  /** Locale tree this note was loaded from (siteConfig.i18n.defaultLocale for the content/ root tree). */
+  locale: string;
+  /** Tree-relative, extension-stripped source identity — the twin key across locale trees (io.treePathFor). */
+  treePath: string;
 }
 
-function parseNoteFile(fullPath: string, slug: string): NoteData {
+function parseNoteFile(fullPath: string, slug: string, locale: string): NoteData {
   const fileContents = readUtf8File(fullPath);
   const { data: rawData, content } = matter(fileContents);
 
   const parsed = NoteSchema.safeParse(rawData);
   if (!parsed.success) {
-    console.error(`Invalid note frontmatter in ${fullPath}:`, parsed.error.format());
-    throw new Error(`Invalid note frontmatter in ${fullPath}`);
+    throw invalidFrontmatterError('note frontmatter', fullPath, parsed.error);
   }
   const data = parsed.data;
 
@@ -71,29 +77,32 @@ function parseNoteFile(fullPath: string, slug: string): NoteData {
     headings,
     readingMinutes,
     wordCount,
+    locale,
+    treePath: treePathFor(fullPath, locale),
   };
 }
 
-const allNotesMemo = createProdMemo<NoteData[]>();
+const allNotesMemo = createProdKeyedMemo<string, NoteData[]>();
 
-export function getAllNotes(): NoteData[] {
+export function getAllNotes(locale: string = DEFAULT_LOCALE): NoteData[] {
+  assertKnownLocale(locale);
   // Prod-only memo: dev re-reads on every call so HMR sees fresh notes.
-  return allNotesMemo.get(() => {
-    if (!fs.existsSync(notesDirectory)) return [];
+  return allNotesMemo.get(locale, () => {
+    const localeNotesDir = domainDir('notes', locale);
+    if (!fs.existsSync(localeNotesDir)) return [];
 
     const notes: NoteData[] = [];
-    const items = fs.readdirSync(notesDirectory, { withFileTypes: true });
+    const items = fs.readdirSync(localeNotesDir, { withFileTypes: true });
 
     for (const item of items) {
       if (!item.isFile()) continue;
       if (!item.name.endsWith('.md') && !item.name.endsWith('.mdx')) continue;
+      assertNotLegacyLocaleSibling(item.name, localeNotesDir);
       const slug = item.name.replace(/\.mdx?$/, '');
-      const fullPath = path.join(notesDirectory, item.name);
-      try {
-        notes.push(parseNoteFile(fullPath, slug));
-      } catch (e) {
-        console.error(`Error parsing note ${fullPath}:`, e);
-      }
+      const fullPath = path.join(localeNotesDir, item.name);
+      // Let parse errors propagate — a malformed note must fail the build, not
+      // silently vanish (strict-build invariant; matches getAllFlows).
+      notes.push(parseNoteFile(fullPath, slug, locale));
     }
 
     return notes
@@ -102,28 +111,28 @@ export function getAllNotes(): NoteData[] {
   });
 }
 
-export function getNoteBySlug(slug: string): NoteData | null {
-  if (!fs.existsSync(notesDirectory)) return null;
+export function getNoteBySlug(slug: string, locale: string = DEFAULT_LOCALE): NoteData | null {
+  assertKnownLocale(locale);
+  const localeNotesDir = domainDir('notes', locale);
+  if (!fs.existsSync(localeNotesDir)) return null;
 
-  const mdxPath = path.join(notesDirectory, `${slug}.mdx`);
-  const mdPath = path.join(notesDirectory, `${slug}.md`);
+  const mdxPath = path.join(localeNotesDir, `${slug}.mdx`);
+  const mdPath = path.join(localeNotesDir, `${slug}.md`);
 
   let fullPath = '';
   if (fs.existsSync(mdxPath)) fullPath = mdxPath;
   else if (fs.existsSync(mdPath)) fullPath = mdPath;
   else return null;
 
-  try {
-    const note = parseNoteFile(fullPath, slug);
-    if (process.env.NODE_ENV === 'production' && note.draft) return null;
-    return note;
-  } catch {
-    return null;
-  }
+  // null only when the note doesn't exist; a malformed note throws (strict-build,
+  // matches getFlowBySlug).
+  const note = parseNoteFile(fullPath, slug, locale);
+  if (process.env.NODE_ENV === 'production' && note.draft) return null;
+  return note;
 }
 
-export function getAdjacentNotes(slug: string): { prev: NoteData | null; next: NoteData | null } {
-  const allNotes = getAllNotes(); // sorted newest-first
+export function getAdjacentNotes(slug: string, locale: string = DEFAULT_LOCALE): { prev: NoteData | null; next: NoteData | null } {
+  const allNotes = getAllNotes(locale); // sorted newest-first
   const index = allNotes.findIndex(n => n.slug === slug);
   if (index === -1) return { prev: null, next: null };
   return {
@@ -132,13 +141,13 @@ export function getAdjacentNotes(slug: string): { prev: NoteData | null; next: N
   };
 }
 
-export function getRecentNotes(limit: number = 5): NoteData[] {
-  return getAllNotes().slice(0, limit);
+export function getRecentNotes(limit: number = 5, locale: string = DEFAULT_LOCALE): NoteData[] {
+  return getAllNotes(locale).slice(0, limit);
 }
 
-export function getNoteTags(): Record<string, number> {
+export function getNoteTags(locale: string = DEFAULT_LOCALE): Record<string, number> {
   const tags: Record<string, number> = {};
-  getAllNotes().forEach(note => {
+  getAllNotes(locale).forEach(note => {
     note.tags.forEach(tag => {
       const normalized = tag.toLowerCase();
       tags[normalized] = (tags[normalized] || 0) + 1;
@@ -147,8 +156,57 @@ export function getNoteTags(): Record<string, number> {
   return tags;
 }
 
-export function getNotesByTag(tag: string): NoteData[] {
-  return getAllNotes().filter(n =>
+export function getNotesByTag(tag: string, locale: string = DEFAULT_LOCALE): NoteData[] {
+  return getAllNotes(locale).filter(n =>
     n.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase())
   );
+}
+
+// ─── cross-tree aggregation ──────────────────────────────────────────────────
+
+const aggregatedNotesMemo = createProdKeyedMemo<string, NoteData[]>();
+
+/**
+ * The default tree plus every locale tree's ORIGINAL notes, deduplicated by
+ * treePath in [default, …locales] order so a twin (in any pair of trees)
+ * counts once. Mirrors posts.getPostsWithLocaleOriginals — the shared domain
+ * for the global taxonomy surfaces.
+ */
+export function getNotesWithLocaleOriginals(): NoteData[] {
+  return aggregatedNotesMemo.get('all', () => {
+    const nonDefault = siteConfig.i18n.enabled
+      ? siteConfig.i18n.locales.filter(locale => locale !== DEFAULT_LOCALE)
+      : [];
+    const seen = new Set(getAllNotes().map(note => note.treePath));
+    const result = [...getAllNotes()];
+    for (const locale of nonDefault) {
+      for (const note of getAllNotes(locale)) {
+        if (seen.has(note.treePath)) continue;
+        seen.add(note.treePath);
+        result.push(note);
+      }
+    }
+    return result.sort(byDateDesc);
+  });
+}
+
+/** Tag lookup over the aggregated (default ∪ originals) note domain — for the global /tags pages. */
+export function getAggregatedNotesByTag(tag: string): NoteData[] {
+  return getNotesWithLocaleOriginals().filter(note =>
+    note.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase())
+  );
+}
+
+// ─── twin lookups across locale trees ────────────────────────────────────────
+
+/** Locales (including the note's own) whose tree contains a note with the same treePath. */
+export function getNoteContentLocales(note: Pick<NoteData, 'treePath' | 'locale'>): string[] {
+  return getActiveContentLocales().filter(
+    locale => locale === note.locale || getAllNotes(locale).some(n => n.treePath === note.treePath)
+  );
+}
+
+/** The same note in another locale tree (matched by treePath), or null. */
+export function getTwinNote(note: Pick<NoteData, 'treePath'>, locale: string): NoteData | null {
+  return getAllNotes(locale).find(n => n.treePath === note.treePath) ?? null;
 }

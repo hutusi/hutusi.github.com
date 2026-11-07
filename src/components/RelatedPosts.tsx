@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import type { PostData } from '@/lib/content/types';
-import { t } from '@/lib/i18n';
+import { getTranslator } from '@/lib/i18n';
 import { getPostUrl } from '@/lib/urls';
 import MetaDot from './ui/MetaDot';
 
-export default function RelatedPosts({ posts }: { posts: PostData[] }) {
+export default function RelatedPosts({ posts, locale }: { posts: PostData[]; locale: string }) {
+  const { t } = getTranslator(locale);
   if (!posts || posts.length === 0) return null;
 
   return (
-    <div className="mt-12">
+    <div className="mt-12 print:hidden">
       <h3 className="text-2xl font-serif font-bold text-heading mb-8">{t('related_posts')}</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {posts.map(post => (

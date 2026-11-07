@@ -4,25 +4,27 @@ import CoverImage from './CoverImage';
 import Tag from './Tag';
 import { getPostUrl, getPostUrlInCollection } from '@/lib/urls';
 import { padNumber } from '@/lib/format-utils';
-import { t } from '@/lib/i18n';
+import { getTranslator } from '@/lib/i18n';
 import { cn } from '@/lib/cn';
 import { CARD_HOVER, COVER_ZOOM } from '@/lib/ui-classes';
 
 interface SeriesCatalogProps {
   posts: PostData[];
+  locale: string;
   startIndex?: number;
   totalPosts?: number;
   collectionSlug?: string;
 }
 
-export default function SeriesCatalog({ posts, startIndex = 0, totalPosts, collectionSlug }: SeriesCatalogProps) {
+export default function SeriesCatalog({ posts, locale, startIndex = 0, totalPosts, collectionSlug }: SeriesCatalogProps) {
+  const { t } = getTranslator(locale);
   const total = totalPosts ?? posts.length;
   const postHref = (post: PostData) =>
     collectionSlug ? getPostUrlInCollection(post, collectionSlug) : getPostUrl(post);
   return (
     <div className="relative">
       {/* Timeline connector line */}
-      <div className="absolute left-[19px] top-8 bottom-8 w-px bg-gradient-to-b from-accent/40 via-ink/[0.08] to-ink/[0.04] hidden md:block" />
+      <div className="absolute left-[19px] top-8 bottom-8 w-px bg-gradient-to-b from-accent/40 via-surface-raised to-surface-soft hidden md:block" />
 
       <div className="space-y-6">
         {posts.map((post, index) => (
@@ -37,7 +39,7 @@ export default function SeriesCatalog({ posts, startIndex = 0, totalPosts, colle
             <div className="flex gap-6 md:gap-8">
               {/* Left side: Number indicator */}
               <div className="hidden md:flex flex-col items-center">
-                <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background border-2 border-ink/[0.08] group-hover:border-accent/50 transition-colors">
+                <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background border-2 border-line-strong group-hover:border-accent/50 transition-colors">
                   <span className="text-sm font-mono font-bold text-muted group-hover:text-accent transition-colors">
                     {padNumber(startIndex + index + 1)}
                   </span>
@@ -48,17 +50,18 @@ export default function SeriesCatalog({ posts, startIndex = 0, totalPosts, colle
               <div className={cn('ink-card flex-1 overflow-hidden transition-all duration-300', CARD_HOVER)}>
                 <div className="flex flex-col sm:flex-row">
                   {/* Thumbnail */}
-                  <div className="relative w-full sm:w-48 h-40 sm:h-auto flex-shrink-0 overflow-hidden bg-ink/[0.04]">
+                  <div className="relative w-full sm:w-48 h-40 sm:h-auto flex-shrink-0 overflow-hidden bg-surface-soft">
                     <Link href={postHref(post)} className="relative z-10 block h-full w-full" tabIndex={-1} aria-hidden>
                       <CoverImage
                         src={post.coverImage}
                         title={post.title}
                         slug={post.slug}
                         className={COVER_ZOOM}
+                        sizes="(min-width: 640px) 192px, 100vw"
                       />
                     </Link>
                     {/* Mobile number badge */}
-                    <div className="absolute top-3 left-3 z-10 md:hidden flex h-8 w-8 items-center justify-center rounded-full bg-background/90 backdrop-blur border border-ink/[0.08]">
+                    <div className="absolute top-3 left-3 z-10 md:hidden flex h-8 w-8 items-center justify-center rounded-full bg-background/90 backdrop-blur border border-line-strong">
                       <span className="text-xs font-mono font-bold text-muted">
                         {padNumber(startIndex + index + 1)}
                       </span>
@@ -109,7 +112,7 @@ export default function SeriesCatalog({ posts, startIndex = 0, totalPosts, colle
       </div>
 
       {/* Series progress summary */}
-      <div className="mt-10 pt-8 border-t border-ink/[0.05] text-center">
+      <div className="mt-10 pt-8 border-t border-line text-center">
         <p className="text-sm text-muted">
           <span className="font-mono text-accent">{total}</span> {t('parts')}
         </p>

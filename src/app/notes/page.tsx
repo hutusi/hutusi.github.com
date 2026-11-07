@@ -1,39 +1,22 @@
-import { getAllNotes, getNoteTags } from '@/lib/content/notes';
 import { isFeatureEnabled } from '@/lib/features';
 import { siteConfig } from '../../../site.config';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { firstPage } from '@/lib/pagination';
 import { createListingMetadata } from '@/lib/metadata';
-import NoteContent from '@/components/NoteContent';
-import PageHeader from '@/components/PageHeader';
+import { getAllNotes } from '@/lib/content/notes';
+import NotesIndexBody from '@/components/page-bodies/NotesIndexBody';
 
-const PAGE_SIZE = siteConfig.pagination.notes ?? 20;
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
 
 export const metadata: Metadata = createListingMetadata({
+  locale: DEFAULT_LOCALE,
   titleKey: 'notes',
-  description: 'Knowledge base notes.',
+  descriptionKey: 'notes_subtitle',
+  descriptionOneKey: 'notes_subtitle_one',
+  count: getAllNotes().length,
 });
 
 export default function NotesPage() {
   if (!isFeatureEnabled('flow')) notFound();
-  const allNotes = getAllNotes();
-  const { items: notes, totalPages } = firstPage(allNotes, PAGE_SIZE);
-  const tags = getNoteTags();
-
-  return (
-    <div className="layout-main">
-      <PageHeader
-        titleKey="notes"
-        subtitleKey="notes_subtitle"
-        subtitleParams={{ count: allNotes.length }}
-        className="mb-12"
-      />
-      <NoteContent
-        notes={notes}
-        tags={tags}
-        pagination={totalPages > 1 ? { currentPage: 1, totalPages, basePath: '/notes' } : undefined}
-      />
-    </div>
-  );
+  return <NotesIndexBody locale={DEFAULT_LOCALE} page={1} />;
 }

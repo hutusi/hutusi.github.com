@@ -2,15 +2,24 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { parseRstDocument } from '../rst';
+import { siteConfig } from '../../../site.config';
 import {
-  seriesDirectory,
+  domainDir,
   readUtf8File,
   isMarkdownFilename,
   isRstFilename,
   parseSlugAndDate,
   assertSafeSeriesSlug,
+  assertNotLegacyLocaleSibling,
 } from './io';
-import { createKeyedMemo } from './cache';
+import { createKeyedMemo, createProdKeyedMemo } from './cache';
+
+const DEFAULT_LOCALE = siteConfig.i18n.defaultLocale;
+
+/** Composite memo key: locale trees are parallel content sets, so every per-slug memo is per-locale too. */
+function localeKey(locale: string, slug: string): string {
+  return `${locale} ${slug}`;
+}
 
 /**
  * Series index discovery and lightweight series metadata.
@@ -35,9 +44,9 @@ export interface SeriesContentEntry {
   dateFromFileName?: string;
 }
 
-export function resolveUniqueSeriesIndex(seriesSlug: string, format: SeriesFormat): string | null {
+export function resolveUniqueSeriesIndex(seriesSlug: string, format: SeriesFormat, locale: string = DEFAULT_LOCALE): string | null {
   assertSafeSeriesSlug(seriesSlug);
-  const seriesPath = path.join(seriesDirectory, seriesSlug);
+  const seriesPath = path.join(domainDir('series', locale), seriesSlug);
   const candidates = format === 'rst'
     ? ['index.rst', 'README.rst']
     : ['index.mdx', 'index.md', 'README.mdx', 'README.md'];
@@ -55,14 +64,28 @@ export function resolveUniqueSeriesIndex(seriesSlug: string, format: SeriesForma
   return matches[0] ?? null;
 }
 
-export function resolveSeriesIndexInfo(slug: string): SeriesIndexInfo | null {
+const seriesIndexInfoMemo = createProdKeyedMemo<string, SeriesIndexInfo | null>();
+
+/**
+ * Resolves a series' index file. Called repeatedly per slug (directly in
+ * getAllPosts and again inside getSeriesContentEntries, plus per-slug by
+ * getSeriesData/getSeriesTitle/getSeriesAuthors), so the result is memoized per
+ * slug in production. Dev recomputes each call so HMR sees a freshly-added
+ * index file. Throws still propagate (never cached).
+ */
+export function resolveSeriesIndexInfo(slug: string, locale: string = DEFAULT_LOCALE): SeriesIndexInfo | null {
+  return seriesIndexInfoMemo.get(localeKey(locale, slug), () => computeSeriesIndexInfo(slug, locale));
+}
+
+function computeSeriesIndexInfo(slug: string, locale: string): SeriesIndexInfo | null {
   assertSafeSeriesSlug(slug);
-  if (!fs.existsSync(seriesDirectory)) return null;
-  const seriesPath = path.join(seriesDirectory, slug);
+  const localeSeriesDir = domainDir('series', locale);
+  if (!fs.existsSync(localeSeriesDir)) return null;
+  const seriesPath = path.join(localeSeriesDir, slug);
   if (!fs.existsSync(seriesPath) || !fs.statSync(seriesPath).isDirectory()) return null;
 
-  const rstIndex = resolveUniqueSeriesIndex(slug, 'rst');
-  const markdownIndex = resolveUniqueSeriesIndex(slug, 'markdown');
+  const rstIndex = resolveUniqueSeriesIndex(slug, 'rst', locale);
+  const markdownIndex = resolveUniqueSeriesIndex(slug, 'markdown', locale);
 
   if (rstIndex && markdownIndex) {
     throw new Error(
@@ -74,11 +97,11 @@ export function resolveSeriesIndexInfo(slug: string): SeriesIndexInfo | null {
   return null;
 }
 
-export function getSeriesContentEntries(seriesSlug: string): SeriesContentEntry[] {
-  const indexInfo = resolveSeriesIndexInfo(seriesSlug);
+export function getSeriesContentEntries(seriesSlug: string, locale: string = DEFAULT_LOCALE): SeriesContentEntry[] {
+  const indexInfo = resolveSeriesIndexInfo(seriesSlug, locale);
   if (!indexInfo) return [];
 
-  const seriesPath = path.join(seriesDirectory, seriesSlug);
+  const seriesPath = path.join(domainDir('series', locale), seriesSlug);
   const seriesItems = fs.readdirSync(seriesPath, { withFileTypes: true });
   const entries: SeriesContentEntry[] = [];
   const seenSlugs = new Map<string, string>();
@@ -91,6 +114,7 @@ export function getSeriesContentEntries(seriesSlug: string): SeriesContentEntry[
       const isMarkdown = isMarkdownFilename(item.name);
       const isRst = isRstFilename(item.name);
       if (!isMarkdown && !isRst) continue;
+      assertNotLegacyLocaleSibling(item.name, seriesPath);
 
       const itemFormat: SeriesFormat = isRst ? 'rst' : 'markdown';
       if (itemFormat !== indexInfo.format) {
@@ -151,9 +175,9 @@ export function getSeriesContentEntries(seriesSlug: string): SeriesContentEntry[
 
 const seriesTitleMemo = createKeyedMemo<string, string | undefined>();
 
-export function getSeriesTitle(slug: string): string | undefined {
-  return seriesTitleMemo.get(slug, () => {
-    const indexInfo = resolveSeriesIndexInfo(slug);
+export function getSeriesTitle(slug: string, locale: string = DEFAULT_LOCALE): string | undefined {
+  return seriesTitleMemo.get(localeKey(locale, slug), () => {
+    const indexInfo = resolveSeriesIndexInfo(slug, locale);
     if (!indexInfo) return undefined;
 
     if (indexInfo.format === 'rst') {
@@ -174,9 +198,9 @@ const seriesAuthorsMemo = createKeyedMemo<string, string[] | null>();
  * Read explicitly configured authors from a series index file's frontmatter.
  * Returns null if no authors are configured (as opposed to the default fallback).
  */
-export function getSeriesAuthors(seriesSlug: string): string[] | null {
-  return seriesAuthorsMemo.get(seriesSlug, () => {
-    const indexInfo = resolveSeriesIndexInfo(seriesSlug);
+export function getSeriesAuthors(seriesSlug: string, locale: string = DEFAULT_LOCALE): string[] | null {
+  return seriesAuthorsMemo.get(localeKey(locale, seriesSlug), () => {
+    const indexInfo = resolveSeriesIndexInfo(seriesSlug, locale);
     if (!indexInfo) return null;
 
     if (indexInfo.format === 'rst') {

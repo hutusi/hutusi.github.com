@@ -1,14 +1,17 @@
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkGfm from 'remark-gfm';
-import remarkRehype from 'remark-rehype';
-import rehypeRaw from 'rehype-raw';
-import rehypeStringify from 'rehype-stringify';
-import { getAllPosts } from './content/posts';
+import { getPostsWithLocaleOriginals } from './content/posts';
 import { getAllFlows } from './content/flows';
+import { buildSlugRegistry, type SlugRegistryEntry } from './content/discovery';
 import { siteConfig } from '../../site.config';
-import { getPostUrl, getFlowUrl } from './urls';
-import { resolveLocale } from './i18n';
+import { getPostUrl, getFlowUrl, withTrailingSlash } from './urls';
+import { resolveLocaleValue } from './i18n';
+import { unified } from 'unified';
+import rehypeParse from 'rehype-parse';
+import rehypeStringify from 'rehype-stringify';
+import { markdownToHtml } from './markdown-to-html';
+import { resolveImageUrl } from './json-ld';
+import rehypeAbsoluteUrls, { type AbsoluteUrlsOptions } from './rehype-absolute-urls';
+import { sanitizeRenderedRstHtml } from './rst-sanitize';
+
 
 export interface FeedItem {
   title: string;
@@ -21,15 +24,71 @@ export interface FeedItem {
   authors?: string[];
 }
 
-function markdownToHtml(markdown: string): string {
-  const result = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
-    .use(rehypeStringify)
-    .processSync(markdown);
-  return String(result);
+/** Rewrite URLs in already-rendered HTML (rST) on its HAST, never as text. */
+function absolutizeHtml(html: string, options: AbsoluteUrlsOptions): string {
+  return String(
+    unified()
+      .use(rehypeParse, { fragment: true })
+      .use(rehypeAbsoluteUrls, options)
+      .use(rehypeStringify)
+      .processSync(html),
+  );
+}
+
+/** The fields the feed needs from a post or flow to render full content. */
+interface FeedContentSource {
+  content: string;
+  excerpt: string;
+  renderedHtml?: string;
+  sourceFormat?: 'markdown' | 'rst';
+  latex?: boolean;
+  /** Locale tree the entry came from (posts carry it; flows are default-only). */
+  locale?: string;
+  /** Public-relative base that co-located images resolve against. */
+  imageBaseSlug?: string;
+}
+
+const escapeHtmlText = (v: string) =>
+  v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+/**
+ * Item HTML for content:encoded / Atom <content>. rST posts carry their real
+ * HTML in renderedHtml, sanitized with the same allowlist the on-page
+ * RstRenderer applies; when the docutils renderer didn't run (renderedHtml
+ * unset) fall back to the plain-text excerpt — running rST source through a
+ * Markdown parser mangles directives into literal text. Markdown posts go
+ * through the shared full-syntax pipeline (alerts, containers, wikilinks,
+ * math).
+ */
+function itemContentHtml(
+  post: FeedContentSource,
+  pageUrl: string,
+  slugRegistry: Map<string, SlugRegistryEntry>,
+): string {
+  const siteUrl = siteConfig.baseUrl.replace(/\/+$/, '');
+  if (post.sourceFormat === 'rst') {
+    if (!post.renderedHtml) {
+      // Plain-text fallback: nothing to absolutize.
+      return `<p>${escapeHtmlText(post.excerpt)}</p>`;
+    }
+    // docutils already resolved image paths against the asset base, so the
+    // CDN prefix stays off here exactly as on the page.
+    return absolutizeHtml(sanitizeRenderedRstHtml(post.renderedHtml), {
+      pageUrl,
+      siteUrl,
+      imageBaseSlug: post.imageBaseSlug,
+    });
+  }
+  return markdownToHtml(post.content, {
+    slugRegistry,
+    math: post.latex,
+    absoluteUrls: {
+      pageUrl,
+      siteUrl,
+      imageBaseSlug: post.imageBaseSlug,
+      cdnBaseUrl: siteConfig.images?.cdnBaseUrl ?? '',
+    },
+  });
 }
 
 export type FeedType = 'main' | 'posts' | 'flows' | 'all';
@@ -45,42 +104,72 @@ export function getFeedItems(feedType: FeedType = 'main', includeFullContent: bo
   const { maxItems, includeFlows } = siteConfig.feed;
   const baseUrl = siteConfig.baseUrl.replace(/\/+$/, '');
 
-  let items: FeedItem[] = [];
+  // Full-content HTML rendering is the expensive part, so sort and apply the
+  // maxItems cut on lightweight entries first and only render the survivors.
+  interface FeedEntry {
+    item: FeedItem;
+    source: FeedContentSource;
+  }
 
-  const getPostItems = () => getAllPosts().map((post) => ({
-    title: post.title,
-    url: `${baseUrl}${getPostUrl(post)}`,
-    date: new Date(post.date),
-    excerpt: post.excerpt,
-    content: includeFullContent ? markdownToHtml(post.content) : '',
-    tags: post.tags || [],
-    authors: post.authors,
-  }));
+  const getPostEntries = (): FeedEntry[] => getPostsWithLocaleOriginals().map((post) => {
+    const url = withTrailingSlash(`${baseUrl}${getPostUrl(post)}`);
+    return {
+      item: {
+        title: post.title,
+        url,
+        date: new Date(post.date),
+        excerpt: post.excerpt,
+        content: '',
+        tags: post.tags || [],
+        authors: post.authors,
+      },
+      source: post,
+    };
+  });
 
-  const getFlowItems = () => getAllFlows().map((flow) => ({
-    title: flow.title,
-    url: `${baseUrl}${getFlowUrl(flow.slug)}`,
-    date: new Date(flow.date),
-    excerpt: flow.excerpt,
-    content: includeFullContent ? markdownToHtml(flow.content) : '',
-    tags: flow.tags || [],
-  }));
+  const getFlowEntries = (): FeedEntry[] => getAllFlows().map((flow) => {
+    const url = withTrailingSlash(`${baseUrl}${getFlowUrl(flow.slug)}`);
+    return {
+      item: {
+        title: flow.title,
+        url,
+        date: new Date(flow.date),
+        excerpt: flow.excerpt,
+        content: '',
+        tags: flow.tags || [],
+      },
+      // Flows render on the page with `flows/<date>` as their asset base.
+      source: { ...flow, imageBaseSlug: `flows/${flow.slug}` },
+    };
+  });
 
+  let entries: FeedEntry[];
   if (feedType === 'posts') {
-    items = getPostItems();
+    entries = getPostEntries();
   } else if (feedType === 'flows') {
-    items = getFlowItems();
+    entries = getFlowEntries();
   } else if (feedType === 'all') {
-    items = [...getPostItems(), ...getFlowItems()];
+    entries = [...getPostEntries(), ...getFlowEntries()];
   } else {
     // main
-    items = includeFlows ? [...getPostItems(), ...getFlowItems()] : getPostItems();
+    entries = includeFlows ? [...getPostEntries(), ...getFlowEntries()] : getPostEntries();
   }
 
   // Sort descending by date
-  items.sort((a, b) => b.date.getTime() - a.date.getTime());
+  entries.sort((a, b) => b.item.date.getTime() - a.item.date.getTime());
 
-  return maxItems > 0 ? items.slice(0, maxItems) : items;
+  const kept = maxItems > 0 ? entries.slice(0, maxItems) : entries;
+
+  if (!includeFullContent) {
+    return kept.map(({ item }) => item);
+  }
+
+  // Per-entry registry: wikilinks inside a locale-original post must resolve
+  // locale-first (the registries are memoized per locale, so this stays cheap).
+  return kept.map(({ item, source }) => ({
+    ...item,
+    content: itemContentHtml(source, item.url, buildSlugRegistry(source.locale)),
+  }));
 }
 
 const escapeXml = (v: string) =>
@@ -99,13 +188,13 @@ export function generateRssFeed(feedType: FeedType, selfUrlPath: string): Respon
   const useFullContent = contentMode === 'full';
   const items = getFeedItems(feedType, useFullContent);
   const contentNs = useFullContent ? ' xmlns:content="http://purl.org/rss/modules/content/"' : '';
-  const siteTitle = resolveLocale(siteConfig.title);
+  const siteTitle = resolveLocaleValue(siteConfig.title, siteConfig.i18n.defaultLocale);
   const lastBuildDate = items[0]?.date.toUTCString() ?? new Date().toUTCString();
 
   const selfUrl = `${baseUrl}${selfUrlPath}`;
 
   const imageXml = siteConfig.ogImage
-    ? `\n    <image>\n      <url>${escapeXml(baseUrl + siteConfig.ogImage)}</url>\n      <title>${escapeXml(siteTitle)}</title>\n      <link>${escapeXml(baseUrl)}</link>\n    </image>`
+    ? `\n    <image>\n      <url>${escapeXml(resolveImageUrl(undefined, siteConfig.ogImage, baseUrl))}</url>\n      <title>${escapeXml(siteTitle)}</title>\n      <link>${escapeXml(baseUrl)}</link>\n    </image>`
     : '';
 
   const rssItemsXml = items
@@ -133,7 +222,7 @@ export function generateRssFeed(feedType: FeedType, selfUrlPath: string): Respon
   <channel>
     <title><![CDATA[${escapeCdata(siteTitle)}]]></title>
     <link>${escapeXml(baseUrl)}</link>
-    <description><![CDATA[${escapeCdata(resolveLocale(siteConfig.description))}]]></description>
+    <description><![CDATA[${escapeCdata(resolveLocaleValue(siteConfig.description, siteConfig.i18n.defaultLocale))}]]></description>
     <language>${siteConfig.i18n.defaultLocale}</language>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
     <atom:link href="${escapeXml(selfUrl)}" rel="self" type="application/rss+xml" />${imageXml}
@@ -163,7 +252,7 @@ export function generateAtomFeed(feedType: FeedType, selfUrlPath: string): Respo
   const selfUrl = `${baseUrl}${selfUrlPath}`;
 
   const hasAllAuthors = items.every(item => item.authors && item.authors.length > 0);
-  const siteTitle = resolveLocale(siteConfig.title);
+  const siteTitle = resolveLocaleValue(siteConfig.title, siteConfig.i18n.defaultLocale);
   const defaultAuthor = siteConfig.posts?.authors?.default?.[0];
   const feedAuthorName = defaultAuthor ? defaultAuthor : siteTitle;
   const feedAuthorXml = hasAllAuthors ? '' : `\n  <author><name>${escapeXml(feedAuthorName)}</name></author>`;
@@ -191,12 +280,12 @@ export function generateAtomFeed(feedType: FeedType, selfUrlPath: string): Respo
 
   const atomXml = `<?xml version="1.0" encoding="UTF-8" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[${escapeCdata(resolveLocale(siteConfig.title))}]]></title>
+  <title><![CDATA[${escapeCdata(resolveLocaleValue(siteConfig.title, siteConfig.i18n.defaultLocale))}]]></title>
   <link href="${escapeXml(baseUrl)}" />
   <link href="${escapeXml(selfUrl)}" rel="self" type="application/atom+xml" />
   <id>${escapeXml(selfUrl)}</id>
   <updated>${feedUpdated}</updated>
-  <subtitle><![CDATA[${escapeCdata(resolveLocale(siteConfig.description))}]]></subtitle>${feedAuthorXml}
+  <subtitle><![CDATA[${escapeCdata(resolveLocaleValue(siteConfig.description, siteConfig.i18n.defaultLocale))}]]></subtitle>${feedAuthorXml}
 ${entriesXml}
 </feed>`;
 

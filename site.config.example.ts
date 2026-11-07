@@ -44,14 +44,24 @@ export const siteConfig = {
   },
   description: "A personal digital garden — notes, articles, and ideas.",
   baseUrl: "https://example.com", // Replace with your actual domain
-  ogImage: "/og-image.png", // Default OG/social preview image — place a 1200×630 PNG at public/og-image.png
+  ogImage: "/og-image.png", // Default OG/social preview image (1200×630 PNG). A default ships in public/ — replace it with your own; a missing site-relative file fails the build
+  // Render a 1200×630 share card (title, series or book, date) for every post, note and book chapter without a cover image of its own; pages with a cover keep sharing it. See docs/ARCHITECTURE.md "Share Cards".
+  generateOgImages: false,
+  // After each build, report broken internal links, missing images and broken wikilinks in the export. 'error' fails the build on broken links and images; 'off' skips the check. See docs/ARCHITECTURE.md "Build Pipeline".
+  linkCheck: 'warn' as 'warn' | 'error' | 'off',
   footerText: `© ${new Date().getFullYear()} My Garden. All rights reserved.`,
 
   // ── i18n ──────────────────────────────────────────────────────────────────
   i18n: {
     // i18n is disabled: the language switcher is hidden and defaultLocale is always used.
     // To enable multi-language support, set enabled: true, add more locales, and
-    // convert plain string fields to locale maps: e.g. title: { en: '...', zh: '...' }
+    // convert plain string fields to locale maps: e.g. title: { en: '...', zh: '...' }.
+    //
+    // Content in another language lives in a locale tree mirroring content/:
+    // content/zh/posts/foo.md is served at /zh/posts/foo/ and pairs with
+    // content/posts/foo.md (same relative path) as its translation. The
+    // default locale's content stays at the content/ root, unprefixed.
+    // Locale codes become reserved URL segments while i18n is enabled.
     enabled: false,
     defaultLocale: 'en',
     locales: ['en'],
