@@ -1,4 +1,3 @@
-/// <reference types="bun" />
 /**
  * Minimal static file server for the exported site (`out/`), used by the
  * Playwright webServer in CI and available locally via:

@@ -7,6 +7,7 @@ import Mermaid from '@/components/Mermaid';
 import CodeBlock from '@/components/CodeBlock';
 import CodeGroup from '@/components/CodeGroup';
 import GithubAlert from '@/components/GithubAlert';
+import SlideDeck from '@/components/SlideDeck';
 import ExternalLinkIcon from '@/components/ExternalLinkIcon';
 import ArticleCopyCleaner from '@/components/ArticleCopyCleaner';
 import remarkGfm from 'remark-gfm';
@@ -16,6 +17,7 @@ import KatexStyles from '@/components/KatexStyles';
 import remarkDirective from 'remark-directive';
 import remarkCodeGroup from '@/lib/remark-code-group';
 import remarkGithubAlerts from '@/lib/remark-github-alerts';
+import remarkSlideDeck from '@/lib/remark-slide-deck';
 import remarkVuepressContainers, { normalizeVuepressContainerSyntax } from '@/lib/remark-vuepress-containers';
 import { normalizeVuepressBlockMath } from '@/lib/normalize-vuepress-math';
 import remarkBookChapterLinks, { type BookChapterLinksOptions } from '@/lib/remark-book-chapter-links';
@@ -23,10 +25,12 @@ import rehypeRaw from 'rehype-raw';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRawHeadingIds from '@/lib/rehype-heading-ids';
+import rehypeSlideDeckIds from '@/lib/rehype-slide-deck-ids';
 import rehypeHeadingAnchors, { HEADING_ANCHOR_CLASS } from '@/lib/rehype-heading-anchors';
 import rehypeZoomableImages from '@/lib/rehype-zoomable-images';
 import rehypePrintLinkUrls from '@/lib/print-urls';
 import rehypeImageMetadata from '@/lib/rehype-image-metadata';
+import rehypeMediaPaths from '@/lib/rehype-media-paths';
 import rehypeFenceMeta from '@/lib/rehype-fence-meta';
 import { siteConfig } from '../../site.config';
 import { getTranslator } from '@/lib/i18n';
@@ -39,6 +43,9 @@ import { shouldBypassImageOptimization } from '@/lib/image-utils';
 import { parseFenceMeta } from '@/lib/shiki';
 import { isExternalUrl } from '@/lib/urls';
 
+// Content images take the column width up to ~70vw; a slide spans the same
+// column, so deck slides share the candidate list.
+const CONTENT_IMAGE_SIZES = '(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw';
 
 // Flatten an arbitrary React children tree to its text content. Used by the
 // raw-HTML <mermaid> handler below — react-markdown hands us the mermaid
@@ -94,9 +101,11 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
     footnoteBackLabel: (referenceIndex: number, rereferenceIndex: number) =>
       tWith('footnote_back', { n: rereferenceIndex > 1 ? `${referenceIndex + 1}-${rereferenceIndex}` : referenceIndex + 1 }),
   };
-  // remark-directive must precede remark-code-group AND remark-vuepress-containers
-  // so they see parsed containerDirective nodes. Order vs remark-gfm doesn't matter
-  // — they touch disjoint node types.
+  // remark-directive must precede remark-code-group, remark-slide-deck AND
+  // remark-vuepress-containers so they see parsed containerDirective nodes.
+  // Order vs remark-gfm doesn't matter — they touch disjoint node types.
+  // remark-slide-deck runs after remarkHeadingIds so it can reject slide ids
+  // that collide with heading ids.
   const remarkPlugins: PluggableList = [
     // First transformer: heading ids come from the same function as the TOC
     // (getHeadings), before wikilinks/containers change heading text.
@@ -105,6 +114,7 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
     remarkGithubAlerts,
     remarkDirective,
     remarkCodeGroup,
+    [remarkSlideDeck, { idPrefix: headingIdPrefix, assetBase: slug }],
     remarkVuepressContainers,
   ];
   if (bookContext) {
@@ -117,10 +127,13 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
   const rehypePlugins: PluggableList = [
     rehypeFenceMeta,
     rehypeRaw,
+    // Ids written in raw HTML exist only now; a slide id among them fails the build.
+    rehypeSlideDeckIds,
     // Markdown headings already carry ids (remarkHeadingIds); this only fills
     // in headings that arrive as raw HTML, unique against every existing id.
     headingIdPrefix ? [rehypeRawHeadingIds, { prefix: headingIdPrefix }] : rehypeRawHeadingIds,
     [rehypeImageMetadata, { slug, cdnBaseUrl }],
+    [rehypeMediaPaths, { slug, cdnBaseUrl }],
   ];
 
   if (slugRegistry && slugRegistry.size > 0) {
@@ -308,6 +321,37 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
       const imageSrc = src as string;
       const isExternal = imageSrc?.startsWith('http') || imageSrc?.startsWith('//');
 
+      // A slide of a :::slides deck (remark-slide-deck tags it). Lazy with
+      // no blur placeholder: the blur is a separate background-image request
+      // that loads eagerly, so a 40-slide deck would fire 40 of them on page
+      // load. The deck owns clicks, so the zoom marker is never forwarded.
+      const slideNumber = (props as unknown as Record<string, unknown>)['data-slide'];
+      if (slideNumber !== undefined) {
+        if (isExternal) {
+          // A CDN slide: a full URL, or a local one images.cdnBaseUrl
+          // rewrote (which keeps the measured size). width/height reserve its
+          // box before it loads, as for local slides; the browser corrects
+          // the ratio once it arrives.
+          // eslint-disable-next-line @next/next/no-img-element
+          return <img src={imageSrc} alt={alt || ''} width={width ? Number(width) : 1600} height={height ? Number(height) : 900} loading="lazy" decoding="async" fetchPriority="low" data-slide={String(slideNumber)} className="block h-auto w-full" />;
+        }
+        return (
+          <ExportedImage
+            src={imageSrc || ''}
+            alt={alt || ''}
+            width={width ? Number(width) : 1600}
+            height={height ? Number(height) : 900}
+            className="block h-auto w-full"
+            sizes={CONTENT_IMAGE_SIZES}
+            unoptimized={isDev || shouldBypassImageOptimization(imageSrc)}
+            placeholder="empty"
+            style={(!width || !height) ? { width: '100%', height: 'auto' } : undefined}
+            fetchPriority="low"
+            data-slide={String(slideNumber)}
+          />
+        );
+      }
+
       // Author-supplied inline `style` is a strong signal the <img> came from
       // raw HTML inside the markdown (typically inline icons like social-media
       // badges) rather than from a markdown `![alt](src)`. Markdown images
@@ -344,7 +388,7 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
             width={width ? Number(width) : 1200}
             height={height ? Number(height) : 900}
             className="max-w-full h-auto rounded-lg my-4"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+            sizes={CONTENT_IMAGE_SIZES}
             unoptimized={isDev || shouldBypassOptimization}
             placeholder={shouldBypassOptimization ? 'empty' : 'blur'}
             style={(!width || !height) ? { width: '100%', height: 'auto' } : undefined}
@@ -373,6 +417,7 @@ export default function MarkdownRenderer({ content, latex = false, slug, slugReg
     'rss-feed': () => <RssFeedWidget />,
     'code-group': CodeGroup,
     'github-alert': GithubAlert,
+    'slide-deck': (deckProps: React.ComponentProps<typeof SlideDeck>) => <SlideDeck {...deckProps} locale={locale} />,
     swiper: ({ children }: { children?: React.ReactNode }) => <div className="my-6 space-y-4">{children}</div>,
     slide: ({ children }: { children?: React.ReactNode }) => <div>{children}</div>,
     clientonly: ({ children }: { children?: React.ReactNode }) => <>{children}</>,

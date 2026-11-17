@@ -1,5 +1,6 @@
 import { translations, Language, TranslationKey } from '@/i18n/translations';
 import { siteConfig } from '../../site.config';
+import { DEFAULT_CATEGORY } from './content/types';
 
 // ── Feature name overrides ────────────────────────────────────────────────
 //
@@ -38,12 +39,14 @@ function substituteInTranslation(original: string, from: string, to: string): st
  */
 export function buildFeatureOverrides(lang: string): Partial<Record<TranslationKey, string>> {
   const overrides: Partial<Record<TranslationKey, string>> = {};
-  const features = siteConfig.features as Record<string, { name?: Record<string, string> } | undefined>;
+  // A feature name is a plain string (single-language config) or a per-locale map.
+  const features = siteConfig.features as Record<string, { name?: string | Record<string, string> } | undefined>;
   const langT = translations[lang as Language] ?? translations.en;
 
   for (const [featureKey, featureConfig] of Object.entries(features)) {
     if (!featureConfig?.name) continue;
-    const configuredName = featureConfig.name[lang] ?? featureConfig.name['en'];
+    const { name } = featureConfig;
+    const configuredName = typeof name === 'string' ? name : name[lang] ?? name['en'];
     if (!configuredName) continue;
 
     const simpleKeys = FEATURE_SIMPLE_KEYS[featureKey] ?? [];
@@ -102,6 +105,11 @@ export function getTranslator(locale: string): Translator {
   };
   _translatorCache[locale] = { t, tWith };
   return _translatorCache[locale];
+}
+
+/** A post's category as shown: the default category reads in the page's language. */
+export function categoryLabel(category: string, locale: string): string {
+  return category === DEFAULT_CATEGORY ? getTranslator(locale).t('uncategorized') : category;
 }
 
 /**
