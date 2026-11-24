@@ -18,7 +18,6 @@ export interface NavItem {
 const social = {
   github: "https://github.com/hutusi",
   twitter: "https://twitter.com/hutusi",
-  tela: "https://telaread.com/@hutusi",
   email: "mailto:huziyong@gmail.com",
 };
 
@@ -81,7 +80,6 @@ export const siteConfig = {
     connect: [
       { name: "GitHub", url: social.github, weight: 1 , external: true },
       { name: "X (Twitter)", url: social.twitter, weight: 2 },
-      { name: "Tela Read", url: social.tela, weight: 3 },
       // { name: "RSS Feed", url: "/feed.xml", weight: 4, external: true },
       { name: "Subscribe", url: "/subscribe", weight: 5 },
     ],
@@ -119,6 +117,8 @@ export const siteConfig = {
     },
     email: '',          // Newsletter/mailing list URL (distinct from social.email contact address)
   },
+
+  telaread: { username: "hutusi" },
 
   // ── Features ──────────────────────────────────────────────────────────────
   features: {
